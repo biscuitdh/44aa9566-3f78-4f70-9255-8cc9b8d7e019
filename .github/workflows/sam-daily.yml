@@ -90,25 +90,25 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          # Avoid non-fast-forward if main moved during a long search
-          git fetch origin main
-          git pull --rebase origin main
+          # Commit generated state/docs first (working tree must be clean before rebase)
           git add -f data/api_term_rotation.json data/history.json docs/ || true
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
             git commit -m "chore: daily SAM report $(date -u +%Y-%m-%d)"
-            # Retry push once if remote advanced again
-            for i in 1 2 3; do
-              if git push origin HEAD:main; then
-                exit 0
-              fi
-              echo "Push rejected (attempt $i); rebase and retry..."
-              git pull --rebase origin main
-            done
-            echo "Push failed after retries" >&2
-            exit 1
           fi
+          # Rebase onto latest main, then push (handles long runs / concurrent pushes)
+          git fetch origin main
+          for i in 1 2 3 4 5; do
+            if git pull --rebase origin main && git push origin HEAD:main; then
+              echo "Push succeeded (attempt $i)"
+              exit 0
+            fi
+            echo "Rebase/push failed (attempt $i); retrying..."
+            sleep 2
+          done
+          echo "Push failed after retries" >&2
+          exit 1
 
       - uses: actions/upload-pages-artifact@v3
         with:
