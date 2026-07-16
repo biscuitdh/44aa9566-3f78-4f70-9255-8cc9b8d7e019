@@ -1,6 +1,6 @@
 {
   "date": "2026-07-16",
-  "saved_at": "2026-07-16T11:55:32.100339+00:00",
+  "saved_at": "2026-07-16T14:48:28.229244+00:00",
   "bucket": {
     "date": "2026-07-16",
     "runs": [
@@ -8,7 +8,8 @@
       "2026-07-16_020140",
       "2026-07-16_102825",
       "2026-07-16_110257",
-      "2026-07-16_115407"
+      "2026-07-16_115407",
+      "2026-07-16_144706"
     ],
     "notice_keys": [
       "d3c5f6428db54bbf9cf6ba3468e31d70",
@@ -60,7 +61,10 @@
       "58ba0aaa113642e4bbcede2faf01f9a3",
       "4cb7c3992e984b48978b131aa98e6cd4",
       "de13f532c542434c80a3c82002582719",
-      "0775c714322d4bd7af167c229e881530"
+      "0775c714322d4bd7af167c229e881530",
+      "4263650854414011bc36575c5bd04616",
+      "f0ff1a7aced54622932918c925dfa3ad",
+      "35684fa8865240b49a05e64af31237ea"
     ],
     "new_notice_keys": [
       "d3c5f6428db54bbf9cf6ba3468e31d70",
@@ -112,7 +116,10 @@
       "58ba0aaa113642e4bbcede2faf01f9a3",
       "4cb7c3992e984b48978b131aa98e6cd4",
       "de13f532c542434c80a3c82002582719",
-      "0775c714322d4bd7af167c229e881530"
+      "0775c714322d4bd7af167c229e881530",
+      "4263650854414011bc36575c5bd04616",
+      "f0ff1a7aced54622932918c925dfa3ad",
+      "35684fa8865240b49a05e64af31237ea"
     ]
   },
   "notices": {
@@ -964,7 +971,8 @@
       "active": "Yes",
       "organization": "HOMELAND SECURITY, DEPARTMENT OF.U.S. IMMIGRATION AND CUSTOMS ENFORCEMENT.INVESTIGATIONS AND OPERATIONS SUPPORT DALLAS",
       "matched_terms": [
-        "Forensic"
+        "Forensic",
+        "Hexordia"
       ],
       "award_amount": "",
       "awardee": "Hexordia",
@@ -1213,6 +1221,72 @@
       "award_amount": "",
       "awardee": "",
       "url": "https://sam.gov/opp/0775c714322d4bd7af167c229e881530/view",
+      "first_seen_date": "2026-07-16",
+      "last_seen_date": "2026-07-16",
+      "seen_on_dates": [
+        "2026-07-16"
+      ]
+    },
+    "4263650854414011bc36575c5bd04616": {
+      "notice_id": "4263650854414011bc36575c5bd04616",
+      "title": "Multimedia Advertising",
+      "solicitation_number": "W91ZRS26QA005",
+      "posted_date": "2026-07-16",
+      "type": "Combined Synopsis/Solicitation",
+      "response_deadline": "2026-08-12T17:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "DEPT OF DEFENSE.DEPT OF THE ARMY.NGB.W7MZ USPFO ACTIVITY CT ARNG",
+      "matched_terms": [
+        "Cyber"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/4263650854414011bc36575c5bd04616/view",
+      "first_seen_date": "2026-07-16",
+      "last_seen_date": "2026-07-16",
+      "seen_on_dates": [
+        "2026-07-16"
+      ]
+    },
+    "f0ff1a7aced54622932918c925dfa3ad": {
+      "notice_id": "f0ff1a7aced54622932918c925dfa3ad",
+      "title": "Cyber Dry Cooler Glycol Conversion",
+      "solicitation_number": "W50S8226Q1C0P",
+      "posted_date": "2026-07-16",
+      "type": "Combined Synopsis/Solicitation",
+      "response_deadline": "2026-07-23T16:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "DEPT OF DEFENSE.DEPT OF THE ARMY.NGB.W7ND USPFO ACTIVITY MDANG 175",
+      "matched_terms": [
+        "Cyber"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/f0ff1a7aced54622932918c925dfa3ad/view",
+      "first_seen_date": "2026-07-16",
+      "last_seen_date": "2026-07-16",
+      "seen_on_dates": [
+        "2026-07-16"
+      ]
+    },
+    "35684fa8865240b49a05e64af31237ea": {
+      "notice_id": "35684fa8865240b49a05e64af31237ea",
+      "title": "Agentic C2 Framework Tool (ECHOTRIBBLE) Assessment Event",
+      "solicitation_number": "W519TC-26-AE-ECHO",
+      "posted_date": "2026-07-16",
+      "type": "Special Notice",
+      "response_deadline": "2026-08-14T03:59:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "DEPT OF DEFENSE.DEPT OF THE ARMY",
+      "matched_terms": [
+        "Cyber"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/35684fa8865240b49a05e64af31237ea/view",
       "first_seen_date": "2026-07-16",
       "last_seen_date": "2026-07-16",
       "seen_on_dates": [
