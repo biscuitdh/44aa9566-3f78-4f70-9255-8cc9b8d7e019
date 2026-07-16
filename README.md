@@ -33,3 +33,8 @@ cp .env.example .env   # add SAM_API_KEY if using API mode
 ```
 
 Terms: `config/search_terms.json`.
+
+## History retention
+
+Reports keep a **rolling 15 days** of day buckets and notices (`--history-days 15`).
+Each scheduled search uses a **15-day posted-date window** (`--days 15`) so the tracker accumulates a two-week record.

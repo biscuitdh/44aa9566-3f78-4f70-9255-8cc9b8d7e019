@@ -69,6 +69,10 @@ DEFAULT_PAGE_SLEEP_FRONTEND = 8.0
 DEFAULT_JITTER = 1.0  # only used for --source api; frontend uses human_pause()
 DEFAULT_MAX_PAGES = 1
 DEFAULT_LIMIT = 25
+# Keep day buckets / notices / run log for this many calendar days (rolling).
+DEFAULT_HISTORY_RETENTION_DAYS = 15
+# Default posted-date look-back when searching (also fills a 15-day record window).
+DEFAULT_SEARCH_DAYS = 15
 
 # A few realistic browser UA strings (rotated randomly — not cycled on a timer)
 BROWSER_USER_AGENTS = [
@@ -715,8 +719,67 @@ def load_history(path: Path) -> dict[str, Any]:
     return data
 
 
-def save_history(path: Path, history: dict[str, Any]) -> None:
+def prune_history(
+    history: dict[str, Any],
+    *,
+    keep_days: int = DEFAULT_HISTORY_RETENTION_DAYS,
+    as_of: date | None = None,
+) -> dict[str, Any]:
+    """
+    Keep only the last `keep_days` calendar days of:
+      - days[] buckets (report sections)
+      - runs[] log entries
+      - notices last seen within the window (or first seen if no last)
+    """
+    if keep_days < 1:
+        return history
+    today = as_of or date.today()
+    cutoff = today - timedelta(days=keep_days - 1)
+    cutoff_s = cutoff.isoformat()
+
+    days = history.get("days") or {}
+    history["days"] = {
+        d: bucket
+        for d, bucket in days.items()
+        if isinstance(d, str) and d >= cutoff_s
+    }
+
+    runs = history.get("runs") or []
+    history["runs"] = [
+        r
+        for r in runs
+        if isinstance(r, dict) and str(r.get("run_date") or "") >= cutoff_s
+    ]
+
+    notices = history.get("notices") or {}
+    kept_notices: dict[str, Any] = {}
+    for key, rec in notices.items():
+        if not isinstance(rec, dict):
+            continue
+        last = str(rec.get("last_seen_date") or rec.get("first_seen_date") or "")
+        posted = str(rec.get("posted_date") or "")[:10]
+        # Keep if we saw it in-window, or it was posted in-window
+        if (last and last >= cutoff_s) or (posted and posted >= cutoff_s):
+            # Trim seen_on_dates to window
+            seen = [d for d in (rec.get("seen_on_dates") or []) if str(d) >= cutoff_s]
+            if seen:
+                rec = dict(rec)
+                rec["seen_on_dates"] = sorted(seen)
+            kept_notices[key] = rec
+    history["notices"] = kept_notices
+    history["retention_days"] = keep_days
+    history["retention_cutoff"] = cutoff_s
+    return history
+
+
+def save_history(
+    path: Path,
+    history: dict[str, Any],
+    *,
+    keep_days: int = DEFAULT_HISTORY_RETENTION_DAYS,
+) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
+    prune_history(history, keep_days=max(1, keep_days))
     history["updated_at"] = datetime.now(timezone.utc).isoformat()
     path.write_text(json.dumps(history, indent=2, sort_keys=False) + "\n", encoding="utf-8")
 
@@ -1176,6 +1239,7 @@ def write_html(path: Path, history: dict[str, Any], day_rows: list[dict[str, Any
       · First-seen new: <strong>{sum(1 for r in day_rows if r.get('is_new'))}</strong>
       · Source: <code>{html.escape(str(meta.get('source') or '—'))}</code>
       · Pacing: {html.escape('human' if meta.get('human') else 'fixed')}
+      · History: last {html.escape(str(meta.get('history_days') or DEFAULT_HISTORY_RETENTION_DAYS))} day(s)
     </div>
     <div class="legend">
       <span><span class="swatch new"></span> New first-seen on that day</span>
@@ -1436,7 +1500,18 @@ def main(argv: list[str] | None = None) -> int:
         default="both",
         help="both = frontend (all terms) + API (rotated batch). Default both.",
     )
-    parser.add_argument("--days", type=int, default=1, help="Look-back window in days (default: 1)")
+    parser.add_argument(
+        "--days",
+        type=int,
+        default=DEFAULT_SEARCH_DAYS,
+        help=f"Posted look-back window in days (default: {DEFAULT_SEARCH_DAYS})",
+    )
+    parser.add_argument(
+        "--history-days",
+        type=int,
+        default=DEFAULT_HISTORY_RETENTION_DAYS,
+        help=f"Keep this many days of history in reports (default: {DEFAULT_HISTORY_RETENTION_DAYS})",
+    )
     parser.add_argument("--from", dest="date_from", help="Posted from YYYY-MM-DD")
     parser.add_argument("--to", dest="date_to", help="Posted to YYYY-MM-DD (default: today)")
     parser.add_argument("--ptype", dest="ptypes", default="", help="API only: comma ptypes o,k,r,p,s,a,...")
@@ -1501,6 +1576,16 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--report-only", action="store_true", help="Rebuild Excel/HTML from history only")
     parser.add_argument("--no-history-write", action="store_true", help="Do not update history.json")
+    parser.add_argument(
+        "--upload-drive",
+        action="store_true",
+        help="Upload via service account API (optional; prefer local Latest folder)",
+    )
+    parser.add_argument(
+        "--no-upload-drive",
+        action="store_true",
+        help="Skip service-account Drive API upload even if SAM_UPLOAD_DRIVE=1",
+    )
     parser.add_argument(
         "--latest-dir",
         type=Path,
@@ -1611,6 +1696,7 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.report_only:
         print("Report-only mode: rebuilding Excel/HTML from history.json")
+        prune_history(history, keep_days=max(1, args.history_days))
         day_bucket = (history.get("days") or {}).get(run_date) or {}
         keys = day_bucket.get("notice_keys") or []
         new_keys = set(day_bucket.get("new_notice_keys") or [])
@@ -1624,7 +1710,11 @@ def main(argv: list[str] | None = None) -> int:
             row["tracked_date"] = run_date
             row["is_new"] = k in new_keys
             day_rows.append(row)
-        print(f"After phrase filter: {len(day_rows)} row(s) for {run_date}")
+        print(
+            f"After phrase filter: {len(day_rows)} row(s) for {run_date}; "
+            f"history days kept: {sorted((history.get('days') or {}).keys())}",
+            flush=True,
+        )
     else:
         if do_api and not api_key:
             print(
@@ -1796,8 +1886,16 @@ def main(argv: list[str] | None = None) -> int:
             meta=meta_partial,
         )
         print(f"First-seen new: {len(newly)}")
+        prune_history(history, keep_days=max(1, args.history_days))
+        print(
+            f"History retention: last {args.history_days} day(s) "
+            f"(cutoff {history.get('retention_cutoff')}); "
+            f"{len(history.get('days') or {})} day bucket(s), "
+            f"{len(history.get('notices') or {})} notice(s)",
+            flush=True,
+        )
         if not args.no_history_write:
-            save_history(args.history, history)
+            save_history(args.history, history, keep_days=max(1, args.history_days))
             print(f"History: {args.history}")
 
     meta = {
@@ -1812,6 +1910,7 @@ def main(argv: list[str] | None = None) -> int:
         "human": human,
         "api_batch": api_batch,
         "api_mode": api_mode,
+        "history_days": max(1, args.history_days),
     }
 
     # Primary: project root, easy to spot by date (fresh run each day)
@@ -1871,6 +1970,26 @@ def main(argv: list[str] | None = None) -> int:
             except Exception as e:  # noqa: BLE001
                 print(f"Latest folder sync failed: {e}", file=sys.stderr)
 
+    # Optional Google Drive API upload (service account) — off unless requested
+    env_upload = (os.environ.get("SAM_UPLOAD_DRIVE") or "").strip().lower() in (
+        "1",
+        "true",
+        "yes",
+        "on",
+    )
+    do_upload = (args.upload_drive or env_upload) and not args.no_upload_drive
+
+    if do_upload:
+        print("\nUploading via Drive API (service account)...", flush=True)
+        try:
+            sys.path.insert(0, str(Path(__file__).resolve().parent))
+            from drive_upload import upload_paths  # type: ignore
+
+            upload_paths([xlsx_latest_root, html_latest_root])
+        except SystemExit as e:
+            print(f"Drive API upload skipped/failed: {e}", file=sys.stderr)
+        except Exception as e:  # noqa: BLE001
+            print(f"Drive API upload failed: {e}", file=sys.stderr)
 
     return 1 if errors and not merged else 0
 

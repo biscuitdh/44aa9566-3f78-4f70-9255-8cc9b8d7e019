@@ -9,7 +9,7 @@ on:
       days:
         description: "Posted look-back window (days)"
         required: false
-        default: "1"
+        default: "15"
       source:
         description: "frontend | api | both"
         required: false
