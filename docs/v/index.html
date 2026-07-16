@@ -54,6 +54,20 @@
     .legend span { display: inline-block; margin-right: 14px; }
     .swatch { display: inline-block; width: 12px; height: 12px; border-radius: 2px; margin-right: 4px; vertical-align: middle; }
     .swatch.new { background: var(--new); border: 1px solid #9ccc9c; }
+    td.actions { white-space: nowrap; min-width: 7.5rem; }
+    .btn-trello {
+      display: inline-block; margin-top: 4px; padding: 4px 8px;
+      font-size: 0.75rem; font-weight: 600; cursor: pointer;
+      color: #fff; background: #0079bf; border: none; border-radius: 6px;
+    }
+    .btn-trello:hover { background: #026aa7; }
+    .btn-trello.copied { background: #2e7d32; }
+    .toast {
+      position: fixed; bottom: 20px; right: 20px; z-index: 99;
+      background: #1a2332; color: #fff; padding: 10px 14px; border-radius: 8px;
+      font-size: 0.9rem; opacity: 0; pointer-events: none; transition: opacity .2s;
+    }
+    .toast.show { opacity: 1; }
   </style>
 </head>
 <body>
@@ -72,7 +86,7 @@
     </div>
     <div class="legend">
       <span><span class="swatch new"></span> New first-seen on that day</span>
-      <span>Frontend path = website search (keyword). API path = title filter + key quota.</span>
+      <span><strong>Copy for Trello</strong> copies card text — paste into a new Trello card (no login/API).</span>
     </div>
     
   </div>
@@ -89,13 +103,18 @@
           <table>
             <thead>
               <tr>
-                <th></th><th>Posted</th><th>Title</th><th>Terms</th><th>Type</th>
+                <th>Trello</th><th>Posted</th><th>Title</th><th>Terms</th><th>Type</th>
                 <th>Deadline</th><th>Organization</th><th>Solicitation</th><th>Notice ID</th>
               </tr>
             </thead>
             <tbody>
         <tr class="is-new">
-          <td><span class="badge new">NEW</span></td>
+          <td class="actions">
+            <span class="badge new">NEW</span>
+            <button type="button" class="btn-trello" data-card-b64="Rm9ydCBCZW5uaW5nIENvbnN0cnVjdGlvbiBNQUlESVEKCmh0dHBzOi8vc2FtLmdvdi9vcHAvZDNjNWY2NDI4ZGI1NGJiZjljZjZiYTM0NjhlMzFkNzAvdmlldwoKUG9zdGVkOiAyMDI2LTA3LTE2ClR5cGU6IEF3YXJkIE5vdGljZQpNYXRjaGVkIHRlcm1zOiBNU0FCClJlc3BvbnNlIGRlYWRsaW5lOiDigJQKU29saWNpdGF0aW9uICM6IFc1MTY4Vy0yNi1ELUEwMTYtQTAxNy1BMDE4LUEwMTktQTAyMC1BMDIxLUEwMjItQTAyMy1BMDI0LUEwMjUtQTAyNi1BMDI3LUEwMjgtQTAyOS1BMDMwLUEwMzEtQTAzMi1BMDMzLUEwMzQKT3JnYW5pemF0aW9uOiBERVBUIE9GIERFRkVOU0UuREVQVCBPRiBUSEUgQVJNWS5XNlFNIE1JQ0MtRkRPIEZUIFNBTSBIT1VTVE9OCk5vdGljZSBJRDogZDNjNWY2NDI4ZGI1NGJiZjljZjZiYTM0NjhlMzFkNzAKQWN0aXZlOiBZZXMKQXdhcmQ6IOKAlCDihpIgRy5NLiBISUxMIEVOR0lORUVSSU5HLCBJTkMuCgpTb3VyY2U6IFNBTS5nb3YgZGFpbHkgdHJhY2tlcg==" title="Copy Trello-ready text">
+              Copy for Trello
+            </button>
+          </td>
           <td>2026-07-16</td>
           <td><a href="https://sam.gov/opp/d3c5f6428db54bbf9cf6ba3468e31d70/view" target="_blank" rel="noopener">Fort Benning Construction MAIDIQ</a></td>
           <td>MSAB</td>
@@ -106,7 +125,12 @@
           <td><code>d3c5f6428db54bbf9cf6ba3468e31d70</code></td>
         </tr>
         <tr class="is-new">
-          <td><span class="badge new">NEW</span></td>
+          <td class="actions">
+            <span class="badge new">NEW</span>
+            <button type="button" class="btn-trello" data-card-b64="VWx0cmEtSGlnaCBQcmVzc3VyZSBMaXF1aWQgQ2hyb21hdG9ncmFwaHkgUXVhZHJ1cG9sZSBUaW1lIG9mIEZsaWdodCBNYXNzIFNwZWN0cm9tZXRlcgoKaHR0cHM6Ly9zYW0uZ292L29wcC9kZTgwZjU3YjJiOTY0N2NhOWNiOTUyYzc5OTVkZWExZC92aWV3CgpQb3N0ZWQ6IDIwMjYtMDctMTUKVHlwZTogU291cmNlcyBTb3VnaHQKTWF0Y2hlZCB0ZXJtczogRm9yZW5zaWMKUmVzcG9uc2UgZGVhZGxpbmU6IDIwMjYtMDctMjFUMTQ6MDA6MDArMDA6MDAKU29saWNpdGF0aW9uICM6IE5CNjQzMDUwLTI2LTAxNzE2Ck9yZ2FuaXphdGlvbjogQ09NTUVSQ0UsIERFUEFSVE1FTlQgT0YuTkFUSU9OQUwgSU5TVElUVVRFIE9GIFNUQU5EQVJEUyBBTkQgVEVDSE5PTE9HWS5ERVBUIE9GIENPTU1FUkNFIE5JU1QKTm90aWNlIElEOiBkZTgwZjU3YjJiOTY0N2NhOWNiOTUyYzc5OTVkZWExZApBY3RpdmU6IFllcwoKU291cmNlOiBTQU0uZ292IGRhaWx5IHRyYWNrZXI=" title="Copy Trello-ready text">
+              Copy for Trello
+            </button>
+          </td>
           <td>2026-07-15</td>
           <td><a href="https://sam.gov/opp/de80f57b2b9647ca9cb952c7995dea1d/view" target="_blank" rel="noopener">Ultra-High Pressure Liquid Chromatography Quadrupole Time of Flight Mass Spectrometer</a></td>
           <td>Forensic</td>
@@ -117,7 +141,12 @@
           <td><code>de80f57b2b9647ca9cb952c7995dea1d</code></td>
         </tr>
         <tr class="is-new">
-          <td><span class="badge new">NEW</span></td>
+          <td class="actions">
+            <span class="badge new">NEW</span>
+            <button type="button" class="btn-trello" data-card-b64="VS5TLiBBcm15IENvbnRyYWN0aW5nIENvbW1hbmQg4oCTIFNpZXJyYSBBcm15IERlcG90IChBQ0MtU0lBRCkgT3JnYW5pYyBJbmR1c3RyaWFsIEJhc2UgKE9JQikgTW9kZXJuaXphdGlvbiBDb21tZXJjaWFsIFNvbHV0aW9ucyBPcGVuaW5nIChDU08pCgpodHRwczovL3NhbS5nb3Yvb3BwL2M5Y2U5MmMyZmEyOTQ0ODdhZTY5ZTg0YzE2MDliMWQ4L3ZpZXcKClBvc3RlZDogMjAyNi0wNy0xNQpUeXBlOiBTcGVjaWFsIE5vdGljZQpNYXRjaGVkIHRlcm1zOiBDeWJlcgpSZXNwb25zZSBkZWFkbGluZTogMjAzMC0wNi0zMFQxNzowMDowMCswMDowMApTb2xpY2l0YXRpb24gIzogVzkxMkdZLTI1LVMtQzAwMQpPcmdhbml6YXRpb246IERFUFQgT0YgREVGRU5TRS5ERVBUIE9GIFRIRSBBUk1ZLkFNQy5BQ0MuQUNDLUNUUlMuQUNDIFdSTi5XNlFLIFNJQUQgQ09OVFIgT0ZGCk5vdGljZSBJRDogYzljZTkyYzJmYTI5NDQ4N2FlNjllODRjMTYwOWIxZDgKQWN0aXZlOiBZZXMKClNvdXJjZTogU0FNLmdvdiBkYWlseSB0cmFja2Vy" title="Copy Trello-ready text">
+              Copy for Trello
+            </button>
+          </td>
           <td>2026-07-15</td>
           <td><a href="https://sam.gov/opp/c9ce92c2fa294487ae69e84c1609b1d8/view" target="_blank" rel="noopener">U.S. Army Contracting Command – Sierra Army Depot (ACC-SIAD) Organic Industrial Base (OIB) Modernization Commercial Solutions Opening (CSO)</a></td>
           <td>Cyber</td>
@@ -128,7 +157,12 @@
           <td><code>c9ce92c2fa294487ae69e84c1609b1d8</code></td>
         </tr>
         <tr class="is-new">
-          <td><span class="badge new">NEW</span></td>
+          <td class="actions">
+            <span class="badge new">NEW</span>
+            <button type="button" class="btn-trello" data-card-b64="UmVxdWVzdCBmb3IgSW5mb3JtYXRpb24gKFJGSSkgZm9yIEFybXkgSW5mb3JtYXRpb24gRW50ZXJwcmlzZSAtIEluZm9ybWF0aW9uIFRlY2hub2xvZ3kgU2VydmljZXMgKEFJRS1JVFMpCgpodHRwczovL3NhbS5nb3Yvb3BwL2ZmYTJhOTAyNDAxMzQ1OTBhZTcxMGVlNGU4NGFiMjg0L3ZpZXcKClBvc3RlZDogMjAyNi0wNy0xNQpUeXBlOiBTb3VyY2VzIFNvdWdodApNYXRjaGVkIHRlcm1zOiBDeWJlcgpSZXNwb25zZSBkZWFkbGluZTogMjAyNi0wOC0xNVQyMTowMDowMCswMDowMApTb2xpY2l0YXRpb24gIzogQUlFLUlUUy0wMDEKT3JnYW5pemF0aW9uOiBERVBUIE9GIERFRkVOU0UuREVQVCBPRiBUSEUgQVJNWS5BTUMuQUNDLkFDQy1DVFJTLkFDQyBXUk4uVzRHRyBIUSBVUyBBUk1ZIFRBQ09NCk5vdGljZSBJRDogZmZhMmE5MDI0MDEzNDU5MGFlNzEwZWU0ZTg0YWIyODQKQWN0aXZlOiBZZXMKClNvdXJjZTogU0FNLmdvdiBkYWlseSB0cmFja2Vy" title="Copy Trello-ready text">
+              Copy for Trello
+            </button>
+          </td>
           <td>2026-07-15</td>
           <td><a href="https://sam.gov/opp/ffa2a90240134590ae710ee4e84ab284/view" target="_blank" rel="noopener">Request for Information (RFI) for Army Information Enterprise - Information Technology Services (AIE-ITS)</a></td>
           <td>Cyber</td>
@@ -139,7 +173,12 @@
           <td><code>ffa2a90240134590ae710ee4e84ab284</code></td>
         </tr>
         <tr class="is-new">
-          <td><span class="badge new">NEW</span></td>
+          <td class="actions">
+            <span class="badge new">NEW</span>
+            <button type="button" class="btn-trello" data-card-b64="UHJvZ3Jlc3NpdmUgRGVzaWduLUJ1aWxkIFNlcnZpY2VzIHVuZGVyIE90aGVyIFRyYW5zYWN0aW9uIEF1dGhvcml0eSBQcm9qZWN0OiBNdWx0aS1Eb21haW4gQ3liZXIgYW5kIEludGVsIE9wZXJhdGlvbnMgQ2VudGVyLCBKb2ludCBCYXNlIFNhbiBBbnRvbmlvLCBMYWNrbGFuZCBBRkIgVGV4YXMKCmh0dHBzOi8vc2FtLmdvdi9vcHAvMzk3MDE3MzhjMDdhNGFlZTkxYjA0ZWU3NTc2OTA1ZWQvdmlldwoKUG9zdGVkOiAyMDI2LTA3LTE1ClR5cGU6IFNwZWNpYWwgTm90aWNlCk1hdGNoZWQgdGVybXM6IEN5YmVyClJlc3BvbnNlIGRlYWRsaW5lOiDigJQKU29saWNpdGF0aW9uICM6IFc5MTI2RzI2WjFCWUwKT3JnYW5pemF0aW9uOiBERVBUIE9GIERFRkVOU0UuREVQVCBPRiBUSEUgQVJNWS5VU0FDRS5TV0QuVzA3NiBFTkRJU1QgRlQgV09SVEgKTm90aWNlIElEOiAzOTcwMTczOGMwN2E0YWVlOTFiMDRlZTc1NzY5MDVlZApBY3RpdmU6IFllcwoKU291cmNlOiBTQU0uZ292IGRhaWx5IHRyYWNrZXI=" title="Copy Trello-ready text">
+              Copy for Trello
+            </button>
+          </td>
           <td>2026-07-15</td>
           <td><a href="https://sam.gov/opp/39701738c07a4aee91b04ee7576905ed/view" target="_blank" rel="noopener">Progressive Design-Build Services under Other Transaction Authority Project: Multi-Domain Cyber and Intel Operations Center, Joint Base San Antonio, Lackland AFB Texas</a></td>
           <td>Cyber</td>
@@ -150,7 +189,12 @@
           <td><code>39701738c07a4aee91b04ee7576905ed</code></td>
         </tr>
         <tr class="is-new">
-          <td><span class="badge new">NEW</span></td>
+          <td class="actions">
+            <span class="badge new">NEW</span>
+            <button type="button" class="btn-trello" data-card-b64="UG9ydGZvbGlvIEFjcXVpc2l0aW9uIEV4ZWN1dGl2ZSAoUEFFKSBDeWJlcuKAmXMgUHVibGljIEtleSBJbmZyYXN0cnVjdHVyZSAoUEtJKSBTdXN0YWlubWVudCBSZXF1aXJlbWVudAoKaHR0cHM6Ly9zYW0uZ292L29wcC84MmU3YjQyZmQzMzA0NDE0ODg1ZTU3ZDRhNmRjMjA5MS92aWV3CgpQb3N0ZWQ6IDIwMjYtMDctMTUKVHlwZTogU291cmNlcyBTb3VnaHQKTWF0Y2hlZCB0ZXJtczogQ3liZXIKUmVzcG9uc2UgZGVhZGxpbmU6IDIwMjYtMDctMzBUMjA6MDA6MDArMDA6MDAKU29saWNpdGF0aW9uICM6IDgzMjY3NTExMApPcmdhbml6YXRpb246IERFUFQgT0YgREVGRU5TRS5ERUZFTlNFIElORk9STUFUSU9OIFNZU1RFTVMgQUdFTkNZIChESVNBKS5ERUZFTlNFIElORk9STUFUSU9OIFNZU1RFTVMgQUdFTkNZCk5vdGljZSBJRDogODJlN2I0MmZkMzMwNDQxNDg4NWU1N2Q0YTZkYzIwOTEKQWN0aXZlOiBZZXMKClNvdXJjZTogU0FNLmdvdiBkYWlseSB0cmFja2Vy" title="Copy Trello-ready text">
+              Copy for Trello
+            </button>
+          </td>
           <td>2026-07-15</td>
           <td><a href="https://sam.gov/opp/82e7b42fd3304414885e57d4a6dc2091/view" target="_blank" rel="noopener">Portfolio Acquisition Executive (PAE) Cyber’s Public Key Infrastructure (PKI) Sustainment Requirement</a></td>
           <td>Cyber</td>
@@ -161,7 +205,12 @@
           <td><code>82e7b42fd3304414885e57d4a6dc2091</code></td>
         </tr>
         <tr class="is-new">
-          <td><span class="badge new">NEW</span></td>
+          <td class="actions">
+            <span class="badge new">NEW</span>
+            <button type="button" class="btn-trello" data-card-b64="TUxSUyBQcm9vZiBMb2FkIFBvZHMKCmh0dHBzOi8vc2FtLmdvdi9vcHAvMWMwMzFhZmEzY2NmNDIzMzg2OGI0YzZmMzMyYTA1NDgvdmlldwoKUG9zdGVkOiAyMDI2LTA3LTE1ClR5cGU6IENvbWJpbmVkIFN5bm9wc2lzL1NvbGljaXRhdGlvbgpNYXRjaGVkIHRlcm1zOiBDeWJlcgpSZXNwb25zZSBkZWFkbGluZTogMjAyNi0wNy0yOVQxODowMDowMCswMDowMApTb2xpY2l0YXRpb24gIzogVzkxMVJRMjZRQTAxNwpPcmdhbml6YXRpb246IERFUFQgT0YgREVGRU5TRS5ERVBUIE9GIFRIRSBBUk1ZLkFNQy5BQ0MuQUNDLUNUUlMuQUNDIFdSTi5XNlFLIEFDQyBSUkFECk5vdGljZSBJRDogMWMwMzFhZmEzY2NmNDIzMzg2OGI0YzZmMzMyYTA1NDgKQWN0aXZlOiBZZXMKClNvdXJjZTogU0FNLmdvdiBkYWlseSB0cmFja2Vy" title="Copy Trello-ready text">
+              Copy for Trello
+            </button>
+          </td>
           <td>2026-07-15</td>
           <td><a href="https://sam.gov/opp/1c031afa3ccf4233868b4c6f332a0548/view" target="_blank" rel="noopener">MLRS Proof Load Pods</a></td>
           <td>Cyber</td>
@@ -172,7 +221,12 @@
           <td><code>1c031afa3ccf4233868b4c6f332a0548</code></td>
         </tr>
         <tr class="is-new">
-          <td><span class="badge new">NEW</span></td>
+          <td class="actions">
+            <span class="badge new">NEW</span>
+            <button type="button" class="btn-trello" data-card-b64="TUFJTlRFTkFOQ0UgRk9SIEVMRUNUUklDQUwgUkVDRUlWSU5HIEFORCBESVNUUklCVVRJT04gU1lTVEVNUyBBTkQgRkFDSUxJVElFUywgQU5EIFNVUEVSVklTT1JZIENPTlRST0wgQU5EIERBVEEgQUNRVUlTSVRJT04gU1lTVEVNIEZPUiBUSEUgVS5TLiBOQVZBTCBBSVIgRkFDSUxJVFksIEFUU1VHSSwgSkFQQU4KCmh0dHBzOi8vc2FtLmdvdi9vcHAvMmRiOTVmN2NmOWFiNGQ3ZGIwZTcxY2M3MDEwNTQ1NzkvdmlldwoKUG9zdGVkOiAyMDI2LTA3LTE1ClR5cGU6IFByZXNvbGljaXRhdGlvbgpNYXRjaGVkIHRlcm1zOiBDeWJlcgpSZXNwb25zZSBkZWFkbGluZTogMjAyNi0wOS0wNFQwMTowMDowMCswMDowMApTb2xpY2l0YXRpb24gIzogTjQwMDg0MjZSODcxMQpPcmdhbml6YXRpb246IERFUFQgT0YgREVGRU5TRS5ERVBUIE9GIFRIRSBOQVZZLk5BVkZBQy5OQVZGQUMgUEFDSUZJQyBDTUQuTkFWRkFDIEZBUiBFQVNULk5BVkZBQ1NZU0NPTSBGQVIgRUFTVApOb3RpY2UgSUQ6IDJkYjk1ZjdjZjlhYjRkN2RiMGU3MWNjNzAxMDU0NTc5CkFjdGl2ZTogWWVzCgpTb3VyY2U6IFNBTS5nb3YgZGFpbHkgdHJhY2tlcg==" title="Copy Trello-ready text">
+              Copy for Trello
+            </button>
+          </td>
           <td>2026-07-15</td>
           <td><a href="https://sam.gov/opp/2db95f7cf9ab4d7db0e71cc701054579/view" target="_blank" rel="noopener">MAINTENANCE FOR ELECTRICAL RECEIVING AND DISTRIBUTION SYSTEMS AND FACILITIES, AND SUPERVISORY CONTROL AND DATA ACQUISITION SYSTEM FOR THE U.S. NAVAL AIR FACILITY, ATSUGI, JAPAN</a></td>
           <td>Cyber</td>
@@ -183,7 +237,12 @@
           <td><code>2db95f7cf9ab4d7db0e71cc701054579</code></td>
         </tr>
         <tr class="is-new">
-          <td><span class="badge new">NEW</span></td>
+          <td class="actions">
+            <span class="badge new">NEW</span>
+            <button type="button" class="btn-trello" data-card-b64="TEVJRE9TIElOU0VSVCwgTlBIIDUuNTAwIE9ECgpodHRwczovL3NhbS5nb3Yvb3BwLzkxOTczNzZiMDM5MjRlNWU5OTFhOTQ1ZWIyZjg3YzQ5L3ZpZXcKClBvc3RlZDogMjAyNi0wNy0xNQpUeXBlOiBDb21iaW5lZCBTeW5vcHNpcy9Tb2xpY2l0YXRpb24KTWF0Y2hlZCB0ZXJtczogQ3liZXIKUmVzcG9uc2UgZGVhZGxpbmU6IDIwMjYtMDctMTdUMjM6MDA6MDArMDA6MDAKU29saWNpdGF0aW9uICM6IFNQTVlNNC0yNi1RLTM1NjgKT3JnYW5pemF0aW9uOiBERVBUIE9GIERFRkVOU0UuREVGRU5TRSBMT0dJU1RJQ1MgQUdFTkNZLkRMQSBNQVJJVElNRS5ETEEgTUFSSVRJTUUgU0hJUFlBUkRTLkRMQSBNQVJJVElNRSAtIFBFQVJMIEhBUkJPUgpOb3RpY2UgSUQ6IDkxOTczNzZiMDM5MjRlNWU5OTFhOTQ1ZWIyZjg3YzQ5CkFjdGl2ZTogWWVzCgpTb3VyY2U6IFNBTS5nb3YgZGFpbHkgdHJhY2tlcg==" title="Copy Trello-ready text">
+              Copy for Trello
+            </button>
+          </td>
           <td>2026-07-15</td>
           <td><a href="https://sam.gov/opp/9197376b03924e5e991a945eb2f87c49/view" target="_blank" rel="noopener">LEIDOS INSERT, NPH 5.500 OD</a></td>
           <td>Cyber</td>
@@ -194,7 +253,12 @@
           <td><code>9197376b03924e5e991a945eb2f87c49</code></td>
         </tr>
         <tr class="is-new">
-          <td><span class="badge new">NEW</span></td>
+          <td class="actions">
+            <span class="badge new">NEW</span>
+            <button type="button" class="btn-trello" data-card-b64="SE9TRSAgQVNTRU1CTFkKCmh0dHBzOi8vc2FtLmdvdi9vcHAvNGY0NDljM2E3ZWQzNDBmYTg3NWQxYzdhNjM1MTJjMWYvdmlldwoKUG9zdGVkOiAyMDI2LTA3LTE1ClR5cGU6IENvbWJpbmVkIFN5bm9wc2lzL1NvbGljaXRhdGlvbgpNYXRjaGVkIHRlcm1zOiBDeWJlcgpSZXNwb25zZSBkZWFkbGluZTogMjAyNi0wNy0xNlQyMzowMDowMCswMDowMApTb2xpY2l0YXRpb24gIzogU1BNWU00LTI2LVEtMzU2NQpPcmdhbml6YXRpb246IERFUFQgT0YgREVGRU5TRS5ERUZFTlNFIExPR0lTVElDUyBBR0VOQ1kuRExBIE1BUklUSU1FLkRMQSBNQVJJVElNRSBTSElQWUFSRFMuRExBIE1BUklUSU1FIC0gUEVBUkwgSEFSQk9SCk5vdGljZSBJRDogNGY0NDljM2E3ZWQzNDBmYTg3NWQxYzdhNjM1MTJjMWYKQWN0aXZlOiBZZXMKClNvdXJjZTogU0FNLmdvdiBkYWlseSB0cmFja2Vy" title="Copy Trello-ready text">
+              Copy for Trello
+            </button>
+          </td>
           <td>2026-07-15</td>
           <td><a href="https://sam.gov/opp/4f449c3a7ed340fa875d1c7a63512c1f/view" target="_blank" rel="noopener">HOSE  ASSEMBLY</a></td>
           <td>Cyber</td>
@@ -205,7 +269,12 @@
           <td><code>4f449c3a7ed340fa875d1c7a63512c1f</code></td>
         </tr>
         <tr class="is-new">
-          <td><span class="badge new">NEW</span></td>
+          <td class="actions">
+            <span class="badge new">NEW</span>
+            <button type="button" class="btn-trello" data-card-b64="RGVudGFsIGFuZCBIZWFsdGhjYXJlIHN1cHBvcnQgc2VydmljZXMKCmh0dHBzOi8vc2FtLmdvdi9vcHAvODY0ZjQwNzZiNzhjNDBhZGI2NjE5ODgyZDMzYmY4NGIvdmlldwoKUG9zdGVkOiAyMDI2LTA3LTE1ClR5cGU6IENvbWJpbmVkIFN5bm9wc2lzL1NvbGljaXRhdGlvbgpNYXRjaGVkIHRlcm1zOiBDeWJlcgpSZXNwb25zZSBkZWFkbGluZTogMjAyNi0wNy0xNlQyMjowMDowMCswMDowMApTb2xpY2l0YXRpb24gIzogVzkxMkpDMjZRMzczMQpPcmdhbml6YXRpb246IERFUFQgT0YgREVGRU5TRS5ERVBUIE9GIFRIRSBBUk1ZLk5HQi5XN005IFVTUEZPIEFDVElWSVRZIEtTIEFSTkcKTm90aWNlIElEOiA4NjRmNDA3NmI3OGM0MGFkYjY2MTk4ODJkMzNiZjg0YgpBY3RpdmU6IFllcwoKU291cmNlOiBTQU0uZ292IGRhaWx5IHRyYWNrZXI=" title="Copy Trello-ready text">
+              Copy for Trello
+            </button>
+          </td>
           <td>2026-07-15</td>
           <td><a href="https://sam.gov/opp/864f4076b78c40adb6619882d33bf84b/view" target="_blank" rel="noopener">Dental and Healthcare support services</a></td>
           <td>Cyber</td>
@@ -216,7 +285,12 @@
           <td><code>864f4076b78c40adb6619882d33bf84b</code></td>
         </tr>
         <tr class="is-new">
-          <td><span class="badge new">NEW</span></td>
+          <td class="actions">
+            <span class="badge new">NEW</span>
+            <button type="button" class="btn-trello" data-card-b64="Q3liZXIgTWFpbnRlbmFuY2UgSGFuZ2FyIE1vZGVybml6YXRpb24KCmh0dHBzOi8vc2FtLmdvdi9vcHAvOWNmZTkyMGIwNGVmNDc0NWI4YjgxZDc2ZmFkZjg4Y2EvdmlldwoKUG9zdGVkOiAyMDI2LTA3LTE1ClR5cGU6IFNvbGljaXRhdGlvbgpNYXRjaGVkIHRlcm1zOiBDeWJlcgpSZXNwb25zZSBkZWFkbGluZTogMjAyNi0wOC0xMFQxNTowMDowMCswMDowMApTb2xpY2l0YXRpb24gIzogVzkxMlFSMjZSQTA1NwpPcmdhbml6YXRpb246IERFUFQgT0YgREVGRU5TRS5ERVBUIE9GIFRIRSBBUk1ZLlVTQUNFLkxSRC5XMDcyIEVORElTVCBMT1VJU1ZJTExFCk5vdGljZSBJRDogOWNmZTkyMGIwNGVmNDc0NWI4YjgxZDc2ZmFkZjg4Y2EKQWN0aXZlOiBZZXMKClNvdXJjZTogU0FNLmdvdiBkYWlseSB0cmFja2Vy" title="Copy Trello-ready text">
+              Copy for Trello
+            </button>
+          </td>
           <td>2026-07-15</td>
           <td><a href="https://sam.gov/opp/9cfe920b04ef4745b8b81d76fadf88ca/view" target="_blank" rel="noopener">Cyber Maintenance Hangar Modernization</a></td>
           <td>Cyber</td>
@@ -227,7 +301,12 @@
           <td><code>9cfe920b04ef4745b8b81d76fadf88ca</code></td>
         </tr>
         <tr class="is-new">
-          <td><span class="badge new">NEW</span></td>
+          <td class="actions">
+            <span class="badge new">NEW</span>
+            <button type="button" class="btn-trello" data-card-b64="QzVJU1IgQ2VudGVyIE1PU0EgTWFuYWdlbWVudCBPZmZpY2UgKE1NTykgZm9yIENNT1NTIC8gVklDVE9SWSAvIE1PUkEKCmh0dHBzOi8vc2FtLmdvdi9vcHAvZmVkMGIwODUzOWFiNDQ4YzgzNzRjYzBkZTQyODY0NzAvdmlldwoKUG9zdGVkOiAyMDI2LTA3LTE1ClR5cGU6IFNwZWNpYWwgTm90aWNlCk1hdGNoZWQgdGVybXM6IEN5YmVyOyBJUlMKUmVzcG9uc2UgZGVhZGxpbmU6IDIwMjctMDMtMjNUMjA6MDA6MDArMDA6MDAKU29saWNpdGF0aW9uICM6IEZZMjItQzVJU1ItQ01PU1MKT3JnYW5pemF0aW9uOiBERVBUIE9GIERFRkVOU0UuREVQVCBPRiBUSEUgQVJNWS5BTUMuQUNDLkFDQy1DVFJTLkFDQy1BUEcuVzZRSyBBQ0MtQVBHCk5vdGljZSBJRDogZmVkMGIwODUzOWFiNDQ4YzgzNzRjYzBkZTQyODY0NzAKQWN0aXZlOiBZZXMKClNvdXJjZTogU0FNLmdvdiBkYWlseSB0cmFja2Vy" title="Copy Trello-ready text">
+              Copy for Trello
+            </button>
+          </td>
           <td>2026-07-15</td>
           <td><a href="https://sam.gov/opp/fed0b08539ab448c8374cc0de4286470/view" target="_blank" rel="noopener">C5ISR Center MOSA Management Office (MMO) for CMOSS / VICTORY / MORA</a></td>
           <td>Cyber; IRS</td>
@@ -238,7 +317,12 @@
           <td><code>fed0b08539ab448c8374cc0de4286470</code></td>
         </tr>
         <tr class="is-new">
-          <td><span class="badge new">NEW</span></td>
+          <td class="actions">
+            <span class="badge new">NEW</span>
+            <button type="button" class="btn-trello" data-card-b64="Mi1DaGFubmVsIERvd25jb252ZXJ0ZXIgQXNzZW1ibGllcwoKaHR0cHM6Ly9zYW0uZ292L29wcC82YmJkMzk3MWYyNzU0ODI1YTE3MWJjNjNmZDExZTNiYS92aWV3CgpQb3N0ZWQ6IDIwMjYtMDctMTUKVHlwZTogQ29tYmluZWQgU3lub3BzaXMvU29saWNpdGF0aW9uCk1hdGNoZWQgdGVybXM6IEN5YmVyClJlc3BvbnNlIGRlYWRsaW5lOiAyMDI2LTA3LTIyVDE4OjAwOjAwKzAwOjAwClNvbGljaXRhdGlvbiAjOiBONjY2MDQtMjYtUS0wMTgwCk9yZ2FuaXphdGlvbjogREVQVCBPRiBERUZFTlNFLkRFUFQgT0YgVEhFIE5BVlkuTkFWU0VBLk5BVlNFQSBXQVJGQVJFIENFTlRFUi5OVVdDIERJViBORVdQT1JUCk5vdGljZSBJRDogNmJiZDM5NzFmMjc1NDgyNWExNzFiYzYzZmQxMWUzYmEKQWN0aXZlOiBZZXMKClNvdXJjZTogU0FNLmdvdiBkYWlseSB0cmFja2Vy" title="Copy Trello-ready text">
+              Copy for Trello
+            </button>
+          </td>
           <td>2026-07-15</td>
           <td><a href="https://sam.gov/opp/6bbd3971f2754825a171bc63fd11e3ba/view" target="_blank" rel="noopener">2-Channel Downconverter Assemblies</a></td>
           <td>Cyber</td>
@@ -249,7 +333,12 @@
           <td><code>6bbd3971f2754825a171bc63fd11e3ba</code></td>
         </tr>
         <tr class="is-new">
-          <td><span class="badge new">NEW</span></td>
+          <td class="actions">
+            <span class="badge new">NEW</span>
+            <button type="button" class="btn-trello" data-card-b64="MVggRkxYIFNPTFVUSU9OUyBCT1QgRVZBTFVBVElPTiBVTklUICgyMDI2KQoKaHR0cHM6Ly9zYW0uZ292L29wcC81MTk4NjExZTE0ZTc0NGFhOGFlODgzNWFmOGNjNWUxNS92aWV3CgpQb3N0ZWQ6IDIwMjYtMDctMTUKVHlwZTogQ29tYmluZWQgU3lub3BzaXMvU29saWNpdGF0aW9uCk1hdGNoZWQgdGVybXM6IEN5YmVyClJlc3BvbnNlIGRlYWRsaW5lOiAyMDI2LTA3LTE3VDIzOjAwOjAwKzAwOjAwClNvbGljaXRhdGlvbiAjOiBTUE1ZTTQyNlEzNTY2Ck9yZ2FuaXphdGlvbjogREVQVCBPRiBERUZFTlNFLkRFRkVOU0UgTE9HSVNUSUNTIEFHRU5DWS5ETEEgTUFSSVRJTUUuRExBIE1BUklUSU1FIFNISVBZQVJEUy5ETEEgTUFSSVRJTUUgLSBQRUFSTCBIQVJCT1IKTm90aWNlIElEOiA1MTk4NjExZTE0ZTc0NGFhOGFlODgzNWFmOGNjNWUxNQpBY3RpdmU6IFllcwoKU291cmNlOiBTQU0uZ292IGRhaWx5IHRyYWNrZXI=" title="Copy Trello-ready text">
+              Copy for Trello
+            </button>
+          </td>
           <td>2026-07-15</td>
           <td><a href="https://sam.gov/opp/5198611e14e744aa8ae8835af8cc5e15/view" target="_blank" rel="noopener">1X FLX SOLUTIONS BOT EVALUATION UNIT (2026)</a></td>
           <td>Cyber</td>
@@ -260,7 +349,12 @@
           <td><code>5198611e14e744aa8ae8835af8cc5e15</code></td>
         </tr>
         <tr class="is-new">
-          <td><span class="badge new">NEW</span></td>
+          <td class="actions">
+            <span class="badge new">NEW</span>
+            <button type="button" class="btn-trello" data-card-b64="VkVDVE9SIE5FVFdPUksgQU5BTFlaRVIKCmh0dHBzOi8vc2FtLmdvdi9vcHAvNDZlMDhhZjUzZGFlNGY4ZmE1YjIyZjU2NTIyMWFhNmMvdmlldwoKUG9zdGVkOiAyMDI2LTA3LTE0ClR5cGU6IFNvdXJjZXMgU291Z2h0Ck1hdGNoZWQgdGVybXM6IEN5YmVyClJlc3BvbnNlIGRlYWRsaW5lOiAyMDI2LTA3LTIwVDE3OjAwOjAwKzAwOjAwClNvbGljaXRhdGlvbiAjOiBXNTBTOFIyNlEwMDI2Ck9yZ2FuaXphdGlvbjogREVQVCBPRiBERUZFTlNFLkRFUFQgT0YgVEhFIEFSTVkuTkdCLlc3TlUgVVNQRk8gQUNUSVZJVFkgT0hBTkcgMTc5Ck5vdGljZSBJRDogNDZlMDhhZjUzZGFlNGY4ZmE1YjIyZjU2NTIyMWFhNmMKQWN0aXZlOiBZZXMKClNvdXJjZTogU0FNLmdvdiBkYWlseSB0cmFja2Vy" title="Copy Trello-ready text">
+              Copy for Trello
+            </button>
+          </td>
           <td>2026-07-14</td>
           <td><a href="https://sam.gov/opp/46e08af53dae4f8fa5b22f565221aa6c/view" target="_blank" rel="noopener">VECTOR NETWORK ANALYZER</a></td>
           <td>Cyber</td>
@@ -271,7 +365,12 @@
           <td><code>46e08af53dae4f8fa5b22f565221aa6c</code></td>
         </tr>
         <tr class="is-new">
-          <td><span class="badge new">NEW</span></td>
+          <td class="actions">
+            <span class="badge new">NEW</span>
+            <button type="button" class="btn-trello" data-card-b64="VGFjdGljYWwgQWlyIFRyYWZmaWMgQ29udHJvbCAoQVRDKSBDb21tYW5kIGFuZCBDb250cm9sIChDMikgU3lzdGVtIChUQUNPUykKCmh0dHBzOi8vc2FtLmdvdi9vcHAvMGI3ODRlNWM2NTg4NDllZWJjYzliZWEzOGQzNDYwYjAvdmlldwoKUG9zdGVkOiAyMDI2LTA3LTE0ClR5cGU6IFNvdXJjZXMgU291Z2h0Ck1hdGNoZWQgdGVybXM6IEN5YmVyClJlc3BvbnNlIGRlYWRsaW5lOiAyMDI2LTA4LTI4VDE5OjAwOjAwKzAwOjAwClNvbGljaXRhdGlvbiAjOiBGQTIzMzBfUkZJX1RBQ09TCk9yZ2FuaXphdGlvbjogREVQVCBPRiBERUZFTlNFLkRFUFQgT0YgVEhFIEFJUiBGT1JDRS5BSVIgRk9SQ0UgTUFURVJJRUwgQ09NTUFORC5BSVIgRk9SQ0UgTElGRSBDWUNMRSBNQU5BR0VNRU5UIENFTlRFUi5ESUdJVEFMLkZBMjMzMCBBUlNQQyBNR05UIFNZU1RNUyBBRkxDTUMvSEJBCk5vdGljZSBJRDogMGI3ODRlNWM2NTg4NDllZWJjYzliZWEzOGQzNDYwYjAKQWN0aXZlOiBZZXMKClNvdXJjZTogU0FNLmdvdiBkYWlseSB0cmFja2Vy" title="Copy Trello-ready text">
+              Copy for Trello
+            </button>
+          </td>
           <td>2026-07-14</td>
           <td><a href="https://sam.gov/opp/0b784e5c658849eebcc9bea38d3460b0/view" target="_blank" rel="noopener">Tactical Air Traffic Control (ATC) Command and Control (C2) System (TACOS)</a></td>
           <td>Cyber</td>
@@ -282,7 +381,12 @@
           <td><code>0b784e5c658849eebcc9bea38d3460b0</code></td>
         </tr>
         <tr class="is-new">
-          <td><span class="badge new">NEW</span></td>
+          <td class="actions">
+            <span class="badge new">NEW</span>
+            <button type="button" class="btn-trello" data-card-b64="U1RSQVRBU1lTIEZJTEFNRU5ULCBSRUQKCmh0dHBzOi8vc2FtLmdvdi9vcHAvOWVhZWU0MzhjYzA5NGI1ZThhNDgyNjZlNjY5NzY3MWEvdmlldwoKUG9zdGVkOiAyMDI2LTA3LTE0ClR5cGU6IENvbWJpbmVkIFN5bm9wc2lzL1NvbGljaXRhdGlvbgpNYXRjaGVkIHRlcm1zOiBDeWJlcgpSZXNwb25zZSBkZWFkbGluZTogMjAyNi0wNy0xNlQyMzowMDowMCswMDowMApTb2xpY2l0YXRpb24gIzogU1BNWU00LTI2LVEtMzU2NApPcmdhbml6YXRpb246IERFUFQgT0YgREVGRU5TRS5ERUZFTlNFIExPR0lTVElDUyBBR0VOQ1kuRExBIE1BUklUSU1FLkRMQSBNQVJJVElNRSBTSElQWUFSRFMuRExBIE1BUklUSU1FIC0gUEVBUkwgSEFSQk9SCk5vdGljZSBJRDogOWVhZWU0MzhjYzA5NGI1ZThhNDgyNjZlNjY5NzY3MWEKQWN0aXZlOiBZZXMKClNvdXJjZTogU0FNLmdvdiBkYWlseSB0cmFja2Vy" title="Copy Trello-ready text">
+              Copy for Trello
+            </button>
+          </td>
           <td>2026-07-14</td>
           <td><a href="https://sam.gov/opp/9eaee438cc094b5e8a48266e6697671a/view" target="_blank" rel="noopener">STRATASYS FILAMENT, RED</a></td>
           <td>Cyber</td>
@@ -293,7 +397,12 @@
           <td><code>9eaee438cc094b5e8a48266e6697671a</code></td>
         </tr>
         <tr class="is-new">
-          <td><span class="badge new">NEW</span></td>
+          <td class="actions">
+            <span class="badge new">NEW</span>
+            <button type="button" class="btn-trello" data-card-b64="U0VBIENPTU1BTkRFUiAoU0MpIEVOR0lORUVSSU5HIC0gU1VTVEFJTk1FTlQKCmh0dHBzOi8vc2FtLmdvdi9vcHAvZjg1YTc3MTZlOTcyNDcwMmFjZDkwYWI3ZWNiYmFhZGUvdmlldwoKUG9zdGVkOiAyMDI2LTA3LTE0ClR5cGU6IEp1c3RpZmljYXRpb24KTWF0Y2hlZCB0ZXJtczogQ3liZXIKUmVzcG9uc2UgZGVhZGxpbmU6IOKAlApTb2xpY2l0YXRpb24gIzogNzBaMDIzMjZEOTMzNTAwMDEKT3JnYW5pemF0aW9uOiBIT01FTEFORCBTRUNVUklUWSwgREVQQVJUTUVOVCBPRi5VLlMuIENPQVNUIEdVQVJELkhRIENPTlRSQUNUIE9QRVJBVElPTlMgKENHLTkxMikoMDAwCk5vdGljZSBJRDogZjg1YTc3MTZlOTcyNDcwMmFjZDkwYWI3ZWNiYmFhZGUKQWN0aXZlOiBZZXMKClNvdXJjZTogU0FNLmdvdiBkYWlseSB0cmFja2Vy" title="Copy Trello-ready text">
+              Copy for Trello
+            </button>
+          </td>
           <td>2026-07-14</td>
           <td><a href="https://sam.gov/opp/f85a7716e9724702acd90ab7ecbbaade/view" target="_blank" rel="noopener">SEA COMMANDER (SC) ENGINEERING - SUSTAINMENT</a></td>
           <td>Cyber</td>
@@ -304,7 +413,12 @@
           <td><code>f85a7716e9724702acd90ab7ecbbaade</code></td>
         </tr>
         <tr class="is-new">
-          <td><span class="badge new">NEW</span></td>
+          <td class="actions">
+            <span class="badge new">NEW</span>
+            <button type="button" class="btn-trello" data-card-b64="Tm90aWNlIG9mIEludGVudCB0byBTb2xlIFNvdXJjZTogQWlyZmllbGQgTGlnaHRpbmcgQ29udHJvbCBhbmQgTW9uaXRvcmluZyBTeXN0ZW0gKEFMQ01TKSBVcGdyYWRlCgpodHRwczovL3NhbS5nb3Yvb3BwLzdhZGNmMjRlZDg3NjQ1N2U5NjE0NDZkYmFmOWI1ZWFkL3ZpZXcKClBvc3RlZDogMjAyNi0wNy0xNApUeXBlOiBTcGVjaWFsIE5vdGljZQpNYXRjaGVkIHRlcm1zOiBDeWJlcgpSZXNwb25zZSBkZWFkbGluZTogMjAyNi0wNy0yOVQyMzowMDowMCswMDowMApTb2xpY2l0YXRpb24gIzogRkE0NjIwMjZRQTI3NwpPcmdhbml6YXRpb246IERFUFQgT0YgREVGRU5TRS5ERVBUIE9GIFRIRSBBSVIgRk9SQ0UKTm90aWNlIElEOiA3YWRjZjI0ZWQ4NzY0NTdlOTYxNDQ2ZGJhZjliNWVhZApBY3RpdmU6IFllcwoKU291cmNlOiBTQU0uZ292IGRhaWx5IHRyYWNrZXI=" title="Copy Trello-ready text">
+              Copy for Trello
+            </button>
+          </td>
           <td>2026-07-14</td>
           <td><a href="https://sam.gov/opp/7adcf24ed876457e961446dbaf9b5ead/view" target="_blank" rel="noopener">Notice of Intent to Sole Source: Airfield Lighting Control and Monitoring System (ALCMS) Upgrade</a></td>
           <td>Cyber</td>
@@ -315,7 +429,12 @@
           <td><code>7adcf24ed876457e961446dbaf9b5ead</code></td>
         </tr>
         <tr class="is-new">
-          <td><span class="badge new">NEW</span></td>
+          <td class="actions">
+            <span class="badge new">NEW</span>
+            <button type="button" class="btn-trello" data-card-b64="TXVsdGltZWRpYSBBZHZlcnRpc2luZwoKaHR0cHM6Ly9zYW0uZ292L29wcC9jN2VlNjZjOThkMDE0MDJhYTIwMTFkODYzYjI3MDFiYi92aWV3CgpQb3N0ZWQ6IDIwMjYtMDctMTQKVHlwZTogQ29tYmluZWQgU3lub3BzaXMvU29saWNpdGF0aW9uCk1hdGNoZWQgdGVybXM6IEN5YmVyClJlc3BvbnNlIGRlYWRsaW5lOiAyMDI2LTA4LTEyVDE3OjAwOjAwKzAwOjAwClNvbGljaXRhdGlvbiAjOiBXOTFaUlMyNlFBMDA1Ck9yZ2FuaXphdGlvbjogREVQVCBPRiBERUZFTlNFLkRFUFQgT0YgVEhFIEFSTVkuTkdCLlc3TVogVVNQRk8gQUNUSVZJVFkgQ1QgQVJORwpOb3RpY2UgSUQ6IGM3ZWU2NmM5OGQwMTQwMmFhMjAxMWQ4NjNiMjcwMWJiCkFjdGl2ZTogWWVzCgpTb3VyY2U6IFNBTS5nb3YgZGFpbHkgdHJhY2tlcg==" title="Copy Trello-ready text">
+              Copy for Trello
+            </button>
+          </td>
           <td>2026-07-14</td>
           <td><a href="https://sam.gov/opp/c7ee66c98d01402aa2011d863b2701bb/view" target="_blank" rel="noopener">Multimedia Advertising</a></td>
           <td>Cyber</td>
@@ -326,7 +445,12 @@
           <td><code>c7ee66c98d01402aa2011d863b2701bb</code></td>
         </tr>
         <tr class="is-new">
-          <td><span class="badge new">NEW</span></td>
+          <td class="actions">
+            <span class="badge new">NEW</span>
+            <button type="button" class="btn-trello" data-card-b64="TWFyaW5lIFNlY3VyaXR5IEd1YXJkIChNU0cpIENvb2sgU2VydmljZXMKCmh0dHBzOi8vc2FtLmdvdi9vcHAvODkyNmI4OGZlZDQ1NDM2YWEwOGE5NTJhZTM0ZjFmYjMvdmlldwoKUG9zdGVkOiAyMDI2LTA3LTE0ClR5cGU6IFNvbGljaXRhdGlvbgpNYXRjaGVkIHRlcm1zOiBJUlMKUmVzcG9uc2UgZGVhZGxpbmU6IDIwMjYtMDgtMTJUMTQ6MDA6MDArMDA6MDAKU29saWNpdGF0aW9uICM6IDE5U0E3MDI2UTAwMTYKT3JnYW5pemF0aW9uOiBTVEFURSwgREVQQVJUTUVOVCBPRi5TVEFURSwgREVQQVJUTUVOVCBPRi5VLlMuIEVNQkFTU1kgUklZQURICk5vdGljZSBJRDogODkyNmI4OGZlZDQ1NDM2YWEwOGE5NTJhZTM0ZjFmYjMKQWN0aXZlOiBZZXMKClNvdXJjZTogU0FNLmdvdiBkYWlseSB0cmFja2Vy" title="Copy Trello-ready text">
+              Copy for Trello
+            </button>
+          </td>
           <td>2026-07-14</td>
           <td><a href="https://sam.gov/opp/8926b88fed45436aa08a952ae34f1fb3/view" target="_blank" rel="noopener">Marine Security Guard (MSG) Cook Services</a></td>
           <td>IRS</td>
@@ -337,7 +461,12 @@
           <td><code>8926b88fed45436aa08a952ae34f1fb3</code></td>
         </tr>
         <tr class="is-new">
-          <td><span class="badge new">NEW</span></td>
+          <td class="actions">
+            <span class="badge new">NEW</span>
+            <button type="button" class="btn-trello" data-card-b64="SjA0MS0tTWFuaGF0dGFuIFZBIENvbW1lcmNpYWwga2l0Y2hlbiBhbmQgcmVmcmlnZXJhdGlvbiBlcXVpcG1lbnQgIHByZXZlbnRhdGl2ZSBtYWludGVuYW5jZSBzZXJ2aWNlcyBjb250cmFjdAoKaHR0cHM6Ly9zYW0uZ292L29wcC9hNDRjYzMzNzUwZjI0MWIzYjhmYmM1NDdjOTI4ZmMzNi92aWV3CgpQb3N0ZWQ6IDIwMjYtMDctMTQKVHlwZTogU291cmNlcyBTb3VnaHQKTWF0Y2hlZCB0ZXJtczogQ3liZXIKUmVzcG9uc2UgZGVhZGxpbmU6IDIwMjYtMDctMjBUMTY6MDA6MDArMDA6MDAKU29saWNpdGF0aW9uICM6IDM2QzI0MjI2UTA3OTkKT3JnYW5pemF0aW9uOiBWRVRFUkFOUyBBRkZBSVJTLCBERVBBUlRNRU5UIE9GLlZFVEVSQU5TIEFGRkFJUlMsIERFUEFSVE1FTlQgT0YuMjQyLU5FVFdPUksgQ09OVFJBQ1QgT0ZGSUNFIDAyICgzNkMyNDIpCk5vdGljZSBJRDogYTQ0Y2MzMzc1MGYyNDFiM2I4ZmJjNTQ3YzkyOGZjMzYKQWN0aXZlOiBZZXMKClNvdXJjZTogU0FNLmdvdiBkYWlseSB0cmFja2Vy" title="Copy Trello-ready text">
+              Copy for Trello
+            </button>
+          </td>
           <td>2026-07-14</td>
           <td><a href="https://sam.gov/opp/a44cc33750f241b3b8fbc547c928fc36/view" target="_blank" rel="noopener">J041--Manhattan VA Commercial kitchen and refrigeration equipment  preventative maintenance services contract</a></td>
           <td>Cyber</td>
@@ -348,7 +477,12 @@
           <td><code>a44cc33750f241b3b8fbc547c928fc36</code></td>
         </tr>
         <tr class="is-new">
-          <td><span class="badge new">NEW</span></td>
+          <td class="actions">
+            <span class="badge new">NEW</span>
+            <button type="button" class="btn-trello" data-card-b64="SjA0MS0tTWFuaGF0dGFuIFZBIENvbW1lcmNpYWwga2l0Y2hlbiBhbmQgcmVmcmlnZXJhdGlvbiBlcXVpcG1lbnQgIHByZXZlbnRhdGl2ZSBtYWludGVuYW5jZSBzZXJ2aWNlcyBjb250cmFjdAoKaHR0cHM6Ly9zYW0uZ292L29wcC9mODEwMzE3ZjMwNGQ0ZDFiYjBmNWJkMTMzNjBmYzE3ZC92aWV3CgpQb3N0ZWQ6IDIwMjYtMDctMTQKVHlwZTogU291cmNlcyBTb3VnaHQKTWF0Y2hlZCB0ZXJtczogQ3liZXIKUmVzcG9uc2UgZGVhZGxpbmU6IDIwMjYtMDctMjBUMTY6MDA6MDArMDA6MDAKU29saWNpdGF0aW9uICM6IDM2QzI0MjI2UTA3OTkKT3JnYW5pemF0aW9uOiBWRVRFUkFOUyBBRkZBSVJTLCBERVBBUlRNRU5UIE9GLlZFVEVSQU5TIEFGRkFJUlMsIERFUEFSVE1FTlQgT0YuMjQyLU5FVFdPUksgQ09OVFJBQ1QgT0ZGSUNFIDAyICgzNkMyNDIpCk5vdGljZSBJRDogZjgxMDMxN2YzMDRkNGQxYmIwZjViZDEzMzYwZmMxN2QKQWN0aXZlOiBZZXMKClNvdXJjZTogU0FNLmdvdiBkYWlseSB0cmFja2Vy" title="Copy Trello-ready text">
+              Copy for Trello
+            </button>
+          </td>
           <td>2026-07-14</td>
           <td><a href="https://sam.gov/opp/f810317f304d4d1bb0f5bd13360fc17d/view" target="_blank" rel="noopener">J041--Manhattan VA Commercial kitchen and refrigeration equipment  preventative maintenance services contract</a></td>
           <td>Cyber</td>
@@ -359,7 +493,12 @@
           <td><code>f810317f304d4d1bb0f5bd13360fc17d</code></td>
         </tr>
         <tr class="is-new">
-          <td><span class="badge new">NEW</span></td>
+          <td class="actions">
+            <span class="badge new">NEW</span>
+            <button type="button" class="btn-trello" data-card-b64="R3VhdGVtYWxhIC0gQ2hyb21hdG9ncmFwaCB0cmF5IHZpYWwgYW5kIHRlc3RpbnQgbGlicmFyaWVzCgpodHRwczovL3NhbS5nb3Yvb3BwLzBkYTY3NjFmOWQxMjQzYjc4MjA3MDhmNzlkNmIxMWYyL3ZpZXcKClBvc3RlZDogMjAyNi0wNy0xNApUeXBlOiBTb2xpY2l0YXRpb24KTWF0Y2hlZCB0ZXJtczogRm9yZW5zaWMKUmVzcG9uc2UgZGVhZGxpbmU6IDIwMjYtMDgtMDRUMjM6MDA6MDArMDA6MDAKU29saWNpdGF0aW9uICM6IDE5R1Q1MDI2UTAwNTMKT3JnYW5pemF0aW9uOiBTVEFURSwgREVQQVJUTUVOVCBPRi5TVEFURSwgREVQQVJUTUVOVCBPRi5VLlMuRU1CQVNTWSBHVUFURU1BTEEgQ0lUWQpOb3RpY2UgSUQ6IDBkYTY3NjFmOWQxMjQzYjc4MjA3MDhmNzlkNmIxMWYyCkFjdGl2ZTogWWVzCgpTb3VyY2U6IFNBTS5nb3YgZGFpbHkgdHJhY2tlcg==" title="Copy Trello-ready text">
+              Copy for Trello
+            </button>
+          </td>
           <td>2026-07-14</td>
           <td><a href="https://sam.gov/opp/0da6761f9d1243b7820708f79d6b11f2/view" target="_blank" rel="noopener">Guatemala - Chromatograph tray vial and testint libraries</a></td>
           <td>Forensic</td>
@@ -370,7 +509,12 @@
           <td><code>0da6761f9d1243b7820708f79d6b11f2</code></td>
         </tr>
         <tr class="is-new">
-          <td><span class="badge new">NEW</span></td>
+          <td class="actions">
+            <span class="badge new">NEW</span>
+            <button type="button" class="btn-trello" data-card-b64="RGVzaWduLUJ1aWxkIHNlcnZpY2VzIGZvciBJUlMgRmlyZSBBbGFybSBNb2Rlcm5pemF0aW9uIFByb2plY3QKCmh0dHBzOi8vc2FtLmdvdi9vcHAvY2Y4ODgwMmJlOGRlNDRmZTlkYWRkZjFlNDJmZTdjNzcvdmlldwoKUG9zdGVkOiAyMDI2LTA3LTE0ClR5cGU6IFNvbGljaXRhdGlvbgpNYXRjaGVkIHRlcm1zOiBJUlMKUmVzcG9uc2UgZGVhZGxpbmU6IDIwMjYtMDgtMjBUMjA6MDA6MDArMDA6MDAKU29saWNpdGF0aW9uICM6IDQ3UEI1MTI2UjAwMjkKT3JnYW5pemF0aW9uOiDigJQKTm90aWNlIElEOiBjZjg4ODAyYmU4ZGU0NGZlOWRhZGRmMWU0MmZlN2M3NwpBY3RpdmU6IFllcwoKU291cmNlOiBTQU0uZ292IGRhaWx5IHRyYWNrZXI=" title="Copy Trello-ready text">
+              Copy for Trello
+            </button>
+          </td>
           <td>2026-07-14</td>
           <td><a href="https://sam.gov/opp/cf88802be8de44fe9daddf1e42fe7c77/view" target="_blank" rel="noopener">Design-Build services for IRS Fire Alarm Modernization Project</a></td>
           <td>IRS</td>
@@ -381,7 +525,12 @@
           <td><code>cf88802be8de44fe9daddf1e42fe7c77</code></td>
         </tr>
         <tr class="is-new">
-          <td><span class="badge new">NEW</span></td>
+          <td class="actions">
+            <span class="badge new">NEW</span>
+            <button type="button" class="btn-trello" data-card-b64="Q3liZXIgRHJ5IENvb2xlciBHbHljb2wgQ29udmVyc2lvbgoKaHR0cHM6Ly9zYW0uZ292L29wcC83MWRmMzY3ZmMxYjM0M2I1YmNhZmY5MDY3ZDEwMmFjNy92aWV3CgpQb3N0ZWQ6IDIwMjYtMDctMTQKVHlwZTogQ29tYmluZWQgU3lub3BzaXMvU29saWNpdGF0aW9uCk1hdGNoZWQgdGVybXM6IEN5YmVyClJlc3BvbnNlIGRlYWRsaW5lOiAyMDI2LTA3LTE2VDE2OjAwOjAwKzAwOjAwClNvbGljaXRhdGlvbiAjOiBXNTBTODIyNlExQzBQCk9yZ2FuaXphdGlvbjogREVQVCBPRiBERUZFTlNFLkRFUFQgT0YgVEhFIEFSTVkuTkdCLlc3TkQgVVNQRk8gQUNUSVZJVFkgTURBTkcgMTc1Ck5vdGljZSBJRDogNzFkZjM2N2ZjMWIzNDNiNWJjYWZmOTA2N2QxMDJhYzcKQWN0aXZlOiBZZXMKClNvdXJjZTogU0FNLmdvdiBkYWlseSB0cmFja2Vy" title="Copy Trello-ready text">
+              Copy for Trello
+            </button>
+          </td>
           <td>2026-07-14</td>
           <td><a href="https://sam.gov/opp/71df367fc1b343b5bcaff9067d102ac7/view" target="_blank" rel="noopener">Cyber Dry Cooler Glycol Conversion</a></td>
           <td>Cyber</td>
@@ -392,7 +541,12 @@
           <td><code>71df367fc1b343b5bcaff9067d102ac7</code></td>
         </tr>
         <tr class="is-new">
-          <td><span class="badge new">NEW</span></td>
+          <td class="actions">
+            <span class="badge new">NEW</span>
+            <button type="button" class="btn-trello" data-card-b64="QmlvbWFudWZhY3R1cmluZyBBY2FkZW1pYyBDaGFsbGVuZ2UKCmh0dHBzOi8vc2FtLmdvdi9vcHAvYmUxMjUzZTZjMDU4NDBiZmI0MDFjODUzYjJiYjM0OWMvdmlldwoKUG9zdGVkOiAyMDI2LTA3LTE0ClR5cGU6IFNwZWNpYWwgTm90aWNlCk1hdGNoZWQgdGVybXM6IEN5YmVyClJlc3BvbnNlIGRlYWRsaW5lOiDigJQKU29saWNpdGF0aW9uICM6IOKAlApPcmdhbml6YXRpb246IERFUFQgT0YgREVGRU5TRQpOb3RpY2UgSUQ6IGJlMTI1M2U2YzA1ODQwYmZiNDAxYzg1M2IyYmIzNDljCkFjdGl2ZTogWWVzCgpTb3VyY2U6IFNBTS5nb3YgZGFpbHkgdHJhY2tlcg==" title="Copy Trello-ready text">
+              Copy for Trello
+            </button>
+          </td>
           <td>2026-07-14</td>
           <td><a href="https://sam.gov/opp/be1253e6c05840bfb401c853b2bb349c/view" target="_blank" rel="noopener">Biomanufacturing Academic Challenge</a></td>
           <td>Cyber</td>
@@ -403,7 +557,12 @@
           <td><code>be1253e6c05840bfb401c853b2bb349c</code></td>
         </tr>
         <tr class="is-new">
-          <td><span class="badge new">NEW</span></td>
+          <td class="actions">
+            <span class="badge new">NEW</span>
+            <button type="button" class="btn-trello" data-card-b64="QWx0ZXJuYXRlIEFjY2VzcyBmb3IgQ3liZXIgQXBwbGljYXRpb25zOiBFeG9kdXMKCmh0dHBzOi8vc2FtLmdvdi9vcHAvMDBjZDdlNTEzYzBkNGY5NGI0MWM1Mjg0ODgwZjJlMWEvdmlldwoKUG9zdGVkOiAyMDI2LTA3LTE0ClR5cGU6IFByZXNvbGljaXRhdGlvbgpNYXRjaGVkIHRlcm1zOiBDeWJlcgpSZXNwb25zZSBkZWFkbGluZTog4oCUClNvbGljaXRhdGlvbiAjOiBGQTg3NTAtMjYtUy03MDA0Ck9yZ2FuaXphdGlvbjogREVQVCBPRiBERUZFTlNFLkRFUFQgT0YgVEhFIEFJUiBGT1JDRS5BSVIgRk9SQ0UgTUFURVJJRUwgQ09NTUFORC5BSVIgRk9SQ0UgUkVTRUFSQ0ggTEFCT1JBVE9SWS5GQTg3NTAgIEFGUkwgUklLCk5vdGljZSBJRDogMDBjZDdlNTEzYzBkNGY5NGI0MWM1Mjg0ODgwZjJlMWEKQWN0aXZlOiBZZXMKClNvdXJjZTogU0FNLmdvdiBkYWlseSB0cmFja2Vy" title="Copy Trello-ready text">
+              Copy for Trello
+            </button>
+          </td>
           <td>2026-07-14</td>
           <td><a href="https://sam.gov/opp/00cd7e513c0d4f94b41c5284880f2e1a/view" target="_blank" rel="noopener">Alternate Access for Cyber Applications: Exodus</a></td>
           <td>Cyber</td>
@@ -414,7 +573,12 @@
           <td><code>00cd7e513c0d4f94b41c5284880f2e1a</code></td>
         </tr>
         <tr class="is-new">
-          <td><span class="badge new">NEW</span></td>
+          <td class="actions">
+            <span class="badge new">NEW</span>
+            <button type="button" class="btn-trello" data-card-b64="QU4xMS0tS2Fpc2VyIFBlcm1hbmVudGUgUiZEIFN0YXRpc3RpY2FsIEV4cGVydGlzZSBFSFIgRXZhbHVhdGlvbgoKaHR0cHM6Ly9zYW0uZ292L29wcC9lOGM3MWE1Nzg4NWQ0NTY4OWI4ODhiZjI2NWRlMTBlNi92aWV3CgpQb3N0ZWQ6IDIwMjYtMDctMTQKVHlwZTogU291cmNlcyBTb3VnaHQKTWF0Y2hlZCB0ZXJtczogQ3liZXIKUmVzcG9uc2UgZGVhZGxpbmU6IDIwMjYtMDctMjBUMjI6MDA6MDArMDA6MDAKU29saWNpdGF0aW9uICM6IDM2QzI2MDI2UTA4MzUKT3JnYW5pemF0aW9uOiBWRVRFUkFOUyBBRkZBSVJTLCBERVBBUlRNRU5UIE9GLlZFVEVSQU5TIEFGRkFJUlMsIERFUEFSVE1FTlQgT0YuMjYwLU5FVFdPUksgQ09OVFJBQ1QgT0ZGSUNFIDIwICgzNkMyNjApCk5vdGljZSBJRDogZThjNzFhNTc4ODVkNDU2ODliODg4YmYyNjVkZTEwZTYKQWN0aXZlOiBZZXMKClNvdXJjZTogU0FNLmdvdiBkYWlseSB0cmFja2Vy" title="Copy Trello-ready text">
+              Copy for Trello
+            </button>
+          </td>
           <td>2026-07-14</td>
           <td><a href="https://sam.gov/opp/e8c71a57885d45689b888bf265de10e6/view" target="_blank" rel="noopener">AN11--Kaiser Permanente R&amp;D Statistical Expertise EHR Evaluation</a></td>
           <td>Cyber</td>
@@ -425,7 +589,12 @@
           <td><code>e8c71a57885d45689b888bf265de10e6</code></td>
         </tr>
         <tr class="is-new">
-          <td><span class="badge new">NEW</span></td>
+          <td class="actions">
+            <span class="badge new">NEW</span>
+            <button type="button" class="btn-trello" data-card-b64="VVNTT0NPTSBQT1RGRiBJSUkgUHJvZ3JhbSBTdXBwb3J0CgpodHRwczovL3NhbS5nb3Yvb3BwL2MzNzkzZjY3NDdmMjRjNzQ4OWJlM2RkOTY1OTg4YTlhL3ZpZXcKClBvc3RlZDogMjAyNi0wNy0xMwpUeXBlOiBTcGVjaWFsIE5vdGljZQpNYXRjaGVkIHRlcm1zOiBTT0ZXRVJYClJlc3BvbnNlIGRlYWRsaW5lOiAyMDI2LTA2LTE4VDE0OjAwOjAwKzAwOjAwClNvbGljaXRhdGlvbiAjOiBIOTI0MDAyNlJFMDAyCk9yZ2FuaXphdGlvbjogREVQVCBPRiBERUZFTlNFLlUuUy4gU1BFQ0lBTCBPUEVSQVRJT05TIENPTU1BTkQgKFVTU09DT00pLkhRIFVTU09DT00KTm90aWNlIElEOiBjMzc5M2Y2NzQ3ZjI0Yzc0ODliZTNkZDk2NTk4OGE5YQpBY3RpdmU6IFllcwoKU291cmNlOiBTQU0uZ292IGRhaWx5IHRyYWNrZXI=" title="Copy Trello-ready text">
+              Copy for Trello
+            </button>
+          </td>
           <td>2026-07-13</td>
           <td><a href="https://sam.gov/opp/c3793f6747f24c7489be3dd965988a9a/view" target="_blank" rel="noopener">USSOCOM POTFF III Program Support</a></td>
           <td>SOFWERX</td>
@@ -436,7 +605,12 @@
           <td><code>c3793f6747f24c7489be3dd965988a9a</code></td>
         </tr>
         <tr class="is-new">
-          <td><span class="badge new">NEW</span></td>
+          <td class="actions">
+            <span class="badge new">NEW</span>
+            <button type="button" class="btn-trello" data-card-b64="SGF6YXJkb3VzIHdhc3RlIGRpc3Bvc2FsCgpodHRwczovL3NhbS5nb3Yvb3BwLzY4Yzc4NWJlZmIwZTRhNGFhN2FhZDdmMGNjYTNlYjljL3ZpZXcKClBvc3RlZDogMjAyNi0wNy0xMwpUeXBlOiBTb2xpY2l0YXRpb24KTWF0Y2hlZCB0ZXJtczogSVJTClJlc3BvbnNlIGRlYWRsaW5lOiAyMDI2LTA3LTI3VDE4OjAwOjAwKzAwOjAwClNvbGljaXRhdGlvbiAjOiBUWFdQUk9CMjZVQVJvb21TQQpPcmdhbml6YXRpb246IEFETUlOSVNUUkFUSVZFIE9GRklDRSBPRiBUSEUgVS5TLiBDT1VSVFMuQURNSU5JU1RSQVRJVkUgT0ZGSUNFIE9GIFRIRSBVLlMuIENPVVJUUy5VUyBQUk9CQVRJT04gT0ZGSUNFIFRYVwpOb3RpY2UgSUQ6IDY4Yzc4NWJlZmIwZTRhNGFhN2FhZDdmMGNjYTNlYjljCkFjdGl2ZTogWWVzCgpTb3VyY2U6IFNBTS5nb3YgZGFpbHkgdHJhY2tlcg==" title="Copy Trello-ready text">
+              Copy for Trello
+            </button>
+          </td>
           <td>2026-07-13</td>
           <td><a href="https://sam.gov/opp/68c785befb0e4a4aa7aad7f0cca3eb9c/view" target="_blank" rel="noopener">Hazardous waste disposal</a></td>
           <td>IRS</td>
@@ -447,7 +621,12 @@
           <td><code>68c785befb0e4a4aa7aad7f0cca3eb9c</code></td>
         </tr>
         <tr class="is-new">
-          <td><span class="badge new">NEW</span></td>
+          <td class="actions">
+            <span class="badge new">NEW</span>
+            <button type="button" class="btn-trello" data-card-b64="SGF6YXJkb3VzIHdhc3RlIGRpc3Bvc2FsCgpodHRwczovL3NhbS5nb3Yvb3BwLzhlYWQzMWYwMGUzMzQwMTBiYjg1OGQ4YmY4NmZiZDgyL3ZpZXcKClBvc3RlZDogMjAyNi0wNy0xMwpUeXBlOiBTb2xpY2l0YXRpb24KTWF0Y2hlZCB0ZXJtczogSVJTClJlc3BvbnNlIGRlYWRsaW5lOiAyMDI2LTA3LTI3VDE4OjAwOjAwKzAwOjAwClNvbGljaXRhdGlvbiAjOiBUWFdQUk9CMjZMQUJfU0EKT3JnYW5pemF0aW9uOiBBRE1JTklTVFJBVElWRSBPRkZJQ0UgT0YgVEhFIFUuUy4gQ09VUlRTLkFETUlOSVNUUkFUSVZFIE9GRklDRSBPRiBUSEUgVS5TLiBDT1VSVFMuVVMgUFJPQkFUSU9OIE9GRklDRSBUWFcKTm90aWNlIElEOiA4ZWFkMzFmMDBlMzM0MDEwYmI4NThkOGJmODZmYmQ4MgpBY3RpdmU6IFllcwoKU291cmNlOiBTQU0uZ292IGRhaWx5IHRyYWNrZXI=" title="Copy Trello-ready text">
+              Copy for Trello
+            </button>
+          </td>
           <td>2026-07-13</td>
           <td><a href="https://sam.gov/opp/8ead31f00e334010bb858d8bf86fbd82/view" target="_blank" rel="noopener">Hazardous waste disposal</a></td>
           <td>IRS</td>
@@ -458,7 +637,12 @@
           <td><code>8ead31f00e334010bb858d8bf86fbd82</code></td>
         </tr>
         <tr class="is-new">
-          <td><span class="badge new">NEW</span></td>
+          <td class="actions">
+            <span class="badge new">NEW</span>
+            <button type="button" class="btn-trello" data-card-b64="VGVsZW1lZGljaW5lIEVtZXJnZW5jeSBhbmQgU2V4dWFsIEFzc2F1bHQgRm9yZW5zaWMgU3VwcG9ydCBTZXJ2aWNlcyBTdXBwb3J0IGZvciBGaXZlICg1KSBGYWNpbGl0aWVzIHdpdGhpbiB0aGUgR3JlYXQgUGxhaW5zIEFyZWEgSW5kaWFuIEhlYWx0aCBTZXJ2aWNlIChHUEFJSFMpCgpodHRwczovL3NhbS5nb3Yvb3BwL2RlYjEzNmI2MTY1ZTRjZWNiMmNjYjczN2MxZGRiNjQyL3ZpZXcKClBvc3RlZDogMjAyNi0wNy0xMApUeXBlOiBTb3VyY2VzIFNvdWdodApNYXRjaGVkIHRlcm1zOiBGb3JlbnNpYwpSZXNwb25zZSBkZWFkbGluZTogMjAyNi0wOC0wN1QxNzowMDowMCswMDowMApTb2xpY2l0YXRpb24gIzogSUhTLVNTLTI2LTE1MjcwMTQKT3JnYW5pemF0aW9uOiBIRUFMVEggQU5EIEhVTUFOIFNFUlZJQ0VTLCBERVBBUlRNRU5UIE9GLklORElBTiBIRUFMVEggU0VSVklDRS5JTkRJQU4gSEVBTFRIIFNFUlZJQ0UKTm90aWNlIElEOiBkZWIxMzZiNjE2NWU0Y2VjYjJjY2I3MzdjMWRkYjY0MgpBY3RpdmU6IFllcwoKU291cmNlOiBTQU0uZ292IGRhaWx5IHRyYWNrZXI=" title="Copy Trello-ready text">
+              Copy for Trello
+            </button>
+          </td>
           <td>2026-07-10</td>
           <td><a href="https://sam.gov/opp/deb136b6165e4cecb2ccb737c1ddb642/view" target="_blank" rel="noopener">Telemedicine Emergency and Sexual Assault Forensic Support Services Support for Five (5) Facilities within the Great Plains Area Indian Health Service (GPAIHS)</a></td>
           <td>Forensic</td>
@@ -469,7 +653,12 @@
           <td><code>deb136b6165e4cecb2ccb737c1ddb642</code></td>
         </tr>
         <tr class="is-new">
-          <td><span class="badge new">NEW</span></td>
+          <td class="actions">
+            <span class="badge new">NEW</span>
+            <button type="button" class="btn-trello" data-card-b64="SVJTIE1lbXBoaXMsIFROIERlc2lnbi9CdWlsZCBSZXBsYWNlbWVudCBvZiBSb29mcywgRWxlY3RyaWNhbCBCcmVha2VycyBhbmQgRmlyZSBBbGFybSBTeXN0ZW0gQ29uc3RydWN0aW9uIFByb2plY3QKCmh0dHBzOi8vc2FtLmdvdi9vcHAvZDJmZGI4MTNmNTFjNDY4OGI5N2JkZDAyNjA3NjkyYmIvdmlldwoKUG9zdGVkOiAyMDI2LTA3LTEwClR5cGU6IEF3YXJkIE5vdGljZQpNYXRjaGVkIHRlcm1zOiBJUlMKUmVzcG9uc2UgZGVhZGxpbmU6IOKAlApTb2xpY2l0YXRpb24gIzogNDdQQjUyMjZDMDAwOApPcmdhbml6YXRpb246IEdFTkVSQUwgU0VSVklDRVMgQURNSU5JU1RSQVRJT04uUFVCTElDIEJVSUxESU5HUyBTRVJWSUNFLlBCUyBSNCAoQU1EKSBBQ1FVSVNJVElPTiBNR01UIERJVklTSU9OCk5vdGljZSBJRDogZDJmZGI4MTNmNTFjNDY4OGI5N2JkZDAyNjA3NjkyYmIKQWN0aXZlOiBZZXMKQXdhcmQ6IOKAlCDihpIgQU5ERVJDT1JQIExMQwoKU291cmNlOiBTQU0uZ292IGRhaWx5IHRyYWNrZXI=" title="Copy Trello-ready text">
+              Copy for Trello
+            </button>
+          </td>
           <td>2026-07-10</td>
           <td><a href="https://sam.gov/opp/d2fdb813f51c4688b97bdd02607692bb/view" target="_blank" rel="noopener">IRS Memphis, TN Design/Build Replacement of Roofs, Electrical Breakers and Fire Alarm System Construction Project</a></td>
           <td>IRS</td>
@@ -480,7 +669,12 @@
           <td><code>d2fdb813f51c4688b97bdd02607692bb</code></td>
         </tr>
         <tr class="is-new">
-          <td><span class="badge new">NEW</span></td>
+          <td class="actions">
+            <span class="badge new">NEW</span>
+            <button type="button" class="btn-trello" data-card-b64="VHJhdmVsIFNwZWNpYWxpc3QgLSBQZXJzb25hbCBTZXJ2aWNlcyBDb250cmFjdG9yCgpodHRwczovL3NhbS5nb3Yvb3BwLzEzYTI1MGFhM2MxNDQwNWU4MTc5NWVmZGM0OTg2ZmJmL3ZpZXcKClBvc3RlZDogMjAyNi0wNy0wOQpUeXBlOiBQcmVzb2xpY2l0YXRpb24KTWF0Y2hlZCB0ZXJtczogSVJTClJlc3BvbnNlIGRlYWRsaW5lOiAyMDI2LTA5LTAxVDAzOjU5OjAwKzAwOjAwClNvbGljaXRhdGlvbiAjOiAyMDMySzgyNlIwMDAyMQpPcmdhbml6YXRpb246IFRSRUFTVVJZLCBERVBBUlRNRU5UIE9GIFRIRS5ERVBBUlRNRU5UQUwgT0ZGSUNFUy5OQVRJT05BTCBPRkZJQ0UgLSBETy9PVEEKTm90aWNlIElEOiAxM2EyNTBhYTNjMTQ0MDVlODE3OTVlZmRjNDk4NmZiZgpBY3RpdmU6IFllcwoKU291cmNlOiBTQU0uZ292IGRhaWx5IHRyYWNrZXI=" title="Copy Trello-ready text">
+              Copy for Trello
+            </button>
+          </td>
           <td>2026-07-09</td>
           <td><a href="https://sam.gov/opp/13a250aa3c14405e81795efdc4986fbf/view" target="_blank" rel="noopener">Travel Specialist - Personal Services Contractor</a></td>
           <td>IRS</td>
@@ -491,7 +685,12 @@
           <td><code>13a250aa3c14405e81795efdc4986fbf</code></td>
         </tr>
         <tr class="is-new">
-          <td><span class="badge new">NEW</span></td>
+          <td class="actions">
+            <span class="badge new">NEW</span>
+            <button type="button" class="btn-trello" data-card-b64="U1BBRDUxMiBGUEdBIEJsYWNrLUJveCBBY2Nlc3MgUGFja2FnZQoKaHR0cHM6Ly9zYW0uZ292L29wcC9mMTI1NjQ1ZGIwNjY0NGFhYmM3MjlmNGM5YjY0NzQ0ZS92aWV3CgpQb3N0ZWQ6IDIwMjYtMDctMDkKVHlwZTogU29saWNpdGF0aW9uCk1hdGNoZWQgdGVybXM6IEF4aW9tClJlc3BvbnNlIGRlYWRsaW5lOiAyMDI2LTA3LTE0VDE3OjAwOjAwKzAwOjAwClNvbGljaXRhdGlvbiAjOiA4ME5TU0MyNjkzNzY4OVEKT3JnYW5pemF0aW9uOiBOQVRJT05BTCBBRVJPTkFVVElDUyBBTkQgU1BBQ0UgQURNSU5JU1RSQVRJT04uTkFUSU9OQUwgQUVST05BVVRJQ1MgQU5EIFNQQUNFIEFETUlOSVNUUkFUSU9OLk5BU0EgU0hBUkVEIFNFUlZJQ0VTIENFTlRFUgpOb3RpY2UgSUQ6IGYxMjU2NDVkYjA2NjQ0YWFiYzcyOWY0YzliNjQ3NDRlCkFjdGl2ZTogWWVzCgpTb3VyY2U6IFNBTS5nb3YgZGFpbHkgdHJhY2tlcg==" title="Copy Trello-ready text">
+              Copy for Trello
+            </button>
+          </td>
           <td>2026-07-09</td>
           <td><a href="https://sam.gov/opp/f125645db06644aabc729f4c9b64744e/view" target="_blank" rel="noopener">SPAD512 FPGA Black-Box Access Package</a></td>
           <td>Axiom</td>
@@ -502,7 +701,12 @@
           <td><code>f125645db06644aabc729f4c9b64744e</code></td>
         </tr>
         <tr class="is-new">
-          <td><span class="badge new">NEW</span></td>
+          <td class="actions">
+            <span class="badge new">NEW</span>
+            <button type="button" class="btn-trello" data-card-b64="UmVxdWVzdCBGb3IgSW5mb3JtYXRpb24KCmh0dHBzOi8vc2FtLmdvdi9vcHAvNTdhZjVlNjQ5Y2RlNDI5ZjgwZjc2MjY0M2YzNDQ5MTkvdmlldwoKUG9zdGVkOiAyMDI2LTA3LTA5ClR5cGU6IFNvdXJjZXMgU291Z2h0Ck1hdGNoZWQgdGVybXM6IEZvcmVuc2ljcwpSZXNwb25zZSBkZWFkbGluZTogMjAyNi0wNy0yM1QyMTowMDowMCswMDowMApTb2xpY2l0YXRpb24gIzogNzBSU0FUMjZSRkkwMDAwMjAKT3JnYW5pemF0aW9uOiBIT01FTEFORCBTRUNVUklUWSwgREVQQVJUTUVOVCBPRi5PRkZJQ0UgT0YgUFJPQ1VSRU1FTlQgT1BFUkFUSU9OUy5TQ0kgIFRFQ0ggQUNRIERJVgpOb3RpY2UgSUQ6IDU3YWY1ZTY0OWNkZTQyOWY4MGY3NjI2NDNmMzQ0OTE5CkFjdGl2ZTogWWVzCgpTb3VyY2U6IFNBTS5nb3YgZGFpbHkgdHJhY2tlcg==" title="Copy Trello-ready text">
+              Copy for Trello
+            </button>
+          </td>
           <td>2026-07-09</td>
           <td><a href="https://sam.gov/opp/57af5e649cde429f80f762643f344919/view" target="_blank" rel="noopener">Request For Information</a></td>
           <td>Forensics</td>
@@ -513,7 +717,12 @@
           <td><code>57af5e649cde429f80f762643f344919</code></td>
         </tr>
         <tr class="is-new">
-          <td><span class="badge new">NEW</span></td>
+          <td class="actions">
+            <span class="badge new">NEW</span>
+            <button type="button" class="btn-trello" data-card-b64="Rm9yZW5zaWMgU29mdHdhcmUgVHJhaW5pbmcKCmh0dHBzOi8vc2FtLmdvdi9vcHAvYmNkODk3YTM1MDAyNGVjMGJiNTQ3ZTlhZDcxNTllMGQvdmlldwoKUG9zdGVkOiAyMDI2LTA3LTA5ClR5cGU6IEF3YXJkIE5vdGljZQpNYXRjaGVkIHRlcm1zOiBGb3JlbnNpYwpSZXNwb25zZSBkZWFkbGluZTog4oCUClNvbGljaXRhdGlvbiAjOiA3MENNU0QyNlAwMDAwMDA1NgpPcmdhbml6YXRpb246IEhPTUVMQU5EIFNFQ1VSSVRZLCBERVBBUlRNRU5UIE9GLlUuUy4gSU1NSUdSQVRJT04gQU5EIENVU1RPTVMgRU5GT1JDRU1FTlQuSU5WRVNUSUdBVElPTlMgQU5EIE9QRVJBVElPTlMgU1VQUE9SVCBEQUxMQVMKTm90aWNlIElEOiBiY2Q4OTdhMzUwMDI0ZWMwYmI1NDdlOWFkNzE1OWUwZApBY3RpdmU6IFllcwpBd2FyZDog4oCUIOKGkiBIZXhvcmRpYQoKU291cmNlOiBTQU0uZ292IGRhaWx5IHRyYWNrZXI=" title="Copy Trello-ready text">
+              Copy for Trello
+            </button>
+          </td>
           <td>2026-07-09</td>
           <td><a href="https://sam.gov/opp/bcd897a350024ec0bb547e9ad7159e0d/view" target="_blank" rel="noopener">Forensic Software Training</a></td>
           <td>Forensic</td>
@@ -524,7 +733,12 @@
           <td><code>bcd897a350024ec0bb547e9ad7159e0d</code></td>
         </tr>
         <tr class="is-new">
-          <td><span class="badge new">NEW</span></td>
+          <td class="actions">
+            <span class="badge new">NEW</span>
+            <button type="button" class="btn-trello" data-card-b64="TUVYLU5FQyBTcGFyZSBQYXJ0cyBmb3IgRnVlbCBTeXN0ZW1zCgpodHRwczovL3NhbS5nb3Yvb3BwLzg5NjlhYmExYjRlNjQyODFiNTk4MjYyM2VjNzliNzc0L3ZpZXcKClBvc3RlZDogMjAyNi0wNy0wOApUeXBlOiBTb2xpY2l0YXRpb24KTWF0Y2hlZCB0ZXJtczogSVJTClJlc3BvbnNlIGRlYWRsaW5lOiAyMDI2LTA3LTE3VDE5OjAwOjAwKzAwOjAwClNvbGljaXRhdGlvbiAjOiAxOU1YNTMyNlEwMDQ4Ck9yZ2FuaXphdGlvbjogU1RBVEUsIERFUEFSVE1FTlQgT0YuU1RBVEUsIERFUEFSVE1FTlQgT0YuVS5TLiBFTUJBU1NZIE1FWElDTwpOb3RpY2UgSUQ6IDg5NjlhYmExYjRlNjQyODFiNTk4MjYyM2VjNzliNzc0CkFjdGl2ZTogWWVzCgpTb3VyY2U6IFNBTS5nb3YgZGFpbHkgdHJhY2tlcg==" title="Copy Trello-ready text">
+              Copy for Trello
+            </button>
+          </td>
           <td>2026-07-08</td>
           <td><a href="https://sam.gov/opp/8969aba1b4e64281b5982623ec79b774/view" target="_blank" rel="noopener">MEX-NEC Spare Parts for Fuel Systems</a></td>
           <td>IRS</td>
@@ -535,7 +749,12 @@
           <td><code>8969aba1b4e64281b5982623ec79b774</code></td>
         </tr>
         <tr class="is-new">
-          <td><span class="badge new">NEW</span></td>
+          <td class="actions">
+            <span class="badge new">NEW</span>
+            <button type="button" class="btn-trello" data-card-b64="R2VuZXJhbCBTZXJ2aWNlcyBBZG1pbmlzdHJhdGlvbiAoR1NBKSBTZWVrcyB0byBsZWFzZSB0aGUgZm9sbG93aW5nIHNwYWNlOiBTb2xpY2l0YXRpb24gTm8uIDNUTjAzMTEKCmh0dHBzOi8vc2FtLmdvdi9vcHAvMjlmYTM0NGNmZWJlNDgzZTk1NjExNTk1YTFiMzE1YjYvdmlldwoKUG9zdGVkOiAyMDI2LTA3LTA4ClR5cGU6IFByZXNvbGljaXRhdGlvbgpNYXRjaGVkIHRlcm1zOiBJUlMKUmVzcG9uc2UgZGVhZGxpbmU6IDIwMjYtMDctMTdUMjE6MDA6MDArMDA6MDAKU29saWNpdGF0aW9uICM6IDNUTjAzMTFfMQpPcmdhbml6YXRpb246IEdFTkVSQUwgU0VSVklDRVMgQURNSU5JU1RSQVRJT04uUFVCTElDIEJVSUxESU5HUyBTRVJWSUNFLlBCUyBSMDAgT0ZGSUNFIE9GIExFQVNJTkcKTm90aWNlIElEOiAyOWZhMzQ0Y2ZlYmU0ODNlOTU2MTE1OTVhMWIzMTViNgpBY3RpdmU6IFllcwoKU291cmNlOiBTQU0uZ292IGRhaWx5IHRyYWNrZXI=" title="Copy Trello-ready text">
+              Copy for Trello
+            </button>
+          </td>
           <td>2026-07-08</td>
           <td><a href="https://sam.gov/opp/29fa344cfebe483e95611595a1b315b6/view" target="_blank" rel="noopener">General Services Administration (GSA) Seeks to lease the following space: Solicitation No. 3TN0311</a></td>
           <td>IRS</td>
@@ -546,7 +765,12 @@
           <td><code>29fa344cfebe483e95611595a1b315b6</code></td>
         </tr>
         <tr class="is-new">
-          <td><span class="badge new">NEW</span></td>
+          <td class="actions">
+            <span class="badge new">NEW</span>
+            <button type="button" class="btn-trello" data-card-b64="Rm9yZW5zaWMgU29mdHdhcmUgVHJhaW5pbmcKCmh0dHBzOi8vc2FtLmdvdi9vcHAvZWRmNTRiZGYxYTlhNDY5ODkxZmM5NGRiNTRjM2YxOGMvdmlldwoKUG9zdGVkOiAyMDI2LTA3LTA4ClR5cGU6IEF3YXJkIE5vdGljZQpNYXRjaGVkIHRlcm1zOiBGb3JlbnNpYwpSZXNwb25zZSBkZWFkbGluZTog4oCUClNvbGljaXRhdGlvbiAjOiA3MENNU0QyNlAwMDAwMDA1NApPcmdhbml6YXRpb246IEhPTUVMQU5EIFNFQ1VSSVRZLCBERVBBUlRNRU5UIE9GLlUuUy4gSU1NSUdSQVRJT04gQU5EIENVU1RPTVMgRU5GT1JDRU1FTlQuSU5WRVNUSUdBVElPTlMgQU5EIE9QRVJBVElPTlMgU1VQUE9SVCBEQUxMQVMKTm90aWNlIElEOiBlZGY1NGJkZjFhOWE0Njk4OTFmYzk0ZGI1NGMzZjE4YwpBY3RpdmU6IFllcwpBd2FyZDog4oCUIOKGkiBHZXRkYXRhCgpTb3VyY2U6IFNBTS5nb3YgZGFpbHkgdHJhY2tlcg==" title="Copy Trello-ready text">
+              Copy for Trello
+            </button>
+          </td>
           <td>2026-07-08</td>
           <td><a href="https://sam.gov/opp/edf54bdf1a9a469891fc94db54c3f18c/view" target="_blank" rel="noopener">Forensic Software Training</a></td>
           <td>Forensic</td>
@@ -557,7 +781,12 @@
           <td><code>edf54bdf1a9a469891fc94db54c3f18c</code></td>
         </tr>
         <tr class="is-new">
-          <td><span class="badge new">NEW</span></td>
+          <td class="actions">
+            <span class="badge new">NEW</span>
+            <button type="button" class="btn-trello" data-card-b64="TGVhc2Ugb2YgT2ZmaWNlIFNwYWNlIHdpdGhpbiBSZWdpb24gNy4gUmVxdWVzdCBmb3IgTGVhc2UgUHJvcG9zYWxzIChSTFApICMyNVJFRzA3CgpodHRwczovL3NhbS5nb3Yvb3BwLzUzNjFkOTEzMzkwYzQ5MTlhYWY3ZWQ1YTExMWY4YTM2L3ZpZXcKClBvc3RlZDogMjAyNi0wNy0wNwpUeXBlOiBQcmVzb2xpY2l0YXRpb24KTWF0Y2hlZCB0ZXJtczogSVJTClJlc3BvbnNlIGRlYWRsaW5lOiAyMDI2LTA4LTAxVDIzOjAwOjAwKzAwOjAwClNvbGljaXRhdGlvbiAjOiAzQVIwMjUwLTI2Ck9yZ2FuaXphdGlvbjogR0VORVJBTCBTRVJWSUNFUyBBRE1JTklTVFJBVElPTi5QVUJMSUMgQlVJTERJTkdTIFNFUlZJQ0UuUEJTIFI5IExFQVNJTkcgRElWCk5vdGljZSBJRDogNTM2MWQ5MTMzOTBjNDkxOWFhZjdlZDVhMTExZjhhMzYKQWN0aXZlOiBZZXMKClNvdXJjZTogU0FNLmdvdiBkYWlseSB0cmFja2Vy" title="Copy Trello-ready text">
+              Copy for Trello
+            </button>
+          </td>
           <td>2026-07-07</td>
           <td><a href="https://sam.gov/opp/5361d913390c4919aaf7ed5a111f8a36/view" target="_blank" rel="noopener">Lease of Office Space within Region 7. Request for Lease Proposals (RLP) #25REG07</a></td>
           <td>IRS</td>
@@ -568,7 +797,12 @@
           <td><code>5361d913390c4919aaf7ed5a111f8a36</code></td>
         </tr>
         <tr class="is-new">
-          <td><span class="badge new">NEW</span></td>
+          <td class="actions">
+            <span class="badge new">NEW</span>
+            <button type="button" class="btn-trello" data-card-b64="Q0JQIERpZ2l0YWwgRm9yZW5zaWMgU29mdHdhcmUgTGljZW5zZXMKCmh0dHBzOi8vc2FtLmdvdi9vcHAvZTlkM2Q3YzBmNWI2NGYwOWI5ODViN2I1ODQ2YzNmNGYvdmlldwoKUG9zdGVkOiAyMDI2LTA3LTA3ClR5cGU6IFNwZWNpYWwgTm90aWNlCk1hdGNoZWQgdGVybXM6IEZvcmVuc2ljOyBGb3JlbnNpY3MKUmVzcG9uc2UgZGVhZGxpbmU6IDIwMjYtMDctMDlUMTg6MDA6MDArMDA6MDAKU29saWNpdGF0aW9uICM6IDIwMTU5MzYyCk9yZ2FuaXphdGlvbjogSE9NRUxBTkQgU0VDVVJJVFksIERFUEFSVE1FTlQgT0YuVS5TLiBDVVNUT01TIEFORCBCT1JERVIgUFJPVEVDVElPTi5CT1JERVIgRU5GT1JDRU1FTlQgQ09OVFJBQ1RJTkcgRElWSVNJT04KTm90aWNlIElEOiBlOWQzZDdjMGY1YjY0ZjA5Yjk4NWI3YjU4NDZjM2Y0ZgpBY3RpdmU6IFllcwoKU291cmNlOiBTQU0uZ292IGRhaWx5IHRyYWNrZXI=" title="Copy Trello-ready text">
+              Copy for Trello
+            </button>
+          </td>
           <td>2026-07-07</td>
           <td><a href="https://sam.gov/opp/e9d3d7c0f5b64f09b985b7b5846c3f4f/view" target="_blank" rel="noopener">CBP Digital Forensic Software Licenses</a></td>
           <td>Forensic; Forensics</td>
@@ -579,7 +813,12 @@
           <td><code>e9d3d7c0f5b64f09b985b7b5846c3f4f</code></td>
         </tr>
         <tr class="is-new">
-          <td><span class="badge new">NEW</span></td>
+          <td class="actions">
+            <span class="badge new">NEW</span>
+            <button type="button" class="btn-trello" data-card-b64="VEUvR0UgRW1wbG95ZWUgUGxhbnMgQUkgQXNzaXN0b3IgUkZJCgpodHRwczovL3NhbS5nb3Yvb3BwLzkwMDg3MjUwNmMxODQ0ODM5OTFhNDM5ZGM5MmY1MTQ5L3ZpZXcKClBvc3RlZDogMjAyNi0wNy0wNgpUeXBlOiBTb3VyY2VzIFNvdWdodApNYXRjaGVkIHRlcm1zOiBJUlMKUmVzcG9uc2UgZGVhZGxpbmU6IDIwMjYtMDctMDdUMTY6MDA6MDArMDA6MDAKU29saWNpdGF0aW9uICM6IDI2LTQwLUFQTU8KT3JnYW5pemF0aW9uOiBUUkVBU1VSWSwgREVQQVJUTUVOVCBPRiBUSEUuSU5URVJOQUwgUkVWRU5VRSBTRVJWSUNFLlRBWCBFWEVNUFQgR09WVCBFTlRJVElFUwpOb3RpY2UgSUQ6IDkwMDg3MjUwNmMxODQ0ODM5OTFhNDM5ZGM5MmY1MTQ5CkFjdGl2ZTogWWVzCgpTb3VyY2U6IFNBTS5nb3YgZGFpbHkgdHJhY2tlcg==" title="Copy Trello-ready text">
+              Copy for Trello
+            </button>
+          </td>
           <td>2026-07-06</td>
           <td><a href="https://sam.gov/opp/900872506c184483991a439dc92f5149/view" target="_blank" rel="noopener">TE/GE Employee Plans AI Assistor RFI</a></td>
           <td>IRS</td>
@@ -590,7 +829,12 @@
           <td><code>900872506c184483991a439dc92f5149</code></td>
         </tr>
         <tr class="is-new">
-          <td><span class="badge new">NEW</span></td>
+          <td class="actions">
+            <span class="badge new">NEW</span>
+            <button type="button" class="btn-trello" data-card-b64="MTlOMTUwMjZSMDM3NCAtIFRoZSBSZW5vdmF0aW9uIG9mIDIgQmVsbCBVbml0cyA1ICYgNiwgSWtveWksIExhZ29zCgpodHRwczovL3NhbS5nb3Yvb3BwLzZkNjk0ZGM0ZGQ4NzRjOGJiY2M5NTZiY2U3ZGNmMDllL3ZpZXcKClBvc3RlZDogMjAyNi0wNy0wNgpUeXBlOiBTb2xpY2l0YXRpb24KTWF0Y2hlZCB0ZXJtczogSVJTClJlc3BvbnNlIGRlYWRsaW5lOiAyMDI2LTA4LTE3VDE1OjAwOjAwKzAwOjAwClNvbGljaXRhdGlvbiAjOiAxOU4xNTAyNlIwMzc0Ck9yZ2FuaXphdGlvbjogU1RBVEUsIERFUEFSVE1FTlQgT0YuU1RBVEUsIERFUEFSVE1FTlQgT0YuQU1FUklDQU4gQ09OU1VMQVRFIExBR09TCk5vdGljZSBJRDogNmQ2OTRkYzRkZDg3NGM4YmJjYzk1NmJjZTdkY2YwOWUKQWN0aXZlOiBZZXMKClNvdXJjZTogU0FNLmdvdiBkYWlseSB0cmFja2Vy" title="Copy Trello-ready text">
+              Copy for Trello
+            </button>
+          </td>
           <td>2026-07-06</td>
           <td><a href="https://sam.gov/opp/6d694dc4dd874c8bbcc956bce7dcf09e/view" target="_blank" rel="noopener">19N15026R0374 - The Renovation of 2 Bell Units 5 &amp; 6, Ikoyi, Lagos</a></td>
           <td>IRS</td>
@@ -601,7 +845,12 @@
           <td><code>6d694dc4dd874c8bbcc956bce7dcf09e</code></td>
         </tr>
         <tr class="is-new">
-          <td><span class="badge new">NEW</span></td>
+          <td class="actions">
+            <span class="badge new">NEW</span>
+            <button type="button" class="btn-trello" data-card-b64="TGVuZWwgJiBNaWxlc3RvbmUgTWFpbnRlbmFuY2UgU3VwcG9ydCBTZXJ2aWNlcyBmb3IgU2VjdXJpdHkgQ2FtZXJhcwoKaHR0cHM6Ly9zYW0uZ292L29wcC81OGJhMGFhYTExMzY0MmU0YmJjZWRlMmZhZjAxZjlhMy92aWV3CgpQb3N0ZWQ6IDIwMjYtMDctMDIKVHlwZTogU29saWNpdGF0aW9uCk1hdGNoZWQgdGVybXM6IERDMzsgRm9yZW5zaWMKUmVzcG9uc2UgZGVhZGxpbmU6IDIwMjYtMDctMTNUMTQ6MDA6MDArMDA6MDAKU29saWNpdGF0aW9uICM6IEhUMDAxNDI2UkUwMDgKT3JnYW5pemF0aW9uOiBERVBUIE9GIERFRkVOU0UuREVGRU5TRSBIRUFMVEggQUdFTkNZIChESEEpLkRFRkVOU0UgSEVBTFRIIEFHRU5DWQpOb3RpY2UgSUQ6IDU4YmEwYWFhMTEzNjQyZTRiYmNlZGUyZmFmMDFmOWEzCkFjdGl2ZTogWWVzCgpTb3VyY2U6IFNBTS5nb3YgZGFpbHkgdHJhY2tlcg==" title="Copy Trello-ready text">
+              Copy for Trello
+            </button>
+          </td>
           <td>2026-07-02</td>
           <td><a href="https://sam.gov/opp/58ba0aaa113642e4bbcede2faf01f9a3/view" target="_blank" rel="noopener">Lenel &amp; Milestone Maintenance Support Services for Security Cameras</a></td>
           <td>DC3; Forensic</td>
@@ -612,7 +861,12 @@
           <td><code>58ba0aaa113642e4bbcede2faf01f9a3</code></td>
         </tr>
         <tr class="is-new">
-          <td><span class="badge new">NEW</span></td>
+          <td class="actions">
+            <span class="badge new">NEW</span>
+            <button type="button" class="btn-trello" data-card-b64="R2xvYmFsIG1lZGljYWwgY292ZXJhZ2UgZm9yIExFUyBlbXBsb3llZXMgaW4gVVMgRW1iYXNzeSBQb2Rnb3JpY2EsIE1vbnRlbmVncm8KCmh0dHBzOi8vc2FtLmdvdi9vcHAvNGNiN2MzOTkyZTk4NGI0ODk3OGIxMzFhYTk4ZTZjZDQvdmlldwoKUG9zdGVkOiAyMDI2LTA3LTAyClR5cGU6IFNvbGljaXRhdGlvbgpNYXRjaGVkIHRlcm1zOiBJUlMKUmVzcG9uc2UgZGVhZGxpbmU6IDIwMjYtMDgtMTRUMTU6MDA6MDArMDA6MDAKU29saWNpdGF0aW9uICM6IDE5TUoxOTI2UjAwMDEKT3JnYW5pemF0aW9uOiBTVEFURSwgREVQQVJUTUVOVCBPRi5TVEFURSwgREVQQVJUTUVOVCBPRi5VLlMuIEVNQkFTU1kgUE9ER09SSUNBCk5vdGljZSBJRDogNGNiN2MzOTkyZTk4NGI0ODk3OGIxMzFhYTk4ZTZjZDQKQWN0aXZlOiBZZXMKClNvdXJjZTogU0FNLmdvdiBkYWlseSB0cmFja2Vy" title="Copy Trello-ready text">
+              Copy for Trello
+            </button>
+          </td>
           <td>2026-07-02</td>
           <td><a href="https://sam.gov/opp/4cb7c3992e984b48978b131aa98e6cd4/view" target="_blank" rel="noopener">Global medical coverage for LES employees in US Embassy Podgorica, Montenegro</a></td>
           <td>IRS</td>
@@ -623,7 +877,12 @@
           <td><code>4cb7c3992e984b48978b131aa98e6cd4</code></td>
         </tr>
         <tr class="is-new">
-          <td><span class="badge new">NEW</span></td>
+          <td class="actions">
+            <span class="badge new">NEW</span>
+            <button type="button" class="btn-trello" data-card-b64="QXdhcmQgTm90aWNlIC0gVFJNIExhYnMsIEluYy4KCmh0dHBzOi8vc2FtLmdvdi9vcHAvZGUxM2Y1MzJjNTQyNDM0YzgwYTNjODIwMDI1ODI3MTkvdmlldwoKUG9zdGVkOiAyMDI2LTA3LTAyClR5cGU6IEF3YXJkIE5vdGljZQpNYXRjaGVkIHRlcm1zOiBGb3JlbnNpYwpSZXNwb25zZSBkZWFkbGluZTog4oCUClNvbGljaXRhdGlvbiAjOiA3MENNU0QyNkMwMDAwMDAwNQpPcmdhbml6YXRpb246IEhPTUVMQU5EIFNFQ1VSSVRZLCBERVBBUlRNRU5UIE9GLlUuUy4gSU1NSUdSQVRJT04gQU5EIENVU1RPTVMgRU5GT1JDRU1FTlQuSU5WRVNUSUdBVElPTlMgQU5EIE9QRVJBVElPTlMgU1VQUE9SVCBEQUxMQVMKTm90aWNlIElEOiBkZTEzZjUzMmM1NDI0MzRjODBhM2M4MjAwMjU4MjcxOQpBY3RpdmU6IFllcwpBd2FyZDog4oCUIOKGkiBUUk0gTEFCUywgSU5DLgoKU291cmNlOiBTQU0uZ292IGRhaWx5IHRyYWNrZXI=" title="Copy Trello-ready text">
+              Copy for Trello
+            </button>
+          </td>
           <td>2026-07-02</td>
           <td><a href="https://sam.gov/opp/de13f532c542434c80a3c82002582719/view" target="_blank" rel="noopener">Award Notice - TRM Labs, Inc.</a></td>
           <td>Forensic</td>
@@ -634,7 +893,12 @@
           <td><code>de13f532c542434c80a3c82002582719</code></td>
         </tr>
         <tr class="is-new">
-          <td><span class="badge new">NEW</span></td>
+          <td class="actions">
+            <span class="badge new">NEW</span>
+            <button type="button" class="btn-trello" data-card-b64="QWNjZXNzIFJlcXVpcmVkIHRvIE9ubGluZSBSZWFsIEVzdGF0ZSBEYXRhYmFzZSBTZXJ2aWNlcwoKaHR0cHM6Ly9zYW0uZ292L29wcC8wNzc1YzcxNDMyMmQ0YmQ3YWYxNjdjMjI5ZTg4MTUzMC92aWV3CgpQb3N0ZWQ6IDIwMjYtMDctMDIKVHlwZTogQ29tYmluZWQgU3lub3BzaXMvU29saWNpdGF0aW9uCk1hdGNoZWQgdGVybXM6IElSUwpSZXNwb25zZSBkZWFkbGluZTogMjAyNi0wNy0yMFQxNjowMDowMCswMDowMApTb2xpY2l0YXRpb24gIzogMjA0M0ZZLTI2LVEtMDAwMzgKT3JnYW5pemF0aW9uOiBUUkVBU1VSWSwgREVQQVJUTUVOVCBPRiBUSEUuSU5URVJOQUwgUkVWRU5VRSBTRVJWSUNFLlNPVVRIRUFTVCBSRUdJT04KTm90aWNlIElEOiAwNzc1YzcxNDMyMmQ0YmQ3YWYxNjdjMjI5ZTg4MTUzMApBY3RpdmU6IFllcwoKU291cmNlOiBTQU0uZ292IGRhaWx5IHRyYWNrZXI=" title="Copy Trello-ready text">
+              Copy for Trello
+            </button>
+          </td>
           <td>2026-07-02</td>
           <td><a href="https://sam.gov/opp/0775c714322d4bd7af167c229e881530/view" target="_blank" rel="noopener">Access Required to Online Real Estate Database Services</a></td>
           <td>IRS</td>
@@ -648,8 +912,67 @@
         </details>
 
   <p class="meta" style="margin-top:24px;">
-    Generated 2026-07-16 11:04 ·
+    Generated 2026-07-16 11:55 ·
     Local history: data/history.json
   </p>
+  <div id="toast" class="toast" role="status"></div>
+  <script>
+  (function () {
+    function showToast(msg) {
+      var el = document.getElementById('toast');
+      if (!el) return;
+      el.textContent = msg;
+      el.classList.add('show');
+      setTimeout(function () { el.classList.remove('show'); }, 1800);
+    }
+    function copyText(text) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        return navigator.clipboard.writeText(text);
+      }
+      return new Promise(function (resolve, reject) {
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.setAttribute('readonly', '');
+        ta.style.position = 'fixed';
+        ta.style.left = '-9999px';
+        document.body.appendChild(ta);
+        ta.select();
+        try {
+          if (document.execCommand('copy')) resolve();
+          else reject(new Error('copy failed'));
+        } catch (e) { reject(e); }
+        document.body.removeChild(ta);
+      });
+    }
+    document.addEventListener('click', function (ev) {
+      var btn = ev.target.closest('.btn-trello');
+      if (!btn) return;
+      var b64 = btn.getAttribute('data-card-b64') || '';
+      if (!b64) return;
+      var card;
+      try {
+        card = atob(b64);
+        // decode UTF-8
+        card = decodeURIComponent(Array.prototype.map.call(card, function (c) {
+          return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        }).join(''));
+      } catch (e) {
+        try { card = atob(b64); } catch (e2) { showToast('Copy failed'); return; }
+      }
+      copyText(card).then(function () {
+        var prev = btn.textContent;
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
+        showToast('Copied for Trello — paste into a new card');
+        setTimeout(function () {
+          btn.textContent = prev;
+          btn.classList.remove('copied');
+        }, 1500);
+      }).catch(function () {
+        showToast('Copy failed — select text manually');
+      });
+    });
+  })();
+  </script>
 </body>
 </html>
