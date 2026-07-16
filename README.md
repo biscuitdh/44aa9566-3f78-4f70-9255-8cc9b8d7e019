@@ -13,7 +13,7 @@ Low-profile path (`/v/`), `noindex`, robots disallow. Content is public SAM.gov 
 
 ## GitHub Actions (once)
 
-1. **Settings → Secrets → Actions:** `SAM_API_KEY` = your SAM public API key  
+1. *(Optional)* Secret `SAM_API_KEY` — not required for Actions (frontend only)  
 2. **Settings → Pages → Source:** GitHub Actions  
 3. **Settings → Actions → General → Workflow permissions:** Read and write  
 4. **Actions → SAM daily search → Run workflow** (first run)
