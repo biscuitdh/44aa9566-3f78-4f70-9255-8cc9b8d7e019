@@ -84,7 +84,7 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -f data/api_term_rotation.json data/history.json docs/ || true
+          git add -f data/api_term_rotation.json data/history.json data/archive docs/ || true
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else

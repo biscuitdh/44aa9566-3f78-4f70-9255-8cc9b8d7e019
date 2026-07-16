@@ -48,6 +48,10 @@ ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_TERMS = ROOT / "config" / "search_terms.json"
 DEFAULT_HISTORY = ROOT / "data" / "history.json"
 DEFAULT_API_ROTATION = ROOT / "data" / "api_term_rotation.json"
+DEFAULT_ARCHIVE_DIR = ROOT / "data" / "archive"
+DEFAULT_ARCHIVE_NOTICES = DEFAULT_ARCHIVE_DIR / "notices-master.json"
+DEFAULT_ARCHIVE_JSONL = DEFAULT_ARCHIVE_DIR / "notices-append.jsonl"
+DEFAULT_ARCHIVE_CSV = DEFAULT_ARCHIVE_DIR / "notices-master.csv"
 DEFAULT_REPORTS = ROOT / "reports"
 DEFAULT_BASE_URL = "https://api.sam.gov/prod/opportunities/v2/search"
 # Same search backend the SAM.gov website UI uses (no public API key quota).
@@ -719,6 +723,161 @@ def load_history(path: Path) -> dict[str, Any]:
     return data
 
 
+def load_notice_archive(path: Path = DEFAULT_ARCHIVE_NOTICES) -> dict[str, Any]:
+    if not path.is_file():
+        return {
+            "version": 1,
+            "description": "Long-running notice archive (not pruned with the 15-day webpage window)",
+            "updated_at": None,
+            "count": 0,
+            "notices": {},
+        }
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return {"version": 1, "updated_at": None, "count": 0, "notices": {}}
+    if not isinstance(data, dict):
+        return {"version": 1, "updated_at": None, "count": 0, "notices": {}}
+    data.setdefault("notices", {})
+    return data
+
+
+def archive_history_snapshot(
+    history: dict[str, Any],
+    *,
+    archive_dir: Path = DEFAULT_ARCHIVE_DIR,
+    run_date: str | None = None,
+) -> dict[str, Any]:
+    """
+    Merge current history notices into a long-running archive *before* prune.
+
+    - notices-master.json — durable dict keyed by notice_id (never purged by 15-day window)
+    - notices-append.jsonl — one JSON line per archive update (audit trail)
+    - notices-master.csv — spreadsheet-friendly full list
+    - days/YYYY-MM-DD.json — optional per-day bucket backup when present
+
+    Webpage/history.json still prune to 15 days; archive keeps the long list.
+    """
+    archive_dir = Path(archive_dir)
+    archive_dir.mkdir(parents=True, exist_ok=True)
+    master_path = archive_dir / "notices-master.json"
+    jsonl_path = archive_dir / "notices-append.jsonl"
+    csv_path = archive_dir / "notices-master.csv"
+    days_dir = archive_dir / "days"
+    days_dir.mkdir(exist_ok=True)
+
+    master = load_notice_archive(master_path)
+    notices_m: dict[str, Any] = master.setdefault("notices", {})
+    now = datetime.now(timezone.utc).isoformat()
+    run_date = run_date or date.today().isoformat()
+    appended = 0
+    updated = 0
+
+    for key, rec in (history.get("notices") or {}).items():
+        if not isinstance(rec, dict):
+            continue
+        nid = str(rec.get("notice_id") or key).strip() or str(key)
+        existing = notices_m.get(nid)
+        # Merge terms
+        new_terms = set(rec.get("matched_terms") or [])
+        if existing:
+            old_terms = set(existing.get("matched_terms") or [])
+            merged_terms = sorted(old_terms | new_terms, key=str.casefold)
+            seen = sorted(
+                set(existing.get("seen_on_dates") or [])
+                | set(rec.get("seen_on_dates") or [])
+            )
+            first = existing.get("first_seen_date") or rec.get("first_seen_date")
+            last = rec.get("last_seen_date") or existing.get("last_seen_date")
+            row = dict(existing)
+            row.update({k: v for k, v in rec.items() if v not in (None, "", [], {})})
+            row["matched_terms"] = merged_terms
+            row["seen_on_dates"] = seen
+            row["first_seen_date"] = first
+            row["last_seen_date"] = last
+            row["archived_at"] = existing.get("archived_at") or now
+            row["archive_updated_at"] = now
+            notices_m[nid] = row
+            updated += 1
+        else:
+            row = dict(rec)
+            row["notice_id"] = nid
+            row["archived_at"] = now
+            row["archive_updated_at"] = now
+            notices_m[nid] = row
+            appended += 1
+            # Append-only audit line for brand-new archive entries
+            with jsonl_path.open("a", encoding="utf-8") as f:
+                f.write(
+                    json.dumps(
+                        {"archived_on_run": run_date, "archived_at": now, **row},
+                        ensure_ascii=False,
+                    )
+                    + "\n"
+                )
+
+    # Backup each day bucket (full snapshot; overwrite that day's file)
+    for day, bucket in (history.get("days") or {}).items():
+        if not isinstance(day, str) or not isinstance(bucket, dict):
+            continue
+        day_path = days_dir / f"{day}.json"
+        payload = {
+            "date": day,
+            "saved_at": now,
+            "bucket": bucket,
+            "notices": {
+                k: (history.get("notices") or {}).get(k)
+                for k in (bucket.get("notice_keys") or [])
+                if k in (history.get("notices") or {})
+            },
+        }
+        day_path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+
+    master["updated_at"] = now
+    master["count"] = len(notices_m)
+    master["last_run_date"] = run_date
+    master["description"] = (
+        "Long-running notice archive. Not purged when the 15-day webpage history rolls."
+    )
+    master_path.write_text(json.dumps(master, indent=2) + "\n", encoding="utf-8")
+
+    # CSV for easy long-term Excel browsing
+    fields = [
+        "notice_id",
+        "title",
+        "posted_date",
+        "type",
+        "matched_terms",
+        "solicitation_number",
+        "response_deadline",
+        "organization",
+        "active",
+        "url",
+        "first_seen_date",
+        "last_seen_date",
+        "award_amount",
+        "awardee",
+        "archived_at",
+    ]
+    with csv_path.open("w", encoding="utf-8", newline="") as f:
+        w = csv.DictWriter(f, fieldnames=fields, extrasaction="ignore")
+        w.writeheader()
+        for nid in sorted(notices_m.keys(), key=lambda i: (notices_m[i].get("posted_date") or "", i), reverse=True):
+            row = dict(notices_m[nid])
+            mt = row.get("matched_terms") or []
+            if isinstance(mt, list):
+                row["matched_terms"] = "; ".join(mt)
+            w.writerow({k: row.get(k, "") for k in fields})
+
+    print(
+        f"Archive: {master_path} — {len(notices_m)} total notices "
+        f"(+{appended} new, ~{updated} updated this run)",
+        flush=True,
+    )
+    print(f"Archive CSV: {csv_path}", flush=True)
+    return master
+
+
 def prune_history(
     history: dict[str, Any],
     *,
@@ -730,6 +889,8 @@ def prune_history(
       - days[] buckets (report sections)
       - runs[] log entries
       - notices last seen within the window (or first seen if no last)
+
+    Call archive_history_snapshot() *before* this if you want a long-running backup.
     """
     if keep_days < 1:
         return history
@@ -777,8 +938,16 @@ def save_history(
     history: dict[str, Any],
     *,
     keep_days: int = DEFAULT_HISTORY_RETENTION_DAYS,
+    archive: bool = True,
+    run_date: str | None = None,
 ) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
+    # Long-running backup first, then prune live history for the webpage window
+    if archive:
+        try:
+            archive_history_snapshot(history, run_date=run_date)
+        except Exception as e:  # noqa: BLE001
+            print(f"Archive warning: {e}", file=sys.stderr)
     prune_history(history, keep_days=max(1, keep_days))
     history["updated_at"] = datetime.now(timezone.utc).isoformat()
     path.write_text(json.dumps(history, indent=2, sort_keys=False) + "\n", encoding="utf-8")
@@ -1696,6 +1865,11 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.report_only:
         print("Report-only mode: rebuilding Excel/HTML from history.json")
+        # Refresh long archive from current history, then prune display window
+        try:
+            archive_history_snapshot(history, run_date=run_date)
+        except Exception as e:  # noqa: BLE001
+            print(f"Archive warning: {e}", file=sys.stderr)
         prune_history(history, keep_days=max(1, args.history_days))
         day_bucket = (history.get("days") or {}).get(run_date) or {}
         keys = day_bucket.get("notice_keys") or []
@@ -1895,8 +2069,15 @@ def main(argv: list[str] | None = None) -> int:
             flush=True,
         )
         if not args.no_history_write:
-            save_history(args.history, history, keep_days=max(1, args.history_days))
-            print(f"History: {args.history}")
+            save_history(
+                args.history,
+                history,
+                keep_days=max(1, args.history_days),
+                archive=True,
+                run_date=run_date,
+            )
+            print(f"History (15-day window): {args.history}")
+            print(f"Long archive: {DEFAULT_ARCHIVE_NOTICES}")
 
     meta = {
         "run_date": run_date,

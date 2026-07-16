@@ -38,3 +38,15 @@ Terms: `config/search_terms.json`.
 
 Reports keep a **rolling 15 days** of day buckets and notices (`--history-days 15`).
 Each scheduled search uses a **15-day posted-date window** (`--days 15`) so the tracker accumulates a two-week record.
+
+
+## Long-running archive vs 15-day webpage
+
+| What | Where | Retention |
+|------|--------|-----------|
+| Public webpage / Excel on Pages | `docs/v/` | **Rolling 15 days** |
+| Durable notice list | `data/archive/notices-master.json` + `.csv` | **Keeps growing** (not purged) |
+| Per-day snapshots | `data/archive/days/YYYY-MM-DD.json` | Kept in git |
+| Append audit log | `data/archive/notices-append.jsonl` | Append-only |
+
+The site stays lean; the repo keeps the long history under `data/archive/` (not deployed to Pages).
