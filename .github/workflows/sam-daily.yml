@@ -46,16 +46,17 @@ jobs:
           set -euo pipefail
           DAYS="${{ github.event.inputs.days || '1' }}"
           SOURCE="${{ github.event.inputs.source || 'both' }}"
-          # Fast CI pacing (not human-slow). Local Mac runs can still use default human pacing.
+          # Moderate CI pacing: polite gaps, not ~20min human simulation.
+          # ~3s between terms × ~29 calls ≈ a few minutes + network.
           python scripts/sam_search.py \
             --days "$DAYS" \
             --source "$SOURCE" \
             --no-latest-sync \
             --max-pages 1 \
             --robot \
-            --term-sleep 0.4 \
-            --page-sleep 0.2 \
-            --jitter 0.1
+            --term-sleep 3 \
+            --page-sleep 1 \
+            --jitter 1.5
 
       - name: Stage public site
         run: |
