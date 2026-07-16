@@ -1,0 +1,37 @@
+{
+  "next_index": 0,
+  "last_run_date": "2026-07-16",
+  "last_batch": [
+    "ArcPoint",
+    "Atrio",
+    "Axiom",
+    "Cyber",
+    "EC2",
+    "DC3",
+    "CELLEX"
+  ],
+  "last_start_index": 0,
+  "last_completed": 0,
+  "log": [
+    {
+      "date": "2026-07-16",
+      "mode": "new",
+      "work_start": 0,
+      "work_terms": [
+        "ArcPoint",
+        "Atrio",
+        "Axiom",
+        "Cyber",
+        "EC2",
+        "DC3",
+        "CELLEX"
+      ],
+      "completed": 0,
+      "last_completed": 0,
+      "next_index": 0,
+      "errors": [
+        "API term='ArcPoint': HTTP 429 for https://api.sam.gov/prod/opportunities/v2/search?api_key=***: {\"code\":\"900804\",\"message\":\"Message throttled out\",\"description\":\"You have exceeded your quota .You can access API after 2026-Jul-17 00:00:00+0000 UTC\",\"nextAccessTime\":\"2026-Jul-17 00:00:00+0000 UTC\"}"
+      ]
+    }
+  ]
+}

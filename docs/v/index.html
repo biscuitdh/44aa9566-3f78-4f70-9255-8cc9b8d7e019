@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="robots" content="noindex,nofollow" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SAM tracker — 2026-07-16</title>
+  <style>
+    :root {
+      --bg: #f6f8fb;
+      --card: #ffffff;
+      --ink: #1a2332;
+      --muted: #5b6b7c;
+      --line: #d8e0ea;
+      --new: #e8f6e8;
+      --accent: #1f4e79;
+      --link: #0b5cab;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; padding: 24px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      color: var(--ink); background: var(--bg); line-height: 1.45;
+    }
+    h1 { margin: 0 0 8px; font-size: 1.55rem; color: var(--accent); }
+    .meta { color: var(--muted); margin-bottom: 20px; }
+    .meta code { background: #eef2f7; padding: 1px 6px; border-radius: 4px; }
+    .card {
+      background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+      padding: 16px 18px; margin-bottom: 16px; box-shadow: 0 1px 2px rgba(0,0,0,.04);
+    }
+    details.day {
+      background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+      margin-bottom: 12px; padding: 8px 12px 12px; box-shadow: 0 1px 2px rgba(0,0,0,.04);
+    }
+    details.day > summary {
+      cursor: pointer; padding: 8px 4px; list-style: none; font-size: 1.02rem;
+    }
+    details.day > summary::-webkit-details-marker { display: none; }
+    details.day > summary::before { content: "▸ "; color: var(--accent); }
+    details.day[open] > summary::before { content: "▾ "; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 0.92rem; }
+    th, td { border-bottom: 1px solid var(--line); padding: 8px 6px; text-align: left; vertical-align: top; }
+    th { background: #eef3f8; color: var(--accent); position: sticky; top: 0; }
+    tr.is-new { background: var(--new); }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .badge.new {
+      display: inline-block; background: #2e7d32; color: #fff;
+      font-size: 0.7rem; font-weight: 700; padding: 2px 6px; border-radius: 999px;
+    }
+    code { font-size: 0.85em; }
+    .errors { background: #fff4f4; border: 1px solid #f0c2c2; border-radius: 8px; padding: 10px 12px; margin-top: 12px; }
+    .legend span { display: inline-block; margin-right: 14px; }
+    .swatch { display: inline-block; width: 12px; height: 12px; border-radius: 2px; margin-right: 4px; vertical-align: middle; }
+    .swatch.new { background: var(--new); border: 1px solid #9ccc9c; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>SAM.gov daily tracker</h1>
+    <div class="meta">
+      Last run: <strong>2026-07-16</strong>
+      · Posted window <code>2026-07-16</code>
+        → <code>2026-07-16</code>
+      · Terms: 22
+      · This run hits: <strong>1</strong>
+      · First-seen new: <strong>1</strong>
+      · Source: <code>both</code>
+      · Pacing: fixed
+    </div>
+    <div class="legend">
+      <span><span class="swatch new"></span> New first-seen on that day</span>
+      <span>Frontend path = website search (keyword). API path = title filter + key quota.</span>
+    </div>
+    <div class='errors'><strong>Term errors:</strong><ul><li>API term=&#x27;ArcPoint&#x27;: HTTP 429 for https://api.sam.gov/prod/opportunities/v2/search?api_key=***: {&quot;code&quot;:&quot;900804&quot;,&quot;message&quot;:&quot;Message throttled out&quot;,&quot;description&quot;:&quot;You have exceeded your quota .You can access API after 2026-Jul-17 00:00:00+0000 UTC&quot;,&quot;nextAccessTime&quot;:&quot;2026-Jul-17 00:00:00+0000 UTC&quot;}</li></ul></div>
+  </div>
+
+  <h2 style="color:var(--accent);font-size:1.15rem;">Results by day</h2>
+  
+        <details class="day" open>
+          <summary>
+            <strong>2026-07-16</strong>
+            · 1 hit(s)
+            · 1 new
+             · <em>this run</em>
+          </summary>
+          <table>
+            <thead>
+              <tr>
+                <th></th><th>Posted</th><th>Title</th><th>Terms</th><th>Type</th>
+                <th>Deadline</th><th>Organization</th><th>Solicitation</th><th>Notice ID</th>
+              </tr>
+            </thead>
+            <tbody>
+        <tr class="is-new">
+          <td><span class="badge new">NEW</span></td>
+          <td>2026-07-16</td>
+          <td><a href="https://sam.gov/opp/d3c5f6428db54bbf9cf6ba3468e31d70/view" target="_blank" rel="noopener">Fort Benning Construction MAIDIQ</a></td>
+          <td>MSAB</td>
+          <td>Award Notice</td>
+          <td></td>
+          <td>DEPT OF DEFENSE.DEPT OF THE ARMY.W6QM MICC-FDO FT SAM HOUSTON</td>
+          <td>W5168W-26-D-A016-A017-A018-A019-A020-A021-A022-A023-A024-A025-A026-A027-A028-A029-A030-A031-A032-A033-A034</td>
+          <td><code>d3c5f6428db54bbf9cf6ba3468e31d70</code></td>
+        </tr></tbody>
+          </table>
+        </details>
+
+  <p class="meta" style="margin-top:24px;">
+    Generated 2026-07-16 01:54 ·
+    Local history: data/history.json
+  </p>
+</body>
+</html>

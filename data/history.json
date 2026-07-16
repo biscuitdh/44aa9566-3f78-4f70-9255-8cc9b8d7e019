@@ -1,0 +1,58 @@
+{
+  "version": 2,
+  "updated_at": "2026-07-16T01:54:00.604423+00:00",
+  "runs": [
+    {
+      "run_id": "2026-07-16_015238",
+      "run_date": "2026-07-16",
+      "posted_from": "2026-07-16",
+      "posted_to": "2026-07-16",
+      "term_count": 22,
+      "hit_count": 1,
+      "new_count": 1,
+      "errors": [
+        "API term='ArcPoint': HTTP 429 for https://api.sam.gov/prod/opportunities/v2/search?api_key=***: {\"code\":\"900804\",\"message\":\"Message throttled out\",\"description\":\"You have exceeded your quota .You can access API after 2026-Jul-17 00:00:00+0000 UTC\",\"nextAccessTime\":\"2026-Jul-17 00:00:00+0000 UTC\"}"
+      ],
+      "term_sleep": 3.0,
+      "page_sleep": 1.0
+    }
+  ],
+  "notices": {
+    "d3c5f6428db54bbf9cf6ba3468e31d70": {
+      "notice_id": "d3c5f6428db54bbf9cf6ba3468e31d70",
+      "title": "Fort Benning Construction MAIDIQ",
+      "solicitation_number": "W5168W-26-D-A016-A017-A018-A019-A020-A021-A022-A023-A024-A025-A026-A027-A028-A029-A030-A031-A032-A033-A034",
+      "posted_date": "2026-07-16",
+      "type": "Award Notice",
+      "response_deadline": "",
+      "naics": "",
+      "active": "Yes",
+      "organization": "DEPT OF DEFENSE.DEPT OF THE ARMY.W6QM MICC-FDO FT SAM HOUSTON",
+      "matched_terms": [
+        "MSAB"
+      ],
+      "award_amount": "",
+      "awardee": "G.M. HILL ENGINEERING, INC.",
+      "url": "https://sam.gov/opp/d3c5f6428db54bbf9cf6ba3468e31d70/view",
+      "first_seen_date": "2026-07-16",
+      "last_seen_date": "2026-07-16",
+      "seen_on_dates": [
+        "2026-07-16"
+      ]
+    }
+  },
+  "days": {
+    "2026-07-16": {
+      "date": "2026-07-16",
+      "runs": [
+        "2026-07-16_015238"
+      ],
+      "notice_keys": [
+        "d3c5f6428db54bbf9cf6ba3468e31d70"
+      ],
+      "new_notice_keys": [
+        "d3c5f6428db54bbf9cf6ba3468e31d70"
+      ]
+    }
+  }
+}
