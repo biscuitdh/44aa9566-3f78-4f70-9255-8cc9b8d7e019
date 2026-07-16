@@ -1,0 +1,32 @@
+{
+  "description": "Daily SAM.gov opportunity/award search terms",
+  "terms": [
+    "ArcPoint",
+    "Atrio",
+    "Axiom",
+    "Cyber",
+    "EC2",
+    "DC3",
+    "CELLEX",
+    "MEDEX",
+    "DOMEX",
+    "Forensic",
+    "Forensics",
+    "NMEC",
+    "Magnet Forensics",
+    "Grayshift",
+    "GrayKey",
+    "Digital forensics",
+    "SOFWERX",
+    "Digital Evidence Laboratory",
+    "IRS",
+    "DVR Examiner",
+    "XRY",
+    "MSAB"
+  ],
+  "notes": [
+    "Forensic and Forensics are both kept so title matching is more forgiving.",
+    "SAM Get Opportunities API matches the title parameter as a title filter, not full description text.",
+    "Broad terms like Cyber and IRS will return many results; use --days and review carefully."
+  ]
+}

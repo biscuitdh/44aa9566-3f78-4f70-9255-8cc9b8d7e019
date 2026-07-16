@@ -1,0 +1,16 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+api.txt
+secrets/
+SAM-daily-*.xlsx
+SAM-daily-*.html
+reports/*
+!reports/.gitkeep
+.DS_Store
+data/raw/
+data/last_run.json
+data/seen_notices.json
+data/last_api_run_snippet.txt
+data/_*.json

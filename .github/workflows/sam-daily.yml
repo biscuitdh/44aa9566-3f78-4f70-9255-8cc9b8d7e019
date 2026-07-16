@@ -1,0 +1,119 @@
+name: SAM daily search
+
+on:
+  schedule:
+    # ≈ 04:00 EST / 05:00 EDT
+    - cron: "0 9 * * *"
+  workflow_dispatch:
+    inputs:
+      days:
+        description: "Posted look-back window (days)"
+        required: false
+        default: "1"
+      source:
+        description: "frontend | api | both"
+        required: false
+        default: "both"
+
+concurrency:
+  group: sam-daily
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  search:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run SAM search
+        env:
+          SAM_API_KEY: ${{ secrets.SAM_API_KEY }}
+        run: |
+          set -euo pipefail
+          DAYS="${{ github.event.inputs.days || '1' }}"
+          SOURCE="${{ github.event.inputs.source || 'both' }}"
+          python scripts/sam_search.py \
+            --days "$DAYS" \
+            --source "$SOURCE" \
+            --no-latest-sync \
+            --max-pages 1
+
+      - name: Stage public site
+        run: |
+          set -euo pipefail
+          mkdir -p docs/v
+          test -f SAM-daily-latest.html
+          test -f SAM-daily-latest.xlsx
+          cp SAM-daily-latest.html docs/v/index.html
+          cp SAM-daily-latest.xlsx docs/v/SAM-daily-latest.xlsx
+          cat > docs/index.html <<'HTML'
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+            <meta charset="utf-8" />
+            <meta name="robots" content="noindex,nofollow" />
+            <meta http-equiv="refresh" content="0; url=./v/" />
+            <title>SAM</title>
+          </head>
+          <body>
+            <p><a href="./v/">continue</a></p>
+          </body>
+          </html>
+          HTML
+          printf 'User-agent: *\nDisallow: /\n' > docs/robots.txt
+          if ! grep -q 'noindex' docs/v/index.html; then
+            sed -i 's#<head>#<head>\n  <meta name="robots" content="noindex,nofollow" />#' docs/v/index.html || true
+          fi
+
+      - name: Persist state + docs
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f data/api_term_rotation.json data/history.json docs/ || true
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: daily SAM report $(date -u +%Y-%m-%d)"
+            git push
+          fi
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sam-daily-${{ github.run_id }}
+          path: |
+            SAM-daily-latest.html
+            SAM-daily-latest.xlsx
+            data/api_term_rotation.json
+            data/history.json
+          if-no-files-found: ignore
+          retention-days: 30
+
+  deploy:
+    needs: search
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
