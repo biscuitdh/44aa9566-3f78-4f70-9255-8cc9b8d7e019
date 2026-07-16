@@ -50,3 +50,8 @@ Each scheduled search uses a **15-day posted-date window** (`--days 15`) so the 
 | Append audit log | `data/archive/notices-append.jsonl` | Append-only |
 
 The site stays lean; the repo keeps the long history under `data/archive/` (not deployed to Pages).
+
+## Copy for Trello
+
+Each result row on the HTML report has **Copy for Trello**. Click to copy a card-ready block (title, SAM link, terms, deadline, etc.), then paste into a new Trello card. No Trello API keys required.
+

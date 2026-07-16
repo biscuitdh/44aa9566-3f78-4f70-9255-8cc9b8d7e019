@@ -13,6 +13,7 @@ Get Opportunities Public API:
 from __future__ import annotations
 
 import argparse
+import base64
 import csv
 import html
 import json
@@ -1274,14 +1275,51 @@ def write_html(path: Path, history: dict[str, Any], day_rows: list[dict[str, Any
             return html.escape("; ".join(val))
         return html.escape(str(val or ""))
 
+    def terms_plain(val: Any) -> str:
+        if isinstance(val, list):
+            return "; ".join(str(x) for x in val)
+        return str(val or "")
+
+    def trello_card_text(r: dict[str, Any]) -> str:
+        """Plain text ready to paste into a new Trello card (title + description)."""
+        title = (r.get("title") or "(no title)").strip()
+        url = (r.get("url") or "").strip()
+        lines = [
+            title,
+            "",
+            url,
+            "",
+            f"Posted: {r.get('posted_date') or '—'}",
+            f"Type: {r.get('type') or '—'}",
+            f"Matched terms: {terms_plain(r.get('matched_terms')) or '—'}",
+            f"Response deadline: {r.get('response_deadline') or '—'}",
+            f"Solicitation #: {r.get('solicitation_number') or '—'}",
+            f"Organization: {r.get('organization') or '—'}",
+            f"Notice ID: {r.get('notice_id') or '—'}",
+            f"Active: {r.get('active') or '—'}",
+        ]
+        if r.get("award_amount") or r.get("awardee"):
+            lines.append(f"Award: {r.get('award_amount') or '—'} → {r.get('awardee') or '—'}")
+        lines.extend(["", "Source: SAM.gov daily tracker"])
+        return "\n".join(lines)
+
     def row_html(r: dict[str, Any]) -> str:
         new_badge = '<span class="badge new">NEW</span>' if r.get("is_new") else ""
         url = r.get("url") or ""
-        title = html.escape(r.get("title") or "(no title)")
+        title_raw = r.get("title") or "(no title)"
+        title = html.escape(title_raw)
         title_html = f'<a href="{html.escape(url)}" target="_blank" rel="noopener">{title}</a>' if url else title
+        card = trello_card_text(r)
+        # Base64 avoids broken HTML attributes with newlines/quotes
+        card_b64 = base64.b64encode(card.encode("utf-8")).decode("ascii")
         return f"""
         <tr class="{'is-new' if r.get('is_new') else ''}">
-          <td>{new_badge}</td>
+          <td class="actions">
+            {new_badge}
+            <button type="button" class="btn-trello" data-card-b64="{card_b64}" title="Copy Trello-ready text">
+              Copy for Trello
+            </button>
+          </td>
           <td>{html.escape(str(r.get('posted_date') or ''))}</td>
           <td>{title_html}</td>
           <td>{terms_cell(r.get('matched_terms'))}</td>
@@ -1311,7 +1349,7 @@ def write_html(path: Path, history: dict[str, Any], day_rows: list[dict[str, Any
         rows.sort(key=lambda r: (0 if r.get("is_new") else 1, -_date_sort_key(r.get("posted_date"))))
 
         open_attr = " open" if day == run_date else ""
-        body_rows = "".join(row_html(r) for r in rows) or '<tr><td colspan="9"><em>No hits</em></td></tr>'
+        body_rows = "".join(row_html(r) for r in rows) or '<tr><td colspan="10"><em>No hits</em></td></tr>'
         day_sections.append(
             f"""
         <details class="day"{open_attr}>
@@ -1324,7 +1362,7 @@ def write_html(path: Path, history: dict[str, Any], day_rows: list[dict[str, Any
           <table>
             <thead>
               <tr>
-                <th></th><th>Posted</th><th>Title</th><th>Terms</th><th>Type</th>
+                <th>Trello</th><th>Posted</th><th>Title</th><th>Terms</th><th>Type</th>
                 <th>Deadline</th><th>Organization</th><th>Solicitation</th><th>Notice ID</th>
               </tr>
             </thead>
@@ -1395,6 +1433,20 @@ def write_html(path: Path, history: dict[str, Any], day_rows: list[dict[str, Any
     .legend span {{ display: inline-block; margin-right: 14px; }}
     .swatch {{ display: inline-block; width: 12px; height: 12px; border-radius: 2px; margin-right: 4px; vertical-align: middle; }}
     .swatch.new {{ background: var(--new); border: 1px solid #9ccc9c; }}
+    td.actions {{ white-space: nowrap; min-width: 7.5rem; }}
+    .btn-trello {{
+      display: inline-block; margin-top: 4px; padding: 4px 8px;
+      font-size: 0.75rem; font-weight: 600; cursor: pointer;
+      color: #fff; background: #0079bf; border: none; border-radius: 6px;
+    }}
+    .btn-trello:hover {{ background: #026aa7; }}
+    .btn-trello.copied {{ background: #2e7d32; }}
+    .toast {{
+      position: fixed; bottom: 20px; right: 20px; z-index: 99;
+      background: #1a2332; color: #fff; padding: 10px 14px; border-radius: 8px;
+      font-size: 0.9rem; opacity: 0; pointer-events: none; transition: opacity .2s;
+    }}
+    .toast.show {{ opacity: 1; }}
   </style>
 </head>
 <body>
@@ -1413,7 +1465,7 @@ def write_html(path: Path, history: dict[str, Any], day_rows: list[dict[str, Any
     </div>
     <div class="legend">
       <span><span class="swatch new"></span> New first-seen on that day</span>
-      <span>Frontend path = website search (keyword). API path = title filter + key quota.</span>
+      <span><strong>Copy for Trello</strong> copies card text — paste into a new Trello card (no login/API).</span>
     </div>
     {err_html}
   </div>
@@ -1425,6 +1477,65 @@ def write_html(path: Path, history: dict[str, Any], day_rows: list[dict[str, Any
     Generated {html.escape(datetime.now().strftime('%Y-%m-%d %H:%M'))} ·
     Local history: data/history.json
   </p>
+  <div id="toast" class="toast" role="status"></div>
+  <script>
+  (function () {{
+    function showToast(msg) {{
+      var el = document.getElementById('toast');
+      if (!el) return;
+      el.textContent = msg;
+      el.classList.add('show');
+      setTimeout(function () {{ el.classList.remove('show'); }}, 1800);
+    }}
+    function copyText(text) {{
+      if (navigator.clipboard && navigator.clipboard.writeText) {{
+        return navigator.clipboard.writeText(text);
+      }}
+      return new Promise(function (resolve, reject) {{
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.setAttribute('readonly', '');
+        ta.style.position = 'fixed';
+        ta.style.left = '-9999px';
+        document.body.appendChild(ta);
+        ta.select();
+        try {{
+          if (document.execCommand('copy')) resolve();
+          else reject(new Error('copy failed'));
+        }} catch (e) {{ reject(e); }}
+        document.body.removeChild(ta);
+      }});
+    }}
+    document.addEventListener('click', function (ev) {{
+      var btn = ev.target.closest('.btn-trello');
+      if (!btn) return;
+      var b64 = btn.getAttribute('data-card-b64') || '';
+      if (!b64) return;
+      var card;
+      try {{
+        card = atob(b64);
+        // decode UTF-8
+        card = decodeURIComponent(Array.prototype.map.call(card, function (c) {{
+          return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        }}).join(''));
+      }} catch (e) {{
+        try {{ card = atob(b64); }} catch (e2) {{ showToast('Copy failed'); return; }}
+      }}
+      copyText(card).then(function () {{
+        var prev = btn.textContent;
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
+        showToast('Copied for Trello — paste into a new card');
+        setTimeout(function () {{
+          btn.textContent = prev;
+          btn.classList.remove('copied');
+        }}, 1500);
+      }}).catch(function () {{
+        showToast('Copy failed — select text manually');
+      }});
+    }});
+  }})();
+  </script>
 </body>
 </html>
 """
