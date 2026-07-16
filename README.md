@@ -20,6 +20,8 @@ Low-profile path (`/v/`), `noindex`, robots disallow. Content is public SAM.gov 
 
 Schedule: `0 9 * * *` UTC (≈ 04:00 EST / 05:00 EDT).
 
+CI uses **fast pacing** (`--robot` + short sleeps, typically a few minutes). Local runs can use slower human pacing if you prefer.
+
 ## Local (optional)
 
 ```bash
