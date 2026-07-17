@@ -1,18 +1,29 @@
 {
-  "date": "2026-07-16",
+  "date": "2026-07-17",
   "saved_at": "2026-07-17T10:50:41.653430+00:00",
   "bucket": {
-    "date": "2026-07-16",
+    "date": "2026-07-17",
     "runs": [
-      "2026-07-16_015238",
-      "2026-07-16_020140",
-      "2026-07-16_102825",
-      "2026-07-16_110257",
-      "2026-07-16_115407",
-      "2026-07-16_144706"
+      "2026-07-17_104918"
     ],
     "notice_keys": [
+      "d87dbcad63484e848516a1e4d4b3cc6c",
+      "4720ea098f9c4e76b34b7a0d6590eebd",
+      "eb77c56b92894dd1ad830bca6659ef6a",
+      "6e33cca292874b72bf5082cb6303ddbc",
+      "b514bb74bff54084a58bea51a3835348",
+      "4263650854414011bc36575c5bd04616",
       "d3c5f6428db54bbf9cf6ba3468e31d70",
+      "80e98f93b51b4f9aa796b0ecce8033a0",
+      "f0ff1a7aced54622932918c925dfa3ad",
+      "79bde58a89e840eb85460320eb7868ed",
+      "337b58007a5344e99eced9d330444818",
+      "63385072a55b40488e449b5fa692c4fb",
+      "feb4187365df4c62ad1668bd60eb277c",
+      "c02f736428f643c3bc45ea115107659e",
+      "35684fa8865240b49a05e64af31237ea",
+      "44cd346ef56a43f4b1fbb995839ba72b",
+      "ea14723f894844a3b006d9b98867db9b",
       "de80f57b2b9647ca9cb952c7995dea1d",
       "c9ce92c2fa294487ae69e84c1609b1d8",
       "ffa2a90240134590ae710ee4e84ab284",
@@ -27,21 +38,11 @@
       "fed0b08539ab448c8374cc0de4286470",
       "6bbd3971f2754825a171bc63fd11e3ba",
       "5198611e14e744aa8ae8835af8cc5e15",
-      "46e08af53dae4f8fa5b22f565221aa6c",
-      "0b784e5c658849eebcc9bea38d3460b0",
-      "9eaee438cc094b5e8a48266e6697671a",
       "f85a7716e9724702acd90ab7ecbbaade",
       "7adcf24ed876457e961446dbaf9b5ead",
-      "c7ee66c98d01402aa2011d863b2701bb",
       "8926b88fed45436aa08a952ae34f1fb3",
-      "a44cc33750f241b3b8fbc547c928fc36",
-      "f810317f304d4d1bb0f5bd13360fc17d",
       "0da6761f9d1243b7820708f79d6b11f2",
       "cf88802be8de44fe9daddf1e42fe7c77",
-      "71df367fc1b343b5bcaff9067d102ac7",
-      "be1253e6c05840bfb401c853b2bb349c",
-      "00cd7e513c0d4f94b41c5284880f2e1a",
-      "e8c71a57885d45689b888bf265de10e6",
       "c3793f6747f24c7489be3dd965988a9a",
       "68c785befb0e4a4aa7aad7f0cca3eb9c",
       "8ead31f00e334010bb858d8bf86fbd82",
@@ -57,72 +58,158 @@
       "5361d913390c4919aaf7ed5a111f8a36",
       "e9d3d7c0f5b64f09b985b7b5846c3f4f",
       "900872506c184483991a439dc92f5149",
-      "6d694dc4dd874c8bbcc956bce7dcf09e",
-      "58ba0aaa113642e4bbcede2faf01f9a3",
-      "4cb7c3992e984b48978b131aa98e6cd4",
-      "de13f532c542434c80a3c82002582719",
-      "0775c714322d4bd7af167c229e881530",
-      "4263650854414011bc36575c5bd04616",
-      "f0ff1a7aced54622932918c925dfa3ad",
-      "35684fa8865240b49a05e64af31237ea"
+      "6d694dc4dd874c8bbcc956bce7dcf09e"
     ],
     "new_notice_keys": [
-      "d3c5f6428db54bbf9cf6ba3468e31d70",
-      "de80f57b2b9647ca9cb952c7995dea1d",
-      "c9ce92c2fa294487ae69e84c1609b1d8",
-      "ffa2a90240134590ae710ee4e84ab284",
-      "39701738c07a4aee91b04ee7576905ed",
-      "82e7b42fd3304414885e57d4a6dc2091",
-      "1c031afa3ccf4233868b4c6f332a0548",
-      "2db95f7cf9ab4d7db0e71cc701054579",
-      "9197376b03924e5e991a945eb2f87c49",
-      "4f449c3a7ed340fa875d1c7a63512c1f",
-      "864f4076b78c40adb6619882d33bf84b",
-      "9cfe920b04ef4745b8b81d76fadf88ca",
-      "fed0b08539ab448c8374cc0de4286470",
-      "6bbd3971f2754825a171bc63fd11e3ba",
-      "5198611e14e744aa8ae8835af8cc5e15",
-      "46e08af53dae4f8fa5b22f565221aa6c",
-      "0b784e5c658849eebcc9bea38d3460b0",
-      "9eaee438cc094b5e8a48266e6697671a",
-      "f85a7716e9724702acd90ab7ecbbaade",
-      "7adcf24ed876457e961446dbaf9b5ead",
-      "c7ee66c98d01402aa2011d863b2701bb",
-      "8926b88fed45436aa08a952ae34f1fb3",
-      "a44cc33750f241b3b8fbc547c928fc36",
-      "f810317f304d4d1bb0f5bd13360fc17d",
-      "0da6761f9d1243b7820708f79d6b11f2",
-      "cf88802be8de44fe9daddf1e42fe7c77",
-      "71df367fc1b343b5bcaff9067d102ac7",
-      "be1253e6c05840bfb401c853b2bb349c",
-      "00cd7e513c0d4f94b41c5284880f2e1a",
-      "e8c71a57885d45689b888bf265de10e6",
-      "c3793f6747f24c7489be3dd965988a9a",
-      "68c785befb0e4a4aa7aad7f0cca3eb9c",
-      "8ead31f00e334010bb858d8bf86fbd82",
-      "deb136b6165e4cecb2ccb737c1ddb642",
-      "d2fdb813f51c4688b97bdd02607692bb",
-      "13a250aa3c14405e81795efdc4986fbf",
-      "f125645db06644aabc729f4c9b64744e",
-      "57af5e649cde429f80f762643f344919",
-      "bcd897a350024ec0bb547e9ad7159e0d",
-      "8969aba1b4e64281b5982623ec79b774",
-      "29fa344cfebe483e95611595a1b315b6",
-      "edf54bdf1a9a469891fc94db54c3f18c",
-      "5361d913390c4919aaf7ed5a111f8a36",
-      "e9d3d7c0f5b64f09b985b7b5846c3f4f",
-      "900872506c184483991a439dc92f5149",
-      "6d694dc4dd874c8bbcc956bce7dcf09e",
-      "58ba0aaa113642e4bbcede2faf01f9a3",
-      "4cb7c3992e984b48978b131aa98e6cd4",
-      "de13f532c542434c80a3c82002582719",
-      "0775c714322d4bd7af167c229e881530",
-      "4263650854414011bc36575c5bd04616",
-      "f0ff1a7aced54622932918c925dfa3ad",
-      "35684fa8865240b49a05e64af31237ea"
+      "d87dbcad63484e848516a1e4d4b3cc6c",
+      "4720ea098f9c4e76b34b7a0d6590eebd",
+      "eb77c56b92894dd1ad830bca6659ef6a",
+      "6e33cca292874b72bf5082cb6303ddbc",
+      "b514bb74bff54084a58bea51a3835348",
+      "80e98f93b51b4f9aa796b0ecce8033a0",
+      "79bde58a89e840eb85460320eb7868ed",
+      "337b58007a5344e99eced9d330444818",
+      "63385072a55b40488e449b5fa692c4fb",
+      "feb4187365df4c62ad1668bd60eb277c",
+      "c02f736428f643c3bc45ea115107659e",
+      "44cd346ef56a43f4b1fbb995839ba72b",
+      "ea14723f894844a3b006d9b98867db9b"
     ]
   },
   "notices": {
+    "d87dbcad63484e848516a1e4d4b3cc6c": {
+      "notice_id": "d87dbcad63484e848516a1e4d4b3cc6c",
+      "title": "Velocity Performance Suite (zVPS) Software Maintenance",
+      "solicitation_number": "205AE9-26-R-00004",
+      "posted_date": "2026-07-16",
+      "type": "Justification",
+      "response_deadline": "",
+      "naics": "",
+      "active": "Yes",
+      "organization": "TREASURY, DEPARTMENT OF THE.INTERNAL REVENUE SERVICE.NATIONAL OFFICE - PROCUREMENT OITA",
+      "matched_terms": [
+        "IRS"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/d87dbcad63484e848516a1e4d4b3cc6c/view",
+      "first_seen_date": "2026-07-17",
+      "last_seen_date": "2026-07-17",
+      "seen_on_dates": [
+        "2026-07-17"
+      ]
+    },
+    "4720ea098f9c4e76b34b7a0d6590eebd": {
+      "notice_id": "4720ea098f9c4e76b34b7a0d6590eebd",
+      "title": "Request for Information - Sentinel NC3 Market Research",
+      "solicitation_number": "RFI_SENTINEL_NC3_FY26_001",
+      "posted_date": "2026-07-16",
+      "type": "Special Notice",
+      "response_deadline": "2026-08-03T18:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "DEPT OF DEFENSE.DEPT OF THE AIR FORCE.AIR FORCE GLOBAL STRIKE COMMAND.FA6800 AFICC 767 ESF",
+      "matched_terms": [
+        "Cyber"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/4720ea098f9c4e76b34b7a0d6590eebd/view",
+      "first_seen_date": "2026-07-17",
+      "last_seen_date": "2026-07-17",
+      "seen_on_dates": [
+        "2026-07-17"
+      ]
+    },
+    "eb77c56b92894dd1ad830bca6659ef6a": {
+      "notice_id": "eb77c56b92894dd1ad830bca6659ef6a",
+      "title": "R499--Request for Information  Digital GI Bill Automation and Modernization",
+      "solicitation_number": "36C10D26Q0163",
+      "posted_date": "2026-07-16",
+      "type": "Sources Sought",
+      "response_deadline": "2026-08-28T21:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "VETERANS AFFAIRS, DEPARTMENT OF.VETERANS AFFAIRS, DEPARTMENT OF.VETERANS BENEFITS ADMIN (36C10D)",
+      "matched_terms": [
+        "EC2"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/eb77c56b92894dd1ad830bca6659ef6a/view",
+      "first_seen_date": "2026-07-17",
+      "last_seen_date": "2026-07-17",
+      "seen_on_dates": [
+        "2026-07-17"
+      ]
+    },
+    "6e33cca292874b72bf5082cb6303ddbc": {
+      "notice_id": "6e33cca292874b72bf5082cb6303ddbc",
+      "title": "Q999--NCO 22 LAB TEAM 678-26-4-228-0033 Banner Autopsy Service /  Base + 4 OYs (VA-26-00052498)",
+      "solicitation_number": "36C26226Q0888",
+      "posted_date": "2026-07-16",
+      "type": "Special Notice",
+      "response_deadline": "2026-07-21T17:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "VETERANS AFFAIRS, DEPARTMENT OF.VETERANS AFFAIRS, DEPARTMENT OF.262-NETWORK CONTRACT OFFICE 22 (36C262)",
+      "matched_terms": [
+        "Forensic"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/6e33cca292874b72bf5082cb6303ddbc/view",
+      "first_seen_date": "2026-07-17",
+      "last_seen_date": "2026-07-17",
+      "seen_on_dates": [
+        "2026-07-17"
+      ]
+    },
+    "b514bb74bff54084a58bea51a3835348": {
+      "notice_id": "b514bb74bff54084a58bea51a3835348",
+      "title": "Port of Jordan S&RTS",
+      "solicitation_number": "HTC71126RE136",
+      "posted_date": "2026-07-16",
+      "type": "Solicitation",
+      "response_deadline": "2026-09-01T11:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "DEPT OF DEFENSE.USTRANSCOM.USTRANSCOM-AQ",
+      "matched_terms": [
+        "MSAB"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/b514bb74bff54084a58bea51a3835348/view",
+      "first_seen_date": "2026-07-17",
+      "last_seen_date": "2026-07-17",
+      "seen_on_dates": [
+        "2026-07-17"
+      ]
+    },
+    "4263650854414011bc36575c5bd04616": {
+      "notice_id": "4263650854414011bc36575c5bd04616",
+      "title": "Multimedia Advertising",
+      "solicitation_number": "W91ZRS26QA005",
+      "posted_date": "2026-07-16",
+      "type": "Combined Synopsis/Solicitation",
+      "response_deadline": "2026-08-12T17:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "DEPT OF DEFENSE.DEPT OF THE ARMY.NGB.W7MZ USPFO ACTIVITY CT ARNG",
+      "matched_terms": [
+        "Cyber"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/4263650854414011bc36575c5bd04616/view",
+      "first_seen_date": "2026-07-16",
+      "last_seen_date": "2026-07-17",
+      "seen_on_dates": [
+        "2026-07-16",
+        "2026-07-17"
+      ]
+    },
     "d3c5f6428db54bbf9cf6ba3468e31d70": {
       "notice_id": "d3c5f6428db54bbf9cf6ba3468e31d70",
       "title": "Fort Benning Construction MAIDIQ",
@@ -143,6 +230,228 @@
       "last_seen_date": "2026-07-17",
       "seen_on_dates": [
         "2026-07-16",
+        "2026-07-17"
+      ]
+    },
+    "80e98f93b51b4f9aa796b0ecce8033a0": {
+      "notice_id": "80e98f93b51b4f9aa796b0ecce8033a0",
+      "title": "DLA Disposition Services Okinawa Brass Shredder",
+      "solicitation_number": "SP4510-26-Q-1032",
+      "posted_date": "2026-07-16",
+      "type": "Combined Synopsis/Solicitation",
+      "response_deadline": "2026-07-24T19:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "DEPT OF DEFENSE.DEFENSE LOGISTICS AGENCY.DLA DISPOSITION SERVICES.DLA DISPOSITION SERVICES -  EBS",
+      "matched_terms": [
+        "Cyber"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/80e98f93b51b4f9aa796b0ecce8033a0/view",
+      "first_seen_date": "2026-07-17",
+      "last_seen_date": "2026-07-17",
+      "seen_on_dates": [
+        "2026-07-17"
+      ]
+    },
+    "f0ff1a7aced54622932918c925dfa3ad": {
+      "notice_id": "f0ff1a7aced54622932918c925dfa3ad",
+      "title": "Cyber Dry Cooler Glycol Conversion",
+      "solicitation_number": "W50S8226Q1C0P",
+      "posted_date": "2026-07-16",
+      "type": "Combined Synopsis/Solicitation",
+      "response_deadline": "2026-07-23T16:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "DEPT OF DEFENSE.DEPT OF THE ARMY.NGB.W7ND USPFO ACTIVITY MDANG 175",
+      "matched_terms": [
+        "Cyber"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/f0ff1a7aced54622932918c925dfa3ad/view",
+      "first_seen_date": "2026-07-16",
+      "last_seen_date": "2026-07-17",
+      "seen_on_dates": [
+        "2026-07-16",
+        "2026-07-17"
+      ]
+    },
+    "79bde58a89e840eb85460320eb7868ed": {
+      "notice_id": "79bde58a89e840eb85460320eb7868ed",
+      "title": "Control System Replacement for Stamford Hurricane Barrier, Stamford, CT",
+      "solicitation_number": "W912WJ27X1C6U",
+      "posted_date": "2026-07-16",
+      "type": "Sources Sought",
+      "response_deadline": "2026-08-14T17:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "DEPT OF DEFENSE.DEPT OF THE ARMY.USACE.NAD.W2SD ENDIST NEW ENGLAND",
+      "matched_terms": [
+        "Cyber"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/79bde58a89e840eb85460320eb7868ed/view",
+      "first_seen_date": "2026-07-17",
+      "last_seen_date": "2026-07-17",
+      "seen_on_dates": [
+        "2026-07-17"
+      ]
+    },
+    "337b58007a5344e99eced9d330444818": {
+      "notice_id": "337b58007a5344e99eced9d330444818",
+      "title": "Cartwin Pro Licenses and Support",
+      "solicitation_number": "DJA-26-AOST-PR-0160",
+      "posted_date": "2026-07-16",
+      "type": "Presolicitation",
+      "response_deadline": "2026-07-21T15:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "JUSTICE, DEPARTMENT OF.ATF ACQUISITION AND PROPERTY MGMT DIV.ATF",
+      "matched_terms": [
+        "Forensic"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/337b58007a5344e99eced9d330444818/view",
+      "first_seen_date": "2026-07-17",
+      "last_seen_date": "2026-07-17",
+      "seen_on_dates": [
+        "2026-07-17"
+      ]
+    },
+    "63385072a55b40488e449b5fa692c4fb": {
+      "notice_id": "63385072a55b40488e449b5fa692c4fb",
+      "title": "Call for Solutions - Global Accountability Visibility Enhanced Logistics Solution",
+      "solicitation_number": "HQDA-G-44_26_01",
+      "posted_date": "2026-07-16",
+      "type": "Solicitation",
+      "response_deadline": "2026-07-23T14:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "DEPT OF DEFENSE.DEPT OF THE ARMY.AMC.ACC.ACC-CTRS.ACC-APG.W6QK ACC-APG",
+      "matched_terms": [
+        "Cyber"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/63385072a55b40488e449b5fa692c4fb/view",
+      "first_seen_date": "2026-07-17",
+      "last_seen_date": "2026-07-17",
+      "seen_on_dates": [
+        "2026-07-17"
+      ]
+    },
+    "feb4187365df4c62ad1668bd60eb277c": {
+      "notice_id": "feb4187365df4c62ad1668bd60eb277c",
+      "title": "CONNECTORS",
+      "solicitation_number": "N6660426Q0456",
+      "posted_date": "2026-07-16",
+      "type": "Combined Synopsis/Solicitation",
+      "response_deadline": "2026-07-24T15:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "DEPT OF DEFENSE.DEPT OF THE NAVY.NAVSEA.NAVSEA WARFARE CENTER.NUWC DIV NEWPORT",
+      "matched_terms": [
+        "Cyber"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/feb4187365df4c62ad1668bd60eb277c/view",
+      "first_seen_date": "2026-07-17",
+      "last_seen_date": "2026-07-17",
+      "seen_on_dates": [
+        "2026-07-17"
+      ]
+    },
+    "c02f736428f643c3bc45ea115107659e": {
+      "notice_id": "c02f736428f643c3bc45ea115107659e",
+      "title": "Building 99 Roof Repair and Replace",
+      "solicitation_number": "N6833526Q1188",
+      "posted_date": "2026-07-16",
+      "type": "Combined Synopsis/Solicitation",
+      "response_deadline": "2026-08-03T20:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "DEPT OF DEFENSE.DEPT OF THE NAVY.NAVAIR.NAVAIR NAWC AD.NAVAIR WARFARE CTR AIRCRAFT DIV",
+      "matched_terms": [
+        "Cyber"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/c02f736428f643c3bc45ea115107659e/view",
+      "first_seen_date": "2026-07-17",
+      "last_seen_date": "2026-07-17",
+      "seen_on_dates": [
+        "2026-07-17"
+      ]
+    },
+    "35684fa8865240b49a05e64af31237ea": {
+      "notice_id": "35684fa8865240b49a05e64af31237ea",
+      "title": "Agentic C2 Framework Tool (ECHOTRIBBLE) Assessment Event",
+      "solicitation_number": "W519TC-26-AE-ECHO",
+      "posted_date": "2026-07-16",
+      "type": "Special Notice",
+      "response_deadline": "2026-08-14T03:59:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "DEPT OF DEFENSE.DEPT OF THE ARMY",
+      "matched_terms": [
+        "Cyber"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/35684fa8865240b49a05e64af31237ea/view",
+      "first_seen_date": "2026-07-16",
+      "last_seen_date": "2026-07-17",
+      "seen_on_dates": [
+        "2026-07-16",
+        "2026-07-17"
+      ]
+    },
+    "44cd346ef56a43f4b1fbb995839ba72b": {
+      "notice_id": "44cd346ef56a43f4b1fbb995839ba72b",
+      "title": "Advanced Cyber Effects for Strategic Operations (ACESO)",
+      "solicitation_number": "FA8750-25-S-7005",
+      "posted_date": "2026-07-16",
+      "type": "Presolicitation",
+      "response_deadline": "",
+      "naics": "",
+      "active": "Yes",
+      "organization": "DEPT OF DEFENSE.DEPT OF THE AIR FORCE.AIR FORCE MATERIEL COMMAND.AIR FORCE RESEARCH LABORATORY.FA8750  AFRL RIK",
+      "matched_terms": [
+        "Cyber"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/44cd346ef56a43f4b1fbb995839ba72b/view",
+      "first_seen_date": "2026-07-17",
+      "last_seen_date": "2026-07-17",
+      "seen_on_dates": [
+        "2026-07-17"
+      ]
+    },
+    "ea14723f894844a3b006d9b98867db9b": {
+      "notice_id": "ea14723f894844a3b006d9b98867db9b",
+      "title": "Access Required to Online Real Estate Database Services",
+      "solicitation_number": "2043FY-26-Q-00038",
+      "posted_date": "2026-07-16",
+      "type": "Combined Synopsis/Solicitation",
+      "response_deadline": "2026-07-20T16:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "TREASURY, DEPARTMENT OF THE.INTERNAL REVENUE SERVICE.SOUTHEAST REGION",
+      "matched_terms": [
+        "IRS"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/ea14723f894844a3b006d9b98867db9b/view",
+      "first_seen_date": "2026-07-17",
+      "last_seen_date": "2026-07-17",
+      "seen_on_dates": [
         "2026-07-17"
       ]
     },
@@ -469,72 +778,6 @@
         "2026-07-17"
       ]
     },
-    "46e08af53dae4f8fa5b22f565221aa6c": {
-      "notice_id": "46e08af53dae4f8fa5b22f565221aa6c",
-      "title": "VECTOR NETWORK ANALYZER",
-      "solicitation_number": "W50S8R26Q0026",
-      "posted_date": "2026-07-14",
-      "type": "Sources Sought",
-      "response_deadline": "2026-07-20T17:00:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "DEPT OF DEFENSE.DEPT OF THE ARMY.NGB.W7NU USPFO ACTIVITY OHANG 179",
-      "matched_terms": [
-        "Cyber"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/46e08af53dae4f8fa5b22f565221aa6c/view",
-      "first_seen_date": "2026-07-16",
-      "last_seen_date": "2026-07-16",
-      "seen_on_dates": [
-        "2026-07-16"
-      ]
-    },
-    "0b784e5c658849eebcc9bea38d3460b0": {
-      "notice_id": "0b784e5c658849eebcc9bea38d3460b0",
-      "title": "Tactical Air Traffic Control (ATC) Command and Control (C2) System (TACOS)",
-      "solicitation_number": "FA2330_RFI_TACOS",
-      "posted_date": "2026-07-14",
-      "type": "Sources Sought",
-      "response_deadline": "2026-08-28T19:00:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "DEPT OF DEFENSE.DEPT OF THE AIR FORCE.AIR FORCE MATERIEL COMMAND.AIR FORCE LIFE CYCLE MANAGEMENT CENTER.DIGITAL.FA2330 ARSPC MGNT SYSTMS AFLCMC/HBA",
-      "matched_terms": [
-        "Cyber"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/0b784e5c658849eebcc9bea38d3460b0/view",
-      "first_seen_date": "2026-07-16",
-      "last_seen_date": "2026-07-16",
-      "seen_on_dates": [
-        "2026-07-16"
-      ]
-    },
-    "9eaee438cc094b5e8a48266e6697671a": {
-      "notice_id": "9eaee438cc094b5e8a48266e6697671a",
-      "title": "STRATASYS FILAMENT, RED",
-      "solicitation_number": "SPMYM4-26-Q-3564",
-      "posted_date": "2026-07-14",
-      "type": "Combined Synopsis/Solicitation",
-      "response_deadline": "2026-07-16T23:00:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "DEPT OF DEFENSE.DEFENSE LOGISTICS AGENCY.DLA MARITIME.DLA MARITIME SHIPYARDS.DLA MARITIME - PEARL HARBOR",
-      "matched_terms": [
-        "Cyber"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/9eaee438cc094b5e8a48266e6697671a/view",
-      "first_seen_date": "2026-07-16",
-      "last_seen_date": "2026-07-16",
-      "seen_on_dates": [
-        "2026-07-16"
-      ]
-    },
     "f85a7716e9724702acd90ab7ecbbaade": {
       "notice_id": "f85a7716e9724702acd90ab7ecbbaade",
       "title": "SEA COMMANDER (SC) ENGINEERING - SUSTAINMENT",
@@ -581,28 +824,6 @@
         "2026-07-17"
       ]
     },
-    "c7ee66c98d01402aa2011d863b2701bb": {
-      "notice_id": "c7ee66c98d01402aa2011d863b2701bb",
-      "title": "Multimedia Advertising",
-      "solicitation_number": "W91ZRS26QA005",
-      "posted_date": "2026-07-14",
-      "type": "Combined Synopsis/Solicitation",
-      "response_deadline": "2026-08-12T17:00:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "DEPT OF DEFENSE.DEPT OF THE ARMY.NGB.W7MZ USPFO ACTIVITY CT ARNG",
-      "matched_terms": [
-        "Cyber"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/c7ee66c98d01402aa2011d863b2701bb/view",
-      "first_seen_date": "2026-07-16",
-      "last_seen_date": "2026-07-16",
-      "seen_on_dates": [
-        "2026-07-16"
-      ]
-    },
     "8926b88fed45436aa08a952ae34f1fb3": {
       "notice_id": "8926b88fed45436aa08a952ae34f1fb3",
       "title": "Marine Security Guard (MSG) Cook Services",
@@ -624,50 +845,6 @@
       "seen_on_dates": [
         "2026-07-16",
         "2026-07-17"
-      ]
-    },
-    "a44cc33750f241b3b8fbc547c928fc36": {
-      "notice_id": "a44cc33750f241b3b8fbc547c928fc36",
-      "title": "J041--Manhattan VA Commercial kitchen and refrigeration equipment  preventative maintenance services contract",
-      "solicitation_number": "36C24226Q0799",
-      "posted_date": "2026-07-14",
-      "type": "Sources Sought",
-      "response_deadline": "2026-07-20T16:00:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "VETERANS AFFAIRS, DEPARTMENT OF.VETERANS AFFAIRS, DEPARTMENT OF.242-NETWORK CONTRACT OFFICE 02 (36C242)",
-      "matched_terms": [
-        "Cyber"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/a44cc33750f241b3b8fbc547c928fc36/view",
-      "first_seen_date": "2026-07-16",
-      "last_seen_date": "2026-07-16",
-      "seen_on_dates": [
-        "2026-07-16"
-      ]
-    },
-    "f810317f304d4d1bb0f5bd13360fc17d": {
-      "notice_id": "f810317f304d4d1bb0f5bd13360fc17d",
-      "title": "J041--Manhattan VA Commercial kitchen and refrigeration equipment  preventative maintenance services contract",
-      "solicitation_number": "36C24226Q0799",
-      "posted_date": "2026-07-14",
-      "type": "Sources Sought",
-      "response_deadline": "2026-07-20T16:00:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "VETERANS AFFAIRS, DEPARTMENT OF.VETERANS AFFAIRS, DEPARTMENT OF.242-NETWORK CONTRACT OFFICE 02 (36C242)",
-      "matched_terms": [
-        "Cyber"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/f810317f304d4d1bb0f5bd13360fc17d/view",
-      "first_seen_date": "2026-07-16",
-      "last_seen_date": "2026-07-16",
-      "seen_on_dates": [
-        "2026-07-16"
       ]
     },
     "0da6761f9d1243b7820708f79d6b11f2": {
@@ -714,94 +891,6 @@
       "seen_on_dates": [
         "2026-07-16",
         "2026-07-17"
-      ]
-    },
-    "71df367fc1b343b5bcaff9067d102ac7": {
-      "notice_id": "71df367fc1b343b5bcaff9067d102ac7",
-      "title": "Cyber Dry Cooler Glycol Conversion",
-      "solicitation_number": "W50S8226Q1C0P",
-      "posted_date": "2026-07-14",
-      "type": "Combined Synopsis/Solicitation",
-      "response_deadline": "2026-07-16T16:00:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "DEPT OF DEFENSE.DEPT OF THE ARMY.NGB.W7ND USPFO ACTIVITY MDANG 175",
-      "matched_terms": [
-        "Cyber"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/71df367fc1b343b5bcaff9067d102ac7/view",
-      "first_seen_date": "2026-07-16",
-      "last_seen_date": "2026-07-16",
-      "seen_on_dates": [
-        "2026-07-16"
-      ]
-    },
-    "be1253e6c05840bfb401c853b2bb349c": {
-      "notice_id": "be1253e6c05840bfb401c853b2bb349c",
-      "title": "Biomanufacturing Academic Challenge",
-      "solicitation_number": "",
-      "posted_date": "2026-07-14",
-      "type": "Special Notice",
-      "response_deadline": "",
-      "naics": "",
-      "active": "Yes",
-      "organization": "DEPT OF DEFENSE",
-      "matched_terms": [
-        "Cyber"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/be1253e6c05840bfb401c853b2bb349c/view",
-      "first_seen_date": "2026-07-16",
-      "last_seen_date": "2026-07-16",
-      "seen_on_dates": [
-        "2026-07-16"
-      ]
-    },
-    "00cd7e513c0d4f94b41c5284880f2e1a": {
-      "notice_id": "00cd7e513c0d4f94b41c5284880f2e1a",
-      "title": "Alternate Access for Cyber Applications: Exodus",
-      "solicitation_number": "FA8750-26-S-7004",
-      "posted_date": "2026-07-14",
-      "type": "Presolicitation",
-      "response_deadline": "",
-      "naics": "",
-      "active": "Yes",
-      "organization": "DEPT OF DEFENSE.DEPT OF THE AIR FORCE.AIR FORCE MATERIEL COMMAND.AIR FORCE RESEARCH LABORATORY.FA8750  AFRL RIK",
-      "matched_terms": [
-        "Cyber"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/00cd7e513c0d4f94b41c5284880f2e1a/view",
-      "first_seen_date": "2026-07-16",
-      "last_seen_date": "2026-07-16",
-      "seen_on_dates": [
-        "2026-07-16"
-      ]
-    },
-    "e8c71a57885d45689b888bf265de10e6": {
-      "notice_id": "e8c71a57885d45689b888bf265de10e6",
-      "title": "AN11--Kaiser Permanente R&D Statistical Expertise EHR Evaluation",
-      "solicitation_number": "36C26026Q0835",
-      "posted_date": "2026-07-14",
-      "type": "Sources Sought",
-      "response_deadline": "2026-07-20T22:00:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "VETERANS AFFAIRS, DEPARTMENT OF.VETERANS AFFAIRS, DEPARTMENT OF.260-NETWORK CONTRACT OFFICE 20 (36C260)",
-      "matched_terms": [
-        "Cyber"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/e8c71a57885d45689b888bf265de10e6/view",
-      "first_seen_date": "2026-07-16",
-      "last_seen_date": "2026-07-16",
-      "seen_on_dates": [
-        "2026-07-16"
       ]
     },
     "c3793f6747f24c7489be3dd965988a9a": {
@@ -1167,164 +1256,6 @@
       "award_amount": "",
       "awardee": "",
       "url": "https://sam.gov/opp/6d694dc4dd874c8bbcc956bce7dcf09e/view",
-      "first_seen_date": "2026-07-16",
-      "last_seen_date": "2026-07-17",
-      "seen_on_dates": [
-        "2026-07-16",
-        "2026-07-17"
-      ]
-    },
-    "58ba0aaa113642e4bbcede2faf01f9a3": {
-      "notice_id": "58ba0aaa113642e4bbcede2faf01f9a3",
-      "title": "Lenel & Milestone Maintenance Support Services for Security Cameras",
-      "solicitation_number": "HT001426RE008",
-      "posted_date": "2026-07-02",
-      "type": "Solicitation",
-      "response_deadline": "2026-07-13T14:00:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "DEPT OF DEFENSE.DEFENSE HEALTH AGENCY (DHA).DEFENSE HEALTH AGENCY",
-      "matched_terms": [
-        "DC3",
-        "Forensic"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/58ba0aaa113642e4bbcede2faf01f9a3/view",
-      "first_seen_date": "2026-07-16",
-      "last_seen_date": "2026-07-16",
-      "seen_on_dates": [
-        "2026-07-16"
-      ]
-    },
-    "4cb7c3992e984b48978b131aa98e6cd4": {
-      "notice_id": "4cb7c3992e984b48978b131aa98e6cd4",
-      "title": "Global medical coverage for LES employees in US Embassy Podgorica, Montenegro",
-      "solicitation_number": "19MJ1926R0001",
-      "posted_date": "2026-07-02",
-      "type": "Solicitation",
-      "response_deadline": "2026-08-14T15:00:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "STATE, DEPARTMENT OF.STATE, DEPARTMENT OF.U.S. EMBASSY PODGORICA",
-      "matched_terms": [
-        "IRS"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/4cb7c3992e984b48978b131aa98e6cd4/view",
-      "first_seen_date": "2026-07-16",
-      "last_seen_date": "2026-07-16",
-      "seen_on_dates": [
-        "2026-07-16"
-      ]
-    },
-    "de13f532c542434c80a3c82002582719": {
-      "notice_id": "de13f532c542434c80a3c82002582719",
-      "title": "Award Notice - TRM Labs, Inc.",
-      "solicitation_number": "70CMSD26C00000005",
-      "posted_date": "2026-07-02",
-      "type": "Award Notice",
-      "response_deadline": "",
-      "naics": "",
-      "active": "Yes",
-      "organization": "HOMELAND SECURITY, DEPARTMENT OF.U.S. IMMIGRATION AND CUSTOMS ENFORCEMENT.INVESTIGATIONS AND OPERATIONS SUPPORT DALLAS",
-      "matched_terms": [
-        "Forensic"
-      ],
-      "award_amount": "",
-      "awardee": "TRM LABS, INC.",
-      "url": "https://sam.gov/opp/de13f532c542434c80a3c82002582719/view",
-      "first_seen_date": "2026-07-16",
-      "last_seen_date": "2026-07-16",
-      "seen_on_dates": [
-        "2026-07-16"
-      ]
-    },
-    "0775c714322d4bd7af167c229e881530": {
-      "notice_id": "0775c714322d4bd7af167c229e881530",
-      "title": "Access Required to Online Real Estate Database Services",
-      "solicitation_number": "2043FY-26-Q-00038",
-      "posted_date": "2026-07-02",
-      "type": "Combined Synopsis/Solicitation",
-      "response_deadline": "2026-07-20T16:00:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "TREASURY, DEPARTMENT OF THE.INTERNAL REVENUE SERVICE.SOUTHEAST REGION",
-      "matched_terms": [
-        "IRS"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/0775c714322d4bd7af167c229e881530/view",
-      "first_seen_date": "2026-07-16",
-      "last_seen_date": "2026-07-16",
-      "seen_on_dates": [
-        "2026-07-16"
-      ]
-    },
-    "4263650854414011bc36575c5bd04616": {
-      "notice_id": "4263650854414011bc36575c5bd04616",
-      "title": "Multimedia Advertising",
-      "solicitation_number": "W91ZRS26QA005",
-      "posted_date": "2026-07-16",
-      "type": "Combined Synopsis/Solicitation",
-      "response_deadline": "2026-08-12T17:00:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "DEPT OF DEFENSE.DEPT OF THE ARMY.NGB.W7MZ USPFO ACTIVITY CT ARNG",
-      "matched_terms": [
-        "Cyber"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/4263650854414011bc36575c5bd04616/view",
-      "first_seen_date": "2026-07-16",
-      "last_seen_date": "2026-07-17",
-      "seen_on_dates": [
-        "2026-07-16",
-        "2026-07-17"
-      ]
-    },
-    "f0ff1a7aced54622932918c925dfa3ad": {
-      "notice_id": "f0ff1a7aced54622932918c925dfa3ad",
-      "title": "Cyber Dry Cooler Glycol Conversion",
-      "solicitation_number": "W50S8226Q1C0P",
-      "posted_date": "2026-07-16",
-      "type": "Combined Synopsis/Solicitation",
-      "response_deadline": "2026-07-23T16:00:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "DEPT OF DEFENSE.DEPT OF THE ARMY.NGB.W7ND USPFO ACTIVITY MDANG 175",
-      "matched_terms": [
-        "Cyber"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/f0ff1a7aced54622932918c925dfa3ad/view",
-      "first_seen_date": "2026-07-16",
-      "last_seen_date": "2026-07-17",
-      "seen_on_dates": [
-        "2026-07-16",
-        "2026-07-17"
-      ]
-    },
-    "35684fa8865240b49a05e64af31237ea": {
-      "notice_id": "35684fa8865240b49a05e64af31237ea",
-      "title": "Agentic C2 Framework Tool (ECHOTRIBBLE) Assessment Event",
-      "solicitation_number": "W519TC-26-AE-ECHO",
-      "posted_date": "2026-07-16",
-      "type": "Special Notice",
-      "response_deadline": "2026-08-14T03:59:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "DEPT OF DEFENSE.DEPT OF THE ARMY",
-      "matched_terms": [
-        "Cyber"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/35684fa8865240b49a05e64af31237ea/view",
       "first_seen_date": "2026-07-16",
       "last_seen_date": "2026-07-17",
       "seen_on_dates": [
