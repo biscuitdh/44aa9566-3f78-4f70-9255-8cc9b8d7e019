@@ -1,12 +1,13 @@
 {
-  "date": "2026-07-18",
+  "date": "2026-07-19",
   "saved_at": "2026-07-19T10:38:17.290061+00:00",
   "bucket": {
-    "date": "2026-07-18",
+    "date": "2026-07-19",
     "runs": [
-      "2026-07-18_102028"
+      "2026-07-19_103651"
     ],
     "notice_keys": [
+      "80c5c9d141c0453396f9c906b8307360",
       "b866c0ae62b149488461a579894a861a",
       "12920f784ac249e880e3b752af724309",
       "16c80c4ff35b40558ad2b7689ea6304d",
@@ -34,7 +35,6 @@
       "ea14723f894844a3b006d9b98867db9b",
       "de80f57b2b9647ca9cb952c7995dea1d",
       "c9ce92c2fa294487ae69e84c1609b1d8",
-      "ffa2a90240134590ae710ee4e84ab284",
       "39701738c07a4aee91b04ee7576905ed",
       "1c031afa3ccf4233868b4c6f332a0548",
       "9197376b03924e5e991a945eb2f87c49",
@@ -63,19 +63,32 @@
       "6d694dc4dd874c8bbcc956bce7dcf09e"
     ],
     "new_notice_keys": [
-      "b866c0ae62b149488461a579894a861a",
-      "12920f784ac249e880e3b752af724309",
-      "16c80c4ff35b40558ad2b7689ea6304d",
-      "cf204990356343338ad05ef94ffd0650",
-      "5cadc124a69b4c6b99bec1c9bc22f03c",
-      "5c0ff4f8f52b48d09c57a1c64409b015",
-      "c618f9e86ae143c782da2ca309a7b1b0",
-      "62a7079be65a4d3eae5aaac1e6c23598",
-      "b36d46df035045a4851f31280c86d9fb",
-      "8ad9ae23e58942209153a811a564a02b"
+      "80c5c9d141c0453396f9c906b8307360"
     ]
   },
   "notices": {
+    "80c5c9d141c0453396f9c906b8307360": {
+      "notice_id": "80c5c9d141c0453396f9c906b8307360",
+      "title": "BALL, SCREW ASSEMBLY",
+      "solicitation_number": "SPMYM326Q8023",
+      "posted_date": "2026-07-18",
+      "type": "Combined Synopsis/Solicitation",
+      "response_deadline": "2026-07-28T16:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "DEPT OF DEFENSE.DEFENSE LOGISTICS AGENCY.DLA MARITIME.DLA MARITIME SHIPYARDS.DLA MARITIME - PORTSMOUTH",
+      "matched_terms": [
+        "Cyber"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/80c5c9d141c0453396f9c906b8307360/view",
+      "first_seen_date": "2026-07-19",
+      "last_seen_date": "2026-07-19",
+      "seen_on_dates": [
+        "2026-07-19"
+      ]
+    },
     "b866c0ae62b149488461a579894a861a": {
       "notice_id": "b866c0ae62b149488461a579894a861a",
       "title": "Web Search Portals and All Other Information Services",
@@ -721,30 +734,6 @@
         "2026-07-17",
         "2026-07-18",
         "2026-07-19"
-      ]
-    },
-    "ffa2a90240134590ae710ee4e84ab284": {
-      "notice_id": "ffa2a90240134590ae710ee4e84ab284",
-      "title": "Request for Information (RFI) for Army Information Enterprise - Information Technology Services (AIE-ITS)",
-      "solicitation_number": "AIE-ITS-001",
-      "posted_date": "2026-07-15",
-      "type": "Sources Sought",
-      "response_deadline": "2026-08-15T21:00:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "DEPT OF DEFENSE.DEPT OF THE ARMY.AMC.ACC.ACC-CTRS.ACC WRN.W4GG HQ US ARMY TACOM",
-      "matched_terms": [
-        "Cyber"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/ffa2a90240134590ae710ee4e84ab284/view",
-      "first_seen_date": "2026-07-16",
-      "last_seen_date": "2026-07-18",
-      "seen_on_dates": [
-        "2026-07-16",
-        "2026-07-17",
-        "2026-07-18"
       ]
     },
     "39701738c07a4aee91b04ee7576905ed": {
