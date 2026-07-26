@@ -1,13 +1,15 @@
 {
-  "date": "2026-07-25",
+  "date": "2026-07-26",
   "saved_at": "2026-07-26T10:47:34.454370+00:00",
   "bucket": {
-    "date": "2026-07-25",
+    "date": "2026-07-26",
     "runs": [
-      "2026-07-25_103600"
+      "2026-07-26_104611"
     ],
     "notice_keys": [
+      "d2c78f2e599c4e8cb73b2492d3a4f470",
       "b83908c3e3fd46bc8057b2108e356c14",
+      "172710192f7f4581840ee55dbe7353b3",
       "057a21cc279947a782c44fc45a5656a3",
       "2c233bf0322144bc9dceea7cdde2ccf2",
       "7c9514533cc547a6bf21b344954ba329",
@@ -16,7 +18,6 @@
       "23f6c7fec7a94204999bdc50823ced10",
       "579f016a95fc48afaf623af2a58a0649",
       "4ff4770c1ae540248e4329f9983989e3",
-      "f7be91ee46b249958d8014d8d6f9288c",
       "b995e0f61e364418a88427d5c8faf526",
       "1558d3194291430e8b593d3017ec2ab9",
       "f0f03457af5040f19a9192112ce5c2e7",
@@ -69,21 +70,33 @@
       "cf88802be8de44fe9daddf1e42fe7c77"
     ],
     "new_notice_keys": [
-      "b83908c3e3fd46bc8057b2108e356c14",
-      "057a21cc279947a782c44fc45a5656a3",
-      "2c233bf0322144bc9dceea7cdde2ccf2",
-      "7c9514533cc547a6bf21b344954ba329",
-      "082e66550de344e98172d4a42977ac03",
-      "ff344edba48d4a62813e26d71cc9835b",
-      "23f6c7fec7a94204999bdc50823ced10",
-      "579f016a95fc48afaf623af2a58a0649",
-      "4ff4770c1ae540248e4329f9983989e3",
-      "f7be91ee46b249958d8014d8d6f9288c",
-      "b995e0f61e364418a88427d5c8faf526",
-      "1558d3194291430e8b593d3017ec2ab9"
+      "d2c78f2e599c4e8cb73b2492d3a4f470",
+      "172710192f7f4581840ee55dbe7353b3"
     ]
   },
   "notices": {
+    "d2c78f2e599c4e8cb73b2492d3a4f470": {
+      "notice_id": "d2c78f2e599c4e8cb73b2492d3a4f470",
+      "title": "PollStar Online Subscription",
+      "solicitation_number": "2043FY-26-Q-00052",
+      "posted_date": "2026-07-25",
+      "type": "Combined Synopsis/Solicitation",
+      "response_deadline": "2026-08-03T14:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "TREASURY, DEPARTMENT OF THE.INTERNAL REVENUE SERVICE.SMALL BUSINESS/SELF EMPLOYED",
+      "matched_terms": [
+        "IRS"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/d2c78f2e599c4e8cb73b2492d3a4f470/view",
+      "first_seen_date": "2026-07-26",
+      "last_seen_date": "2026-07-26",
+      "seen_on_dates": [
+        "2026-07-26"
+      ]
+    },
     "b83908c3e3fd46bc8057b2108e356c14": {
       "notice_id": "b83908c3e3fd46bc8057b2108e356c14",
       "title": "Cyber Operations Formal Training Support (CyOFTS) III",
@@ -104,6 +117,28 @@
       "last_seen_date": "2026-07-26",
       "seen_on_dates": [
         "2026-07-25",
+        "2026-07-26"
+      ]
+    },
+    "172710192f7f4581840ee55dbe7353b3": {
+      "notice_id": "172710192f7f4581840ee55dbe7353b3",
+      "title": "BRAND NAME - STRATASYS, FILAMENT RED",
+      "solicitation_number": "SPMYM4-26-Q-3564",
+      "posted_date": "2026-07-25",
+      "type": "Combined Synopsis/Solicitation",
+      "response_deadline": "2026-07-28T23:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "DEPT OF DEFENSE.DEFENSE LOGISTICS AGENCY.DLA MARITIME.DLA MARITIME SHIPYARDS.DLA MARITIME - PEARL HARBOR",
+      "matched_terms": [
+        "Cyber"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/172710192f7f4581840ee55dbe7353b3/view",
+      "first_seen_date": "2026-07-26",
+      "last_seen_date": "2026-07-26",
+      "seen_on_dates": [
         "2026-07-26"
       ]
     },
@@ -290,28 +325,6 @@
       "seen_on_dates": [
         "2026-07-25",
         "2026-07-26"
-      ]
-    },
-    "f7be91ee46b249958d8014d8d6f9288c": {
-      "notice_id": "f7be91ee46b249958d8014d8d6f9288c",
-      "title": "BRAND NAME - STRATASYS, FILAMENT RED",
-      "solicitation_number": "SPMYM4-26-Q-3564",
-      "posted_date": "2026-07-24",
-      "type": "Combined Synopsis/Solicitation",
-      "response_deadline": "2026-07-28T23:00:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "DEPT OF DEFENSE.DEFENSE LOGISTICS AGENCY.DLA MARITIME.DLA MARITIME SHIPYARDS.DLA MARITIME - PEARL HARBOR",
-      "matched_terms": [
-        "Cyber"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/f7be91ee46b249958d8014d8d6f9288c/view",
-      "first_seen_date": "2026-07-25",
-      "last_seen_date": "2026-07-25",
-      "seen_on_dates": [
-        "2026-07-25"
       ]
     },
     "b995e0f61e364418a88427d5c8faf526": {
