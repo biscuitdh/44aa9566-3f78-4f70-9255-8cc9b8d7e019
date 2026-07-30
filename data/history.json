@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updated_at": "2026-07-29T11:29:21.444937+00:00",
+  "updated_at": "2026-07-30T11:10:56.680686+00:00",
   "runs": [
     {
       "run_id": "2026-07-16_015238",
@@ -228,6 +228,18 @@
       "term_count": 23,
       "hit_count": 64,
       "new_count": 14,
+      "errors": [],
+      "term_sleep": 3.0,
+      "page_sleep": 1.0
+    },
+    {
+      "run_id": "2026-07-30_110928",
+      "run_date": "2026-07-30",
+      "posted_from": "2026-07-16",
+      "posted_to": "2026-07-30",
+      "term_count": 23,
+      "hit_count": 63,
+      "new_count": 6,
       "errors": [],
       "term_sleep": 3.0,
       "page_sleep": 1.0
@@ -1679,7 +1691,7 @@
       "awardee": "",
       "url": "https://sam.gov/opp/eb77c56b92894dd1ad830bca6659ef6a/view",
       "first_seen_date": "2026-07-17",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
         "2026-07-17",
         "2026-07-18",
@@ -1693,7 +1705,8 @@
         "2026-07-26",
         "2026-07-27",
         "2026-07-28",
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
       ]
     },
     "6e33cca292874b72bf5082cb6303ddbc": {
@@ -1713,7 +1726,7 @@
       "awardee": "",
       "url": "https://sam.gov/opp/6e33cca292874b72bf5082cb6303ddbc/view",
       "first_seen_date": "2026-07-17",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
         "2026-07-17",
         "2026-07-18",
@@ -1727,7 +1740,8 @@
         "2026-07-26",
         "2026-07-27",
         "2026-07-28",
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
       ]
     },
     "b514bb74bff54084a58bea51a3835348": {
@@ -1747,7 +1761,7 @@
       "awardee": "",
       "url": "https://sam.gov/opp/b514bb74bff54084a58bea51a3835348/view",
       "first_seen_date": "2026-07-17",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
         "2026-07-17",
         "2026-07-18",
@@ -1761,7 +1775,8 @@
         "2026-07-26",
         "2026-07-27",
         "2026-07-28",
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
       ]
     },
     "80e98f93b51b4f9aa796b0ecce8033a0": {
@@ -1834,7 +1849,7 @@
       "awardee": "",
       "url": "https://sam.gov/opp/337b58007a5344e99eced9d330444818/view",
       "first_seen_date": "2026-07-17",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
         "2026-07-17",
         "2026-07-18",
@@ -1848,7 +1863,8 @@
         "2026-07-26",
         "2026-07-27",
         "2026-07-28",
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
       ]
     },
     "63385072a55b40488e449b5fa692c4fb": {
@@ -1975,7 +1991,7 @@
       "awardee": "",
       "url": "https://sam.gov/opp/ea14723f894844a3b006d9b98867db9b/view",
       "first_seen_date": "2026-07-17",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
         "2026-07-17",
         "2026-07-18",
@@ -1989,7 +2005,8 @@
         "2026-07-26",
         "2026-07-27",
         "2026-07-28",
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
       ]
     },
     "b866c0ae62b149488461a579894a861a": {
@@ -2009,7 +2026,7 @@
       "awardee": "",
       "url": "https://sam.gov/opp/b866c0ae62b149488461a579894a861a/view",
       "first_seen_date": "2026-07-18",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
         "2026-07-18",
         "2026-07-19",
@@ -2022,7 +2039,8 @@
         "2026-07-26",
         "2026-07-27",
         "2026-07-28",
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
       ]
     },
     "12920f784ac249e880e3b752af724309": {
@@ -2174,7 +2192,7 @@
       "awardee": "",
       "url": "https://sam.gov/opp/c618f9e86ae143c782da2ca309a7b1b0/view",
       "first_seen_date": "2026-07-18",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
         "2026-07-18",
         "2026-07-19",
@@ -2187,7 +2205,8 @@
         "2026-07-26",
         "2026-07-27",
         "2026-07-28",
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
       ]
     },
     "62a7079be65a4d3eae5aaac1e6c23598": {
@@ -2234,7 +2253,7 @@
       "awardee": "",
       "url": "https://sam.gov/opp/b36d46df035045a4851f31280c86d9fb/view",
       "first_seen_date": "2026-07-18",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
         "2026-07-18",
         "2026-07-19",
@@ -2247,7 +2266,8 @@
         "2026-07-26",
         "2026-07-27",
         "2026-07-28",
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
       ]
     },
     "8ad9ae23e58942209153a811a564a02b": {
@@ -2320,7 +2340,7 @@
       "awardee": "",
       "url": "https://sam.gov/opp/83eed4ac6fa344f08a6916f79f57c9b9/view",
       "first_seen_date": "2026-07-21",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
         "2026-07-21",
         "2026-07-22",
@@ -2330,7 +2350,8 @@
         "2026-07-26",
         "2026-07-27",
         "2026-07-28",
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
       ]
     },
     "680a8212490a4998975fb2f6d179982a": {
@@ -2350,7 +2371,7 @@
       "awardee": "",
       "url": "https://sam.gov/opp/680a8212490a4998975fb2f6d179982a/view",
       "first_seen_date": "2026-07-21",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
         "2026-07-21",
         "2026-07-22",
@@ -2360,7 +2381,8 @@
         "2026-07-26",
         "2026-07-27",
         "2026-07-28",
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
       ]
     },
     "4d78317328454907bd04fc809cf04632": {
@@ -2478,7 +2500,7 @@
       "awardee": "",
       "url": "https://sam.gov/opp/046f432dbee04f639a5fe3f69eb2e64d/view",
       "first_seen_date": "2026-07-21",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
         "2026-07-21",
         "2026-07-22",
@@ -2488,7 +2510,8 @@
         "2026-07-26",
         "2026-07-27",
         "2026-07-28",
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
       ]
     },
     "6fd1df5fb4644084bf3c308992868d10": {
@@ -2508,7 +2531,7 @@
       "awardee": "",
       "url": "https://sam.gov/opp/6fd1df5fb4644084bf3c308992868d10/view",
       "first_seen_date": "2026-07-21",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
         "2026-07-21",
         "2026-07-22",
@@ -2518,7 +2541,8 @@
         "2026-07-26",
         "2026-07-27",
         "2026-07-28",
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
       ]
     },
     "550ca929f56648bab6851ecb0d4d0431": {
@@ -2538,7 +2562,7 @@
       "awardee": "",
       "url": "https://sam.gov/opp/550ca929f56648bab6851ecb0d4d0431/view",
       "first_seen_date": "2026-07-21",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
         "2026-07-21",
         "2026-07-22",
@@ -2548,7 +2572,8 @@
         "2026-07-26",
         "2026-07-27",
         "2026-07-28",
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
       ]
     },
     "5846a0fd708d4cd3997455483685031b": {
@@ -2592,7 +2617,7 @@
       "awardee": "",
       "url": "https://sam.gov/opp/518510382c1d4088af2f4bf04255de73/view",
       "first_seen_date": "2026-07-21",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
         "2026-07-21",
         "2026-07-22",
@@ -2602,7 +2627,8 @@
         "2026-07-26",
         "2026-07-27",
         "2026-07-28",
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
       ]
     },
     "38b0c35aece44961a4d2d251ed9be456": {
@@ -2644,7 +2670,7 @@
       "awardee": "",
       "url": "https://sam.gov/opp/9b6971e3be464aa9be16bf7e2432c71a/view",
       "first_seen_date": "2026-07-22",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
         "2026-07-22",
         "2026-07-23",
@@ -2653,7 +2679,8 @@
         "2026-07-26",
         "2026-07-27",
         "2026-07-28",
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
       ]
     },
     "37dc79d39f544106b84b14d06bd37eba": {
@@ -2724,7 +2751,7 @@
       "awardee": "",
       "url": "https://sam.gov/opp/29e6c8ae2563404b9379346ee29c8fd1/view",
       "first_seen_date": "2026-07-22",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
         "2026-07-22",
         "2026-07-23",
@@ -2733,7 +2760,8 @@
         "2026-07-26",
         "2026-07-27",
         "2026-07-28",
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
       ]
     },
     "0822daf448e54815809d1bcc27d10adc": {
@@ -2823,7 +2851,7 @@
       "awardee": "",
       "url": "https://sam.gov/opp/a6a96393fa784eedb03ef7dfee0dda38/view",
       "first_seen_date": "2026-07-22",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
         "2026-07-22",
         "2026-07-23",
@@ -2832,7 +2860,8 @@
         "2026-07-26",
         "2026-07-27",
         "2026-07-28",
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
       ]
     },
     "51835015e28c4acba458f1485c29a1f6": {
@@ -2953,7 +2982,7 @@
       "awardee": "",
       "url": "https://sam.gov/opp/45e264799b734584a642dd14b72ea84c/view",
       "first_seen_date": "2026-07-23",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
         "2026-07-23",
         "2026-07-24",
@@ -2961,7 +2990,8 @@
         "2026-07-26",
         "2026-07-27",
         "2026-07-28",
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
       ]
     },
     "a6f8c350c74e43c2a52b44f75e28a9da": {
@@ -3004,7 +3034,7 @@
       "awardee": "",
       "url": "https://sam.gov/opp/2351bd31d15d497190f440c61bd684a2/view",
       "first_seen_date": "2026-07-23",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
         "2026-07-23",
         "2026-07-24",
@@ -3012,7 +3042,8 @@
         "2026-07-26",
         "2026-07-27",
         "2026-07-28",
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
       ]
     },
     "13eed2c6ab5c40cfaaeda12503a67393": {
@@ -3279,7 +3310,7 @@
       "awardee": "",
       "url": "https://sam.gov/opp/ba58ccb374284b059f6224c12418223a/view",
       "first_seen_date": "2026-07-23",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
         "2026-07-23",
         "2026-07-24",
@@ -3287,7 +3318,8 @@
         "2026-07-26",
         "2026-07-27",
         "2026-07-28",
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
       ]
     },
     "f0f03457af5040f19a9192112ce5c2e7": {
@@ -3385,14 +3417,15 @@
       "awardee": "",
       "url": "https://sam.gov/opp/77a34efb546949deb6e877a9c3895cdf/view",
       "first_seen_date": "2026-07-24",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
         "2026-07-24",
         "2026-07-25",
         "2026-07-26",
         "2026-07-27",
         "2026-07-28",
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
       ]
     },
     "ee2b593400d84eff8bff7abbc6fd77fd": {
@@ -3489,14 +3522,15 @@
       "awardee": "",
       "url": "https://sam.gov/opp/f75aeac8f1eb42f3af14cdb8921396c8/view",
       "first_seen_date": "2026-07-24",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
         "2026-07-24",
         "2026-07-25",
         "2026-07-26",
         "2026-07-27",
         "2026-07-28",
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
       ]
     },
     "0405ec4621e249d7b9a74ce5a765171c": {
@@ -3541,14 +3575,15 @@
       "awardee": "",
       "url": "https://sam.gov/opp/e6430bbe58ee45c1a3a77ec852a5d885/view",
       "first_seen_date": "2026-07-24",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
         "2026-07-24",
         "2026-07-25",
         "2026-07-26",
         "2026-07-27",
         "2026-07-28",
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
       ]
     },
     "9053fa7ce5e340fe90cc1d858b09ec62": {
@@ -3569,14 +3604,15 @@
       "awardee": "",
       "url": "https://sam.gov/opp/9053fa7ce5e340fe90cc1d858b09ec62/view",
       "first_seen_date": "2026-07-24",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
         "2026-07-24",
         "2026-07-25",
         "2026-07-26",
         "2026-07-27",
         "2026-07-28",
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
       ]
     },
     "a9aa243da4eb4377bad57af74b6257fd": {
@@ -3747,13 +3783,14 @@
       "awardee": "",
       "url": "https://sam.gov/opp/7c9514533cc547a6bf21b344954ba329/view",
       "first_seen_date": "2026-07-25",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
         "2026-07-25",
         "2026-07-26",
         "2026-07-27",
         "2026-07-28",
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
       ]
     },
     "082e66550de344e98172d4a42977ac03": {
@@ -3798,13 +3835,14 @@
       "awardee": "",
       "url": "https://sam.gov/opp/ff344edba48d4a62813e26d71cc9835b/view",
       "first_seen_date": "2026-07-25",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
         "2026-07-25",
         "2026-07-26",
         "2026-07-27",
         "2026-07-28",
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
       ]
     },
     "23f6c7fec7a94204999bdc50823ced10": {
@@ -3849,13 +3887,14 @@
       "awardee": "",
       "url": "https://sam.gov/opp/579f016a95fc48afaf623af2a58a0649/view",
       "first_seen_date": "2026-07-25",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
         "2026-07-25",
         "2026-07-26",
         "2026-07-27",
         "2026-07-28",
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
       ]
     },
     "4ff4770c1ae540248e4329f9983989e3": {
@@ -3876,13 +3915,14 @@
       "awardee": "V2 FORENSICS CORPORATION",
       "url": "https://sam.gov/opp/4ff4770c1ae540248e4329f9983989e3/view",
       "first_seen_date": "2026-07-25",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
         "2026-07-25",
         "2026-07-26",
         "2026-07-27",
         "2026-07-28",
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
       ]
     },
     "f7be91ee46b249958d8014d8d6f9288c": {
@@ -3924,13 +3964,14 @@
       "awardee": "",
       "url": "https://sam.gov/opp/b995e0f61e364418a88427d5c8faf526/view",
       "first_seen_date": "2026-07-25",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
         "2026-07-25",
         "2026-07-26",
         "2026-07-27",
         "2026-07-28",
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
       ]
     },
     "1558d3194291430e8b593d3017ec2ab9": {
@@ -3975,12 +4016,13 @@
       "awardee": "",
       "url": "https://sam.gov/opp/d2c78f2e599c4e8cb73b2492d3a4f470/view",
       "first_seen_date": "2026-07-26",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
         "2026-07-26",
         "2026-07-27",
         "2026-07-28",
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
       ]
     },
     "172710192f7f4581840ee55dbe7353b3": {
@@ -4045,10 +4087,11 @@
       "awardee": "",
       "url": "https://sam.gov/opp/d1bb06dbd4ed4ea6b31aefbbcadf72c4/view",
       "first_seen_date": "2026-07-28",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
         "2026-07-28",
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
       ]
     },
     "a6048a7219fb4aeaa5876c182597bdb0": {
@@ -4068,10 +4111,11 @@
       "awardee": "",
       "url": "https://sam.gov/opp/a6048a7219fb4aeaa5876c182597bdb0/view",
       "first_seen_date": "2026-07-28",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
         "2026-07-28",
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
       ]
     },
     "9f63a10bd7924235b6a8bad44db39154": {
@@ -4091,10 +4135,11 @@
       "awardee": "",
       "url": "https://sam.gov/opp/9f63a10bd7924235b6a8bad44db39154/view",
       "first_seen_date": "2026-07-28",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
         "2026-07-28",
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
       ]
     },
     "249311a766814004a99c3fe9143f643c": {
@@ -4114,10 +4159,11 @@
       "awardee": "",
       "url": "https://sam.gov/opp/249311a766814004a99c3fe9143f643c/view",
       "first_seen_date": "2026-07-28",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
         "2026-07-28",
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
       ]
     },
     "16cd5cc81ac848b383186c04e4718b77": {
@@ -4183,10 +4229,11 @@
       "awardee": "",
       "url": "https://sam.gov/opp/ec9d2217b20a4652b3c3b863f949a928/view",
       "first_seen_date": "2026-07-28",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
         "2026-07-28",
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
       ]
     },
     "4e66fbcf3f4d48ea81ae2bf4e2664e06": {
@@ -4206,10 +4253,11 @@
       "awardee": "",
       "url": "https://sam.gov/opp/4e66fbcf3f4d48ea81ae2bf4e2664e06/view",
       "first_seen_date": "2026-07-28",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
         "2026-07-28",
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
       ]
     },
     "8767e0439c92485ebdbb81cf8943efbf": {
@@ -4229,10 +4277,11 @@
       "awardee": "",
       "url": "https://sam.gov/opp/8767e0439c92485ebdbb81cf8943efbf/view",
       "first_seen_date": "2026-07-28",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
         "2026-07-28",
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
       ]
     },
     "f66e5c988c214b9f878b27acc32fd735": {
@@ -4253,10 +4302,11 @@
       "awardee": "",
       "url": "https://sam.gov/opp/f66e5c988c214b9f878b27acc32fd735/view",
       "first_seen_date": "2026-07-28",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
         "2026-07-28",
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
       ]
     },
     "b49fb21b13cc42d2a833ac31afead27e": {
@@ -4321,10 +4371,11 @@
       "awardee": "",
       "url": "https://sam.gov/opp/a02bec9931ed47cd8e635fcb71af3f24/view",
       "first_seen_date": "2026-07-28",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
         "2026-07-28",
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
       ]
     },
     "4c1d9820dc2a4bd785f1daabf4969c30": {
@@ -4344,10 +4395,11 @@
       "awardee": "",
       "url": "https://sam.gov/opp/4c1d9820dc2a4bd785f1daabf4969c30/view",
       "first_seen_date": "2026-07-28",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
         "2026-07-28",
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
       ]
     },
     "ab510d376ca04609ac528d9bf217f593": {
@@ -4367,10 +4419,11 @@
       "awardee": "",
       "url": "https://sam.gov/opp/ab510d376ca04609ac528d9bf217f593/view",
       "first_seen_date": "2026-07-28",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
         "2026-07-28",
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
       ]
     },
     "3fd517c557904f4f81ec151faa8b1d03": {
@@ -4391,10 +4444,11 @@
       "awardee": "",
       "url": "https://sam.gov/opp/3fd517c557904f4f81ec151faa8b1d03/view",
       "first_seen_date": "2026-07-28",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
         "2026-07-28",
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
       ]
     },
     "649dea49f4434ea5b9ae5a77ba36fe6b": {
@@ -4459,10 +4513,11 @@
       "awardee": "",
       "url": "https://sam.gov/opp/0d464c8e496e409b9de009f20bc0b215/view",
       "first_seen_date": "2026-07-28",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
         "2026-07-28",
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
       ]
     },
     "c173cbbecea743e9ad81fa531700e65a": {
@@ -4482,9 +4537,10 @@
       "awardee": "",
       "url": "https://sam.gov/opp/c173cbbecea743e9ad81fa531700e65a/view",
       "first_seen_date": "2026-07-29",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
       ]
     },
     "da5438a2c2db4b8da27c8c484a849149": {
@@ -4504,9 +4560,10 @@
       "awardee": "",
       "url": "https://sam.gov/opp/da5438a2c2db4b8da27c8c484a849149/view",
       "first_seen_date": "2026-07-29",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
       ]
     },
     "aa95f340bbda47b3a38c48bafeb3d22d": {
@@ -4526,9 +4583,10 @@
       "awardee": "",
       "url": "https://sam.gov/opp/aa95f340bbda47b3a38c48bafeb3d22d/view",
       "first_seen_date": "2026-07-29",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
       ]
     },
     "080793fe2598499e89dc3245efd4d064": {
@@ -4548,9 +4606,10 @@
       "awardee": "",
       "url": "https://sam.gov/opp/080793fe2598499e89dc3245efd4d064/view",
       "first_seen_date": "2026-07-29",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
       ]
     },
     "4245fad98b624071ad653452a6c4f93f": {
@@ -4570,9 +4629,10 @@
       "awardee": "",
       "url": "https://sam.gov/opp/4245fad98b624071ad653452a6c4f93f/view",
       "first_seen_date": "2026-07-29",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
       ]
     },
     "790e87dd1942478ca62ff2b80a3abada": {
@@ -4592,9 +4652,10 @@
       "awardee": "",
       "url": "https://sam.gov/opp/790e87dd1942478ca62ff2b80a3abada/view",
       "first_seen_date": "2026-07-29",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
       ]
     },
     "30ac9fd3bef340da81fd3ef598a19570": {
@@ -4614,9 +4675,10 @@
       "awardee": "",
       "url": "https://sam.gov/opp/30ac9fd3bef340da81fd3ef598a19570/view",
       "first_seen_date": "2026-07-29",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
       ]
     },
     "05953afbb7c04a06b4898c06440074d1": {
@@ -4636,9 +4698,10 @@
       "awardee": "",
       "url": "https://sam.gov/opp/05953afbb7c04a06b4898c06440074d1/view",
       "first_seen_date": "2026-07-29",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
       ]
     },
     "e8ed11eb6796496eb8f0ddf0e1b81132": {
@@ -4658,9 +4721,10 @@
       "awardee": "",
       "url": "https://sam.gov/opp/e8ed11eb6796496eb8f0ddf0e1b81132/view",
       "first_seen_date": "2026-07-29",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
       ]
     },
     "31befefb708b4c3ea5581b87322e7536": {
@@ -4680,9 +4744,10 @@
       "awardee": "",
       "url": "https://sam.gov/opp/31befefb708b4c3ea5581b87322e7536/view",
       "first_seen_date": "2026-07-29",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
       ]
     },
     "78b76c5efc8a4127a6a96e35343348f7": {
@@ -4702,9 +4767,10 @@
       "awardee": "",
       "url": "https://sam.gov/opp/78b76c5efc8a4127a6a96e35343348f7/view",
       "first_seen_date": "2026-07-29",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
       ]
     },
     "338189f9aa7246d69048a351c27e776f": {
@@ -4724,9 +4790,10 @@
       "awardee": "",
       "url": "https://sam.gov/opp/338189f9aa7246d69048a351c27e776f/view",
       "first_seen_date": "2026-07-29",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
       ]
     },
     "d61c25ed88de4902aae86d15b601e440": {
@@ -4746,9 +4813,10 @@
       "awardee": "",
       "url": "https://sam.gov/opp/d61c25ed88de4902aae86d15b601e440/view",
       "first_seen_date": "2026-07-29",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
       ]
     },
     "afda4393a73046b0af77bc2c34552f03": {
@@ -4768,9 +4836,142 @@
       "awardee": "",
       "url": "https://sam.gov/opp/afda4393a73046b0af77bc2c34552f03/view",
       "first_seen_date": "2026-07-29",
-      "last_seen_date": "2026-07-29",
+      "last_seen_date": "2026-07-30",
       "seen_on_dates": [
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-30"
+      ]
+    },
+    "1419d8fe8c72450e949bd0ef36ce26ba": {
+      "notice_id": "1419d8fe8c72450e949bd0ef36ce26ba",
+      "title": "StressCheck Combined Synopsis Solicitation",
+      "solicitation_number": "FA8220-26-Q-GH01",
+      "posted_date": "2026-07-29",
+      "type": "Combined Synopsis/Solicitation",
+      "response_deadline": "2026-08-07T19:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "DEPT OF DEFENSE.DEPT OF THE AIR FORCE.AIR FORCE MATERIEL COMMAND.AIR FORCE LIFE CYCLE MANAGEMENT CENTER.MOBILITY AIRCRAFT.FA8220  AFLCMC WLDKAA",
+      "matched_terms": [
+        "Cyber"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/1419d8fe8c72450e949bd0ef36ce26ba/view",
+      "first_seen_date": "2026-07-30",
+      "last_seen_date": "2026-07-30",
+      "seen_on_dates": [
+        "2026-07-30"
+      ]
+    },
+    "a6b93008372e4e9ebf76e0acb4cc648b": {
+      "notice_id": "a6b93008372e4e9ebf76e0acb4cc648b",
+      "title": "Specialized Disposable Gloves",
+      "solicitation_number": "75N98026SS00813",
+      "posted_date": "2026-07-29",
+      "type": "Sources Sought",
+      "response_deadline": "2026-07-31T14:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "HEALTH AND HUMAN SERVICES, DEPARTMENT OF.NATIONAL INSTITUTES OF HEALTH.NATIONAL INSTITUTES OF HEALTH OLAO",
+      "matched_terms": [
+        "Forensic"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/a6b93008372e4e9ebf76e0acb4cc648b/view",
+      "first_seen_date": "2026-07-30",
+      "last_seen_date": "2026-07-30",
+      "seen_on_dates": [
+        "2026-07-30"
+      ]
+    },
+    "ef81de4ff1c44257a54af379ca64c3ac": {
+      "notice_id": "ef81de4ff1c44257a54af379ca64c3ac",
+      "title": "SealingTech Defensive Cyber Operations Kit",
+      "solicitation_number": "M6890926Q7715",
+      "posted_date": "2026-07-29",
+      "type": "Combined Synopsis/Solicitation",
+      "response_deadline": "2026-08-04T17:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "DEPT OF DEFENSE.DEPT OF THE NAVY.USMC.MARCOR SYSCOM.SUPPLY OFFICER",
+      "matched_terms": [
+        "Cyber"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/ef81de4ff1c44257a54af379ca64c3ac/view",
+      "first_seen_date": "2026-07-30",
+      "last_seen_date": "2026-07-30",
+      "seen_on_dates": [
+        "2026-07-30"
+      ]
+    },
+    "04445706c4f64a3e9e404aa63aba23c6": {
+      "notice_id": "04445706c4f64a3e9e404aa63aba23c6",
+      "title": "RFI #4 - HQ AFRC A-E Facilities Support and Environmental Services",
+      "solicitation_number": "FA664326_0003-03",
+      "posted_date": "2026-07-29",
+      "type": "Sources Sought",
+      "response_deadline": "2026-08-10T18:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "DEPT OF DEFENSE.DEPT OF THE AIR FORCE.AIR FORCE RESERVE COMMAND.FA6643  AF RESERVE CMD HQ AFRC PK",
+      "matched_terms": [
+        "Cyber"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/04445706c4f64a3e9e404aa63aba23c6/view",
+      "first_seen_date": "2026-07-30",
+      "last_seen_date": "2026-07-30",
+      "seen_on_dates": [
+        "2026-07-30"
+      ]
+    },
+    "4e1f91359f834efe804e09b04c8aa9f7": {
+      "notice_id": "4e1f91359f834efe804e09b04c8aa9f7",
+      "title": "Excalibur Rugged Server",
+      "solicitation_number": "N6893626RFPREQD550000E5500000379",
+      "posted_date": "2026-07-29",
+      "type": "Sources Sought",
+      "response_deadline": "2026-08-13T19:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "DEPT OF DEFENSE.DEPT OF THE NAVY.NAVAIR.NAVAIR NAWC WD.NAVAL AIR WARFARE CENTER",
+      "matched_terms": [
+        "Cyber"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/4e1f91359f834efe804e09b04c8aa9f7/view",
+      "first_seen_date": "2026-07-30",
+      "last_seen_date": "2026-07-30",
+      "seen_on_dates": [
+        "2026-07-30"
+      ]
+    },
+    "48aac696f4124bc4b04ecb2c6f2296b0": {
+      "notice_id": "48aac696f4124bc4b04ecb2c6f2296b0",
+      "title": "Epiq X40 + PDK Kit - 450MHz BW Software Defined Radio",
+      "solicitation_number": "W50S8R26Q0023",
+      "posted_date": "2026-07-29",
+      "type": "Special Notice",
+      "response_deadline": "2026-08-13T18:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "DEPT OF DEFENSE.DEPT OF THE ARMY.NGB.W7NU USPFO ACTIVITY OHANG 179",
+      "matched_terms": [
+        "Cyber"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/48aac696f4124bc4b04ecb2c6f2296b0/view",
+      "first_seen_date": "2026-07-30",
+      "last_seen_date": "2026-07-30",
+      "seen_on_dates": [
+        "2026-07-30"
       ]
     }
   },
@@ -5901,8 +6102,87 @@
         "d61c25ed88de4902aae86d15b601e440",
         "afda4393a73046b0af77bc2c34552f03"
       ]
+    },
+    "2026-07-30": {
+      "date": "2026-07-30",
+      "runs": [
+        "2026-07-30_110928"
+      ],
+      "notice_keys": [
+        "1419d8fe8c72450e949bd0ef36ce26ba",
+        "a6b93008372e4e9ebf76e0acb4cc648b",
+        "ef81de4ff1c44257a54af379ca64c3ac",
+        "04445706c4f64a3e9e404aa63aba23c6",
+        "c173cbbecea743e9ad81fa531700e65a",
+        "4e1f91359f834efe804e09b04c8aa9f7",
+        "48aac696f4124bc4b04ecb2c6f2296b0",
+        "da5438a2c2db4b8da27c8c484a849149",
+        "aa95f340bbda47b3a38c48bafeb3d22d",
+        "080793fe2598499e89dc3245efd4d064",
+        "4245fad98b624071ad653452a6c4f93f",
+        "790e87dd1942478ca62ff2b80a3abada",
+        "30ac9fd3bef340da81fd3ef598a19570",
+        "05953afbb7c04a06b4898c06440074d1",
+        "d1bb06dbd4ed4ea6b31aefbbcadf72c4",
+        "e8ed11eb6796496eb8f0ddf0e1b81132",
+        "a6048a7219fb4aeaa5876c182597bdb0",
+        "31befefb708b4c3ea5581b87322e7536",
+        "9f63a10bd7924235b6a8bad44db39154",
+        "249311a766814004a99c3fe9143f643c",
+        "78b76c5efc8a4127a6a96e35343348f7",
+        "338189f9aa7246d69048a351c27e776f",
+        "d61c25ed88de4902aae86d15b601e440",
+        "afda4393a73046b0af77bc2c34552f03",
+        "ec9d2217b20a4652b3c3b863f949a928",
+        "4e66fbcf3f4d48ea81ae2bf4e2664e06",
+        "8767e0439c92485ebdbb81cf8943efbf",
+        "f66e5c988c214b9f878b27acc32fd735",
+        "a02bec9931ed47cd8e635fcb71af3f24",
+        "4c1d9820dc2a4bd785f1daabf4969c30",
+        "ab510d376ca04609ac528d9bf217f593",
+        "3fd517c557904f4f81ec151faa8b1d03",
+        "0d464c8e496e409b9de009f20bc0b215",
+        "d2c78f2e599c4e8cb73b2492d3a4f470",
+        "7c9514533cc547a6bf21b344954ba329",
+        "ff344edba48d4a62813e26d71cc9835b",
+        "579f016a95fc48afaf623af2a58a0649",
+        "4ff4770c1ae540248e4329f9983989e3",
+        "b995e0f61e364418a88427d5c8faf526",
+        "77a34efb546949deb6e877a9c3895cdf",
+        "f75aeac8f1eb42f3af14cdb8921396c8",
+        "e6430bbe58ee45c1a3a77ec852a5d885",
+        "9053fa7ce5e340fe90cc1d858b09ec62",
+        "45e264799b734584a642dd14b72ea84c",
+        "2351bd31d15d497190f440c61bd684a2",
+        "9b6971e3be464aa9be16bf7e2432c71a",
+        "ba58ccb374284b059f6224c12418223a",
+        "29e6c8ae2563404b9379346ee29c8fd1",
+        "a6a96393fa784eedb03ef7dfee0dda38",
+        "83eed4ac6fa344f08a6916f79f57c9b9",
+        "680a8212490a4998975fb2f6d179982a",
+        "046f432dbee04f639a5fe3f69eb2e64d",
+        "6fd1df5fb4644084bf3c308992868d10",
+        "550ca929f56648bab6851ecb0d4d0431",
+        "518510382c1d4088af2f4bf04255de73",
+        "b866c0ae62b149488461a579894a861a",
+        "c618f9e86ae143c782da2ca309a7b1b0",
+        "b36d46df035045a4851f31280c86d9fb",
+        "eb77c56b92894dd1ad830bca6659ef6a",
+        "6e33cca292874b72bf5082cb6303ddbc",
+        "b514bb74bff54084a58bea51a3835348",
+        "337b58007a5344e99eced9d330444818",
+        "ea14723f894844a3b006d9b98867db9b"
+      ],
+      "new_notice_keys": [
+        "1419d8fe8c72450e949bd0ef36ce26ba",
+        "a6b93008372e4e9ebf76e0acb4cc648b",
+        "ef81de4ff1c44257a54af379ca64c3ac",
+        "04445706c4f64a3e9e404aa63aba23c6",
+        "4e1f91359f834efe804e09b04c8aa9f7",
+        "48aac696f4124bc4b04ecb2c6f2296b0"
+      ]
     }
   },
   "retention_days": 15,
-  "retention_cutoff": "2026-07-15"
+  "retention_cutoff": "2026-07-16"
 }
