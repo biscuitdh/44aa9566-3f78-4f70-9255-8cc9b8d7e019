@@ -1,10 +1,10 @@
 {
-  "date": "2026-08-01",
+  "date": "2026-08-02",
   "saved_at": "2026-08-02T10:44:08.079743+00:00",
   "bucket": {
-    "date": "2026-08-01",
+    "date": "2026-08-02",
     "runs": [
-      "2026-08-01_104233"
+      "2026-08-02_104242"
     ],
     "notice_keys": [
       "17dd5316db3a432c8c8dead8af8f7065",
@@ -68,22 +68,7 @@
       "550ca929f56648bab6851ecb0d4d0431",
       "518510382c1d4088af2f4bf04255de73"
     ],
-    "new_notice_keys": [
-      "17dd5316db3a432c8c8dead8af8f7065",
-      "fcb8f5f598ed408391ca92387722f71a",
-      "ab92af82bb6949f980319ed612298d3b",
-      "abc6c300aab142e784aae5e3e7632742",
-      "7fe15c4db87a4bb6a49ecaa1557159bf",
-      "0cce8ec152594ec58b218f7b470a94ea",
-      "36a7811267524cc8a95d82d9108b0817",
-      "fbc8f836005d4288a6d0e8d8ad275ba2",
-      "aa722aebfccd4b36b6a6326e67c80771",
-      "2a397cdb5d524ab5a31729eea61f3b7f",
-      "45f4f6ca77cf4563bb764f63002783b8",
-      "cc385b496cb443c5887d8a8a2bea12cd",
-      "2feb8a0d712f45d293e6c490b3a3476e",
-      "6d8eb00e1b2f4c7bbb76a2293352cd85"
-    ]
+    "new_notice_keys": []
   },
   "notices": {
     "17dd5316db3a432c8c8dead8af8f7065": {
