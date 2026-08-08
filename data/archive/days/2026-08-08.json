@@ -1,12 +1,23 @@
 {
-  "date": "2026-08-07",
+  "date": "2026-08-08",
   "saved_at": "2026-08-08T09:41:21.971932+00:00",
   "bucket": {
-    "date": "2026-08-07",
+    "date": "2026-08-08",
     "runs": [
-      "2026-08-07_100306"
+      "2026-08-08_093956"
     ],
     "notice_keys": [
+      "eca8f02125084880a319f9d3bf47b490",
+      "05240eef3e5941fea69a103321a4f880",
+      "41f4f6206ac14fd7af5efda1864259f7",
+      "523464a55ef94402b2d02abd0292b595",
+      "2d2f3508edf946aaa133ccdcfbcb957d",
+      "d330ff335c4849848d4c882042649d06",
+      "5e9ac709aa0f4ea9855ca8c7873586b3",
+      "b35d1260e41e4c88a933e2c78fc882dd",
+      "22a5a90905a340d5a20dffbadac36bae",
+      "46fda7fb2632467999bdec1554c7d4a0",
+      "19da7d2c9f114d49a196edf15502d058",
       "ed5992b9e7124dfba31a9de3dbab596c",
       "982dd475b8ec4d9ba4c046aa459ae722",
       "2bff817b0fa545d6a9cfceb1694113a9",
@@ -28,17 +39,11 @@
       "027a7889ccfa44de9024973e18525703",
       "9c9ea4e44d9f41ffaff06e5797e10e75",
       "0b6bbfc7fd81429c8cc3aa7c143b6180",
-      "a2e1b4d7807c4d3b879cccb82722e181",
-      "1cd62ddf169b4431b25013b3013bdb8d",
       "37b256b1e8a0442baf40faed6909db87",
-      "bf1f3083b01d4f6c86b3abd7e23753f8",
       "fac0dcbe5eff43ab92e3dadb319daed1",
       "ecfdffff7f3746f5875516132933efb3",
-      "707446bd240148bcbafaa48bb06a0212",
       "0710c0b6991c47afae92a6d5f090db8b",
       "21919562e59b4deabfe53741028e4484",
-      "c29d71aa50b0459ea479951dbec59936",
-      "3673d6ba214240f59e2791c543d3bccd",
       "432936d8df7140bcbb481389ae608063",
       "98b6585531f94adfbbc66aba3df59618",
       "0075cc7e580b4dcbab5a42c4d288e080",
@@ -53,38 +58,270 @@
       "53c41de7d1894b7c91aeff1852462b63",
       "a6b93008372e4e9ebf76e0acb4cc648b",
       "d1bb06dbd4ed4ea6b31aefbbcadf72c4",
-      "9f63a10bd7924235b6a8bad44db39154",
       "f66e5c988c214b9f878b27acc32fd735",
       "4c1d9820dc2a4bd785f1daabf4969c30",
-      "ab510d376ca04609ac528d9bf217f593",
-      "7c9514533cc547a6bf21b344954ba329",
-      "579f016a95fc48afaf623af2a58a0649",
-      "4ff4770c1ae540248e4329f9983989e3"
+      "ab510d376ca04609ac528d9bf217f593"
     ],
     "new_notice_keys": [
-      "ed5992b9e7124dfba31a9de3dbab596c",
-      "982dd475b8ec4d9ba4c046aa459ae722",
-      "2bff817b0fa545d6a9cfceb1694113a9",
-      "c926de4801f445fd909b11f94830ffba",
-      "61c6c5b664c54779b99ee09eb0126a7b",
-      "a481a7e9d8f34ab5847693d809c9e222",
-      "2d105da66cc5441499144d2f21b6459a",
-      "4ec15abaeb89486384f82697fe0f4d5c",
-      "48984514a0f442c78295585ce571c8a9",
-      "ae20662a4b974c1abb6b7a05c1aa6395",
-      "1f535ed4cfed499b9b020883f866c25c",
-      "511b5635e16e4c5aa6cfe2fb28eb213c",
-      "483bf0c032384a35b5c2450d426d9d84",
-      "0c117fae42ba42939c55a75978936532",
-      "8ef239a3eb9e4c1aaa3f89822d9df413",
-      "74c69f6f7d7d4098964fb81db4840ffc",
-      "3059615e1b044498a22cf7e58d9acdcb",
-      "027a7889ccfa44de9024973e18525703",
-      "9c9ea4e44d9f41ffaff06e5797e10e75",
-      "0b6bbfc7fd81429c8cc3aa7c143b6180"
+      "eca8f02125084880a319f9d3bf47b490",
+      "05240eef3e5941fea69a103321a4f880",
+      "41f4f6206ac14fd7af5efda1864259f7",
+      "523464a55ef94402b2d02abd0292b595",
+      "2d2f3508edf946aaa133ccdcfbcb957d",
+      "d330ff335c4849848d4c882042649d06",
+      "5e9ac709aa0f4ea9855ca8c7873586b3",
+      "b35d1260e41e4c88a933e2c78fc882dd",
+      "22a5a90905a340d5a20dffbadac36bae",
+      "46fda7fb2632467999bdec1554c7d4a0",
+      "19da7d2c9f114d49a196edf15502d058"
     ]
   },
   "notices": {
+    "eca8f02125084880a319f9d3bf47b490": {
+      "notice_id": "eca8f02125084880a319f9d3bf47b490",
+      "title": "Translation and Interpretation Services (BAMC)",
+      "solicitation_number": "W81K0026RA042",
+      "posted_date": "2026-08-07",
+      "type": "Solicitation",
+      "response_deadline": "2026-08-13T17:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "DEPT OF DEFENSE.DEPT OF THE ARMY.MEDCOM.W40M USA HCA",
+      "matched_terms": [
+        "Cyber"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/eca8f02125084880a319f9d3bf47b490/view",
+      "first_seen_date": "2026-08-08",
+      "last_seen_date": "2026-08-08",
+      "seen_on_dates": [
+        "2026-08-08"
+      ]
+    },
+    "05240eef3e5941fea69a103321a4f880": {
+      "notice_id": "05240eef3e5941fea69a103321a4f880",
+      "title": "SOLICITATION for LGF Battle Dress Uniform for the U.S. EMBASSY in ANKARA, T\u00dcRK\u0130YE",
+      "solicitation_number": "19TU15-26-Q-3790-SOL",
+      "posted_date": "2026-08-07",
+      "type": "Solicitation",
+      "response_deadline": "2026-08-24T12:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "STATE, DEPARTMENT OF.STATE, DEPARTMENT OF.U.S. EMBASSY ANKARA",
+      "matched_terms": [
+        "IRS"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/05240eef3e5941fea69a103321a4f880/view",
+      "first_seen_date": "2026-08-08",
+      "last_seen_date": "2026-08-08",
+      "seen_on_dates": [
+        "2026-08-08"
+      ]
+    },
+    "41f4f6206ac14fd7af5efda1864259f7": {
+      "notice_id": "41f4f6206ac14fd7af5efda1864259f7",
+      "title": "N65236_V2_FORENSICS_SOFTWARE_AND_TRAINING",
+      "solicitation_number": "N65236_V2_FORENSICS_SW_AND_TRAINING",
+      "posted_date": "2026-08-07",
+      "type": "Presolicitation",
+      "response_deadline": "2026-08-14T14:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "DEPT OF DEFENSE.DEPT OF THE NAVY.SPAWAR.SPAWAR LANT.NIWC ATLANTIC",
+      "matched_terms": [
+        "Forensics",
+        "GrayKey",
+        "XRY"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/41f4f6206ac14fd7af5efda1864259f7/view",
+      "first_seen_date": "2026-08-08",
+      "last_seen_date": "2026-08-08",
+      "seen_on_dates": [
+        "2026-08-08"
+      ]
+    },
+    "523464a55ef94402b2d02abd0292b595": {
+      "notice_id": "523464a55ef94402b2d02abd0292b595",
+      "title": "Monument Sign - Natick Soldiers Systems Center",
+      "solicitation_number": "W911QY-26-R-MONU",
+      "posted_date": "2026-08-07",
+      "type": "Combined Synopsis/Solicitation",
+      "response_deadline": "2026-08-11T20:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "DEPT OF DEFENSE.DEPT OF THE ARMY.AMC.ACC.ACC-CTRS.ACC-APG.W6QK ACC-APG NATICK",
+      "matched_terms": [
+        "Cyber"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/523464a55ef94402b2d02abd0292b595/view",
+      "first_seen_date": "2026-08-08",
+      "last_seen_date": "2026-08-08",
+      "seen_on_dates": [
+        "2026-08-08"
+      ]
+    },
+    "2d2f3508edf946aaa133ccdcfbcb957d": {
+      "notice_id": "2d2f3508edf946aaa133ccdcfbcb957d",
+      "title": "MTEC Solicitation Summary: Fiscal Year 2026 Multi-Topic Request for Project Proposals",
+      "solicitation_number": "MTEC-26-04-MultiTopic",
+      "posted_date": "2026-08-07",
+      "type": "Special Notice",
+      "response_deadline": "2026-10-30T16:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "",
+      "matched_terms": [
+        "Cyber"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/2d2f3508edf946aaa133ccdcfbcb957d/view",
+      "first_seen_date": "2026-08-08",
+      "last_seen_date": "2026-08-08",
+      "seen_on_dates": [
+        "2026-08-08"
+      ]
+    },
+    "d330ff335c4849848d4c882042649d06": {
+      "notice_id": "d330ff335c4849848d4c882042649d06",
+      "title": "JAILBREAK \u2013 Needs-Driven Acquisition for Near-term Operations (NANO) - Accelerated Capability Event (ACE)",
+      "solicitation_number": "W5170126R0002",
+      "posted_date": "2026-08-07",
+      "type": "Special Notice",
+      "response_deadline": "2026-08-10T03:59:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "DEPT OF DEFENSE.DEPT OF THE ARMY.W27P USA ACQ SPT CTR",
+      "matched_terms": [
+        "SOFWERX"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/d330ff335c4849848d4c882042649d06/view",
+      "first_seen_date": "2026-08-08",
+      "last_seen_date": "2026-08-08",
+      "seen_on_dates": [
+        "2026-08-08"
+      ]
+    },
+    "5e9ac709aa0f4ea9855ca8c7873586b3": {
+      "notice_id": "5e9ac709aa0f4ea9855ca8c7873586b3",
+      "title": "Hard Drives and Removable Media",
+      "solicitation_number": "2023H2-26-Q-5000230631",
+      "posted_date": "2026-08-07",
+      "type": "Combined Synopsis/Solicitation",
+      "response_deadline": "2026-08-14T17:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "TREASURY, DEPARTMENT OF THE.INTERNAL REVENUE SERVICE.MIDWEST REGION",
+      "matched_terms": [
+        "IRS"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/5e9ac709aa0f4ea9855ca8c7873586b3/view",
+      "first_seen_date": "2026-08-08",
+      "last_seen_date": "2026-08-08",
+      "seen_on_dates": [
+        "2026-08-08"
+      ]
+    },
+    "b35d1260e41e4c88a933e2c78fc882dd": {
+      "notice_id": "b35d1260e41e4c88a933e2c78fc882dd",
+      "title": "Global medical coverage for LES employees in US Embassy Podgorica, Montenegro",
+      "solicitation_number": "19MJ1926R0001",
+      "posted_date": "2026-08-07",
+      "type": "Solicitation",
+      "response_deadline": "2026-08-14T15:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "STATE, DEPARTMENT OF.STATE, DEPARTMENT OF.U.S. EMBASSY PODGORICA",
+      "matched_terms": [
+        "IRS"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/b35d1260e41e4c88a933e2c78fc882dd/view",
+      "first_seen_date": "2026-08-08",
+      "last_seen_date": "2026-08-08",
+      "seen_on_dates": [
+        "2026-08-08"
+      ]
+    },
+    "22a5a90905a340d5a20dffbadac36bae": {
+      "notice_id": "22a5a90905a340d5a20dffbadac36bae",
+      "title": "Audio Visual Forensic Workstations",
+      "solicitation_number": "DJA-26-ASOD-PR-0243",
+      "posted_date": "2026-08-07",
+      "type": "Combined Synopsis/Solicitation",
+      "response_deadline": "2026-08-09T20:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "JUSTICE, DEPARTMENT OF.ATF ACQUISITION AND PROPERTY MGMT DIV.ATF",
+      "matched_terms": [
+        "Forensic"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/22a5a90905a340d5a20dffbadac36bae/view",
+      "first_seen_date": "2026-08-08",
+      "last_seen_date": "2026-08-08",
+      "seen_on_dates": [
+        "2026-08-08"
+      ]
+    },
+    "46fda7fb2632467999bdec1554c7d4a0": {
+      "notice_id": "46fda7fb2632467999bdec1554c7d4a0",
+      "title": "Aircraft Live Fire Trainer Repair",
+      "solicitation_number": "W50S6Q-26-R-SC01",
+      "posted_date": "2026-08-07",
+      "type": "Combined Synopsis/Solicitation",
+      "response_deadline": "2026-09-08T15:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "DEPT OF DEFENSE.DEPT OF THE ARMY.NGB.W7MW USPFO ACTIVITY ARANG 188",
+      "matched_terms": [
+        "Cyber"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/46fda7fb2632467999bdec1554c7d4a0/view",
+      "first_seen_date": "2026-08-08",
+      "last_seen_date": "2026-08-08",
+      "seen_on_dates": [
+        "2026-08-08"
+      ]
+    },
+    "19da7d2c9f114d49a196edf15502d058": {
+      "notice_id": "19da7d2c9f114d49a196edf15502d058",
+      "title": "7B22--614-26-3-560-0221 - IVX Omnicell Workflows Equipment",
+      "solicitation_number": "36C24926Q0348",
+      "posted_date": "2026-08-07",
+      "type": "Sources Sought",
+      "response_deadline": "2026-08-12T15:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "VETERANS AFFAIRS, DEPARTMENT OF.VETERANS AFFAIRS, DEPARTMENT OF.249-NETWORK CONTRACT OFFICE 9 (36C249)",
+      "matched_terms": [
+        "Cyber",
+        "Forensic"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/19da7d2c9f114d49a196edf15502d058/view",
+      "first_seen_date": "2026-08-08",
+      "last_seen_date": "2026-08-08",
+      "seen_on_dates": [
+        "2026-08-08"
+      ]
+    },
     "ed5992b9e7124dfba31a9de3dbab596c": {
       "notice_id": "ed5992b9e7124dfba31a9de3dbab596c",
       "title": "V-22 Snap On Tool Grouping",
@@ -569,52 +806,6 @@
         "2026-08-08"
       ]
     },
-    "a2e1b4d7807c4d3b879cccb82722e181": {
-      "notice_id": "a2e1b4d7807c4d3b879cccb82722e181",
-      "title": "UHP P-19 Rosenbauer Panther Fire Truck Waterous Pump",
-      "solicitation_number": "W50S7H26QA002",
-      "posted_date": "2026-08-05",
-      "type": "Combined Synopsis/Solicitation",
-      "response_deadline": "2026-08-13T19:00:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "DEPT OF DEFENSE.DEPT OF THE ARMY.NGB.W7NH USPFO ACTIVITY MSANG 172",
-      "matched_terms": [
-        "Cyber"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/a2e1b4d7807c4d3b879cccb82722e181/view",
-      "first_seen_date": "2026-08-06",
-      "last_seen_date": "2026-08-07",
-      "seen_on_dates": [
-        "2026-08-06",
-        "2026-08-07"
-      ]
-    },
-    "1cd62ddf169b4431b25013b3013bdb8d": {
-      "notice_id": "1cd62ddf169b4431b25013b3013bdb8d",
-      "title": "Translation and Interpretation Services (BAMC)",
-      "solicitation_number": "W81K0026RA042",
-      "posted_date": "2026-08-05",
-      "type": "Solicitation",
-      "response_deadline": "2026-08-13T17:00:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "DEPT OF DEFENSE.DEPT OF THE ARMY.MEDCOM.W40M USA HCA",
-      "matched_terms": [
-        "Cyber"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/1cd62ddf169b4431b25013b3013bdb8d/view",
-      "first_seen_date": "2026-08-06",
-      "last_seen_date": "2026-08-07",
-      "seen_on_dates": [
-        "2026-08-06",
-        "2026-08-07"
-      ]
-    },
     "37b256b1e8a0442baf40faed6909db87": {
       "notice_id": "37b256b1e8a0442baf40faed6909db87",
       "title": "The Food and Drug Administration (FDA) requires preventative maintenance, corrective/remedial maintenance repair service agreement on a Thermo Scientific Orbitrap ID-X Tribrid Mass Spectrometer (Serial Number: FSN30177)",
@@ -637,29 +828,6 @@
         "2026-08-06",
         "2026-08-07",
         "2026-08-08"
-      ]
-    },
-    "bf1f3083b01d4f6c86b3abd7e23753f8": {
-      "notice_id": "bf1f3083b01d4f6c86b3abd7e23753f8",
-      "title": "SealingTech Defensive Cyber Operations Kit",
-      "solicitation_number": "M6890926Q7715",
-      "posted_date": "2026-08-05",
-      "type": "Combined Synopsis/Solicitation",
-      "response_deadline": "2026-08-17T17:00:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "DEPT OF DEFENSE.DEPT OF THE NAVY.USMC.MARCOR SYSCOM.SUPPLY OFFICER",
-      "matched_terms": [
-        "Cyber"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/bf1f3083b01d4f6c86b3abd7e23753f8/view",
-      "first_seen_date": "2026-08-06",
-      "last_seen_date": "2026-08-07",
-      "seen_on_dates": [
-        "2026-08-06",
-        "2026-08-07"
       ]
     },
     "fac0dcbe5eff43ab92e3dadb319daed1": {
@@ -710,29 +878,6 @@
         "2026-08-08"
       ]
     },
-    "707446bd240148bcbafaa48bb06a0212": {
-      "notice_id": "707446bd240148bcbafaa48bb06a0212",
-      "title": "HOSE ASSEMBLY, NONMETALLIC NSN: 4720-01-270-5801",
-      "solicitation_number": "N6278626Q0003",
-      "posted_date": "2026-08-05",
-      "type": "Combined Synopsis/Solicitation",
-      "response_deadline": "2026-08-11T14:00:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "DEPT OF DEFENSE.DEPT OF THE NAVY.NAVSEA.NAVSEA SUPSHIP.SUP OF SHIPBUILDING CONV AND REPAIR",
-      "matched_terms": [
-        "Cyber"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/707446bd240148bcbafaa48bb06a0212/view",
-      "first_seen_date": "2026-08-06",
-      "last_seen_date": "2026-08-07",
-      "seen_on_dates": [
-        "2026-08-06",
-        "2026-08-07"
-      ]
-    },
     "0710c0b6991c47afae92a6d5f090db8b": {
       "notice_id": "0710c0b6991c47afae92a6d5f090db8b",
       "title": "Global Tactical Edge Acquisition Directorate (G-TEAD) USARPAC ACE 27-01: Autonomous Sustainment Powered by xTech\u200b",
@@ -779,52 +924,6 @@
         "2026-08-06",
         "2026-08-07",
         "2026-08-08"
-      ]
-    },
-    "c29d71aa50b0459ea479951dbec59936": {
-      "notice_id": "c29d71aa50b0459ea479951dbec59936",
-      "title": "Executive Airlift's Communications Industry Day",
-      "solicitation_number": "EAC-26-FIP",
-      "posted_date": "2026-08-05",
-      "type": "Special Notice",
-      "response_deadline": "2026-10-01T22:00:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "DEPT OF DEFENSE.DEPT OF THE AIR FORCE.AIR MOBILITY COMMAND",
-      "matched_terms": [
-        "Cyber"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/c29d71aa50b0459ea479951dbec59936/view",
-      "first_seen_date": "2026-08-06",
-      "last_seen_date": "2026-08-07",
-      "seen_on_dates": [
-        "2026-08-06",
-        "2026-08-07"
-      ]
-    },
-    "3673d6ba214240f59e2791c543d3bccd": {
-      "notice_id": "3673d6ba214240f59e2791c543d3bccd",
-      "title": "Audio Visual Forensic Workstations",
-      "solicitation_number": "DJA-26-ASOD-PR-0243",
-      "posted_date": "2026-08-05",
-      "type": "Combined Synopsis/Solicitation",
-      "response_deadline": "2026-08-09T20:00:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "JUSTICE, DEPARTMENT OF.ATF ACQUISITION AND PROPERTY MGMT DIV.ATF",
-      "matched_terms": [
-        "Forensic"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/3673d6ba214240f59e2791c543d3bccd/view",
-      "first_seen_date": "2026-08-06",
-      "last_seen_date": "2026-08-07",
-      "seen_on_dates": [
-        "2026-08-06",
-        "2026-08-07"
       ]
     },
     "432936d8df7140bcbb481389ae608063": {
@@ -1226,38 +1325,6 @@
         "2026-08-08"
       ]
     },
-    "9f63a10bd7924235b6a8bad44db39154": {
-      "notice_id": "9f63a10bd7924235b6a8bad44db39154",
-      "title": "Global medical coverage for LES employees in US Embassy Podgorica, Montenegro",
-      "solicitation_number": "19MJ1926R0001",
-      "posted_date": "2026-07-28",
-      "type": "Solicitation",
-      "response_deadline": "2026-08-14T15:00:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "STATE, DEPARTMENT OF.STATE, DEPARTMENT OF.U.S. EMBASSY PODGORICA",
-      "matched_terms": [
-        "IRS"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/9f63a10bd7924235b6a8bad44db39154/view",
-      "first_seen_date": "2026-07-28",
-      "last_seen_date": "2026-08-07",
-      "seen_on_dates": [
-        "2026-07-28",
-        "2026-07-29",
-        "2026-07-30",
-        "2026-07-31",
-        "2026-08-01",
-        "2026-08-02",
-        "2026-08-03",
-        "2026-08-04",
-        "2026-08-05",
-        "2026-08-06",
-        "2026-08-07"
-      ]
-    },
     "f66e5c988c214b9f878b27acc32fd735": {
       "notice_id": "f66e5c988c214b9f878b27acc32fd735",
       "title": "Preventative Maintenance and repair services of GE CRxFlex I and GE CRxFLex II Digitizer and Workstation Imaging Equipment",
@@ -1356,112 +1423,6 @@
         "2026-08-06",
         "2026-08-07",
         "2026-08-08"
-      ]
-    },
-    "7c9514533cc547a6bf21b344954ba329": {
-      "notice_id": "7c9514533cc547a6bf21b344954ba329",
-      "title": "SUV for GSO/ MOTOR POOL",
-      "solicitation_number": "19TS8026Q0012",
-      "posted_date": "2026-07-24",
-      "type": "Solicitation",
-      "response_deadline": "2026-08-10T15:00:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "STATE, DEPARTMENT OF.STATE, DEPARTMENT OF.U.S. EMBASSY TUNIS",
-      "matched_terms": [
-        "IRS"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/7c9514533cc547a6bf21b344954ba329/view",
-      "first_seen_date": "2026-07-25",
-      "last_seen_date": "2026-08-07",
-      "seen_on_dates": [
-        "2026-07-25",
-        "2026-07-26",
-        "2026-07-27",
-        "2026-07-28",
-        "2026-07-29",
-        "2026-07-30",
-        "2026-07-31",
-        "2026-08-01",
-        "2026-08-02",
-        "2026-08-03",
-        "2026-08-04",
-        "2026-08-05",
-        "2026-08-06",
-        "2026-08-07"
-      ]
-    },
-    "579f016a95fc48afaf623af2a58a0649": {
-      "notice_id": "579f016a95fc48afaf623af2a58a0649",
-      "title": "NIST Cameca IMS1270E7 Service Agreement",
-      "solicitation_number": "NIST-NOI-SS-26-02405",
-      "posted_date": "2026-07-24",
-      "type": "Special Notice",
-      "response_deadline": "2026-08-10T13:00:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "COMMERCE, DEPARTMENT OF.NATIONAL INSTITUTE OF STANDARDS AND TECHNOLOGY",
-      "matched_terms": [
-        "Forensics"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/579f016a95fc48afaf623af2a58a0649/view",
-      "first_seen_date": "2026-07-25",
-      "last_seen_date": "2026-08-07",
-      "seen_on_dates": [
-        "2026-07-25",
-        "2026-07-26",
-        "2026-07-27",
-        "2026-07-28",
-        "2026-07-29",
-        "2026-07-30",
-        "2026-07-31",
-        "2026-08-01",
-        "2026-08-02",
-        "2026-08-03",
-        "2026-08-04",
-        "2026-08-05",
-        "2026-08-06",
-        "2026-08-07"
-      ]
-    },
-    "4ff4770c1ae540248e4329f9983989e3": {
-      "notice_id": "4ff4770c1ae540248e4329f9983989e3",
-      "title": "Forensic Software Training",
-      "solicitation_number": "70CMSD26P00000063",
-      "posted_date": "2026-07-24",
-      "type": "Award Notice",
-      "response_deadline": "",
-      "naics": "",
-      "active": "Yes",
-      "organization": "HOMELAND SECURITY, DEPARTMENT OF.U.S. IMMIGRATION AND CUSTOMS ENFORCEMENT.INVESTIGATIONS AND OPERATIONS SUPPORT DALLAS",
-      "matched_terms": [
-        "Forensic",
-        "Forensics"
-      ],
-      "award_amount": "",
-      "awardee": "V2 FORENSICS CORPORATION",
-      "url": "https://sam.gov/opp/4ff4770c1ae540248e4329f9983989e3/view",
-      "first_seen_date": "2026-07-25",
-      "last_seen_date": "2026-08-07",
-      "seen_on_dates": [
-        "2026-07-25",
-        "2026-07-26",
-        "2026-07-27",
-        "2026-07-28",
-        "2026-07-29",
-        "2026-07-30",
-        "2026-07-31",
-        "2026-08-01",
-        "2026-08-02",
-        "2026-08-03",
-        "2026-08-04",
-        "2026-08-05",
-        "2026-08-06",
-        "2026-08-07"
       ]
     }
   }
