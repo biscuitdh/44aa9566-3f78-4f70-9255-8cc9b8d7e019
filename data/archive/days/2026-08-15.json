@@ -1,13 +1,25 @@
 {
-  "date": "2026-08-14",
+  "date": "2026-08-15",
   "saved_at": "2026-08-15T09:29:16.570716+00:00",
   "bucket": {
-    "date": "2026-08-14",
+    "date": "2026-08-15",
     "runs": [
-      "2026-08-14_100533"
+      "2026-08-15_092751"
     ],
     "notice_keys": [
+      "277fa14582ee403ba46d3956aa7f7e0f",
+      "a7767ec4bb954efb81223af8cb3d7836",
+      "0ca53613efaa404bbb35dea4ebe51288",
+      "5912f623757348fbb7c6e2ad64c5a013",
+      "0b182e4c78c84d0fb949c45a97e69cbc",
+      "fe08850e08554d489008e20dadf8f2db",
+      "aeac410f5c844f4885353c70e0367dcb",
       "0f06476925f7406c944f7436a4e29655",
+      "1a3b5be3c7474be4aa1479518f87b9fa",
+      "dd0f3edd479f41b2b7a6873caee4e608",
+      "b620c6d72dad40048a3f9c4c85c90884",
+      "99bb0343d864479188e7a4e4a143a7a3",
+      "488a2a0ae9a74ef8b879a9b97a30c7fc",
       "40e617b5369947a899ac809636bbd35c",
       "ed1a2498155748c4af0b59802f84d437",
       "f9061fe8de7d4aeb9602ceb80aff510d",
@@ -29,22 +41,14 @@
       "2eba628ff5664156b39fefd55f0dc98f",
       "050934f3fb974c6eb9b22de957114a7e",
       "b245442471d1450eab93f7ec7b2cd015",
-      "e43ff476baa9496aba59d85517b1de8a",
       "9ed183b268494498b1a8a60e28fdd8f0",
       "3e06697a91514438b32db245d4378d5b",
-      "0bc02411af7c4fbfb7906bb0ada51fda",
-      "a382a18c11d94568b367235fd967fc98",
       "cae4886842a74917bb51107cdfb8781d",
-      "96f0f7932b67486589baa26cc35eb9de",
-      "51845a9afb67409b8b04a44e4fa69f1e",
       "82c9ba1216d6499caf76afdea437c109",
       "862036899c874e8eb5f4847eeff575d1",
-      "ad0c3236baf344fd9ac0ac4c9d0b9238",
       "e32624626d6b4e99af09d81eda25b39f",
-      "433a759da07a41b4b7182ef4e0322996",
       "76dd9e9f39c34e02a0777a9113702afc",
       "a12bcbd9bfbc4e3ea64a0f8db379df70",
-      "1a1f1c47df8d4f9fb2ea14e6740eaaca",
       "870c5edee8a14bca8ea5b1305a2f692d",
       "35ad4744267a4802b6cce692883a7064",
       "16c3f8e83249429d98b04862ba0788d6",
@@ -69,36 +73,178 @@
       "98b6585531f94adfbbc66aba3df59618",
       "0075cc7e580b4dcbab5a42c4d288e080",
       "bc0523a7f7c04f7082bfbe6773a70ac5",
-      "98ebf77871be41fe8f50b1988ffcc508",
-      "17dd5316db3a432c8c8dead8af8f7065",
-      "abc6c300aab142e784aae5e3e7632742",
-      "0edfd92b6e1c430895c45c20c8bed5f2"
+      "98ebf77871be41fe8f50b1988ffcc508"
     ],
     "new_notice_keys": [
-      "0f06476925f7406c944f7436a4e29655",
-      "40e617b5369947a899ac809636bbd35c",
-      "f9061fe8de7d4aeb9602ceb80aff510d",
-      "0ce437c48b9243d0b9f9f44d75bcb7fe",
-      "cdb642fd15f645c3ac22204f3f9a16a7",
-      "1541ceee715d416087b755cce05c751e",
-      "9bceddc3ba6a453a835e1fa549e9d2fe",
-      "9b83acb3c96043f9aeb329a9e0e5bdd3",
-      "80be987f65b746cd884e108c82732b85",
-      "05dc468c3cb043d6978ebef28c1590fa",
-      "d57c23429f16432e8b04573651d7acd9",
-      "bae0a2bdb2b54d0b96b5e5f623c8fb30",
-      "dcc619a628644fadba1f64505bd8f1dd",
-      "c5f30a66dc424a20bb0844df0b041606",
-      "2a0f77cb8c59431a9075570a7cb24285",
-      "8999c88ac0a142fc84913b71b4046b0d",
-      "030c18a9145d4c1abd91c43cafe8cd93",
-      "2eba628ff5664156b39fefd55f0dc98f",
-      "050934f3fb974c6eb9b22de957114a7e",
-      "b245442471d1450eab93f7ec7b2cd015",
-      "e43ff476baa9496aba59d85517b1de8a"
+      "277fa14582ee403ba46d3956aa7f7e0f",
+      "a7767ec4bb954efb81223af8cb3d7836",
+      "0ca53613efaa404bbb35dea4ebe51288",
+      "5912f623757348fbb7c6e2ad64c5a013",
+      "0b182e4c78c84d0fb949c45a97e69cbc",
+      "fe08850e08554d489008e20dadf8f2db",
+      "aeac410f5c844f4885353c70e0367dcb",
+      "1a3b5be3c7474be4aa1479518f87b9fa",
+      "dd0f3edd479f41b2b7a6873caee4e608",
+      "b620c6d72dad40048a3f9c4c85c90884",
+      "99bb0343d864479188e7a4e4a143a7a3",
+      "488a2a0ae9a74ef8b879a9b97a30c7fc"
     ]
   },
   "notices": {
+    "277fa14582ee403ba46d3956aa7f7e0f": {
+      "notice_id": "277fa14582ee403ba46d3956aa7f7e0f",
+      "title": "USCG CG Shore- Cyber Building Caretaker Contract -4 Months",
+      "solicitation_number": "CGSS26-COCO41-016",
+      "posted_date": "2026-08-14",
+      "type": "Sources Sought",
+      "response_deadline": "2026-08-19T04:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "HOMELAND SECURITY, DEPARTMENT OF.U.S. COAST GUARD.HQ CONTRACT OPERATIONS (CG-912)(000",
+      "matched_terms": [
+        "Cyber"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/277fa14582ee403ba46d3956aa7f7e0f/view",
+      "first_seen_date": "2026-08-15",
+      "last_seen_date": "2026-08-15",
+      "seen_on_dates": [
+        "2026-08-15"
+      ]
+    },
+    "a7767ec4bb954efb81223af8cb3d7836": {
+      "notice_id": "a7767ec4bb954efb81223af8cb3d7836",
+      "title": "Replacement Auto DNA Extraction System",
+      "solicitation_number": "NB643060-26-00803",
+      "posted_date": "2026-08-14",
+      "type": "Special Notice",
+      "response_deadline": "2026-08-29T17:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "COMMERCE, DEPARTMENT OF.NATIONAL INSTITUTE OF STANDARDS AND TECHNOLOGY.DEPT OF COMMERCE NIST",
+      "matched_terms": [
+        "Forensic"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/a7767ec4bb954efb81223af8cb3d7836/view",
+      "first_seen_date": "2026-08-15",
+      "last_seen_date": "2026-08-15",
+      "seen_on_dates": [
+        "2026-08-15"
+      ]
+    },
+    "0ca53613efaa404bbb35dea4ebe51288": {
+      "notice_id": "0ca53613efaa404bbb35dea4ebe51288",
+      "title": "Project 6CO0530 - Seeking Competitive Lease Proposals \u2013 Administrative Office Space in in Denver, CO - Request for Lease Proposals No. 26NAT02",
+      "solicitation_number": "6CO0530",
+      "posted_date": "2026-08-14",
+      "type": "Combined Synopsis/Solicitation",
+      "response_deadline": "2026-09-08T00:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "GENERAL SERVICES ADMINISTRATION.PUBLIC BUILDINGS SERVICE.PBS R00 OFFICE OF LEASING",
+      "matched_terms": [
+        "IRS"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/0ca53613efaa404bbb35dea4ebe51288/view",
+      "first_seen_date": "2026-08-15",
+      "last_seen_date": "2026-08-15",
+      "seen_on_dates": [
+        "2026-08-15"
+      ]
+    },
+    "5912f623757348fbb7c6e2ad64c5a013": {
+      "notice_id": "5912f623757348fbb7c6e2ad64c5a013",
+      "title": "Project 6CA1181 - Seeking Competitive Lease Proposals \u2013 Administrative Office Space in in Los Angeles, CA - Request for Lease Proposals No. 26NAT02",
+      "solicitation_number": "RCC_003",
+      "posted_date": "2026-08-14",
+      "type": "Combined Synopsis/Solicitation",
+      "response_deadline": "2026-09-08T00:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "GENERAL SERVICES ADMINISTRATION.PUBLIC BUILDINGS SERVICE.PBS R00 OFFICE OF LEASING",
+      "matched_terms": [
+        "IRS"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/5912f623757348fbb7c6e2ad64c5a013/view",
+      "first_seen_date": "2026-08-15",
+      "last_seen_date": "2026-08-15",
+      "seen_on_dates": [
+        "2026-08-15"
+      ]
+    },
+    "0b182e4c78c84d0fb949c45a97e69cbc": {
+      "notice_id": "0b182e4c78c84d0fb949c45a97e69cbc",
+      "title": "N5523626R0014 - MRG Replacement Parts ISO DDG Arleigh Burke-class ship",
+      "solicitation_number": "N5523626R0014",
+      "posted_date": "2026-08-14",
+      "type": "Combined Synopsis/Solicitation",
+      "response_deadline": "2026-08-21T09:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "DEPT OF DEFENSE.DEPT OF THE NAVY.NAVSEA.REGIONAL MAINTENANCE CENTER.SOUTHWEST REGIONAL MAINT CENTER",
+      "matched_terms": [
+        "Cyber"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/0b182e4c78c84d0fb949c45a97e69cbc/view",
+      "first_seen_date": "2026-08-15",
+      "last_seen_date": "2026-08-15",
+      "seen_on_dates": [
+        "2026-08-15"
+      ]
+    },
+    "fe08850e08554d489008e20dadf8f2db": {
+      "notice_id": "fe08850e08554d489008e20dadf8f2db",
+      "title": "Maintenance Agreement for a Joel Dart Mass Spectrometer",
+      "solicitation_number": "NB643050-26-01694",
+      "posted_date": "2026-08-14",
+      "type": "Special Notice",
+      "response_deadline": "2026-08-29T17:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "COMMERCE, DEPARTMENT OF.NATIONAL INSTITUTE OF STANDARDS AND TECHNOLOGY.DEPT OF COMMERCE NIST",
+      "matched_terms": [
+        "Forensic"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/fe08850e08554d489008e20dadf8f2db/view",
+      "first_seen_date": "2026-08-15",
+      "last_seen_date": "2026-08-15",
+      "seen_on_dates": [
+        "2026-08-15"
+      ]
+    },
+    "aeac410f5c844f4885353c70e0367dcb": {
+      "notice_id": "aeac410f5c844f4885353c70e0367dcb",
+      "title": "Global Tactical Edge Acquisition Directorate (G-TEAD) USARPAC ACE 27-01: Autonomous Sustainment Powered by xTech\u200b",
+      "solicitation_number": "W91QVP-26-S-GTEADAutonomousSustainment",
+      "posted_date": "2026-08-14",
+      "type": "Special Notice",
+      "response_deadline": "2026-08-17T21:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "DEPT OF DEFENSE.DEPT OF THE ARMY.AMC.ACC.ACC-OO.413TH CSB",
+      "matched_terms": [
+        "Cyber"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/aeac410f5c844f4885353c70e0367dcb/view",
+      "first_seen_date": "2026-08-15",
+      "last_seen_date": "2026-08-15",
+      "seen_on_dates": [
+        "2026-08-15"
+      ]
+    },
     "0f06476925f7406c944f7436a4e29655": {
       "notice_id": "0f06476925f7406c944f7436a4e29655",
       "title": "EXTERIOR UPGRADE, FRANKFURT",
@@ -119,6 +265,116 @@
       "last_seen_date": "2026-08-15",
       "seen_on_dates": [
         "2026-08-14",
+        "2026-08-15"
+      ]
+    },
+    "1a3b5be3c7474be4aa1479518f87b9fa": {
+      "notice_id": "1a3b5be3c7474be4aa1479518f87b9fa",
+      "title": "ENCLOSED CARGO TRAILER",
+      "solicitation_number": "FY26-0012474600",
+      "posted_date": "2026-08-14",
+      "type": "Combined Synopsis/Solicitation",
+      "response_deadline": "2026-08-24T16:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "DEPT OF DEFENSE.DEPT OF THE ARMY.NGB.W7N6 USPFO ACTIVITY WA ARNG",
+      "matched_terms": [
+        "Cyber"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/1a3b5be3c7474be4aa1479518f87b9fa/view",
+      "first_seen_date": "2026-08-15",
+      "last_seen_date": "2026-08-15",
+      "seen_on_dates": [
+        "2026-08-15"
+      ]
+    },
+    "dd0f3edd479f41b2b7a6873caee4e608": {
+      "notice_id": "dd0f3edd479f41b2b7a6873caee4e608",
+      "title": "DLA Columbus, Ohio Solid Waste Removal",
+      "solicitation_number": "SP4510-26-Q-1043",
+      "posted_date": "2026-08-14",
+      "type": "Solicitation",
+      "response_deadline": "2026-08-24T19:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "DEPT OF DEFENSE.DEFENSE LOGISTICS AGENCY.DLA DISPOSITION SERVICES.DLA DISPOSITION SERVICES -  EBS",
+      "matched_terms": [
+        "Cyber"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/dd0f3edd479f41b2b7a6873caee4e608/view",
+      "first_seen_date": "2026-08-15",
+      "last_seen_date": "2026-08-15",
+      "seen_on_dates": [
+        "2026-08-15"
+      ]
+    },
+    "b620c6d72dad40048a3f9c4c85c90884": {
+      "notice_id": "b620c6d72dad40048a3f9c4c85c90884",
+      "title": "BALL, SCREW ASSEMBLY",
+      "solicitation_number": "SPMYM326Q8023",
+      "posted_date": "2026-08-14",
+      "type": "Combined Synopsis/Solicitation",
+      "response_deadline": "2026-08-20T20:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "DEPT OF DEFENSE.DEFENSE LOGISTICS AGENCY.DLA MARITIME.DLA MARITIME SHIPYARDS.DLA MARITIME - PORTSMOUTH",
+      "matched_terms": [
+        "Cyber"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/b620c6d72dad40048a3f9c4c85c90884/view",
+      "first_seen_date": "2026-08-15",
+      "last_seen_date": "2026-08-15",
+      "seen_on_dates": [
+        "2026-08-15"
+      ]
+    },
+    "99bb0343d864479188e7a4e4a143a7a3": {
+      "notice_id": "99bb0343d864479188e7a4e4a143a7a3",
+      "title": "Application, Infrastructure, and Cyber Security Support Services",
+      "solicitation_number": "89303025FAU400024P00005",
+      "posted_date": "2026-08-14",
+      "type": "Justification",
+      "response_deadline": "",
+      "naics": "",
+      "active": "Yes",
+      "organization": "ENERGY, DEPARTMENT OF.ENERGY, DEPARTMENT OF.HEADQUARTERS PROCUREMENT SERVICES",
+      "matched_terms": [
+        "Cyber"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/99bb0343d864479188e7a4e4a143a7a3/view",
+      "first_seen_date": "2026-08-15",
+      "last_seen_date": "2026-08-15",
+      "seen_on_dates": [
+        "2026-08-15"
+      ]
+    },
+    "488a2a0ae9a74ef8b879a9b97a30c7fc": {
+      "notice_id": "488a2a0ae9a74ef8b879a9b97a30c7fc",
+      "title": "177th Hydraulic Power Box Rake Attachment",
+      "solicitation_number": "PANNGB26P0000039569",
+      "posted_date": "2026-08-14",
+      "type": "Combined Synopsis/Solicitation",
+      "response_deadline": "2026-08-21T20:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "DEPT OF DEFENSE.DEPT OF THE ARMY.NGB.W7NP USPFO ACTIVITY NJ ARNG",
+      "matched_terms": [
+        "Cyber"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/488a2a0ae9a74ef8b879a9b97a30c7fc/view",
+      "first_seen_date": "2026-08-15",
+      "last_seen_date": "2026-08-15",
+      "seen_on_dates": [
         "2026-08-15"
       ]
     },
@@ -608,28 +864,6 @@
         "2026-08-15"
       ]
     },
-    "e43ff476baa9496aba59d85517b1de8a": {
-      "notice_id": "e43ff476baa9496aba59d85517b1de8a",
-      "title": "177th Hydraulic Power Box Rake Attachment",
-      "solicitation_number": "PANNGB26P0000039569",
-      "posted_date": "2026-08-13",
-      "type": "Combined Synopsis/Solicitation",
-      "response_deadline": "2026-08-21T20:00:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "DEPT OF DEFENSE.DEPT OF THE ARMY.NGB.W7NP USPFO ACTIVITY NJ ARNG",
-      "matched_terms": [
-        "Cyber"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/e43ff476baa9496aba59d85517b1de8a/view",
-      "first_seen_date": "2026-08-14",
-      "last_seen_date": "2026-08-14",
-      "seen_on_dates": [
-        "2026-08-14"
-      ]
-    },
     "9ed183b268494498b1a8a60e28fdd8f0": {
       "notice_id": "9ed183b268494498b1a8a60e28fdd8f0",
       "title": "Steel Plates",
@@ -678,52 +912,6 @@
         "2026-08-15"
       ]
     },
-    "0bc02411af7c4fbfb7906bb0ada51fda": {
-      "notice_id": "0bc02411af7c4fbfb7906bb0ada51fda",
-      "title": "Signage",
-      "solicitation_number": "W916UK0012474598",
-      "posted_date": "2026-08-12",
-      "type": "Combined Synopsis/Solicitation",
-      "response_deadline": "2026-08-28T18:00:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "DEPT OF DEFENSE.DEPT OF THE ARMY.NGB.W7N6 USPFO ACTIVITY WA ARNG",
-      "matched_terms": [
-        "Cyber"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/0bc02411af7c4fbfb7906bb0ada51fda/view",
-      "first_seen_date": "2026-08-13",
-      "last_seen_date": "2026-08-14",
-      "seen_on_dates": [
-        "2026-08-13",
-        "2026-08-14"
-      ]
-    },
-    "a382a18c11d94568b367235fd967fc98": {
-      "notice_id": "a382a18c11d94568b367235fd967fc98",
-      "title": "Request for Quotes: Independent Condition Assessment of Solar PV Systems Non-Personal Services",
-      "solicitation_number": "W912LR26QA040",
-      "posted_date": "2026-08-12",
-      "type": "Solicitation",
-      "response_deadline": "2026-09-03T18:00:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "DEPT OF DEFENSE.DEPT OF THE ARMY.NGB.W7PA USPFO ACTIVITY PR ARNG",
-      "matched_terms": [
-        "Cyber"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/a382a18c11d94568b367235fd967fc98/view",
-      "first_seen_date": "2026-08-13",
-      "last_seen_date": "2026-08-14",
-      "seen_on_dates": [
-        "2026-08-13",
-        "2026-08-14"
-      ]
-    },
     "cae4886842a74917bb51107cdfb8781d": {
       "notice_id": "cae4886842a74917bb51107cdfb8781d",
       "title": "Notice of Intent",
@@ -746,52 +934,6 @@
         "2026-08-13",
         "2026-08-14",
         "2026-08-15"
-      ]
-    },
-    "96f0f7932b67486589baa26cc35eb9de": {
-      "notice_id": "96f0f7932b67486589baa26cc35eb9de",
-      "title": "N5523626R0014 - MRG Replacement Parts ISO DDG Arleigh Burke-class ship",
-      "solicitation_number": "N5523626R0014",
-      "posted_date": "2026-08-12",
-      "type": "Combined Synopsis/Solicitation",
-      "response_deadline": "2026-08-21T09:00:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "DEPT OF DEFENSE.DEPT OF THE NAVY.NAVSEA.REGIONAL MAINTENANCE CENTER.SOUTHWEST REGIONAL MAINT CENTER",
-      "matched_terms": [
-        "Cyber"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/96f0f7932b67486589baa26cc35eb9de/view",
-      "first_seen_date": "2026-08-13",
-      "last_seen_date": "2026-08-14",
-      "seen_on_dates": [
-        "2026-08-13",
-        "2026-08-14"
-      ]
-    },
-    "51845a9afb67409b8b04a44e4fa69f1e": {
-      "notice_id": "51845a9afb67409b8b04a44e4fa69f1e",
-      "title": "KeySight - PathWave ADS Core subscription license",
-      "solicitation_number": "W911QX26QA100",
-      "posted_date": "2026-08-12",
-      "type": "Combined Synopsis/Solicitation",
-      "response_deadline": "2026-08-18T15:59:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "DEPT OF DEFENSE.DEPT OF THE ARMY.AMC.ACC.ACC-CTRS.ACC-APG.W6QK ACC-APG ADELPHI",
-      "matched_terms": [
-        "Cyber"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/51845a9afb67409b8b04a44e4fa69f1e/view",
-      "first_seen_date": "2026-08-13",
-      "last_seen_date": "2026-08-14",
-      "seen_on_dates": [
-        "2026-08-13",
-        "2026-08-14"
       ]
     },
     "82c9ba1216d6499caf76afdea437c109": {
@@ -842,29 +984,6 @@
         "2026-08-15"
       ]
     },
-    "ad0c3236baf344fd9ac0ac4c9d0b9238": {
-      "notice_id": "ad0c3236baf344fd9ac0ac4c9d0b9238",
-      "title": "Global Tactical Edge Acquisition Directorate (G-TEAD) USARPAC ACE 27-01: Autonomous Sustainment Powered by xTech\u200b",
-      "solicitation_number": "W91QVP-26-S-GTEADAutonomousSustainment",
-      "posted_date": "2026-08-12",
-      "type": "Special Notice",
-      "response_deadline": "2026-08-17T21:00:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "DEPT OF DEFENSE.DEPT OF THE ARMY.AMC.ACC.ACC-OO.413TH CSB",
-      "matched_terms": [
-        "Cyber"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/ad0c3236baf344fd9ac0ac4c9d0b9238/view",
-      "first_seen_date": "2026-08-13",
-      "last_seen_date": "2026-08-14",
-      "seen_on_dates": [
-        "2026-08-13",
-        "2026-08-14"
-      ]
-    },
     "e32624626d6b4e99af09d81eda25b39f": {
       "notice_id": "e32624626d6b4e99af09d81eda25b39f",
       "title": "Fabrication of Metal Parts",
@@ -887,29 +1006,6 @@
         "2026-08-13",
         "2026-08-14",
         "2026-08-15"
-      ]
-    },
-    "433a759da07a41b4b7182ef4e0322996": {
-      "notice_id": "433a759da07a41b4b7182ef4e0322996",
-      "title": "Elevator Modernization - Building 1020",
-      "solicitation_number": "FA930126Q0024",
-      "posted_date": "2026-08-12",
-      "type": "Combined Synopsis/Solicitation",
-      "response_deadline": "2026-09-03T09:00:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "DEPT OF DEFENSE.DEPT OF THE AIR FORCE.AIR FORCE MATERIEL COMMAND.AIR FORCE TEST CENTER.FA9301  AFTC PZIO",
-      "matched_terms": [
-        "Cyber"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/433a759da07a41b4b7182ef4e0322996/view",
-      "first_seen_date": "2026-08-13",
-      "last_seen_date": "2026-08-14",
-      "seen_on_dates": [
-        "2026-08-13",
-        "2026-08-14"
       ]
     },
     "76dd9e9f39c34e02a0777a9113702afc": {
@@ -960,30 +1056,6 @@
         "2026-08-13",
         "2026-08-14",
         "2026-08-15"
-      ]
-    },
-    "1a1f1c47df8d4f9fb2ea14e6740eaaca": {
-      "notice_id": "1a1f1c47df8d4f9fb2ea14e6740eaaca",
-      "title": "Zero Trust Architecture (ZTA) Vendor Framework",
-      "solicitation_number": "SSC-PKA_ZTA-VFC_2026",
-      "posted_date": "2026-08-11",
-      "type": "Sources Sought",
-      "response_deadline": "2026-09-11T22:00:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "DEPT OF DEFENSE.DEPT OF THE AIR FORCE.FA8802 INTEGRATION OPERATION PIKPKE",
-      "matched_terms": [
-        "Cyber"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/1a1f1c47df8d4f9fb2ea14e6740eaaca/view",
-      "first_seen_date": "2026-08-12",
-      "last_seen_date": "2026-08-14",
-      "seen_on_dates": [
-        "2026-08-12",
-        "2026-08-13",
-        "2026-08-14"
       ]
     },
     "870c5edee8a14bca8ea5b1305a2f692d": {
@@ -1710,111 +1782,6 @@
         "2026-08-13",
         "2026-08-14",
         "2026-08-15"
-      ]
-    },
-    "17dd5316db3a432c8c8dead8af8f7065": {
-      "notice_id": "17dd5316db3a432c8c8dead8af8f7065",
-      "title": "Tax Analyst Tax Notes Online",
-      "solicitation_number": "5000231049TaxNote",
-      "posted_date": "2026-07-31",
-      "type": "Sources Sought",
-      "response_deadline": "2026-08-07T17:00:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "TREASURY, DEPARTMENT OF THE.INTERNAL REVENUE SERVICE.SMALL BUSINESS/SELF EMPLOYED",
-      "matched_terms": [
-        "IRS"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/17dd5316db3a432c8c8dead8af8f7065/view",
-      "first_seen_date": "2026-08-01",
-      "last_seen_date": "2026-08-14",
-      "seen_on_dates": [
-        "2026-08-01",
-        "2026-08-02",
-        "2026-08-03",
-        "2026-08-04",
-        "2026-08-05",
-        "2026-08-06",
-        "2026-08-07",
-        "2026-08-08",
-        "2026-08-09",
-        "2026-08-10",
-        "2026-08-11",
-        "2026-08-12",
-        "2026-08-13",
-        "2026-08-14"
-      ]
-    },
-    "abc6c300aab142e784aae5e3e7632742": {
-      "notice_id": "abc6c300aab142e784aae5e3e7632742",
-      "title": "PollStar Online Subscription",
-      "solicitation_number": "2043FY-26-Q-00052",
-      "posted_date": "2026-07-31",
-      "type": "Combined Synopsis/Solicitation",
-      "response_deadline": "2026-08-07T14:00:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "TREASURY, DEPARTMENT OF THE.INTERNAL REVENUE SERVICE.SMALL BUSINESS/SELF EMPLOYED",
-      "matched_terms": [
-        "IRS"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/abc6c300aab142e784aae5e3e7632742/view",
-      "first_seen_date": "2026-08-01",
-      "last_seen_date": "2026-08-14",
-      "seen_on_dates": [
-        "2026-08-01",
-        "2026-08-02",
-        "2026-08-03",
-        "2026-08-04",
-        "2026-08-05",
-        "2026-08-06",
-        "2026-08-07",
-        "2026-08-08",
-        "2026-08-09",
-        "2026-08-10",
-        "2026-08-11",
-        "2026-08-12",
-        "2026-08-13",
-        "2026-08-14"
-      ]
-    },
-    "0edfd92b6e1c430895c45c20c8bed5f2": {
-      "notice_id": "0edfd92b6e1c430895c45c20c8bed5f2",
-      "title": "Notice of intent to sole source Genetic Analyzer system",
-      "solicitation_number": "HT942726R0730",
-      "posted_date": "2026-07-31",
-      "type": "Special Notice",
-      "response_deadline": "2026-08-14T13:00:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "",
-      "matched_terms": [
-        "Forensic"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/0edfd92b6e1c430895c45c20c8bed5f2/view",
-      "first_seen_date": "2026-07-31",
-      "last_seen_date": "2026-08-14",
-      "seen_on_dates": [
-        "2026-08-01",
-        "2026-08-02",
-        "2026-08-03",
-        "2026-08-04",
-        "2026-08-05",
-        "2026-08-06",
-        "2026-08-07",
-        "2026-08-08",
-        "2026-08-09",
-        "2026-08-10",
-        "2026-08-11",
-        "2026-08-12",
-        "2026-08-13",
-        "2026-08-14"
       ]
     }
   }
