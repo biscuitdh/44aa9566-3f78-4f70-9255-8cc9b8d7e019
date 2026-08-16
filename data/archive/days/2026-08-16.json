@@ -1,10 +1,10 @@
 {
-  "date": "2026-08-15",
+  "date": "2026-08-16",
   "saved_at": "2026-08-16T09:31:22.117395+00:00",
   "bucket": {
-    "date": "2026-08-15",
+    "date": "2026-08-16",
     "runs": [
-      "2026-08-15_092751"
+      "2026-08-16_092955"
     ],
     "notice_keys": [
       "277fa14582ee403ba46d3956aa7f7e0f",
@@ -65,7 +65,6 @@
       "19da7d2c9f114d49a196edf15502d058",
       "982dd475b8ec4d9ba4c046aa459ae722",
       "2d105da66cc5441499144d2f21b6459a",
-      "48984514a0f442c78295585ce571c8a9",
       "511b5635e16e4c5aa6cfe2fb28eb213c",
       "37b256b1e8a0442baf40faed6909db87",
       "ecfdffff7f3746f5875516132933efb3",
@@ -75,20 +74,7 @@
       "bc0523a7f7c04f7082bfbe6773a70ac5",
       "98ebf77871be41fe8f50b1988ffcc508"
     ],
-    "new_notice_keys": [
-      "277fa14582ee403ba46d3956aa7f7e0f",
-      "a7767ec4bb954efb81223af8cb3d7836",
-      "0ca53613efaa404bbb35dea4ebe51288",
-      "5912f623757348fbb7c6e2ad64c5a013",
-      "0b182e4c78c84d0fb949c45a97e69cbc",
-      "fe08850e08554d489008e20dadf8f2db",
-      "aeac410f5c844f4885353c70e0367dcb",
-      "1a3b5be3c7474be4aa1479518f87b9fa",
-      "dd0f3edd479f41b2b7a6873caee4e608",
-      "b620c6d72dad40048a3f9c4c85c90884",
-      "99bb0343d864479188e7a4e4a143a7a3",
-      "488a2a0ae9a74ef8b879a9b97a30c7fc"
-    ]
+    "new_notice_keys": []
   },
   "notices": {
     "277fa14582ee403ba46d3956aa7f7e0f": {
@@ -1555,36 +1541,6 @@
         "2026-08-14",
         "2026-08-15",
         "2026-08-16"
-      ]
-    },
-    "48984514a0f442c78295585ce571c8a9": {
-      "notice_id": "48984514a0f442c78295585ce571c8a9",
-      "title": "License renewal",
-      "solicitation_number": "D-26-ST-0189",
-      "posted_date": "2026-08-06",
-      "type": "Special Notice",
-      "response_deadline": "2026-08-16T14:00:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "JUSTICE, DEPARTMENT OF.DRUG ENFORCEMENT ADMINISTRATION",
-      "matched_terms": [
-        "Forensics"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/48984514a0f442c78295585ce571c8a9/view",
-      "first_seen_date": "2026-08-07",
-      "last_seen_date": "2026-08-15",
-      "seen_on_dates": [
-        "2026-08-07",
-        "2026-08-08",
-        "2026-08-09",
-        "2026-08-10",
-        "2026-08-11",
-        "2026-08-12",
-        "2026-08-13",
-        "2026-08-14",
-        "2026-08-15"
       ]
     },
     "511b5635e16e4c5aa6cfe2fb28eb213c": {
