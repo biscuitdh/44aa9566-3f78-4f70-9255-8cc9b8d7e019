@@ -1,12 +1,13 @@
 {
-  "date": "2026-08-22",
+  "date": "2026-08-24",
   "saved_at": "2026-08-24T09:52:04.139642+00:00",
   "bucket": {
-    "date": "2026-08-22",
+    "date": "2026-08-24",
     "runs": [
-      "2026-08-22_092857"
+      "2026-08-24_095039"
     ],
     "notice_keys": [
+      "88387ecf54af4885bdf02831265f223f",
       "35886da192b84f1080a22ca400d91c7e",
       "42847f483aea46a7b779f7471242fcb1",
       "2a2ba37f7ed949df805d797d3e207045",
@@ -79,29 +80,35 @@
       "0360a38acf3d4abaa4d505c20d394d8f",
       "a9288c1530794ecf89c1caf959eae938",
       "6d8a3edd7a194ad79a3f60b97b6c4c75",
-      "3ca09d44ae1842d4b4b2f769485c297d",
-      "7d9b795dfe7b428ebdfb7de4c6a906e1"
+      "3ca09d44ae1842d4b4b2f769485c297d"
     ],
     "new_notice_keys": [
-      "35886da192b84f1080a22ca400d91c7e",
-      "42847f483aea46a7b779f7471242fcb1",
-      "2a2ba37f7ed949df805d797d3e207045",
-      "197cccb2ff944d52a6e3af68e2f46310",
-      "f062b971d4a148de8061242a931a0950",
-      "f53722fa534847a697adc47c05c652aa",
-      "52a43426e666481f901de3977518e8cf",
-      "5c98e848ea9a42229c3c210679f8711d",
-      "42b336c510b74a27b15781c367ea5a41",
-      "1724b5d79dd7477c8c9b851f42053d65",
-      "395482c0c6f546b1841d46322641d936",
-      "858f27c3161842dd9ebff5e412cefe2f",
-      "4e88c0fbf8704b3aa5d919ff93da9eb7",
-      "eb68aab0ce374a37a54e999fd2b36aa8",
-      "949ba5f0cb494963a814b0bb5c9a11bb",
-      "9f3ca6a0a5dd4887bc844c5d7323788c"
+      "88387ecf54af4885bdf02831265f223f"
     ]
   },
   "notices": {
+    "88387ecf54af4885bdf02831265f223f": {
+      "notice_id": "88387ecf54af4885bdf02831265f223f",
+      "title": "INTENT TO AWARD TO A SINGLE SOURCE - Illumina, Inc",
+      "solicitation_number": "26-456",
+      "posted_date": "2026-08-24",
+      "type": "Special Notice",
+      "response_deadline": "2026-09-07T20:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "COMMERCE, DEPARTMENT OF.NATIONAL OCEANIC AND ATMOSPHERIC ADMINISTRATION",
+      "matched_terms": [
+        "Forensics"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/88387ecf54af4885bdf02831265f223f/view",
+      "first_seen_date": "2026-08-24",
+      "last_seen_date": "2026-08-24",
+      "seen_on_dates": [
+        "2026-08-24"
+      ]
+    },
     "35886da192b84f1080a22ca400d91c7e": {
       "notice_id": "35886da192b84f1080a22ca400d91c7e",
       "title": "Wheeled Fire Extinguisher Maintenance",
@@ -2117,41 +2124,6 @@
         "2026-08-22",
         "2026-08-23",
         "2026-08-24"
-      ]
-    },
-    "7d9b795dfe7b428ebdfb7de4c6a906e1": {
-      "notice_id": "7d9b795dfe7b428ebdfb7de4c6a906e1",
-      "title": "JAILBREAK \u2013 Needs-Driven Acquisition for Near-term Operations (NANO) - Accelerated Capability Event (ACE)",
-      "solicitation_number": "W5170126R0002",
-      "posted_date": "2026-08-09",
-      "type": "Special Notice",
-      "response_deadline": "2026-08-10T03:59:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "DEPT OF DEFENSE.DEPT OF THE ARMY.W27P USA ACQ SPT CTR",
-      "matched_terms": [
-        "SOFWERX"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/7d9b795dfe7b428ebdfb7de4c6a906e1/view",
-      "first_seen_date": "2026-08-10",
-      "last_seen_date": "2026-08-23",
-      "seen_on_dates": [
-        "2026-08-10",
-        "2026-08-11",
-        "2026-08-12",
-        "2026-08-13",
-        "2026-08-14",
-        "2026-08-15",
-        "2026-08-16",
-        "2026-08-17",
-        "2026-08-18",
-        "2026-08-19",
-        "2026-08-20",
-        "2026-08-21",
-        "2026-08-22",
-        "2026-08-23"
       ]
     }
   }
