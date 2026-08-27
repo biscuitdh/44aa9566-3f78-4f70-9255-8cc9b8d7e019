@@ -1,51 +1,65 @@
-# Forensics watch — 2026-08-26
+# Forensics watch — 2026-08-27
 
-- Window: `2026-08-12` → `2026-08-26` (15 day(s) of history)
-- Confirmed forensics notices in window: **35** (38 records incl. 3 superseded by an amendment)
-- New solicitations (first seen 2026-08-26): **0**
-- Amended/re-issued today (same solicitation, new notice ID): **0**
+- Window: `2026-08-13` → `2026-08-27` (15 day(s) of history)
+- Confirmed forensics notices in window: **37** (43 records incl. 6 superseded by an amendment)
+- New solicitations (first seen 2026-08-27): **3**
+- Amended/re-issued today (same solicitation, new notice ID): **3**
 - Needs review (ambiguous acronym match only): **7**
-- All-time in durable archive: **82**
+- All-time in durable archive: **88**
 
-## New today (0)
+## New today (3)
 
-_None._
+| Posted | Notice | Matched | Type | Deadline | Organization |
+| --- | --- | --- | --- | --- | --- |
+| 2026-08-26 | **NEW** [Post-Accident Toxicological Testing](https://sam.gov/opp/3ad0efb18be74289bf33b1efeb4129ba/view) | Forensic | Combined Synopsis/Solicitation | 2026-09-09T16:00 | TRANSPORTATION, DEPARTMENT OF.FEDERAL RAILROAD ADMINISTRATION.693JJ6 FEDERAL RAILROAD ADMIN |
+| 2026-08-26 | **NEW** [License renewal](https://sam.gov/opp/5ba3bd51d8b543f0902ba002fe5b3e57/view) | GrayKey | Special Notice | 2026-08-31T14:00 | JUSTICE, DEPARTMENT OF.DRUG ENFORCEMENT ADMINISTRATION |
+| 2026-08-26 | **NEW** [D--GRAY KEY LICENSE ESSENTIALS](https://sam.gov/opp/b89606fe76a340b3b20978ea4e120a96/view) | Forensic; Forensics; GrayKey | Special Notice | 2026-09-08T00:00 | INTERIOR, DEPARTMENT OF THE.BUREAU OF LAND MANAGEMENT.CALIFORNIA STATE OFFICE |
 
 
-## Amended / re-issued today (0)
+## Amended / re-issued today (3)
 
 SAM.gov issues a fresh notice ID when a solicitation is amended, so these are already-tracked
 solicitations reappearing under a new ID rather than fresh opportunities.
 
-_None._
+| Posted | Notice | Matched | Type | Deadline | Deadline change | Organization |
+| --- | --- | --- | --- | --- | --- | --- |
+| 2026-08-26 | **AMENDED** [TEGUC- Emergency Generator System](https://sam.gov/opp/03ea229e14b84b91bac002d5aaab5cd7/view) | Forensic | Combined Synopsis/Solicitation | 2026-09-02T16:00 | 2026-08-26T16:00 → 2026-09-02T16:00 | STATE, DEPARTMENT OF.STATE, DEPARTMENT OF.U.S. EMBASSY TEGUCIGALPA |
+| 2026-08-26 | **AMENDED** [Post-Accident Toxicological Testing Oversight](https://sam.gov/opp/2a3f2965bb814e43ad1df1c4a0b7a0fc/view) | Forensic | Combined Synopsis/Solicitation | 2026-08-28T16:00 | unchanged | TRANSPORTATION, DEPARTMENT OF.FEDERAL RAILROAD ADMINISTRATION.693JJ6 FEDERAL RAILROAD ADMIN |
+| 2026-08-26 | **AMENDED** [Blood Bank Sample Services](https://sam.gov/opp/d0b4332538ee4aa9b81b2874509846e8/view) | Forensic; Forensics | Combined Synopsis/Solicitation | 2026-09-02T15:00 | 2026-08-28T15:00 → 2026-09-02T15:00 | COMMERCE, DEPARTMENT OF.NATIONAL INSTITUTE OF STANDARDS AND TECHNOLOGY.DEPT OF COMMERCE NIST |
 
 
-## Response deadlines within 30 days (12)
+## Response deadlines within 30 days (13)
 
 | Posted | Notice | Matched | Type | Deadline | Closes in | Organization |
 | --- | --- | --- | --- | --- | --- | --- |
-| 2026-08-21 | [NFLIS support and maintenance](https://sam.gov/opp/42b336c510b74a27b15781c367ea5a41/view) | Forensic | Special Notice | 2026-08-26T20:00 | today | JUSTICE, DEPARTMENT OF.DRUG ENFORCEMENT ADMINISTRATION |
-| 2026-08-13 | [TEGUC- Emergency Generator System](https://sam.gov/opp/ed1a2498155748c4af0b59802f84d437/view) | Forensic | Combined Synopsis/Solicitation | 2026-08-26T16:00 | today | STATE, DEPARTMENT OF.STATE, DEPARTMENT OF.U.S. EMBASSY TEGUCIGALPA |
-| 2026-08-13 | [TEGUC- Ballistic Laboratory Equipment & Supplies](https://sam.gov/opp/f9061fe8de7d4aeb9602ceb80aff510d/view) | Forensic | Combined Synopsis/Solicitation | 2026-08-26T16:00 | today | STATE, DEPARTMENT OF.STATE, DEPARTMENT OF.U.S. EMBASSY TEGUCIGALPA |
-| 2026-08-13 | [Notice of Intent to Single Source to Dataworks Development, Inc.](https://sam.gov/opp/3d969c80ea764d52b7fad26bc1e78b32/view) | Forensic | Special Notice | 2026-08-27T16:00 | 1 day | COMMERCE, DEPARTMENT OF.NATIONAL OCEANIC AND ATMOSPHERIC ADMINISTRATION.DEPT OF COMMERCE NOAA |
-| 2026-08-20 | [Blood Bank Sample Services](https://sam.gov/opp/e0a083b13aef4a459c8156799481d34f/view) | Forensic; Forensics | Combined Synopsis/Solicitation | 2026-08-28T15:00 | 2 days | COMMERCE, DEPARTMENT OF.NATIONAL INSTITUTE OF STANDARDS AND TECHNOLOGY.DEPT OF COMMERCE NIST |
-| 2026-08-11 | [Post-Accident Toxicological Testing Oversight](https://sam.gov/opp/16c3f8e83249429d98b04862ba0788d6/view) | Forensic | Combined Synopsis/Solicitation | 2026-08-28T16:00 | 2 days | TRANSPORTATION, DEPARTMENT OF.FEDERAL RAILROAD ADMINISTRATION.693JJ6 FEDERAL RAILROAD ADMIN |
-| 2026-08-14 | [Replacement Auto DNA Extraction System](https://sam.gov/opp/a7767ec4bb954efb81223af8cb3d7836/view) | Forensic | Special Notice | 2026-08-29T17:00 | 3 days | COMMERCE, DEPARTMENT OF.NATIONAL INSTITUTE OF STANDARDS AND TECHNOLOGY.DEPT OF COMMERCE NIST |
-| 2026-08-14 | [Maintenance Agreement for a Joel Dart Mass Spectrometer](https://sam.gov/opp/fe08850e08554d489008e20dadf8f2db/view) | Forensic | Special Notice | 2026-08-29T17:00 | 3 days | COMMERCE, DEPARTMENT OF.NATIONAL INSTITUTE OF STANDARDS AND TECHNOLOGY.DEPT OF COMMERCE NIST |
-| 2026-08-18 | [Magnet Forensics Axiom Cyber Software Subscription & Support](https://sam.gov/opp/817b975f38f14798b302e88415cfc31f/view) | Forensics; Magnet Forensics; title:forensic; title:axiom cyber | Combined Synopsis/Solicitation | 2026-08-31T14:00 | 5 days | HEALTH AND HUMAN SERVICES, DEPARTMENT OF.INDIAN HEALTH SERVICE.DIVISION OF ACQUISITIONS POLICY HQ |
-| 2026-08-20 | [Furnishing and Installation of Roll-up Doors and Metal Doors](https://sam.gov/opp/c1427d9b4d1645fb927e5435672612d7/view) | Forensic | Combined Synopsis/Solicitation | 2026-09-02T16:00 | 7 days | STATE, DEPARTMENT OF.STATE, DEPARTMENT OF.U.S. EMBASSY TEGUCIGALPA |
-| 2026-08-24 | [INTENT TO AWARD TO A SINGLE SOURCE - Illumina, Inc](https://sam.gov/opp/88387ecf54af4885bdf02831265f223f/view) | Forensics | Special Notice | 2026-09-07T20:00 | 12 days | COMMERCE, DEPARTMENT OF.NATIONAL OCEANIC AND ATMOSPHERIC ADMINISTRATION |
-| 2026-08-13 | [CODIS Phase III (Specialized Forensics IT Equipment)](https://sam.gov/opp/030c18a9145d4c1abd91c43cafe8cd93/view) | Forensic; Forensics | Solicitation | 2026-09-17T23:00 | 22 days | STATE, DEPARTMENT OF.STATE, DEPARTMENT OF.ACQUISITIONS - AQM MOMENTUM |
+| 2026-08-13 | [Notice of Intent to Single Source to Dataworks Development, Inc.](https://sam.gov/opp/3d969c80ea764d52b7fad26bc1e78b32/view) | Forensic | Special Notice | 2026-08-27T16:00 | today | COMMERCE, DEPARTMENT OF.NATIONAL OCEANIC AND ATMOSPHERIC ADMINISTRATION.DEPT OF COMMERCE NOAA |
+| 2026-08-26 | **AMENDED** [Post-Accident Toxicological Testing Oversight](https://sam.gov/opp/2a3f2965bb814e43ad1df1c4a0b7a0fc/view) | Forensic | Combined Synopsis/Solicitation | 2026-08-28T16:00 | 1 day | TRANSPORTATION, DEPARTMENT OF.FEDERAL RAILROAD ADMINISTRATION.693JJ6 FEDERAL RAILROAD ADMIN |
+| 2026-08-14 | [Replacement Auto DNA Extraction System](https://sam.gov/opp/a7767ec4bb954efb81223af8cb3d7836/view) | Forensic | Special Notice | 2026-08-29T17:00 | 2 days | COMMERCE, DEPARTMENT OF.NATIONAL INSTITUTE OF STANDARDS AND TECHNOLOGY.DEPT OF COMMERCE NIST |
+| 2026-08-14 | [Maintenance Agreement for a Joel Dart Mass Spectrometer](https://sam.gov/opp/fe08850e08554d489008e20dadf8f2db/view) | Forensic | Special Notice | 2026-08-29T17:00 | 2 days | COMMERCE, DEPARTMENT OF.NATIONAL INSTITUTE OF STANDARDS AND TECHNOLOGY.DEPT OF COMMERCE NIST |
+| 2026-08-26 | **NEW** [License renewal](https://sam.gov/opp/5ba3bd51d8b543f0902ba002fe5b3e57/view) | GrayKey | Special Notice | 2026-08-31T14:00 | 4 days | JUSTICE, DEPARTMENT OF.DRUG ENFORCEMENT ADMINISTRATION |
+| 2026-08-18 | [Magnet Forensics Axiom Cyber Software Subscription & Support](https://sam.gov/opp/817b975f38f14798b302e88415cfc31f/view) | Forensics; Magnet Forensics; title:forensic; title:axiom cyber | Combined Synopsis/Solicitation | 2026-08-31T14:00 | 4 days | HEALTH AND HUMAN SERVICES, DEPARTMENT OF.INDIAN HEALTH SERVICE.DIVISION OF ACQUISITIONS POLICY HQ |
+| 2026-08-26 | **AMENDED** [TEGUC- Emergency Generator System](https://sam.gov/opp/03ea229e14b84b91bac002d5aaab5cd7/view) | Forensic | Combined Synopsis/Solicitation | 2026-09-02T16:00 | 6 days | STATE, DEPARTMENT OF.STATE, DEPARTMENT OF.U.S. EMBASSY TEGUCIGALPA |
+| 2026-08-26 | **AMENDED** [Blood Bank Sample Services](https://sam.gov/opp/d0b4332538ee4aa9b81b2874509846e8/view) | Forensic; Forensics | Combined Synopsis/Solicitation | 2026-09-02T15:00 | 6 days | COMMERCE, DEPARTMENT OF.NATIONAL INSTITUTE OF STANDARDS AND TECHNOLOGY.DEPT OF COMMERCE NIST |
+| 2026-08-20 | [Furnishing and Installation of Roll-up Doors and Metal Doors](https://sam.gov/opp/c1427d9b4d1645fb927e5435672612d7/view) | Forensic | Combined Synopsis/Solicitation | 2026-09-02T16:00 | 6 days | STATE, DEPARTMENT OF.STATE, DEPARTMENT OF.U.S. EMBASSY TEGUCIGALPA |
+| 2026-08-24 | [INTENT TO AWARD TO A SINGLE SOURCE - Illumina, Inc](https://sam.gov/opp/88387ecf54af4885bdf02831265f223f/view) | Forensics | Special Notice | 2026-09-07T20:00 | 11 days | COMMERCE, DEPARTMENT OF.NATIONAL OCEANIC AND ATMOSPHERIC ADMINISTRATION |
+| 2026-08-26 | **NEW** [D--GRAY KEY LICENSE ESSENTIALS](https://sam.gov/opp/b89606fe76a340b3b20978ea4e120a96/view) | Forensic; Forensics; GrayKey | Special Notice | 2026-09-08T00:00 | 12 days | INTERIOR, DEPARTMENT OF THE.BUREAU OF LAND MANAGEMENT.CALIFORNIA STATE OFFICE |
+| 2026-08-26 | **NEW** [Post-Accident Toxicological Testing](https://sam.gov/opp/3ad0efb18be74289bf33b1efeb4129ba/view) | Forensic | Combined Synopsis/Solicitation | 2026-09-09T16:00 | 13 days | TRANSPORTATION, DEPARTMENT OF.FEDERAL RAILROAD ADMINISTRATION.693JJ6 FEDERAL RAILROAD ADMIN |
+| 2026-08-13 | [CODIS Phase III (Specialized Forensics IT Equipment)](https://sam.gov/opp/030c18a9145d4c1abd91c43cafe8cd93/view) | Forensic; Forensics | Solicitation | 2026-09-17T23:00 | 21 days | STATE, DEPARTMENT OF.STATE, DEPARTMENT OF.ACQUISITIONS - AQM MOMENTUM |
 
 
-## All confirmed matches in window (35)
+## All confirmed matches in window (37)
 
 | Posted | Notice | Matched | Type | Deadline | Organization |
 | --- | --- | --- | --- | --- | --- |
+| 2026-08-26 | **NEW** [Post-Accident Toxicological Testing](https://sam.gov/opp/3ad0efb18be74289bf33b1efeb4129ba/view) | Forensic | Combined Synopsis/Solicitation | 2026-09-09T16:00 | TRANSPORTATION, DEPARTMENT OF.FEDERAL RAILROAD ADMINISTRATION.693JJ6 FEDERAL RAILROAD ADMIN |
+| 2026-08-26 | **NEW** [License renewal](https://sam.gov/opp/5ba3bd51d8b543f0902ba002fe5b3e57/view) | GrayKey | Special Notice | 2026-08-31T14:00 | JUSTICE, DEPARTMENT OF.DRUG ENFORCEMENT ADMINISTRATION |
+| 2026-08-26 | **NEW** [D--GRAY KEY LICENSE ESSENTIALS](https://sam.gov/opp/b89606fe76a340b3b20978ea4e120a96/view) | Forensic; Forensics; GrayKey | Special Notice | 2026-09-08T00:00 | INTERIOR, DEPARTMENT OF THE.BUREAU OF LAND MANAGEMENT.CALIFORNIA STATE OFFICE |
+| 2026-08-26 | **AMENDED** [TEGUC- Emergency Generator System](https://sam.gov/opp/03ea229e14b84b91bac002d5aaab5cd7/view) | Forensic | Combined Synopsis/Solicitation | 2026-09-02T16:00 | STATE, DEPARTMENT OF.STATE, DEPARTMENT OF.U.S. EMBASSY TEGUCIGALPA |
+| 2026-08-26 | **AMENDED** [Post-Accident Toxicological Testing Oversight](https://sam.gov/opp/2a3f2965bb814e43ad1df1c4a0b7a0fc/view) | Forensic | Combined Synopsis/Solicitation | 2026-08-28T16:00 | TRANSPORTATION, DEPARTMENT OF.FEDERAL RAILROAD ADMINISTRATION.693JJ6 FEDERAL RAILROAD ADMIN |
+| 2026-08-26 | **AMENDED** [Blood Bank Sample Services](https://sam.gov/opp/d0b4332538ee4aa9b81b2874509846e8/view) | Forensic; Forensics | Combined Synopsis/Solicitation | 2026-09-02T15:00 | COMMERCE, DEPARTMENT OF.NATIONAL INSTITUTE OF STANDARDS AND TECHNOLOGY.DEPT OF COMMERCE NIST |
 | 2026-08-24 | [INTENT TO AWARD TO A SINGLE SOURCE - Illumina, Inc](https://sam.gov/opp/88387ecf54af4885bdf02831265f223f/view) | Forensics | Special Notice | 2026-09-07T20:00 | COMMERCE, DEPARTMENT OF.NATIONAL OCEANIC AND ATMOSPHERIC ADMINISTRATION |
 | 2026-08-21 | [NFLIS support and maintenance](https://sam.gov/opp/42b336c510b74a27b15781c367ea5a41/view) | Forensic | Special Notice | 2026-08-26T20:00 | JUSTICE, DEPARTMENT OF.DRUG ENFORCEMENT ADMINISTRATION |
 | 2026-08-20 | [Furnishing and Installation of Roll-up Doors and Metal Doors](https://sam.gov/opp/c1427d9b4d1645fb927e5435672612d7/view) | Forensic | Combined Synopsis/Solicitation | 2026-09-02T16:00 | STATE, DEPARTMENT OF.STATE, DEPARTMENT OF.U.S. EMBASSY TEGUCIGALPA |
-| 2026-08-20 | [Blood Bank Sample Services](https://sam.gov/opp/e0a083b13aef4a459c8156799481d34f/view) | Forensic; Forensics | Combined Synopsis/Solicitation | 2026-08-28T15:00 | COMMERCE, DEPARTMENT OF.NATIONAL INSTITUTE OF STANDARDS AND TECHNOLOGY.DEPT OF COMMERCE NIST |
 | 2026-08-19 | [Pipette Calibration Service](https://sam.gov/opp/70e7e3c156e94446968cb71f9e6024f1/view) | Forensic | Solicitation | 2026-08-24T19:30 | — |
 | 2026-08-18 | [Magnet Forensics Axiom Cyber Software Subscription & Support](https://sam.gov/opp/817b975f38f14798b302e88415cfc31f/view) | Forensics; Magnet Forensics; title:forensic; title:axiom cyber | Combined Synopsis/Solicitation | 2026-08-31T14:00 | HEALTH AND HUMAN SERVICES, DEPARTMENT OF.INDIAN HEALTH SERVICE.DIVISION OF ACQUISITIONS POLICY HQ |
 | 2026-08-18 | [GrayKey License](https://sam.gov/opp/591c2c54e52d4732a0592464fcd73d9b/view) | Forensic; GrayKey | Combined Synopsis/Solicitation | 2026-08-25T23:00 | HOMELAND SECURITY, DEPARTMENT OF.U.S. CUSTOMS AND BORDER PROTECTION.BORDER ENFORCEMENT CONTRACTING DIVISION |
@@ -55,14 +69,12 @@ _None._
 | 2026-08-17 | [Berla iVe Automobile Forensic License Support](https://sam.gov/opp/fd0852967918430e9244ad12923c1dc8/view) | Forensic | Solicitation | 2026-08-24T19:00 | DEPT OF DEFENSE.DEPT OF THE ARMY.AMC.ACC.ACC-CTRS.ACC-NJ.W6QK ACC-PICA |
 | 2026-08-14 | [Replacement Auto DNA Extraction System](https://sam.gov/opp/a7767ec4bb954efb81223af8cb3d7836/view) | Forensic | Special Notice | 2026-08-29T17:00 | COMMERCE, DEPARTMENT OF.NATIONAL INSTITUTE OF STANDARDS AND TECHNOLOGY.DEPT OF COMMERCE NIST |
 | 2026-08-14 | [Maintenance Agreement for a Joel Dart Mass Spectrometer](https://sam.gov/opp/fe08850e08554d489008e20dadf8f2db/view) | Forensic | Special Notice | 2026-08-29T17:00 | COMMERCE, DEPARTMENT OF.NATIONAL INSTITUTE OF STANDARDS AND TECHNOLOGY.DEPT OF COMMERCE NIST |
-| 2026-08-13 | [TEGUC- Emergency Generator System](https://sam.gov/opp/ed1a2498155748c4af0b59802f84d437/view) | Forensic | Combined Synopsis/Solicitation | 2026-08-26T16:00 | STATE, DEPARTMENT OF.STATE, DEPARTMENT OF.U.S. EMBASSY TEGUCIGALPA |
 | 2026-08-13 | [Notice of Intent to Single Source to Dataworks Development, Inc.](https://sam.gov/opp/3d969c80ea764d52b7fad26bc1e78b32/view) | Forensic | Special Notice | 2026-08-27T16:00 | COMMERCE, DEPARTMENT OF.NATIONAL OCEANIC AND ATMOSPHERIC ADMINISTRATION.DEPT OF COMMERCE NOAA |
 | 2026-08-13 | [TEGUC- Ballistic Laboratory Equipment & Supplies](https://sam.gov/opp/f9061fe8de7d4aeb9602ceb80aff510d/view) | Forensic | Combined Synopsis/Solicitation | 2026-08-26T16:00 | STATE, DEPARTMENT OF.STATE, DEPARTMENT OF.U.S. EMBASSY TEGUCIGALPA |
 | 2026-08-13 | [National Lab Certification Testing Services](https://sam.gov/opp/80be987f65b746cd884e108c82732b85/view) | Forensic | Sources Sought | 2026-08-24T19:00 | HEALTH AND HUMAN SERVICES, DEPARTMENT OF.HEALTH RESOURCES AND SERVICES ADMINISTRATION.HRSA HEADQUARTERS |
 | 2026-08-13 | [CODIS Phase III (Specialized Forensics IT Equipment)](https://sam.gov/opp/030c18a9145d4c1abd91c43cafe8cd93/view) | Forensic; Forensics | Solicitation | 2026-09-17T23:00 | STATE, DEPARTMENT OF.STATE, DEPARTMENT OF.ACQUISITIONS - AQM MOMENTUM |
 | 2026-08-13 | [7E--FL-DERTSU-FORENSIC WORKSTATION REPLACEMT](https://sam.gov/opp/b245442471d1450eab93f7ec7b2cd015/view) | Forensic | Award Notice | — | INTERIOR, DEPARTMENT OF THE.U.S. FISH AND WILDLIFE SERVICE.FWS, IT GOODS |
 | 2026-08-12 | [Notice of Intent](https://sam.gov/opp/cae4886842a74917bb51107cdfb8781d/view) | Forensics | Special Notice | 2026-08-21T14:00 | JUSTICE, DEPARTMENT OF.DRUG ENFORCEMENT ADMINISTRATION |
-| 2026-08-11 | [Post-Accident Toxicological Testing Oversight](https://sam.gov/opp/16c3f8e83249429d98b04862ba0788d6/view) | Forensic | Combined Synopsis/Solicitation | 2026-08-28T16:00 | TRANSPORTATION, DEPARTMENT OF.FEDERAL RAILROAD ADMINISTRATION.693JJ6 FEDERAL RAILROAD ADMIN |
 | 2026-08-10 | [Ft Gillem Enclave Base Operation Contract](https://sam.gov/opp/3ca09d44ae1842d4b4b2f769485c297d/view) | Forensic | Sources Sought | 2026-06-18T18:00 | DEPT OF DEFENSE.DEPT OF THE ARMY.W6QM MICC-FDO FT SAM HOUSTON |
 | 2026-08-07 | [N65236_V2_FORENSICS_SOFTWARE_AND_TRAINING](https://sam.gov/opp/41f4f6206ac14fd7af5efda1864259f7/view) | Forensics; GrayKey; title:forensic | Presolicitation | 2026-08-14T14:00 | DEPT OF DEFENSE.DEPT OF THE NAVY.SPAWAR.SPAWAR LANT.NIWC ATLANTIC |
 | 2026-08-07 | [Audio Visual Forensic Workstations](https://sam.gov/opp/22a5a90905a340d5a20dffbadac36bae/view) | Forensic | Combined Synopsis/Solicitation | 2026-08-09T20:00 | JUSTICE, DEPARTMENT OF.ATF ACQUISITION AND PROPERTY MGMT DIV.ATF |
@@ -76,9 +88,11 @@ _None._
 | 2026-07-31 | [Notice of intent to sole source Genetic Analyzer system](https://sam.gov/opp/0edfd92b6e1c430895c45c20c8bed5f2/view) | Forensic | Special Notice | 2026-08-14T13:00 | — |
 | 2026-07-31 | [Chainalysis - Increase ceiling of IDIQ contract](https://sam.gov/opp/2a397cdb5d524ab5a31729eea61f3b7f/view) | Forensic | Special Notice | 2026-08-07T14:00 | HOMELAND SECURITY, DEPARTMENT OF.U.S. IMMIGRATION AND CUSTOMS ENFORCEMENT.INVESTIGATIONS AND OPERATIONS SUPPORT DALLAS |
 | 2026-07-30 | [Presolicitation - The Dalles Dam Generator Step-Up (GSU) Transformer T9, T10, and Optional T11 Repair and Refurbishment](https://sam.gov/opp/53c41de7d1894b7c91aeff1852462b63/view) | Forensic | Presolicitation | 2026-08-14T00:00 | DEPT OF DEFENSE.DEPT OF THE ARMY.USACE.NWD.W071 ENDIST PORTLAND |
-| 2026-07-29 | [Specialized Disposable Gloves](https://sam.gov/opp/a6b93008372e4e9ebf76e0acb4cc648b/view) | Forensic | Sources Sought | 2026-07-31T14:00 | HEALTH AND HUMAN SERVICES, DEPARTMENT OF.NATIONAL INSTITUTES OF HEALTH.NATIONAL INSTITUTES OF HEALTH OLAO |
+| 2026-08-20 | _superseded_ [Blood Bank Sample Services](https://sam.gov/opp/e0a083b13aef4a459c8156799481d34f/view) | Forensic; Forensics | Combined Synopsis/Solicitation | 2026-08-28T15:00 | COMMERCE, DEPARTMENT OF.NATIONAL INSTITUTE OF STANDARDS AND TECHNOLOGY.DEPT OF COMMERCE NIST |
 | 2026-08-17 | _superseded_ [Pipette Calibration Service](https://sam.gov/opp/aa49053a80c74d27932ba4e18df2b3c7/view) | Forensic | Solicitation | 2026-08-21T19:30 | — |
+| 2026-08-13 | _superseded_ [TEGUC- Emergency Generator System](https://sam.gov/opp/ed1a2498155748c4af0b59802f84d437/view) | Forensic | Combined Synopsis/Solicitation | 2026-08-26T16:00 | STATE, DEPARTMENT OF.STATE, DEPARTMENT OF.U.S. EMBASSY TEGUCIGALPA |
 | 2026-08-12 | _superseded_ [CODIS Phase III (Specialized Forensics IT Equipment)](https://sam.gov/opp/76dd9e9f39c34e02a0777a9113702afc/view) | Forensic; Forensics | Presolicitation | 2026-09-17T23:00 | STATE, DEPARTMENT OF.STATE, DEPARTMENT OF.ACQUISITIONS - AQM MOMENTUM |
+| 2026-08-11 | _superseded_ [Post-Accident Toxicological Testing Oversight](https://sam.gov/opp/16c3f8e83249429d98b04862ba0788d6/view) | Forensic | Combined Synopsis/Solicitation | 2026-08-28T16:00 | TRANSPORTATION, DEPARTMENT OF.FEDERAL RAILROAD ADMINISTRATION.693JJ6 FEDERAL RAILROAD ADMIN |
 | 2026-08-06 | _superseded_ [Furnishing and Installation of Roll-up Doors and Metal Doors](https://sam.gov/opp/511b5635e16e4c5aa6cfe2fb28eb213c/view) | Forensic | Combined Synopsis/Solicitation | 2026-08-20T16:00 | STATE, DEPARTMENT OF.STATE, DEPARTMENT OF.U.S. EMBASSY TEGUCIGALPA |
 
 
@@ -99,13 +113,13 @@ _None._
 
 | Term | Notices |
 | --- | --- |
-| Forensic | 31 |
-| Forensics | 10 |
+| Forensic | 35 |
+| Forensics | 12 |
+| GrayKey | 6 |
 | Axiom | 4 |
-| GrayKey | 4 |
 | MSAB | 3 |
 | DC3 | 1 |
 | Magnet Forensics | 1 |
 | XRY | 1 |
 
-Generated 2026-08-27 13:10 UTC from `data/history.json`.
+Generated 2026-08-27 13:12 UTC from `data/history.json`.
