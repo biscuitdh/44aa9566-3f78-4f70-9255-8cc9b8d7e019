@@ -18,6 +18,8 @@ data/last_run.json
 data/raw/
 reports/*
 !reports/.gitkeep
+# Keyword digests are small Markdown files worth keeping as a daily record
+!reports/forensics/
 # Daily deliverables at project root (regenerated each run)
 SAM-daily-*.xlsx
 SAM-daily-*.html
