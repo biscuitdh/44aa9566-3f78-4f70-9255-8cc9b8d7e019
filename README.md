@@ -69,8 +69,14 @@ Outputs:
 | Daily Markdown record | `reports/forensics/YYYY-MM-DD.md` + `reports/forensics/latest.md` |
 | CI job summary | one-line count of confirmed / new / due-soon hits |
 
-Sections: **new today**, **deadlines within 30 days**, **all confirmed matches in the window**,
-**needs review**, and a per-term count.
+Sections: **new today**, **amended / re-issued today**, **deadlines within 30 days**,
+**all confirmed matches in the window**, **needs review**, and a per-term count.
+
+SAM.gov mints a fresh notice ID whenever a solicitation is amended, so the same solicitation
+reappears as a first-time record — often with a pushed-back deadline. The digest matches on
+solicitation number (across `data/history.json` and the durable archive) to keep those out of the
+new-today count, list them under **amended** with the old → new deadline, and drop the superseded
+copy from the deadline and confirmed counts so nothing is listed twice.
 
 Keywords live in `config/watch_groups.json`:
 

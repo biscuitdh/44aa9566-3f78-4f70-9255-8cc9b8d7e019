@@ -99,17 +99,109 @@ def deadline_date(rec: dict[str, Any]) -> date | None:
             return None
 
 
+def solicitation_key(rec: dict[str, Any]) -> str:
+    return str(rec.get("solicitation_number") or "").strip().upper()
+
+
+def build_solicitation_index(
+    history: dict[str, Any], archive_path: Path | None
+) -> dict[str, dict[str, dict[str, Any]]]:
+    """Map solicitation number -> notice_id -> record, across history and the durable archive.
+
+    SAM.gov mints a fresh notice_id when a solicitation is amended, so the tracker sees the
+    amended notice as a first-time record. The archive is included because the superseded
+    record often predates the 15-day history window.
+    """
+    index: dict[str, dict[str, dict[str, Any]]] = {}
+    sources: list[dict[str, Any]] = [history.get("notices") or {}]
+    if archive_path is not None and archive_path.is_file():
+        try:
+            data = json.loads(archive_path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            data = {}
+        if isinstance(data, dict) and isinstance(data.get("notices"), dict):
+            sources.append(data["notices"])
+
+    for src in sources:
+        for rec in src.values():
+            if not isinstance(rec, dict):
+                continue
+            sol = solicitation_key(rec)
+            nid = str(rec.get("notice_id") or "")
+            if not sol or not nid:
+                continue
+            slot = index.setdefault(sol, {})
+            prev = slot.get(nid)
+            if prev is None or str(rec.get("first_seen_date") or "") < str(prev.get("first_seen_date") or ""):
+                slot[nid] = rec
+    return index
+
+
+def find_predecessor(
+    rec: dict[str, Any],
+    index: dict[str, dict[str, dict[str, Any]]],
+    report_date: str,
+) -> dict[str, Any] | None:
+    """Earliest older record sharing this solicitation number under a different notice_id."""
+    sol = solicitation_key(rec)
+    if not sol:
+        return None
+    nid = str(rec.get("notice_id") or "")
+    best: dict[str, Any] | None = None
+    for other_id, other in (index.get(sol) or {}).items():
+        if other_id == nid:
+            continue
+        first_seen = str(other.get("first_seen_date") or "")
+        if not first_seen or first_seen >= report_date:
+            continue
+        if best is None or first_seen < str(best.get("first_seen_date") or ""):
+            best = other
+    return best
+
+
+def find_successor(
+    rec: dict[str, Any],
+    index: dict[str, dict[str, dict[str, Any]]],
+) -> dict[str, Any] | None:
+    """Later record sharing this solicitation number under a different notice_id."""
+    sol = solicitation_key(rec)
+    if not sol:
+        return None
+    nid = str(rec.get("notice_id") or "")
+    first_seen = str(rec.get("first_seen_date") or "")
+    best: dict[str, Any] | None = None
+    for other_id, other in (index.get(sol) or {}).items():
+        if other_id == nid:
+            continue
+        other_seen = str(other.get("first_seen_date") or "")
+        if not other_seen or other_seen <= first_seen:
+            continue
+        if best is None or other_seen > str(best.get("first_seen_date") or ""):
+            best = other
+    return best
+
+
+def row_rank(rec: dict[str, Any]) -> int:
+    if rec.get("is_superseded"):
+        return 3
+    if rec.get("is_new"):
+        return 0
+    return 1 if rec.get("is_amended") else 2
+
+
 def sort_key(rec: dict[str, Any]) -> tuple[int, str]:
     posted = str(rec.get("posted_date") or "")
-    return (0 if rec.get("is_new") else 1, posted)
+    return (row_rank(rec), posted)
 
 
 def collect(
     history: dict[str, Any],
     group: Group,
     report_date: str,
+    index: dict[str, dict[str, dict[str, Any]]] | None = None,
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     """Split matching notices in the history window into confirmed and review rows."""
+    index = index or {}
     confirmed: list[dict[str, Any]] = []
     review: list[dict[str, Any]] = []
     for rec in (history.get("notices") or {}).values():
@@ -121,12 +213,19 @@ def collect(
         confidence, reasons = verdict
         row = dict(rec)
         row["match_reasons"] = reasons
-        row["is_new"] = str(rec.get("first_seen_date") or "") == report_date
+        first_seen_today = str(rec.get("first_seen_date") or "") == report_date
+        predecessor = find_predecessor(rec, index, report_date) if first_seen_today else None
+        row["is_amended"] = first_seen_today and predecessor is not None
+        row["is_new"] = first_seen_today and predecessor is None
+        row["is_superseded"] = find_successor(rec, index) is not None
+        if predecessor is not None:
+            row["prev_deadline"] = predecessor.get("response_deadline") or ""
+            row["prev_first_seen"] = predecessor.get("first_seen_date") or ""
         (confirmed if confidence == "confirmed" else review).append(row)
     confirmed.sort(key=sort_key, reverse=True)
     review.sort(key=sort_key, reverse=True)
-    confirmed.sort(key=lambda r: 0 if r.get("is_new") else 1)
-    review.sort(key=lambda r: 0 if r.get("is_new") else 1)
+    confirmed.sort(key=row_rank)
+    review.sort(key=row_rank)
     return confirmed, review
 
 
@@ -157,6 +256,8 @@ def archive_total(path: Path, group: Group) -> int | None:
 def upcoming(rows: list[dict[str, Any]], today: date, horizon_days: int) -> list[dict[str, Any]]:
     out = []
     for row in rows:
+        if row.get("is_superseded"):
+            continue
         due = deadline_date(row)
         if due is None or due < today:
             continue
@@ -177,12 +278,26 @@ def days_left_label(rec: dict[str, Any]) -> str:
     return "1 day" if n == 1 else f"{n} days"
 
 
-def md_table(rows: list[dict[str, Any]], show_days_left: bool = False) -> str:
+def deadline_change(rec: dict[str, Any]) -> str:
+    prev = str(rec.get("prev_deadline") or "")[:16]
+    now = str(rec.get("response_deadline") or "")[:16]
+    if not prev:
+        return "—"
+    return "unchanged" if prev == now else f"{prev} → {now}"
+
+
+def md_table(
+    rows: list[dict[str, Any]],
+    show_days_left: bool = False,
+    show_deadline_change: bool = False,
+) -> str:
     if not rows:
         return "_None._\n"
     head = ["Posted", "Notice", "Matched", "Type", "Deadline"]
     if show_days_left:
         head.append("Closes in")
+    if show_deadline_change:
+        head.append("Deadline change")
     head.append("Organization")
     lines = [
         "| " + " | ".join(head) + " |",
@@ -192,7 +307,14 @@ def md_table(rows: list[dict[str, Any]], show_days_left: bool = False) -> str:
         title = str(r.get("title") or "(no title)").replace("|", "\\|")
         url = notice_url(r)
         link = f"[{title}]({url})" if url else title
-        flag = "**NEW** " if r.get("is_new") else ""
+        if r.get("is_superseded"):
+            flag = "_superseded_ "
+        elif r.get("is_new"):
+            flag = "**NEW** "
+        elif r.get("is_amended"):
+            flag = "**AMENDED** "
+        else:
+            flag = ""
         matched = "; ".join(str(x) for x in (r.get("match_reasons") or r.get("matched_terms") or [])).replace("|", "\\|")
         org = str(r.get("organization") or "").replace("|", "\\|")
         cells = [
@@ -204,6 +326,8 @@ def md_table(rows: list[dict[str, Any]], show_days_left: bool = False) -> str:
         ]
         if show_days_left:
             cells.append(days_left_label(r))
+        if show_deadline_change:
+            cells.append(deadline_change(r))
         cells.append(org or "—")
         lines.append("| " + " | ".join(cells) + " |")
     return "\n".join(lines) + "\n"
@@ -218,14 +342,22 @@ def build_markdown(
     meta: dict[str, Any],
 ) -> str:
     new_rows = [r for r in confirmed if r.get("is_new")]
+    amended_rows = [r for r in confirmed if r.get("is_amended")]
+    live = [r for r in confirmed if not r.get("is_superseded")]
     counts = term_counts(confirmed + review, group)
+    superseded_note = (
+        f" ({len(confirmed)} records incl. {len(confirmed) - len(live)} superseded by an amendment)"
+        if len(live) != len(confirmed)
+        else ""
+    )
     parts = [
         f"# {group.label} watch — {report_date}",
         "",
         f"- Window: `{meta.get('window_from') or '?'}` → `{meta.get('window_to') or '?'}` "
         f"({meta.get('window_days') or '?'} day(s) of history)",
-        f"- Confirmed {group.label.lower()} notices in window: **{len(confirmed)}**",
-        f"- New (first seen {report_date}): **{len(new_rows)}**",
+        f"- Confirmed {group.label.lower()} notices in window: **{len(live)}**{superseded_note}",
+        f"- New solicitations (first seen {report_date}): **{len(new_rows)}**",
+        f"- Amended/re-issued today (same solicitation, new notice ID): **{len(amended_rows)}**",
         f"- Needs review (ambiguous acronym match only): **{len(review)}**",
     ]
     if meta.get("archive_total") is not None:
@@ -236,11 +368,18 @@ def build_markdown(
         "",
         md_table(new_rows),
         "",
+        f"## Amended / re-issued today ({len(amended_rows)})",
+        "",
+        "SAM.gov issues a fresh notice ID when a solicitation is amended, so these are already-tracked",
+        "solicitations reappearing under a new ID rather than fresh opportunities.",
+        "",
+        md_table(amended_rows, show_deadline_change=True),
+        "",
         f"## Response deadlines within {meta.get('horizon_days')} days ({len(due_soon)})",
         "",
         md_table(due_soon, show_days_left=True),
         "",
-        f"## All confirmed matches in window ({len(confirmed)})",
+        f"## All confirmed matches in window ({len(live)})",
         "",
         md_table(confirmed),
         "",
@@ -265,7 +404,12 @@ def build_markdown(
     return "\n".join(parts)
 
 
-def html_table(rows: list[dict[str, Any]], empty: str, show_days_left: bool = False) -> str:
+def html_table(
+    rows: list[dict[str, Any]],
+    empty: str,
+    show_days_left: bool = False,
+    show_deadline_change: bool = False,
+) -> str:
     if not rows:
         return f"<p class='muted'><em>{html.escape(empty)}</em></p>"
     body = []
@@ -273,7 +417,14 @@ def html_table(rows: list[dict[str, Any]], empty: str, show_days_left: bool = Fa
         url = notice_url(r)
         title = html.escape(str(r.get("title") or "(no title)"))
         link = f'<a href="{html.escape(url)}" target="_blank" rel="noopener">{title}</a>' if url else title
-        badge = '<span class="badge new">NEW</span> ' if r.get("is_new") else ""
+        if r.get("is_superseded"):
+            badge = '<span class="badge superseded">SUPERSEDED</span> '
+        elif r.get("is_new"):
+            badge = '<span class="badge new">NEW</span> '
+        elif r.get("is_amended"):
+            badge = '<span class="badge amended">AMENDED</span> '
+        else:
+            badge = ""
         matched = html.escape("; ".join(str(x) for x in (r.get("match_reasons") or r.get("matched_terms") or [])))
         days_cell = ""
         if show_days_left:
@@ -281,12 +432,23 @@ def html_table(rows: list[dict[str, Any]], empty: str, show_days_left: bool = Fa
             # 3 days is roughly the last point where a bid is still practical
             urgent = " class='urgent'" if isinstance(n, int) and n <= 3 else ""
             days_cell = f"<td{urgent}>{html.escape(days_left_label(r))}</td>"
+        change_cell = ""
+        if show_deadline_change:
+            change_cell = f"<td>{html.escape(deadline_change(r))}</td>"
+        if r.get("is_superseded"):
+            cls = "is-superseded"
+        elif r.get("is_new"):
+            cls = "is-new"
+        elif r.get("is_amended"):
+            cls = "is-amended"
+        else:
+            cls = ""
         body.append(
             "<tr class='{cls}'>"
             "<td>{posted}</td><td>{badge}{link}</td><td>{matched}</td>"
-            "<td>{typ}</td><td>{deadline}</td>{days}<td>{org}</td>"
+            "<td>{typ}</td><td>{deadline}</td>{days}{change}<td>{org}</td>"
             "</tr>".format(
-                cls="is-new" if r.get("is_new") else "",
+                cls=cls,
                 posted=html.escape(str(r.get("posted_date") or "")),
                 badge=badge,
                 link=link,
@@ -294,13 +456,16 @@ def html_table(rows: list[dict[str, Any]], empty: str, show_days_left: bool = Fa
                 typ=html.escape(str(r.get("type") or "")),
                 deadline=html.escape(str(r.get("response_deadline") or "")[:16]),
                 days=days_cell,
+                change=change_cell,
                 org=html.escape(str(r.get("organization") or "")),
             )
         )
     days_head = "<th>Closes in</th>" if show_days_left else ""
+    change_head = "<th>Deadline change</th>" if show_deadline_change else ""
     return (
         "<table><thead><tr>"
-        f"<th>Posted</th><th>Notice</th><th>Matched</th><th>Type</th><th>Deadline</th>{days_head}<th>Organization</th>"
+        f"<th>Posted</th><th>Notice</th><th>Matched</th><th>Type</th><th>Deadline</th>"
+        f"{days_head}{change_head}<th>Organization</th>"
         "</tr></thead><tbody>" + "".join(body) + "</tbody></table>"
     )
 
@@ -314,6 +479,8 @@ def build_html(
     meta: dict[str, Any],
 ) -> str:
     new_rows = [r for r in confirmed if r.get("is_new")]
+    amended_rows = [r for r in confirmed if r.get("is_amended")]
+    live = [r for r in confirmed if not r.get("is_superseded")]
     counts = term_counts(confirmed + review, group)
     counts_html = "".join(
         f"<tr><td>{html.escape(term)}</td><td>{n}</td></tr>" for term, n in counts
@@ -333,7 +500,7 @@ def build_html(
   <style>
     :root {{
       --bg: #f6f8fb; --card: #fff; --ink: #1a2332; --muted: #5b6b7c;
-      --line: #d8e0ea; --new: #e8f6e8; --accent: #1f4e79; --link: #0b5cab;
+      --line: #d8e0ea; --new: #e8f6e8; --amended: #fdf3e0; --accent: #1f4e79; --link: #0b5cab;
     }}
     * {{ box-sizing: border-box; }}
     body {{
@@ -352,12 +519,18 @@ def build_html(
     th, td {{ border-bottom: 1px solid var(--line); padding: 8px 6px; text-align: left; vertical-align: top; }}
     th {{ background: #eef3f8; color: var(--accent); }}
     tr.is-new {{ background: var(--new); }}
+    tr.is-amended {{ background: var(--amended); }}
+    tr.is-superseded {{ color: var(--muted); }}
+    tr.is-superseded a {{ color: var(--muted); }}
     a {{ color: var(--link); text-decoration: none; }}
     a:hover {{ text-decoration: underline; }}
-    .badge.new {{
-      display: inline-block; background: #2e7d32; color: #fff;
+    .badge {{
+      display: inline-block; color: #fff;
       font-size: 0.7rem; font-weight: 700; padding: 2px 6px; border-radius: 999px;
     }}
+    .badge.new {{ background: #2e7d32; }}
+    .badge.amended {{ background: #a6600a; }}
+    .badge.superseded {{ background: #8a94a0; }}
     table.counts {{ max-width: 320px; }}
     td.urgent {{ color: #b3261e; font-weight: 700; white-space: nowrap; }}
   </style>
@@ -369,8 +542,9 @@ def build_html(
       Report date: <strong>{html.escape(report_date)}</strong>
       · Window <code>{html.escape(str(meta.get('window_from') or ''))}</code>
         → <code>{html.escape(str(meta.get('window_to') or ''))}</code>
-      · Confirmed: <strong>{len(confirmed)}</strong>
+      · Confirmed: <strong>{len(live)}</strong>
       · New today: <strong>{len(new_rows)}</strong>
+      · Amended today: <strong>{len(amended_rows)}</strong>
       · Needs review: <strong>{len(review)}</strong>{archive_line}
     </div>
     <p class="meta">
@@ -382,10 +556,15 @@ def build_html(
   <h2>New today ({len(new_rows)})</h2>
   {html_table(new_rows, 'No new forensics notices first seen today.')}
 
+  <h2>Amended / re-issued today ({len(amended_rows)})</h2>
+  <p class="meta">SAM.gov issues a fresh notice ID when a solicitation is amended, so these are
+  already-tracked solicitations reappearing under a new ID rather than fresh opportunities.</p>
+  {html_table(amended_rows, 'Nothing re-issued today.', show_deadline_change=True)}
+
   <h2>Response deadlines within {meta.get('horizon_days')} days ({len(due_soon)})</h2>
   {html_table(due_soon, 'Nothing due in that window.', show_days_left=True)}
 
-  <h2>All confirmed matches in window ({len(confirmed)})</h2>
+  <h2>All confirmed matches in window ({len(live)})</h2>
   {html_table(confirmed, 'No confirmed matches in the current window.')}
 
   <h2>Needs review — ambiguous acronym match only ({len(review)})</h2>
@@ -412,15 +591,23 @@ def stdout_summary(
     due_soon: list[dict[str, Any]],
 ) -> str:
     new_rows = [r for r in confirmed if r.get("is_new")]
+    amended_rows = [r for r in confirmed if r.get("is_amended")]
+    live = [r for r in confirmed if not r.get("is_superseded")]
     lines = [
-        f"{group.label} watch {report_date}: {len(confirmed)} confirmed, "
-        f"{len(new_rows)} new, {len(review)} to review, {len(due_soon)} due soon.",
+        f"{group.label} watch {report_date}: {len(live)} confirmed, "
+        f"{len(new_rows)} new, {len(amended_rows)} amended, {len(review)} to review, "
+        f"{len(due_soon)} due soon.",
     ]
     if new_rows:
         for r in new_rows:
             terms = ", ".join(str(x) for x in (r.get("match_reasons") or []))
             lines.append(f"- [{r.get('posted_date')}] {str(r.get('title') or '')[:88]} ({terms})")
-    else:
+    for r in amended_rows:
+        lines.append(
+            f"- amended [{r.get('posted_date')}] {str(r.get('title') or '')[:70]} "
+            f"(deadline {deadline_change(r)})"
+        )
+    if not new_rows:
         # Nothing new, so lead with what is about to close instead of the newest postings.
         lines.append("No new notices today; nearest deadlines:")
         for r in due_soon[:10]:
@@ -471,7 +658,8 @@ def main(argv: list[str] | None = None) -> int:
     day_keys = sorted((history.get("days") or {}).keys())
     report_date = args.date or (day_keys[-1] if day_keys else date.today().isoformat())
 
-    confirmed, review = collect(history, group, report_date)
+    index = build_solicitation_index(history, None if args.no_archive else args.archive)
+    confirmed, review = collect(history, group, report_date, index)
     meta = resolve_window(history, report_date, int(history.get("retention_days") or 15))
     meta["horizon_days"] = args.horizon_days
     meta["archive_total"] = None if args.no_archive else archive_total(args.archive, group)
