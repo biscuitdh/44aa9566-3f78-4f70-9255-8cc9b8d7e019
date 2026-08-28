@@ -61,7 +61,8 @@ jobs:
             echo "## Forensics watch"
             echo ""
             echo '```'
-            tail -n +4 /tmp/forensics-summary.txt
+            # Drop the leading "wrote this file" lines; keep the digest summary onwards.
+            sed -n '/watch [0-9][0-9-]*:/,$p' /tmp/forensics-summary.txt
             echo '```'
           } >> "$GITHUB_STEP_SUMMARY"
 

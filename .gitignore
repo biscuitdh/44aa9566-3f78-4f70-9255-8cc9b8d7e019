@@ -20,6 +20,8 @@ reports/*
 !reports/.gitkeep
 # Keyword digests are small Markdown files worth keeping as a daily record
 !reports/forensics/
+# Ledger of notices already announced in a digest (see scripts/forensics_digest.py)
+!reports/forensics/*.json
 # Daily deliverables at project root (regenerated each run)
 SAM-daily-*.xlsx
 SAM-daily-*.html

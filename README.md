@@ -67,10 +67,18 @@ Outputs:
 |------|-------|
 | Public page | `docs/v/forensics.html` → `/v/forensics.html` (linked from the main report) |
 | Daily Markdown record | `reports/forensics/YYYY-MM-DD.md` + `reports/forensics/latest.md` |
+| Announced-notice ledger | `reports/forensics/reported-notices.json` |
 | CI job summary | one-line count of confirmed / new / due-soon hits |
 
-Sections: **new today**, **amended / re-issued today**, **deadlines within 30 days**,
-**all confirmed matches in the window**, **needs review**, and a per-term count.
+Sections: **new today**, **not previously reported**, **amended / re-issued**, **deadlines within
+30 days**, **all confirmed matches in the window**, **needs review**, and a per-term count.
+
+A notice counts as new only on the date the tracker first saw it, so anything the SAM search picked
+up *after* a digest had already been written would never be announced. The ledger
+(`reports/forensics/reported-notices.json`) records every notice ID a digest has listed; confirmed
+notices missing from it are flagged **not previously reported** with the date they were first seen.
+Delete the ledger to rebuild it from the committed dated digests. `--no-ledger` falls back to
+first-seen-date only; `--no-ledger-update` reads it without writing.
 
 SAM.gov mints a fresh notice ID whenever a solicitation is amended, so the same solicitation
 reappears as a first-time record — often with a pushed-back deadline. The digest matches on
