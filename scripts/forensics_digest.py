@@ -218,7 +218,12 @@ def find_predecessor(
     index: dict[str, dict[str, dict[str, Any]]],
     cutoff: str,
 ) -> dict[str, Any] | None:
-    """Earliest record before `cutoff` sharing this solicitation number under a different notice_id."""
+    """Latest record before `cutoff` sharing this solicitation number under a different notice_id.
+
+    A solicitation can be re-issued more than twice, so the comparison has to be against the
+    generation immediately before this one; using the earliest would report a deadline change
+    spanning the whole chain rather than what this amendment actually changed.
+    """
     sol = solicitation_key(rec)
     if not sol:
         return None
@@ -230,9 +235,29 @@ def find_predecessor(
         first_seen = str(other.get("first_seen_date") or "")
         if not first_seen or first_seen >= cutoff:
             continue
-        if best is None or first_seen < str(best.get("first_seen_date") or ""):
+        if best is None or first_seen > str(best.get("first_seen_date") or ""):
             best = other
     return best
+
+
+def count_predecessors(
+    rec: dict[str, Any],
+    index: dict[str, dict[str, dict[str, Any]]],
+    cutoff: str,
+) -> int:
+    """How many earlier notice_ids share this solicitation number."""
+    sol = solicitation_key(rec)
+    if not sol:
+        return 0
+    nid = str(rec.get("notice_id") or "")
+    total = 0
+    for other_id, other in (index.get(sol) or {}).items():
+        if other_id == nid:
+            continue
+        first_seen = str(other.get("first_seen_date") or "")
+        if first_seen and first_seen < cutoff:
+            total += 1
+    return total
 
 
 def find_successor(
@@ -324,6 +349,7 @@ def collect(
         if predecessor is not None:
             row["prev_deadline"] = predecessor.get("response_deadline") or ""
             row["prev_first_seen"] = predecessor.get("first_seen_date") or ""
+            row["revision"] = count_predecessors(rec, index, first_seen or report_date) + 1
         (confirmed if confidence == "confirmed" else review).append(row)
     confirmed.sort(key=sort_key, reverse=True)
     review.sort(key=sort_key, reverse=True)
@@ -388,7 +414,19 @@ def deadline_change(rec: dict[str, Any]) -> str:
     now = str(rec.get("response_deadline") or "")[:16]
     if not prev:
         return "—"
-    return "unchanged" if prev == now else f"{prev} → {now}"
+    change = "unchanged" if prev == now else f"{prev} → {now}"
+    revision = int(rec.get("revision") or 0)
+    if revision > 2:
+        change += f" ({ordinal(revision)} issue)"
+    return change
+
+
+def ordinal(n: int) -> str:
+    if 10 <= n % 100 <= 20:
+        suffix = "th"
+    else:
+        suffix = {1: "st", 2: "nd", 3: "rd"}.get(n % 10, "th")
+    return f"{n}{suffix}"
 
 
 def md_table(
