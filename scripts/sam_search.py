@@ -1371,6 +1371,14 @@ def write_html(path: Path, history: dict[str, Any], day_rows: list[dict[str, Any
         </details>"""
         )
 
+    watch_page = str(meta.get("watch_page") or "").strip()
+    watch_html = (
+        f'<span><a href="{html.escape(watch_page)}"><strong>Forensics watch</strong></a>'
+        " — keyword-filtered view of these results.</span>"
+        if watch_page
+        else ""
+    )
+
     errors = meta.get("errors") or []
     err_html = ""
     if errors:
@@ -1466,6 +1474,7 @@ def write_html(path: Path, history: dict[str, Any], day_rows: list[dict[str, Any
     <div class="legend">
       <span><span class="swatch new"></span> New first-seen on that day</span>
       <span><strong>Copy for Trello</strong> copies card text — paste into a new Trello card (no login/API).</span>
+      {watch_html}
     </div>
     {err_html}
   </div>
@@ -1878,6 +1887,11 @@ def main(argv: list[str] | None = None) -> int:
         action="store_true",
         help="Do not copy latest xlsx/html into the Latest sync folder",
     )
+    parser.add_argument(
+        "--watch-page",
+        default="",
+        help="Relative link to a keyword digest page (e.g. forensics.html) shown in the HTML header",
+    )
     args = parser.parse_args(argv)
 
     source = args.source
@@ -2204,6 +2218,7 @@ def main(argv: list[str] | None = None) -> int:
         "api_batch": api_batch,
         "api_mode": api_mode,
         "history_days": max(1, args.history_days),
+        "watch_page": args.watch_page,
     }
 
     # Primary: project root, easy to spot by date (fresh run each day)
