@@ -1,13 +1,23 @@
 {
-  "date": "2026-09-04",
+  "date": "2026-09-05",
   "saved_at": "2026-09-05T12:29:50.316154+00:00",
   "bucket": {
-    "date": "2026-09-04",
+    "date": "2026-09-05",
     "runs": [
-      "2026-09-04_131552"
+      "2026-09-05_122823"
     ],
     "notice_keys": [
+      "24025922b5cd4ca89d55a6a9baf99c69",
+      "a3a2ab7eabad474ba4ece96ecae3704c",
+      "e1724fe82d134dce8f0513ba7f5535f8",
+      "d8b5ab62c3e44b7fba2fa35c7ce1085d",
+      "751d8432a3a24a298503b8d4db30b39d",
+      "072036e9c63645a1971a138303820047",
+      "f4c3fe5270a648a0b278e766ad871cdb",
+      "0e2a305aa9d94ebd8d3c79263db914d1",
+      "b1656b3cf8af48038b0c04589f761a35",
       "ab91aec45fb2417fa790d4326ea68cf4",
+      "3a11b18aa3b64e72813eb398e12cbc59",
       "5eec18b9bc6b4c83a2b8e5c6d529c799",
       "aa59fc1c2b004c498dc236adc8c84025",
       "5151f12afd6a4763b4343c321841e3d2",
@@ -26,14 +36,10 @@
       "ad4e28d96059429c978f6b2a76b5ad68",
       "67e1e73b72994c038915cdb9b2252f15",
       "107a28962a824e8b9423d9e3d1ff9a7b",
-      "367e326a9ec0450196a7c93da96404ed",
       "ec72b72c9c2b494a820c49dd554a1bac",
       "9e8baddef2484f21810e5471a5afe020",
       "868144ccd4be413ba7b1c6ea9b87ccec",
       "008f6fe2b0924f4f937af3a62d08666d",
-      "1f239f1864564c539f5587338d9894cc",
-      "9a7640be1ef0440faa11e3750660f799",
-      "878c526abe3742fe8a4a5917ef68bf3f",
       "b3049ee845e94b119354f738161fc497",
       "dc4dea63881c4b8bac0b637de0f520c9",
       "ad4f5e00329e4f57bb9a5721331c9fff",
@@ -42,11 +48,8 @@
       "57ffee8e53824582810908aa94c7dfbf",
       "b5bd41924e0f46369e1fa5afb4423041",
       "f2eff1c219cc4c378b3e41ba62a555e9",
-      "b316d56ff0ee4944843e18db7f186ad1",
       "107b15d8af024570ad7184b3020c1663",
       "c6bb3950f8b248f59c5f841395cf16b3",
-      "083c5feb2caa4c7baf2196736ff8da85",
-      "643eeb9497d642eba4adaff6e7755e26",
       "87714c4ed86a44dc842f19a3497694fc",
       "1552d85cb62e49b39288759a68bfc963",
       "d3fa7e10fddd41e28992e7f3bea0770c",
@@ -65,7 +68,6 @@
       "3ba8930fcb9c459caa458dd74a66e364",
       "863a5660401643049bd2184e0724ec9a",
       "2a3f2965bb814e43ad1df1c4a0b7a0fc",
-      "3ad0efb18be74289bf33b1efeb4129ba",
       "b89606fe76a340b3b20978ea4e120a96",
       "d0b4332538ee4aa9b81b2874509846e8",
       "47d15d61e94246b69bddb2b81ceb3615",
@@ -73,33 +75,220 @@
       "7effdbaa0ff247aebe01ae499facdfea",
       "deacd218f57945f29619e34dff4e37fb",
       "aaa68da276b447cda6a027aa6bd72547",
-      "88387ecf54af4885bdf02831265f223f",
-      "dbbbffa6de1d4fb4b65bc926669b69eb",
-      "949ba5f0cb494963a814b0bb5c9a11bb"
+      "88387ecf54af4885bdf02831265f223f"
     ],
     "new_notice_keys": [
-      "ab91aec45fb2417fa790d4326ea68cf4",
-      "5eec18b9bc6b4c83a2b8e5c6d529c799",
-      "aa59fc1c2b004c498dc236adc8c84025",
-      "5151f12afd6a4763b4343c321841e3d2",
-      "85d390df9b6946a7920d360777689905",
-      "dc16c1c8c5ef438db6c21a5223e633c6",
-      "33d131a3f6b54a05b790a94b3c2e316d",
-      "50d43d916c114bc0bc16ba450d2e745c",
-      "c9eb138cbd8c479e96091878033ee507",
-      "1257f6e8e9a04d30ad67202e7d916abc",
-      "f01766b2b9324df685ccfd9d783bd1a8",
-      "70d689e88eac4ae99e60018ea08f5f52",
-      "0a8c7dba25304197823f86728fcc0383",
-      "b7e40b2f58a34eddb2d9b7a50b0770c4",
-      "6c63915c690348d480e07da85bcecc6c",
-      "200bae7e3b024c13818f1ea55b2c670a",
-      "ad4e28d96059429c978f6b2a76b5ad68",
-      "67e1e73b72994c038915cdb9b2252f15",
-      "107a28962a824e8b9423d9e3d1ff9a7b"
+      "24025922b5cd4ca89d55a6a9baf99c69",
+      "a3a2ab7eabad474ba4ece96ecae3704c",
+      "e1724fe82d134dce8f0513ba7f5535f8",
+      "d8b5ab62c3e44b7fba2fa35c7ce1085d",
+      "751d8432a3a24a298503b8d4db30b39d",
+      "072036e9c63645a1971a138303820047",
+      "f4c3fe5270a648a0b278e766ad871cdb",
+      "0e2a305aa9d94ebd8d3c79263db914d1",
+      "b1656b3cf8af48038b0c04589f761a35",
+      "3a11b18aa3b64e72813eb398e12cbc59"
     ]
   },
   "notices": {
+    "24025922b5cd4ca89d55a6a9baf99c69": {
+      "notice_id": "24025922b5cd4ca89d55a6a9baf99c69",
+      "title": "eContent Books RFI",
+      "solicitation_number": "36C10X27R1027",
+      "posted_date": "2026-09-04",
+      "type": "Sources Sought",
+      "response_deadline": "2026-09-25T14:15:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "VETERANS AFFAIRS, DEPARTMENT OF.VETERANS AFFAIRS, DEPARTMENT OF.SAC FREDERICK (36C10X)",
+      "matched_terms": [
+        "Cyber"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/24025922b5cd4ca89d55a6a9baf99c69/view",
+      "first_seen_date": "2026-09-05",
+      "last_seen_date": "2026-09-05",
+      "seen_on_dates": [
+        "2026-09-05"
+      ]
+    },
+    "a3a2ab7eabad474ba4ece96ecae3704c": {
+      "notice_id": "a3a2ab7eabad474ba4ece96ecae3704c",
+      "title": "Sling load concrete training blocks",
+      "solicitation_number": "FY26-0012450754",
+      "posted_date": "2026-09-04",
+      "type": "Combined Synopsis/Solicitation",
+      "response_deadline": "2026-09-14T16:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "DEPT OF DEFENSE.DEPT OF THE ARMY.NGB.W7N6 USPFO ACTIVITY WA ARNG",
+      "matched_terms": [
+        "Cyber"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/a3a2ab7eabad474ba4ece96ecae3704c/view",
+      "first_seen_date": "2026-09-05",
+      "last_seen_date": "2026-09-05",
+      "seen_on_dates": [
+        "2026-09-05"
+      ]
+    },
+    "e1724fe82d134dce8f0513ba7f5535f8": {
+      "notice_id": "e1724fe82d134dce8f0513ba7f5535f8",
+      "title": "Shred Services at 1040 Waverly Avenue, Holtsville, NY 11742",
+      "solicitation_number": "50002299160",
+      "posted_date": "2026-09-04",
+      "type": "Combined Synopsis/Solicitation",
+      "response_deadline": "2026-09-18T19:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "TREASURY, DEPARTMENT OF THE.INTERNAL REVENUE SERVICE.IRS - NEW CARROLLTON",
+      "matched_terms": [
+        "IRS"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/e1724fe82d134dce8f0513ba7f5535f8/view",
+      "first_seen_date": "2026-09-05",
+      "last_seen_date": "2026-09-05",
+      "seen_on_dates": [
+        "2026-09-05"
+      ]
+    },
+    "d8b5ab62c3e44b7fba2fa35c7ce1085d": {
+      "notice_id": "d8b5ab62c3e44b7fba2fa35c7ce1085d",
+      "title": "RFQ: Green Areas Maintenance Services for Areas Surrounding Bldg. 2022 CSJTC-SALINAS",
+      "solicitation_number": "W912LR26QA045",
+      "posted_date": "2026-09-04",
+      "type": "Combined Synopsis/Solicitation",
+      "response_deadline": "2026-09-17T18:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "DEPT OF DEFENSE.DEPT OF THE ARMY.NGB.W7PA USPFO ACTIVITY PR ARNG",
+      "matched_terms": [
+        "Cyber"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/d8b5ab62c3e44b7fba2fa35c7ce1085d/view",
+      "first_seen_date": "2026-09-05",
+      "last_seen_date": "2026-09-05",
+      "seen_on_dates": [
+        "2026-09-05"
+      ]
+    },
+    "751d8432a3a24a298503b8d4db30b39d": {
+      "notice_id": "751d8432a3a24a298503b8d4db30b39d",
+      "title": "Post-Accident Toxicological Testing",
+      "solicitation_number": "693JJ626Q000028",
+      "posted_date": "2026-09-04",
+      "type": "Combined Synopsis/Solicitation",
+      "response_deadline": "2026-09-09T16:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "TRANSPORTATION, DEPARTMENT OF.FEDERAL RAILROAD ADMINISTRATION.693JJ6 FEDERAL RAILROAD ADMIN",
+      "matched_terms": [
+        "Forensic"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/751d8432a3a24a298503b8d4db30b39d/view",
+      "first_seen_date": "2026-09-05",
+      "last_seen_date": "2026-09-05",
+      "seen_on_dates": [
+        "2026-09-05"
+      ]
+    },
+    "072036e9c63645a1971a138303820047": {
+      "notice_id": "072036e9c63645a1971a138303820047",
+      "title": "Port of Jordan S&RTS",
+      "solicitation_number": "HTC71126RE136",
+      "posted_date": "2026-09-04",
+      "type": "Solicitation",
+      "response_deadline": "2026-09-15T11:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "DEPT OF DEFENSE.USTRANSCOM.USTRANSCOM-AQ",
+      "matched_terms": [
+        "MSAB"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/072036e9c63645a1971a138303820047/view",
+      "first_seen_date": "2026-09-05",
+      "last_seen_date": "2026-09-05",
+      "seen_on_dates": [
+        "2026-09-05"
+      ]
+    },
+    "f4c3fe5270a648a0b278e766ad871cdb": {
+      "notice_id": "f4c3fe5270a648a0b278e766ad871cdb",
+      "title": "OTS-600 Dry Suits",
+      "solicitation_number": "FA452826Q0012",
+      "posted_date": "2026-09-04",
+      "type": "Combined Synopsis/Solicitation",
+      "response_deadline": "2026-09-08T19:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "DEPT OF DEFENSE.DEPT OF THE AIR FORCE.AIR FORCE GLOBAL STRIKE COMMAND.FA4528  5 CONS",
+      "matched_terms": [
+        "Cyber"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/f4c3fe5270a648a0b278e766ad871cdb/view",
+      "first_seen_date": "2026-09-05",
+      "last_seen_date": "2026-09-05",
+      "seen_on_dates": [
+        "2026-09-05"
+      ]
+    },
+    "0e2a305aa9d94ebd8d3c79263db914d1": {
+      "notice_id": "0e2a305aa9d94ebd8d3c79263db914d1",
+      "title": "Guard Booth - Austin",
+      "solicitation_number": "2023H2-26-Q-00056",
+      "posted_date": "2026-09-04",
+      "type": "Combined Synopsis/Solicitation",
+      "response_deadline": "2026-09-18T14:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "TREASURY, DEPARTMENT OF THE.INTERNAL REVENUE SERVICE.NATIONAL OFFICE - PROCUREMENT OBO",
+      "matched_terms": [
+        "IRS"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/0e2a305aa9d94ebd8d3c79263db914d1/view",
+      "first_seen_date": "2026-09-05",
+      "last_seen_date": "2026-09-05",
+      "seen_on_dates": [
+        "2026-09-05"
+      ]
+    },
+    "b1656b3cf8af48038b0c04589f761a35": {
+      "notice_id": "b1656b3cf8af48038b0c04589f761a35",
+      "title": "Ground Vehicle System Center (GVSC) Commercial Solutions Opening (CSO)",
+      "solicitation_number": "W912CH-24-S-0002",
+      "posted_date": "2026-09-04",
+      "type": "Special Notice",
+      "response_deadline": "",
+      "naics": "",
+      "active": "Yes",
+      "organization": "DEPT OF DEFENSE.DEPT OF THE ARMY.AMC.ACC.ACC-CTRS.ACC WRN.W4GG HQ US ARMY TACOM",
+      "matched_terms": [
+        "Cyber"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/b1656b3cf8af48038b0c04589f761a35/view",
+      "first_seen_date": "2026-09-05",
+      "last_seen_date": "2026-09-05",
+      "seen_on_dates": [
+        "2026-09-05"
+      ]
+    },
     "ab91aec45fb2417fa790d4326ea68cf4": {
       "notice_id": "ab91aec45fb2417fa790d4326ea68cf4",
       "title": "Digital Literacy and Innovation Services",
@@ -120,6 +309,28 @@
       "last_seen_date": "2026-09-05",
       "seen_on_dates": [
         "2026-09-04",
+        "2026-09-05"
+      ]
+    },
+    "3a11b18aa3b64e72813eb398e12cbc59": {
+      "notice_id": "3a11b18aa3b64e72813eb398e12cbc59",
+      "title": "ADAPTIVE FUSION, & REASONING OF MULTI-SOURCE DATA (AFAR)",
+      "solicitation_number": "FA875023S7008",
+      "posted_date": "2026-09-04",
+      "type": "Presolicitation",
+      "response_deadline": "",
+      "naics": "",
+      "active": "Yes",
+      "organization": "DEPT OF DEFENSE.DEPT OF THE AIR FORCE.AIR FORCE MATERIEL COMMAND.AIR FORCE RESEARCH LABORATORY.FA8750  AFRL RIK",
+      "matched_terms": [
+        "Cyber"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/3a11b18aa3b64e72813eb398e12cbc59/view",
+      "first_seen_date": "2026-09-05",
+      "last_seen_date": "2026-09-05",
+      "seen_on_dates": [
         "2026-09-05"
       ]
     },
@@ -537,30 +748,6 @@
         "2026-09-05"
       ]
     },
-    "367e326a9ec0450196a7c93da96404ed": {
-      "notice_id": "367e326a9ec0450196a7c93da96404ed",
-      "title": "USS Patrick Gallagher (DDG-127) Custom Galley Table and Chair Covers",
-      "solicitation_number": "N2678626Q0007",
-      "posted_date": "2026-09-02",
-      "type": "Combined Synopsis/Solicitation",
-      "response_deadline": "2026-09-17T12:00:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "DEPT OF DEFENSE.DEPT OF THE NAVY.NAVSEA.NAVSEA SUPSHIP.SUP OF SHIPBUILDING CONV AND REPAIR",
-      "matched_terms": [
-        "Cyber"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/367e326a9ec0450196a7c93da96404ed/view",
-      "first_seen_date": "2026-09-02",
-      "last_seen_date": "2026-09-04",
-      "seen_on_dates": [
-        "2026-09-02",
-        "2026-09-03",
-        "2026-09-04"
-      ]
-    },
     "ec72b72c9c2b494a820c49dd554a1bac": {
       "notice_id": "ec72b72c9c2b494a820c49dd554a1bac",
       "title": "TEGUC- Emergency Generator System",
@@ -655,78 +842,6 @@
         "2026-09-03",
         "2026-09-04",
         "2026-09-05"
-      ]
-    },
-    "1f239f1864564c539f5587338d9894cc": {
-      "notice_id": "1f239f1864564c539f5587338d9894cc",
-      "title": "JA-26-0191 Advanced Target Development",
-      "solicitation_number": "JA-26-0191_70CTD022FR0000002",
-      "posted_date": "2026-09-02",
-      "type": "Justification",
-      "response_deadline": "",
-      "naics": "",
-      "active": "Yes",
-      "organization": "HOMELAND SECURITY, DEPARTMENT OF.U.S. IMMIGRATION AND CUSTOMS ENFORCEMENT.INFORMATION TECHNOLOGY DIVISION",
-      "matched_terms": [
-        "Cyber"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/1f239f1864564c539f5587338d9894cc/view",
-      "first_seen_date": "2026-09-02",
-      "last_seen_date": "2026-09-04",
-      "seen_on_dates": [
-        "2026-09-02",
-        "2026-09-03",
-        "2026-09-04"
-      ]
-    },
-    "9a7640be1ef0440faa11e3750660f799": {
-      "notice_id": "9a7640be1ef0440faa11e3750660f799",
-      "title": "Ground Ring Sleeve",
-      "solicitation_number": "SPMYM326Q7031",
-      "posted_date": "2026-09-02",
-      "type": "Combined Synopsis/Solicitation",
-      "response_deadline": "2026-09-08T17:00:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "DEPT OF DEFENSE.DEFENSE LOGISTICS AGENCY.DLA MARITIME.DLA MARITIME SHIPYARDS.DLA MARITIME - PORTSMOUTH",
-      "matched_terms": [
-        "Cyber"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/9a7640be1ef0440faa11e3750660f799/view",
-      "first_seen_date": "2026-09-02",
-      "last_seen_date": "2026-09-04",
-      "seen_on_dates": [
-        "2026-09-02",
-        "2026-09-03",
-        "2026-09-04"
-      ]
-    },
-    "878c526abe3742fe8a4a5917ef68bf3f": {
-      "notice_id": "878c526abe3742fe8a4a5917ef68bf3f",
-      "title": "Gartner Research Subscription Licenses",
-      "solicitation_number": "HDTRA126FE071",
-      "posted_date": "2026-09-02",
-      "type": "Justification",
-      "response_deadline": "",
-      "naics": "",
-      "active": "Yes",
-      "organization": "DEPT OF DEFENSE.DEFENSE THREAT REDUCTION AGENCY (DTRA).DEFENSE THREAT REDUCTION AGENCY",
-      "matched_terms": [
-        "Cyber"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/878c526abe3742fe8a4a5917ef68bf3f/view",
-      "first_seen_date": "2026-09-02",
-      "last_seen_date": "2026-09-04",
-      "seen_on_dates": [
-        "2026-09-02",
-        "2026-09-03",
-        "2026-09-04"
       ]
     },
     "b3049ee845e94b119354f738161fc497": {
@@ -923,29 +1038,6 @@
         "2026-09-05"
       ]
     },
-    "b316d56ff0ee4944843e18db7f186ad1": {
-      "notice_id": "b316d56ff0ee4944843e18db7f186ad1",
-      "title": "Army Contracting Command \u2013 Red River Army Depot (ACC-RRAD) Organic Industrial Base (OIB) Modernization Commercial Solutions Opening (CSO)",
-      "solicitation_number": "W911RQ-26-S-C001",
-      "posted_date": "2026-09-02",
-      "type": "Special Notice",
-      "response_deadline": "2026-09-30T22:00:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "DEPT OF DEFENSE.DEPT OF THE ARMY.AMC.ACC.ACC-CTRS.ACC WRN.W6QK ACC RRAD",
-      "matched_terms": [
-        "Cyber"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/b316d56ff0ee4944843e18db7f186ad1/view",
-      "first_seen_date": "2026-09-03",
-      "last_seen_date": "2026-09-04",
-      "seen_on_dates": [
-        "2026-09-03",
-        "2026-09-04"
-      ]
-    },
     "107b15d8af024570ad7184b3020c1663": {
       "notice_id": "107b15d8af024570ad7184b3020c1663",
       "title": "USSOCOM POTFF III Program Support",
@@ -994,55 +1086,6 @@
         "2026-09-03",
         "2026-09-04",
         "2026-09-05"
-      ]
-    },
-    "083c5feb2caa4c7baf2196736ff8da85": {
-      "notice_id": "083c5feb2caa4c7baf2196736ff8da85",
-      "title": "Sling load concrete training blocks",
-      "solicitation_number": "FY26-0012450754",
-      "posted_date": "2026-09-01",
-      "type": "Combined Synopsis/Solicitation",
-      "response_deadline": "2026-09-08T16:00:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "DEPT OF DEFENSE.DEPT OF THE ARMY.NGB.W7N6 USPFO ACTIVITY WA ARNG",
-      "matched_terms": [
-        "Cyber"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/083c5feb2caa4c7baf2196736ff8da85/view",
-      "first_seen_date": "2026-09-02",
-      "last_seen_date": "2026-09-04",
-      "seen_on_dates": [
-        "2026-09-02",
-        "2026-09-03",
-        "2026-09-04"
-      ]
-    },
-    "643eeb9497d642eba4adaff6e7755e26": {
-      "notice_id": "643eeb9497d642eba4adaff6e7755e26",
-      "title": "Port of Jordan S&RTS",
-      "solicitation_number": "HTC71126RE136",
-      "posted_date": "2026-09-01",
-      "type": "Solicitation",
-      "response_deadline": "2026-09-15T11:00:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "DEPT OF DEFENSE.USTRANSCOM.USTRANSCOM-AQ",
-      "matched_terms": [
-        "MSAB"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/643eeb9497d642eba4adaff6e7755e26/view",
-      "first_seen_date": "2026-09-01",
-      "last_seen_date": "2026-09-04",
-      "seen_on_dates": [
-        "2026-09-01",
-        "2026-09-02",
-        "2026-09-03",
-        "2026-09-04"
       ]
     },
     "87714c4ed86a44dc842f19a3497694fc": {
@@ -1559,36 +1602,6 @@
         "2026-09-05"
       ]
     },
-    "3ad0efb18be74289bf33b1efeb4129ba": {
-      "notice_id": "3ad0efb18be74289bf33b1efeb4129ba",
-      "title": "Post-Accident Toxicological Testing",
-      "solicitation_number": "693JJ626Q000028",
-      "posted_date": "2026-08-26",
-      "type": "Combined Synopsis/Solicitation",
-      "response_deadline": "2026-09-09T16:00:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "TRANSPORTATION, DEPARTMENT OF.FEDERAL RAILROAD ADMINISTRATION.693JJ6 FEDERAL RAILROAD ADMIN",
-      "matched_terms": [
-        "Forensic"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/3ad0efb18be74289bf33b1efeb4129ba/view",
-      "first_seen_date": "2026-08-27",
-      "last_seen_date": "2026-09-04",
-      "seen_on_dates": [
-        "2026-08-27",
-        "2026-08-28",
-        "2026-08-29",
-        "2026-08-30",
-        "2026-08-31",
-        "2026-09-01",
-        "2026-09-02",
-        "2026-09-03",
-        "2026-09-04"
-      ]
-    },
     "b89606fe76a340b3b20978ea4e120a96": {
       "notice_id": "b89606fe76a340b3b20978ea4e120a96",
       "title": "D--GRAY KEY LICENSE ESSENTIALS",
@@ -1847,76 +1860,6 @@
         "2026-09-03",
         "2026-09-04",
         "2026-09-05"
-      ]
-    },
-    "dbbbffa6de1d4fb4b65bc926669b69eb": {
-      "notice_id": "dbbbffa6de1d4fb4b65bc926669b69eb",
-      "title": "JAILBREAK Needs-Driven Acquisition for Near-term Operations (NANO) - Accelerated Capability Event (ACE) II",
-      "solicitation_number": "W51701-26-R-0003",
-      "posted_date": "2026-08-21",
-      "type": "Special Notice",
-      "response_deadline": "2026-08-21T21:00:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "DEPT OF DEFENSE.DEPT OF THE ARMY.US ARMY ACQUISITION SUPPORT CENTER",
-      "matched_terms": [
-        "SOFWERX"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/dbbbffa6de1d4fb4b65bc926669b69eb/view",
-      "first_seen_date": "2026-08-21",
-      "last_seen_date": "2026-09-04",
-      "seen_on_dates": [
-        "2026-08-22",
-        "2026-08-23",
-        "2026-08-24",
-        "2026-08-25",
-        "2026-08-26",
-        "2026-08-27",
-        "2026-08-28",
-        "2026-08-29",
-        "2026-08-30",
-        "2026-08-31",
-        "2026-09-01",
-        "2026-09-02",
-        "2026-09-03",
-        "2026-09-04"
-      ]
-    },
-    "949ba5f0cb494963a814b0bb5c9a11bb": {
-      "notice_id": "949ba5f0cb494963a814b0bb5c9a11bb",
-      "title": "7G21--AITC PITC Brand Name Cisco Switches (VA-26-00074579)  RFQ 36C10B26Q0664 on NASA SEWP",
-      "solicitation_number": "36C10B26Q0664",
-      "posted_date": "2026-08-21",
-      "type": "Combined Synopsis/Solicitation",
-      "response_deadline": "2026-08-28T16:00:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "VETERANS AFFAIRS, DEPARTMENT OF.VETERANS AFFAIRS, DEPARTMENT OF.TECHNOLOGY ACQUISITION CENTER NJ (36C10B)",
-      "matched_terms": [
-        "Axiom"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/949ba5f0cb494963a814b0bb5c9a11bb/view",
-      "first_seen_date": "2026-08-22",
-      "last_seen_date": "2026-09-04",
-      "seen_on_dates": [
-        "2026-08-22",
-        "2026-08-23",
-        "2026-08-24",
-        "2026-08-25",
-        "2026-08-26",
-        "2026-08-27",
-        "2026-08-28",
-        "2026-08-29",
-        "2026-08-30",
-        "2026-08-31",
-        "2026-09-01",
-        "2026-09-02",
-        "2026-09-03",
-        "2026-09-04"
       ]
     }
   }
