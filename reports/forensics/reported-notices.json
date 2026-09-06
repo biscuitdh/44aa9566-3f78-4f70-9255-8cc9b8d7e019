@@ -1,7 +1,7 @@
 {
  "description": "Notice IDs already announced in a digest, mapped to the report date that first listed them. Lets the digest flag notices that arrived after the previous run and would otherwise never appear as new.",
  "group": "forensics",
- "updated": "2026-09-05",
+ "updated": "2026-09-06",
  "count": 66,
  "announced": {
   "030c18a9145d4c1abd91c43cafe8cd93": "2026-08-22",
