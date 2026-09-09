@@ -1,0 +1,52 @@
+{
+  "description": "Keyword groups used by scripts/forensics_digest.py to build focused digests from data/history.json",
+  "groups": {
+    "forensics": {
+      "label": "Forensics",
+      "strong_terms": [
+        "Forensic",
+        "Forensics",
+        "Digital forensics",
+        "Magnet Forensics",
+        "GrayKey",
+        "Grayshift",
+        "Hexordia",
+        "DVR Examiner",
+        "Digital Evidence Laboratory"
+      ],
+      "weak_terms": [
+        "Axiom",
+        "CELLEX",
+        "MEDEX",
+        "DOMEX",
+        "NMEC",
+        "DC3",
+        "XRY",
+        "MSAB"
+      ],
+      "title_keywords": [
+        "forensic",
+        "forensics",
+        "digital evidence",
+        "mobile device extraction",
+        "device extraction",
+        "cellebrite",
+        "graykey",
+        "grayshift",
+        "magnet axiom",
+        "axiom cyber",
+        "dvr examiner",
+        "hexordia",
+        "cellex",
+        "medex",
+        "domex",
+        "nmec"
+      ]
+    }
+  },
+  "notes": [
+    "strong_terms and title_keywords produce confirmed matches.",
+    "weak_terms are short acronyms that SAM substring matching also hits inside unrelated titles (e.g. DC3 in a part number, MSAB inside a place name). A notice matched only by a weak term lands in the review section instead of the confirmed list.",
+    "title_keywords are matched case-insensitively against the notice title, so a notice collected under a broad term like Cyber still shows up when its title mentions forensics."
+  ]
+}
