@@ -625,10 +625,16 @@ def search_term_frontend(
             ("page", str(page)),
             ("size", str(page_size)),
             ("mode", "search"),
-            ("sort", "-modifiedDate"),
             # Multi-word → "quoted phrase"; single-word unchanged
             ("q", q),
         ]
+        # SGS ignores quoting and ORs the tokens, so a phrase term like
+        # "Digital forensics" matches ~80k notices. Sorted by date, the handful
+        # that really contain the phrase never reach the first page and the
+        # phrase filter below then discards everything. Relevance order puts
+        # them on top instead; out-of-window results are dropped by posted date.
+        if not is_multi_word_term(term):
+            params.append(("sort", "-modifiedDate"))
         if active_only:
             params.append(("is_active", "true"))
         url = base_url.rstrip("/") + "/?" + urllib.parse.urlencode(params)
