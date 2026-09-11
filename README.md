@@ -73,6 +73,11 @@ Outputs:
 Sections: **new today**, **not previously reported**, **amended / re-issued**, **deadlines within
 30 days**, **all confirmed matches in the window**, **needs review**, and a per-term count.
 
+Every table carries a **closes in** column (`closed` / `today` / *N* days), and the header reports
+how many confirmed notices are still accepting responses. A notice stays in the window for about 15
+days after SAM stops returning it, so most of the confirmed list is usually already closed and the
+confirmed count on its own overstates what is actionable.
+
 A notice counts as new only on the date the tracker first saw it, so anything the SAM search picked
 up *after* a digest had already been written would never be announced. The ledger
 (`reports/forensics/reported-notices.json`) records every notice ID a digest has listed; confirmed

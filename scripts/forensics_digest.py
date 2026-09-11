@@ -409,6 +409,25 @@ def days_left_label(rec: dict[str, Any]) -> str:
     return "1 day" if n == 1 else f"{n} days"
 
 
+def open_breakdown(rows: list[dict[str, Any]]) -> tuple[int, int, int]:
+    """Split live rows into still-accepting-responses, past-deadline and undated.
+
+    A notice lingers in the window for ~15 days after SAM stops serving it, so most
+    of the confirmed table is usually closed and the headline count on its own
+    overstates how much is actually actionable.
+    """
+    still_open = already_closed = undated = 0
+    for row in rows:
+        n = row.get("days_left")
+        if n is None:
+            undated += 1
+        elif n < 0:
+            already_closed += 1
+        else:
+            still_open += 1
+    return still_open, already_closed, undated
+
+
 def deadline_change(rec: dict[str, Any]) -> str:
     prev = str(rec.get("prev_deadline") or "")[:16]
     now = str(rec.get("response_deadline") or "")[:16]
@@ -495,6 +514,7 @@ def build_markdown(
     backlog_rows = [r for r in confirmed if r.get("is_backlog")]
     amended_rows = [r for r in confirmed if r.get("is_amended")]
     live = [r for r in confirmed if not r.get("is_superseded")]
+    still_open, already_closed, undated = open_breakdown(live)
     counts = term_counts(confirmed + review, group)
     superseded_note = (
         f" ({len(confirmed)} records incl. {len(confirmed) - len(live)} superseded by an amendment)"
@@ -507,6 +527,8 @@ def build_markdown(
         f"- Window: `{meta.get('window_from') or '?'}` → `{meta.get('window_to') or '?'}` "
         f"({meta.get('window_days') or '?'} day(s) of history)",
         f"- Confirmed {group.label.lower()} notices in window: **{len(live)}**{superseded_note}",
+        f"- Of those, still accepting responses: **{still_open}** "
+        f"({already_closed} past deadline, {undated} with no deadline)",
         f"- New solicitations (first seen {report_date}): **{len(new_rows)}**",
         f"- Not yet reported by any digest (arrived after the previous run): **{len(backlog_rows)}**",
         f"- Amended/re-issued (same solicitation, new notice ID): **{len(amended_rows)}**",
@@ -540,11 +562,11 @@ def build_markdown(
         "",
         f"## All confirmed matches in window ({len(live)})",
         "",
-        md_table(confirmed),
+        md_table(confirmed, show_days_left=True),
         "",
         f"## Needs review — ambiguous match only ({len(review)})",
         "",
-        md_table(review),
+        md_table(review, show_days_left=True),
         "",
         "## Term breakdown",
         "",
@@ -595,7 +617,7 @@ def html_table(
         if show_days_left:
             n = r.get("days_left")
             # 3 days is roughly the last point where a bid is still practical
-            urgent = " class='urgent'" if isinstance(n, int) and n <= 3 else ""
+            urgent = " class='urgent'" if isinstance(n, int) and 0 <= n <= 3 else ""
             days_cell = f"<td{urgent}>{html.escape(days_left_label(r))}</td>"
         change_cell = ""
         if show_deadline_change:
@@ -651,6 +673,7 @@ def build_html(
     backlog_rows = [r for r in confirmed if r.get("is_backlog")]
     amended_rows = [r for r in confirmed if r.get("is_amended")]
     live = [r for r in confirmed if not r.get("is_superseded")]
+    still_open, _, _ = open_breakdown(live)
     counts = term_counts(confirmed + review, group)
     counts_html = "".join(
         f"<tr><td>{html.escape(term)}</td><td>{n}</td></tr>" for term, n in counts
@@ -716,6 +739,7 @@ def build_html(
       · Window <code>{html.escape(str(meta.get('window_from') or ''))}</code>
         → <code>{html.escape(str(meta.get('window_to') or ''))}</code>
       · Confirmed: <strong>{len(live)}</strong>
+      · Still open: <strong>{still_open}</strong>
       · New today: <strong>{len(new_rows)}</strong>
       · Not previously reported: <strong>{len(backlog_rows)}</strong>
       · Amended: <strong>{len(amended_rows)}</strong>
@@ -745,10 +769,10 @@ def build_html(
   {html_table(due_soon, 'Nothing due in that window.', show_days_left=True)}
 
   <h2>All confirmed matches in window ({len(live)})</h2>
-  {html_table(confirmed, 'No confirmed matches in the current window.')}
+  {html_table(confirmed, 'No confirmed matches in the current window.', show_days_left=True)}
 
   <h2>Needs review — ambiguous acronym match only ({len(review)})</h2>
-  {html_table(review, 'Nothing pending review.')}
+  {html_table(review, 'Nothing pending review.', show_days_left=True)}
 
   <h2>Term breakdown</h2>
   <table class="counts"><thead><tr><th>Term</th><th>Notices</th></tr></thead>
@@ -774,8 +798,9 @@ def stdout_summary(
     backlog_rows = [r for r in confirmed if r.get("is_backlog")]
     amended_rows = [r for r in confirmed if r.get("is_amended")]
     live = [r for r in confirmed if not r.get("is_superseded")]
+    still_open, _, _ = open_breakdown(live)
     lines = [
-        f"{group.label} watch {report_date}: {len(live)} confirmed, "
+        f"{group.label} watch {report_date}: {len(live)} confirmed ({still_open} still open), "
         f"{len(new_rows)} new, {len(backlog_rows)} not previously reported, "
         f"{len(amended_rows)} amended, {len(review)} to review, {len(due_soon)} due soon.",
     ]
