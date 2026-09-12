@@ -40,6 +40,11 @@ class Group:
         self.title_keywords = [str(t).casefold() for t in (raw.get("title_keywords") or [])]
         self._strong = {t.casefold() for t in self.strong_terms}
         self._weak = {t.casefold() for t in self.weak_terms}
+        self.watch_orgs = [
+            (str(o.get("label") or o.get("match") or ""), str(o.get("match") or "").casefold())
+            for o in (raw.get("watch_orgs") or [])
+            if isinstance(o, dict) and o.get("match")
+        ]
 
     @property
     def all_terms(self) -> list[str]:
@@ -58,6 +63,10 @@ class Group:
             return "confirmed", reasons or strong_hits
         if weak_hits:
             return "review", weak_hits
+        org = str(notice.get("organization") or "").casefold()
+        org_hits = [label for label, frag in self.watch_orgs if frag in org]
+        if org_hits:
+            return "review", [f"office:{label}" for label in org_hits]
         return None
 
 
@@ -532,7 +541,7 @@ def build_markdown(
         f"- New solicitations (first seen {report_date}): **{len(new_rows)}**",
         f"- Not yet reported by any digest (arrived after the previous run): **{len(backlog_rows)}**",
         f"- Amended/re-issued (same solicitation, new notice ID): **{len(amended_rows)}**",
-        f"- Needs review (ambiguous acronym match only): **{len(review)}**",
+        f"- Needs review (ambiguous acronym, or a watch-office notice with no keyword): **{len(review)}**",
     ]
     if meta.get("archive_total") is not None:
         parts.append(f"- All-time in durable archive: **{meta['archive_total']}**")
@@ -565,6 +574,10 @@ def build_markdown(
         md_table(confirmed, show_days_left=True),
         "",
         f"## Needs review — ambiguous match only ({len(review)})",
+        "",
+        "Matched only by a short acronym that SAM also finds inside unrelated text, or posted by a",
+        "contracting office on the watch list with no forensics keyword in the notice at all",
+        "(`office:` reasons) — those are usually vendor-name buys worth a look.",
         "",
         md_table(review, show_days_left=True),
         "",
@@ -771,7 +784,7 @@ def build_html(
   <h2>All confirmed matches in window ({len(live)})</h2>
   {html_table(confirmed, 'No confirmed matches in the current window.', show_days_left=True)}
 
-  <h2>Needs review — ambiguous acronym match only ({len(review)})</h2>
+  <h2>Needs review — ambiguous acronym, or a watch-office notice with no keyword ({len(review)})</h2>
   {html_table(review, 'Nothing pending review.', show_days_left=True)}
 
   <h2>Term breakdown</h2>

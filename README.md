@@ -97,6 +97,10 @@ Keywords live in `config/watch_groups.json`:
   a title mentioning `digital evidence`)
 - `weak_terms` → review only. Short acronyms (`DC3`, `MSAB`, `XRY`, `Axiom`) also match inside
   unrelated titles, so they are listed separately instead of polluting the confirmed list.
+- `watch_orgs` → review only. Contracting offices that buy forensics tooling under a bare vendor
+  name (Searchlight Cyber, Chainalysis, BitMindz), which carries no forensics keyword. A notice
+  from one of these offices with no keyword hit is surfaced for review rather than confirmed.
+  Check an office's record in `data/archive/notices-master.json` before adding it.
 
 The digest only re-cuts `data/history.json`; it never calls SAM.gov, so it is safe to re-run.
 Add a group to `config/watch_groups.json` and pass `--group <key>` for other watch lists.
