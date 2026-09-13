@@ -315,8 +315,8 @@ def collect(
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     """Split matching notices in the history window into confirmed and review rows.
 
-    `reported` maps notice_id -> date the notice was first announced in a digest. A confirmed
-    notice missing from it that was first seen before today is flagged `is_backlog`: the SAM
+    `reported` maps notice_id -> date the notice was first announced in a digest. A notice
+    missing from it that was first seen before today is flagged `is_backlog`: the SAM
     search picked it up after the previous digest ran, so no digest has ever announced it.
     Pass None to disable that check and judge notices by first-seen date alone.
     """
@@ -938,7 +938,7 @@ def main(argv: list[str] | None = None) -> int:
             print(f"HTML:     {args.out_html}")
 
     if not args.no_ledger and not args.no_ledger_update:
-        added = save_ledger(args.ledger, ledger, confirmed, report_date, group.key)
+        added = save_ledger(args.ledger, ledger, confirmed + review, report_date, group.key)
         if not args.quiet:
             origin = " (bootstrapped from earlier digests)" if bootstrapped else ""
             print(f"Ledger:   {args.ledger} — {len(ledger)} announced, +{added} this run{origin}")
