@@ -102,6 +102,12 @@ Keywords live in `config/watch_groups.json`:
   from one of these offices with no keyword hit is surfaced for review rather than confirmed.
   Check an office's record in `data/archive/notices-master.json` before adding it.
 
+A small share of SAM records arrive with an empty `organization`, which hid the buyer from the
+report and left `watch_orgs` with nothing to match. The digest now fills that field from other
+records sharing the same solicitation-number prefix, which identifies the contracting office, and
+labels the value `(inferred from solicitation number)` so it is never mistaken for SAM data.
+Prefixes whose records name more than one organization are left blank rather than guessed.
+
 The digest only re-cuts `data/history.json`; it never calls SAM.gov, so it is safe to re-run.
 Add a group to `config/watch_groups.json` and pass `--group <key>` for other watch lists.
 
