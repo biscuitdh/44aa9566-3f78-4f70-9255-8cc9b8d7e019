@@ -590,10 +590,12 @@ def build_markdown(
     due_soon: list[dict[str, Any]],
     meta: dict[str, Any],
 ) -> str:
-    new_rows = [r for r in confirmed if r.get("is_new")]
-    backlog_rows = [r for r in confirmed if r.get("is_backlog")]
-    amended_rows = [r for r in confirmed if r.get("is_amended")]
     live = [r for r in confirmed if not r.get("is_superseded")]
+    # Superseded revisions are excluded: render_rows() already shows them as _superseded_ rather
+    # than NEW/UNREPORTED/AMENDED, and the live successor carries whatever needs acting on.
+    new_rows = [r for r in live if r.get("is_new")]
+    backlog_rows = [r for r in live if r.get("is_backlog")]
+    amended_rows = [r for r in live if r.get("is_amended")]
     still_open, already_closed, undated = open_breakdown(live)
     counts = term_counts(confirmed + review, group)
     superseded_note = (
@@ -753,10 +755,12 @@ def build_html(
     due_soon: list[dict[str, Any]],
     meta: dict[str, Any],
 ) -> str:
-    new_rows = [r for r in confirmed if r.get("is_new")]
-    backlog_rows = [r for r in confirmed if r.get("is_backlog")]
-    amended_rows = [r for r in confirmed if r.get("is_amended")]
     live = [r for r in confirmed if not r.get("is_superseded")]
+    # Superseded revisions are excluded: render_rows() already shows them as _superseded_ rather
+    # than NEW/UNREPORTED/AMENDED, and the live successor carries whatever needs acting on.
+    new_rows = [r for r in live if r.get("is_new")]
+    backlog_rows = [r for r in live if r.get("is_backlog")]
+    amended_rows = [r for r in live if r.get("is_amended")]
     still_open, _, _ = open_breakdown(live)
     counts = term_counts(confirmed + review, group)
     counts_html = "".join(
@@ -878,10 +882,12 @@ def stdout_summary(
     review: list[dict[str, Any]],
     due_soon: list[dict[str, Any]],
 ) -> str:
-    new_rows = [r for r in confirmed if r.get("is_new")]
-    backlog_rows = [r for r in confirmed if r.get("is_backlog")]
-    amended_rows = [r for r in confirmed if r.get("is_amended")]
     live = [r for r in confirmed if not r.get("is_superseded")]
+    # Superseded revisions are excluded: render_rows() already shows them as _superseded_ rather
+    # than NEW/UNREPORTED/AMENDED, and the live successor carries whatever needs acting on.
+    new_rows = [r for r in live if r.get("is_new")]
+    backlog_rows = [r for r in live if r.get("is_backlog")]
+    amended_rows = [r for r in live if r.get("is_amended")]
     still_open, _, _ = open_breakdown(live)
     lines = [
         f"{group.label} watch {report_date}: {len(live)} confirmed ({still_open} still open), "
