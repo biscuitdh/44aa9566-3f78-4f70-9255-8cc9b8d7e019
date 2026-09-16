@@ -246,14 +246,34 @@ def with_inferred_organization(
     return filled
 
 
-def build_solicitation_index(
+def revision_keys(rec: dict[str, Any]) -> list[str]:
+    """Keys under which this record's revision chain can be recognised.
+
+    The solicitation number groups a chain for most records, but 8 of 704 archive records carry
+    none (5 of them confirmed forensics), leaving their revisions undetectable. SAM's search index
+    also returns `parentNoticeId`, the id of a notice's first revision, so `parent_notice_id or
+    notice_id` names the chain directly: every revision reports the same parent, and the first
+    revision — which reports none — is that parent. Both keys are returned, so a record indexed
+    under one still matches a sibling that only carries the other.
+    """
+    keys: list[str] = []
+    sol = solicitation_key(rec)
+    if sol:
+        keys.append(f"sol:{sol}")
+    chain = str(rec.get("parent_notice_id") or "").strip() or str(rec.get("notice_id") or "").strip()
+    if chain:
+        keys.append(f"chain:{chain}")
+    return keys
+
+
+def build_revision_index(
     history: dict[str, Any], archive_path: Path | None
 ) -> dict[str, dict[str, dict[str, Any]]]:
-    """Map solicitation number -> notice_id -> record, across history and the durable archive.
+    """Map revision key -> notice_id -> record, across history and the durable archive.
 
-    SAM.gov mints a fresh notice_id when a solicitation is amended, so the tracker sees the
-    amended notice as a first-time record. The archive is included because the superseded
-    record often predates the 15-day history window.
+    SAM.gov mints a fresh notice_id for each revision of a notice and serves only the latest, so
+    the tracker sees an amended notice as a first-time record. The archive is included because the
+    superseded record often predates the 15-day history window.
     """
     index: dict[str, dict[str, dict[str, Any]]] = {}
     sources: list[dict[str, Any]] = [history.get("notices") or {}]
@@ -269,15 +289,32 @@ def build_solicitation_index(
         for rec in src.values():
             if not isinstance(rec, dict):
                 continue
-            sol = solicitation_key(rec)
             nid = str(rec.get("notice_id") or "")
-            if not sol or not nid:
+            if not nid:
                 continue
-            slot = index.setdefault(sol, {})
-            prev = slot.get(nid)
-            if prev is None or str(rec.get("first_seen_date") or "") < str(prev.get("first_seen_date") or ""):
-                slot[nid] = rec
+            for key in revision_keys(rec):
+                slot = index.setdefault(key, {})
+                prev = slot.get(nid)
+                if prev is None or str(rec.get("first_seen_date") or "") < str(prev.get("first_seen_date") or ""):
+                    slot[nid] = rec
     return index
+
+
+def chain_siblings(
+    rec: dict[str, Any], index: dict[str, dict[str, dict[str, Any]]]
+) -> dict[str, dict[str, Any]]:
+    """Other records in this record's revision chain, keyed by notice_id.
+
+    A record is indexed under every key its chain answers to, so the same sibling can surface
+    under more than one of them; keying by notice_id stops `count_predecessors` double-counting it.
+    """
+    nid = str(rec.get("notice_id") or "")
+    siblings: dict[str, dict[str, Any]] = {}
+    for key in revision_keys(rec):
+        for other_id, other in (index.get(key) or {}).items():
+            if other_id and other_id != nid:
+                siblings.setdefault(other_id, other)
+    return siblings
 
 
 def find_predecessor(
@@ -285,20 +322,14 @@ def find_predecessor(
     index: dict[str, dict[str, dict[str, Any]]],
     cutoff: str,
 ) -> dict[str, Any] | None:
-    """Latest record before `cutoff` sharing this solicitation number under a different notice_id.
+    """Latest record before `cutoff` in this record's revision chain, under a different notice_id.
 
     A solicitation can be re-issued more than twice, so the comparison has to be against the
     generation immediately before this one; using the earliest would report a deadline change
     spanning the whole chain rather than what this amendment actually changed.
     """
-    sol = solicitation_key(rec)
-    if not sol:
-        return None
-    nid = str(rec.get("notice_id") or "")
     best: dict[str, Any] | None = None
-    for other_id, other in (index.get(sol) or {}).items():
-        if other_id == nid:
-            continue
+    for other in chain_siblings(rec, index).values():
         first_seen = str(other.get("first_seen_date") or "")
         if not first_seen or first_seen >= cutoff:
             continue
@@ -312,15 +343,9 @@ def count_predecessors(
     index: dict[str, dict[str, dict[str, Any]]],
     cutoff: str,
 ) -> int:
-    """How many earlier notice_ids share this solicitation number."""
-    sol = solicitation_key(rec)
-    if not sol:
-        return 0
-    nid = str(rec.get("notice_id") or "")
+    """How many earlier notice_ids belong to this record's revision chain."""
     total = 0
-    for other_id, other in (index.get(sol) or {}).items():
-        if other_id == nid:
-            continue
+    for other in chain_siblings(rec, index).values():
         first_seen = str(other.get("first_seen_date") or "")
         if first_seen and first_seen < cutoff:
             total += 1
@@ -331,16 +356,10 @@ def find_successor(
     rec: dict[str, Any],
     index: dict[str, dict[str, dict[str, Any]]],
 ) -> dict[str, Any] | None:
-    """Later record sharing this solicitation number under a different notice_id."""
-    sol = solicitation_key(rec)
-    if not sol:
-        return None
-    nid = str(rec.get("notice_id") or "")
+    """Later record in this record's revision chain, under a different notice_id."""
     first_seen = str(rec.get("first_seen_date") or "")
     best: dict[str, Any] | None = None
-    for other_id, other in (index.get(sol) or {}).items():
-        if other_id == nid:
-            continue
+    for other in chain_siblings(rec, index).values():
         other_seen = str(other.get("first_seen_date") or "")
         if not other_seen or other_seen <= first_seen:
             continue
@@ -977,7 +996,7 @@ def main(argv: list[str] | None = None) -> int:
     report_date = args.date or (day_keys[-1] if day_keys else date.today().isoformat())
 
     archive_path = None if args.no_archive else args.archive
-    index = build_solicitation_index(history, archive_path)
+    index = build_revision_index(history, archive_path)
     office_index = build_office_index(history, archive_path)
     if args.no_ledger:
         ledger: dict[str, str] = {}

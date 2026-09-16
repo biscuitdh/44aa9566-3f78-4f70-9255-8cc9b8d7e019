@@ -137,6 +137,9 @@ class Hit:
     matched_terms: set[str] = field(default_factory=set)
     award_amount: str = ""
     awardee: str = ""
+    # Notice id of the first revision of this notice. SAM mints a new notice_id per revision and
+    # only serves the latest, so this is the one field that identifies revisions of one another.
+    parent_notice_id: str = ""
 
     def public_url(self) -> str:
         if self.ui_link and self.ui_link not in ("null", "None"):
@@ -559,6 +562,7 @@ def opportunity_from_frontend_row(row: dict[str, Any], term: str) -> Hit | None:
         matched_terms={term},
         award_amount=amount,
         awardee=awardee,
+        parent_notice_id=str(row.get("parentNoticeId") or "").strip(),
     )
 
 
@@ -865,6 +869,7 @@ def archive_history_snapshot(
         "last_seen_date",
         "award_amount",
         "awardee",
+        "parent_notice_id",
         "archived_at",
     ]
     with csv_path.open("w", encoding="utf-8", newline="") as f:
@@ -976,6 +981,7 @@ def hit_to_notice_dict(h: Hit) -> dict[str, Any]:
         "award_amount": h.award_amount,
         "awardee": h.awardee,
         "url": h.public_url(),
+        "parent_notice_id": h.parent_notice_id,
     }
 
 
@@ -1033,6 +1039,7 @@ def merge_into_history(
                 "url",
                 "posted_date",
                 "solicitation_number",
+                "parent_notice_id",
             ):
                 val = getattr(h, field_name, None) if field_name != "url" else h.public_url()
                 if field_name == "url":
