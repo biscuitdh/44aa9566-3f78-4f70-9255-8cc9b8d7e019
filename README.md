@@ -89,7 +89,9 @@ SAM.gov mints a fresh notice ID whenever a solicitation is amended, so the same 
 reappears as a first-time record — often with a pushed-back deadline. The digest matches on
 solicitation number (across `data/history.json` and the durable archive) to keep those out of the
 new-today count, list them under **amended** with the old → new deadline, and drop the superseded
-copy from the deadline and confirmed counts so nothing is listed twice.
+copy from the deadline, confirmed and needs-review counts so nothing is listed twice. Superseded
+copies are still drawn in the tables, greyed out, and both headline counts say how many records
+they cover — e.g. `28 (33 records incl. 5 superseded by an amendment)`.
 
 Keywords live in `config/watch_groups.json`:
 

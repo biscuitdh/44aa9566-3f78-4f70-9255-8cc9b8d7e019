@@ -601,6 +601,17 @@ def md_table(
     return "\n".join(lines) + "\n"
 
 
+def live_only(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Drop revisions a later notice ID has replaced, so a count is of notices, not records."""
+    return [r for r in rows if not r.get("is_superseded")]
+
+
+def records_note(rows: list[dict[str, Any]], live: list[dict[str, Any]]) -> str:
+    if len(live) == len(rows):
+        return ""
+    return f" ({len(rows)} records incl. {len(rows) - len(live)} superseded by an amendment)"
+
+
 def build_markdown(
     group: Group,
     report_date: str,
@@ -609,7 +620,8 @@ def build_markdown(
     due_soon: list[dict[str, Any]],
     meta: dict[str, Any],
 ) -> str:
-    live = [r for r in confirmed if not r.get("is_superseded")]
+    live = live_only(confirmed)
+    live_review = live_only(review)
     # Superseded revisions are excluded: render_rows() already shows them as _superseded_ rather
     # than NEW/UNREPORTED/AMENDED, and the live successor carries whatever needs acting on.
     new_rows = [r for r in live if r.get("is_new")]
@@ -617,11 +629,7 @@ def build_markdown(
     amended_rows = [r for r in live if r.get("is_amended")]
     still_open, already_closed, undated = open_breakdown(live)
     counts = term_counts(confirmed + review, group)
-    superseded_note = (
-        f" ({len(confirmed)} records incl. {len(confirmed) - len(live)} superseded by an amendment)"
-        if len(live) != len(confirmed)
-        else ""
-    )
+    superseded_note = records_note(confirmed, live)
     parts = [
         f"# {group.label} watch — {report_date}",
         "",
@@ -633,7 +641,8 @@ def build_markdown(
         f"- New solicitations (first seen {report_date}): **{len(new_rows)}**",
         f"- Not yet reported by any digest (arrived after the previous run): **{len(backlog_rows)}**",
         f"- Amended/re-issued (same solicitation, new notice ID): **{len(amended_rows)}**",
-        f"- Needs review (ambiguous acronym, or a watch-office notice with no keyword): **{len(review)}**",
+        f"- Needs review (ambiguous acronym, or a watch-office notice with no keyword): "
+        f"**{len(live_review)}**{records_note(review, live_review)}",
     ]
     if meta.get("archive_total") is not None:
         parts.append(f"- All-time in durable archive: **{meta['archive_total']}**")
@@ -665,7 +674,7 @@ def build_markdown(
         "",
         md_table(confirmed, show_days_left=True),
         "",
-        f"## Needs review — ambiguous match only ({len(review)})",
+        f"## Needs review — ambiguous match only ({len(live_review)})",
         "",
         "Matched only by a short acronym that SAM also finds inside unrelated text, or posted by a",
         "contracting office on the watch list with no forensics keyword in the notice at all",
@@ -774,7 +783,8 @@ def build_html(
     due_soon: list[dict[str, Any]],
     meta: dict[str, Any],
 ) -> str:
-    live = [r for r in confirmed if not r.get("is_superseded")]
+    live = live_only(confirmed)
+    live_review = live_only(review)
     # Superseded revisions are excluded: render_rows() already shows them as _superseded_ rather
     # than NEW/UNREPORTED/AMENDED, and the live successor carries whatever needs acting on.
     new_rows = [r for r in live if r.get("is_new")]
@@ -850,7 +860,7 @@ def build_html(
       · New today: <strong>{len(new_rows)}</strong>
       · Not previously reported: <strong>{len(backlog_rows)}</strong>
       · Amended: <strong>{len(amended_rows)}</strong>
-      · Needs review: <strong>{len(review)}</strong>{archive_line}
+      · Needs review: <strong>{len(live_review)}</strong>{archive_line}
     </div>
     <p class="meta">
       Keyword-filtered view of the <a href="./">full daily tracker</a>.
@@ -878,7 +888,7 @@ def build_html(
   <h2>All confirmed matches in window ({len(live)})</h2>
   {html_table(confirmed, 'No confirmed matches in the current window.', show_days_left=True)}
 
-  <h2>Needs review — ambiguous acronym, or a watch-office notice with no keyword ({len(review)})</h2>
+  <h2>Needs review — ambiguous acronym, or a watch-office notice with no keyword ({len(live_review)})</h2>
   {html_table(review, 'Nothing pending review.', show_days_left=True)}
 
   <h2>Term breakdown</h2>
@@ -901,7 +911,8 @@ def stdout_summary(
     review: list[dict[str, Any]],
     due_soon: list[dict[str, Any]],
 ) -> str:
-    live = [r for r in confirmed if not r.get("is_superseded")]
+    live = live_only(confirmed)
+    live_review = live_only(review)
     # Superseded revisions are excluded: render_rows() already shows them as _superseded_ rather
     # than NEW/UNREPORTED/AMENDED, and the live successor carries whatever needs acting on.
     new_rows = [r for r in live if r.get("is_new")]
@@ -911,7 +922,7 @@ def stdout_summary(
     lines = [
         f"{group.label} watch {report_date}: {len(live)} confirmed ({still_open} still open), "
         f"{len(new_rows)} new, {len(backlog_rows)} not previously reported, "
-        f"{len(amended_rows)} amended, {len(review)} to review, {len(due_soon)} due soon.",
+        f"{len(amended_rows)} amended, {len(live_review)} to review, {len(due_soon)} due soon.",
     ]
     if new_rows:
         for r in new_rows:
