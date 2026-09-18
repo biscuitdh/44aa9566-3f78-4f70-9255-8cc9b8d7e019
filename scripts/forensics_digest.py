@@ -612,6 +612,34 @@ def records_note(rows: list[dict[str, Any]], live: list[dict[str, Any]]) -> str:
     return f" ({len(rows)} records incl. {len(rows) - len(live)} superseded by an amendment)"
 
 
+def activity_groups(
+    rows: list[dict[str, Any]],
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]], list[dict[str, Any]]]:
+    """New / unreported / amended rows. collect() sets the three flags exclusively."""
+    return (
+        [r for r in rows if r.get("is_new")],
+        [r for r in rows if r.get("is_backlog")],
+        [r for r in rows if r.get("is_amended")],
+    )
+
+
+def review_activity(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    return [r for r in rows if r.get("is_new") or r.get("is_backlog") or r.get("is_amended")]
+
+
+def review_note(rows: list[dict[str, Any]]) -> str:
+    """Disclose review-side activity that a confirmed-only count leaves out."""
+    if not rows:
+        return ""
+    return f" (confirmed only; {len(rows)} also in needs review)"
+
+
+def review_note_html(rows: list[dict[str, Any]]) -> str:
+    if not rows:
+        return ""
+    return f" <span class='muted'>+{len(rows)} in review</span>"
+
+
 def build_markdown(
     group: Group,
     report_date: str,
@@ -624,9 +652,9 @@ def build_markdown(
     live_review = live_only(review)
     # Superseded revisions are excluded: render_rows() already shows them as _superseded_ rather
     # than NEW/UNREPORTED/AMENDED, and the live successor carries whatever needs acting on.
-    new_rows = [r for r in live if r.get("is_new")]
-    backlog_rows = [r for r in live if r.get("is_backlog")]
-    amended_rows = [r for r in live if r.get("is_amended")]
+    new_rows, backlog_rows, amended_rows = activity_groups(live)
+    new_review, backlog_review, amended_review = activity_groups(live_review)
+    changed_review = review_activity(live_review)
     still_open, already_closed, undated = open_breakdown(live)
     counts = term_counts(confirmed + review, group)
     superseded_note = records_note(confirmed, live)
@@ -638,9 +666,11 @@ def build_markdown(
         f"- Confirmed {group.label.lower()} notices in window: **{len(live)}**{superseded_note}",
         f"- Of those, still accepting responses: **{still_open}** "
         f"({already_closed} past deadline, {undated} with no deadline)",
-        f"- New solicitations (first seen {report_date}): **{len(new_rows)}**",
-        f"- Not yet reported by any digest (arrived after the previous run): **{len(backlog_rows)}**",
-        f"- Amended/re-issued (same solicitation, new notice ID): **{len(amended_rows)}**",
+        f"- New solicitations (first seen {report_date}): **{len(new_rows)}**{review_note(new_review)}",
+        f"- Not yet reported by any digest (arrived after the previous run): "
+        f"**{len(backlog_rows)}**{review_note(backlog_review)}",
+        f"- Amended/re-issued (same solicitation, new notice ID): "
+        f"**{len(amended_rows)}**{review_note(amended_review)}",
         f"- Needs review (ambiguous acronym, or a watch-office notice with no keyword): "
         f"**{len(live_review)}**{records_note(review, live_review)}",
     ]
@@ -673,6 +703,13 @@ def build_markdown(
         f"## All confirmed matches in window ({len(live)})",
         "",
         md_table(confirmed, show_days_left=True),
+        "",
+        f"## Needs-review activity ({len(changed_review)})",
+        "",
+        "The three counts above are confirmed-only, so an ambiguous row that arrived today, was",
+        "re-issued, or was never announced is otherwise visible only as a badge in the table below.",
+        "",
+        md_table(changed_review, show_days_left=True, show_deadline_change=True, show_first_seen=True),
         "",
         f"## Needs review — ambiguous match only ({len(live_review)})",
         "",
@@ -787,9 +824,9 @@ def build_html(
     live_review = live_only(review)
     # Superseded revisions are excluded: render_rows() already shows them as _superseded_ rather
     # than NEW/UNREPORTED/AMENDED, and the live successor carries whatever needs acting on.
-    new_rows = [r for r in live if r.get("is_new")]
-    backlog_rows = [r for r in live if r.get("is_backlog")]
-    amended_rows = [r for r in live if r.get("is_amended")]
+    new_rows, backlog_rows, amended_rows = activity_groups(live)
+    new_review, backlog_review, amended_review = activity_groups(live_review)
+    changed_review = review_activity(live_review)
     still_open, _, _ = open_breakdown(live)
     counts = term_counts(confirmed + review, group)
     counts_html = "".join(
@@ -857,9 +894,9 @@ def build_html(
         → <code>{html.escape(str(meta.get('window_to') or ''))}</code>
       · Confirmed: <strong>{len(live)}</strong>
       · Still open: <strong>{still_open}</strong>
-      · New today: <strong>{len(new_rows)}</strong>
-      · Not previously reported: <strong>{len(backlog_rows)}</strong>
-      · Amended: <strong>{len(amended_rows)}</strong>
+      · New today: <strong>{len(new_rows)}</strong>{review_note_html(new_review)}
+      · Not previously reported: <strong>{len(backlog_rows)}</strong>{review_note_html(backlog_review)}
+      · Amended: <strong>{len(amended_rows)}</strong>{review_note_html(amended_review)}
       · Needs review: <strong>{len(live_review)}</strong>{archive_line}
     </div>
     <p class="meta">
@@ -888,6 +925,11 @@ def build_html(
   <h2>All confirmed matches in window ({len(live)})</h2>
   {html_table(confirmed, 'No confirmed matches in the current window.', show_days_left=True)}
 
+  <h2>Needs-review activity ({len(changed_review)})</h2>
+  <p class="meta">The three counts above are confirmed-only, so an ambiguous row that arrived today,
+  was re-issued, or was never announced is otherwise visible only as a badge in the table below.</p>
+  {html_table(changed_review, 'No ambiguous rows changed today.', show_days_left=True, show_deadline_change=True, show_first_seen=True)}
+
   <h2>Needs review — ambiguous acronym, or a watch-office notice with no keyword ({len(live_review)})</h2>
   {html_table(review, 'Nothing pending review.', show_days_left=True)}
 
@@ -915,15 +957,23 @@ def stdout_summary(
     live_review = live_only(review)
     # Superseded revisions are excluded: render_rows() already shows them as _superseded_ rather
     # than NEW/UNREPORTED/AMENDED, and the live successor carries whatever needs acting on.
-    new_rows = [r for r in live if r.get("is_new")]
-    backlog_rows = [r for r in live if r.get("is_backlog")]
-    amended_rows = [r for r in live if r.get("is_amended")]
+    new_rows, backlog_rows, amended_rows = activity_groups(live)
+    changed_review = review_activity(live_review)
     still_open, _, _ = open_breakdown(live)
     lines = [
         f"{group.label} watch {report_date}: {len(live)} confirmed ({still_open} still open), "
         f"{len(new_rows)} new, {len(backlog_rows)} not previously reported, "
         f"{len(amended_rows)} amended, {len(live_review)} to review, {len(due_soon)} due soon.",
     ]
+    if changed_review:
+        lines.append(
+            f"Needs-review activity (not in the counts above): {len(changed_review)} — "
+            + "; ".join(
+                f"{'new' if r.get('is_new') else 'unreported' if r.get('is_backlog') else 'amended'}"
+                f" {str(r.get('title') or '')[:60]}"
+                for r in changed_review
+            )
+        )
     if new_rows:
         for r in new_rows:
             terms = ", ".join(str(x) for x in (r.get("match_reasons") or []))
