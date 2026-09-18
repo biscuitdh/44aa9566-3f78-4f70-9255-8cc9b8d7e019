@@ -137,6 +137,9 @@ class Hit:
     matched_terms: set[str] = field(default_factory=set)
     award_amount: str = ""
     awardee: str = ""
+    # Notice id of the first revision of this notice. SAM mints a new notice_id per revision and
+    # only serves the latest, so this is the one field that identifies revisions of one another.
+    parent_notice_id: str = ""
 
     def public_url(self) -> str:
         if self.ui_link and self.ui_link not in ("null", "None"):
@@ -559,6 +562,7 @@ def opportunity_from_frontend_row(row: dict[str, Any], term: str) -> Hit | None:
         matched_terms={term},
         award_amount=amount,
         awardee=awardee,
+        parent_notice_id=str(row.get("parentNoticeId") or "").strip(),
     )
 
 
@@ -625,10 +629,16 @@ def search_term_frontend(
             ("page", str(page)),
             ("size", str(page_size)),
             ("mode", "search"),
-            ("sort", "-modifiedDate"),
             # Multi-word → "quoted phrase"; single-word unchanged
             ("q", q),
         ]
+        # SGS ignores quoting and ORs the tokens, so a phrase term like
+        # "Digital forensics" matches ~80k notices. Sorted by date, the handful
+        # that really contain the phrase never reach the first page and the
+        # phrase filter below then discards everything. Relevance order puts
+        # them on top instead; out-of-window results are dropped by posted date.
+        if not is_multi_word_term(term):
+            params.append(("sort", "-modifiedDate"))
         if active_only:
             params.append(("is_active", "true"))
         url = base_url.rstrip("/") + "/?" + urllib.parse.urlencode(params)
@@ -859,6 +869,7 @@ def archive_history_snapshot(
         "last_seen_date",
         "award_amount",
         "awardee",
+        "parent_notice_id",
         "archived_at",
     ]
     with csv_path.open("w", encoding="utf-8", newline="") as f:
@@ -970,6 +981,7 @@ def hit_to_notice_dict(h: Hit) -> dict[str, Any]:
         "award_amount": h.award_amount,
         "awardee": h.awardee,
         "url": h.public_url(),
+        "parent_notice_id": h.parent_notice_id,
     }
 
 
@@ -1027,6 +1039,7 @@ def merge_into_history(
                 "url",
                 "posted_date",
                 "solicitation_number",
+                "parent_notice_id",
             ):
                 val = getattr(h, field_name, None) if field_name != "url" else h.public_url()
                 if field_name == "url":
@@ -1371,6 +1384,14 @@ def write_html(path: Path, history: dict[str, Any], day_rows: list[dict[str, Any
         </details>"""
         )
 
+    watch_page = str(meta.get("watch_page") or "").strip()
+    watch_html = (
+        f'<span><a href="{html.escape(watch_page)}"><strong>Forensics watch</strong></a>'
+        " — keyword-filtered view of these results.</span>"
+        if watch_page
+        else ""
+    )
+
     errors = meta.get("errors") or []
     err_html = ""
     if errors:
@@ -1466,6 +1487,7 @@ def write_html(path: Path, history: dict[str, Any], day_rows: list[dict[str, Any
     <div class="legend">
       <span><span class="swatch new"></span> New first-seen on that day</span>
       <span><strong>Copy for Trello</strong> copies card text — paste into a new Trello card (no login/API).</span>
+      {watch_html}
     </div>
     {err_html}
   </div>
@@ -1878,6 +1900,11 @@ def main(argv: list[str] | None = None) -> int:
         action="store_true",
         help="Do not copy latest xlsx/html into the Latest sync folder",
     )
+    parser.add_argument(
+        "--watch-page",
+        default="",
+        help="Relative link to a keyword digest page (e.g. forensics.html) shown in the HTML header",
+    )
     args = parser.parse_args(argv)
 
     source = args.source
@@ -2204,6 +2231,7 @@ def main(argv: list[str] | None = None) -> int:
         "api_batch": api_batch,
         "api_mode": api_mode,
         "history_days": max(1, args.history_days),
+        "watch_page": args.watch_page,
     }
 
     # Primary: project root, easy to spot by date (fresh run each day)
