@@ -640,6 +640,115 @@ def review_note_html(rows: list[dict[str, Any]]) -> str:
     return f" <span class='muted'>+{len(rows)} in review</span>"
 
 
+# sam_search.py records a failed term as "Frontend term='Forensic': Network error: ...".
+_TERM_IN_ERROR = re.compile(r"term=(?:'([^']*)'|\"([^\"]*)\")")
+
+
+def search_health(
+    history: dict[str, Any], group: Group, report_date: str
+) -> dict[str, Any]:
+    """How much of the SAM query behind this report actually ran.
+
+    A term that errors contributes no hits, but sam_search.py still exits 0 and publishes,
+    so a degraded day is indistinguishable from a quiet one in every count the digest
+    prints. Terms the watch group matches on are reported separately: those are the ones
+    whose failure can hide a notice from this digest specifically.
+    """
+    runs = [
+        r
+        for r in (history.get("runs") or [])
+        if isinstance(r, dict) and str(r.get("run_date") or "") == report_date
+    ]
+    if not runs:
+        return {"known": False}
+
+    per_run_failed: list[set[str]] = []
+    for run in runs:
+        failed = set()
+        for message in run.get("errors") or []:
+            found = _TERM_IN_ERROR.search(str(message))
+            if found:
+                failed.add(found.group(1) or found.group(2))
+        per_run_failed.append(failed)
+    # Only a term that failed in *every* run of the day is a real gap — a re-run that
+    # succeeded already filled it in.
+    unresolved = set.intersection(*per_run_failed)
+
+    best = max(runs, key=lambda r: int(r.get("hit_count") or 0))
+    watch_terms = {t.casefold() for t in group.all_terms}
+    term_count = int(best.get("term_count") or 0)
+    return {
+        "known": True,
+        "runs": len(runs),
+        "term_count": term_count,
+        "searched": max(0, term_count - len(unresolved)),
+        "hit_count": int(best.get("hit_count") or 0),
+        "blind_terms": sorted(t for t in unresolved if t.casefold() in watch_terms),
+        "other_failed": sorted(t for t in unresolved if t.casefold() not in watch_terms),
+        "degraded": bool(unresolved),
+    }
+
+
+def health_headline(health: dict[str, Any]) -> str:
+    """One line stating how many terms were actually queried."""
+    if not health.get("known"):
+        return "SAM search coverage: no run recorded for this date"
+    total, searched = health.get("term_count") or 0, health.get("searched") or 0
+    if not health.get("degraded"):
+        return f"SAM search coverage: **{searched}/{total}** terms queried without error"
+    missed = total - searched
+    return (
+        f"SAM search coverage: **{searched}/{total}** terms — {missed} failed, "
+        f"so every count below is a floor"
+    )
+
+
+def _health_sentences(health: dict[str, Any]) -> list[str]:
+    blind = health.get("blind_terms") or []
+    other = health.get("other_failed") or []
+    lines = [
+        "The SAM.gov query behind this report errored on "
+        f"{(health.get('term_count') or 0) - (health.get('searched') or 0)} of "
+        f"{health.get('term_count') or 0} search terms, so a notice that only those terms "
+        "would have matched is absent from the data — not absent from SAM.",
+    ]
+    if blind:
+        lines.append(
+            "Terms this watch matches on that returned nothing: "
+            + ", ".join(f"`{t}`" for t in blind)
+            + ". Read today's 'new' and 'confirmed' counts as a lower bound."
+        )
+    if other:
+        lines.append(
+            "Other terms that failed: " + ", ".join(f"`{t}`" for t in other) + "."
+        )
+    if not blind:
+        lines.append(
+            "No term this watch matches on was affected, so the forensics counts are "
+            "still a fair reading of what SAM returned."
+        )
+    return lines
+
+
+def health_block_md(health: dict[str, Any]) -> list[str]:
+    if not health.get("degraded"):
+        return []
+    body = "\n".join(f"> {s}" for s in _health_sentences(health))
+    return ["", "> **Degraded search — treat these counts as a floor.**", ">", body, ""]
+
+
+def health_block_html(health: dict[str, Any]) -> str:
+    if not health.get("degraded"):
+        return ""
+    items = "".join(
+        f"<li>{html.escape(s).replace('`', '')}</li>" for s in _health_sentences(health)
+    )
+    return (
+        "<div class='card warn'><strong>Degraded search — treat these counts as a "
+        f"floor.</strong><ul>{items}</ul></div>"
+    )
+
+
 def build_markdown(
     group: Group,
     report_date: str,
@@ -676,6 +785,9 @@ def build_markdown(
     ]
     if meta.get("archive_total") is not None:
         parts.append(f"- All-time in durable archive: **{meta['archive_total']}**")
+    health = meta.get("search_health") or {}
+    parts.append(f"- {health_headline(health)}")
+    parts += health_block_md(health)
     parts += [
         "",
         f"## New today ({len(new_rows)})",
@@ -883,6 +995,8 @@ def build_html(
     .badge.superseded {{ background: #8a94a0; }}
     table.counts {{ max-width: 320px; }}
     td.urgent {{ color: #b3261e; font-weight: 700; white-space: nowrap; }}
+    .card.warn {{ background: #fff4f4; border-color: #f0c2c2; }}
+    .card.warn ul {{ margin: 8px 0 0; padding-left: 20px; color: var(--ink); }}
   </style>
 </head>
 <body>
@@ -902,8 +1016,10 @@ def build_html(
     <p class="meta">
       Keyword-filtered view of the <a href="./">full daily tracker</a>.
       Matching terms: {html.escape(', '.join(group.all_terms))}.
+      · {html.escape(health_headline(meta.get('search_health') or {}).replace('**', ''))}
     </p>
   </div>
+  {health_block_html(meta.get('search_health') or {})}
 
   <h2>New today ({len(new_rows)})</h2>
   {html_table(new_rows, 'No new forensics notices first seen today.')}
@@ -952,6 +1068,7 @@ def stdout_summary(
     confirmed: list[dict[str, Any]],
     review: list[dict[str, Any]],
     due_soon: list[dict[str, Any]],
+    health: dict[str, Any] | None = None,
 ) -> str:
     live = live_only(confirmed)
     live_review = live_only(review)
@@ -965,6 +1082,16 @@ def stdout_summary(
         f"{len(new_rows)} new, {len(backlog_rows)} not previously reported, "
         f"{len(amended_rows)} amended, {len(live_review)} to review, {len(due_soon)} due soon.",
     ]
+    health = health or {}
+    if health.get("degraded"):
+        blind = health.get("blind_terms") or []
+        lines.insert(
+            0,
+            f"DEGRADED SEARCH: only {health.get('searched')}/{health.get('term_count')} "
+            f"terms queried without error"
+            + (f"; no results for {', '.join(blind)}" if blind else "")
+            + " — the counts below are a floor.",
+        )
     if changed_review:
         lines.append(
             f"Needs-review activity (not in the counts above): {len(changed_review)} — "
@@ -1080,6 +1207,7 @@ def main(argv: list[str] | None = None) -> int:
     meta["archive_total"] = (
         None if args.no_archive else archive_total(args.archive, group, office_index)
     )
+    meta["search_health"] = search_health(history, group, report_date)
 
     today = date.fromisoformat(report_date)
     due_soon = upcoming(confirmed, today, args.horizon_days)
@@ -1110,7 +1238,11 @@ def main(argv: list[str] | None = None) -> int:
             print(f"Ledger:   {args.ledger} — {len(ledger)} announced, +{added} this run{origin}")
 
     if not args.quiet:
-        print(stdout_summary(group, report_date, confirmed, review, due_soon))
+        print(
+            stdout_summary(
+                group, report_date, confirmed, review, due_soon, meta["search_health"]
+            )
+        )
     return 0
 
 

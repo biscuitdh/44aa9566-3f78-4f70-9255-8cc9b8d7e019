@@ -110,6 +110,14 @@ records sharing the same solicitation-number prefix, which identifies the contra
 labels the value `(inferred from solicitation number)` so it is never mistaken for SAM data.
 Prefixes whose records name more than one organization are left blank rather than guessed.
 
+SAM.gov occasionally resets a connection mid-run. The affected term returns no hits, but the
+search still exits 0 and publishes, so a term that never ran looks exactly like a term that found
+nothing. `http_get_json` now retries transient resets and 5xx responses, and the digest header
+reports what actually ran — `SAM search coverage: 23/23 terms queried without error`. When a term
+is still missing after the retries, the report leads with a **degraded search** warning naming the
+terms that returned nothing, flagging those the watch matches on, and saying the counts are a
+floor. On 2026-09-19 six of 23 terms failed this way, `Forensic` among them.
+
 The digest only re-cuts `data/history.json`; it never calls SAM.gov, so it is safe to re-run.
 Add a group to `config/watch_groups.json` and pass `--group <key>` for other watch lists.
 
