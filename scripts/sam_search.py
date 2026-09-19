@@ -330,29 +330,50 @@ def print_progress(
         print(line, flush=True)
 
 
+RETRY_STATUS = {429, 500, 502, 503, 504}
+
+
 def http_get_json(
     url: str,
     *,
     timeout: float = 60.0,
     headers: dict[str, str] | None = None,
     redact_api_key: bool = True,
+    attempts: int = 3,
+    retry_sleep: float = 2.0,
 ) -> dict[str, Any]:
+    """GET JSON, retrying the failures SAM.gov produces intermittently.
+
+    A term that raises here is recorded as an error and contributes no hits, so a single
+    connection reset silently drops a whole search term from the day's results. On
+    2026-09-19 that happened to 6 of 23 terms — including `Forensic` — and the run still
+    exited 0 and published. Transient resets and 5xx are retried; a 4xx is not, since
+    repeating a rejected request only wastes the term's turn.
+    """
     hdrs = headers or {
         "Accept": "application/json",
         "User-Agent": "sam-daily-search/2.1",
     }
     req = urllib.request.Request(url, headers=hdrs, method="GET")
-    try:
-        with urllib.request.urlopen(req, timeout=timeout) as resp:
-            body = resp.read().decode("utf-8")
-    except urllib.error.HTTPError as e:
-        detail = e.read().decode("utf-8", errors="replace")
-        safe = url
-        if redact_api_key and "api_key=" in url:
-            safe = url.split("api_key=")[0] + "api_key=***"
-        raise RuntimeError(f"HTTP {e.code} for {safe}: {detail[:500]}") from e
-    except urllib.error.URLError as e:
-        raise RuntimeError(f"Network error: {e}") from e
+    body = ""
+    for attempt in range(1, max(1, attempts) + 1):
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as resp:
+                body = resp.read().decode("utf-8")
+            break
+        except urllib.error.HTTPError as e:
+            detail = e.read().decode("utf-8", errors="replace")
+            safe = url
+            if redact_api_key and "api_key=" in url:
+                safe = url.split("api_key=")[0] + "api_key=***"
+            failure = RuntimeError(f"HTTP {e.code} for {safe}: {detail[:500]}")
+            if e.code not in RETRY_STATUS or attempt == attempts:
+                raise failure from e
+        except urllib.error.URLError as e:
+            failure = RuntimeError(f"Network error: {e}")
+            if attempt == attempts:
+                raise failure from e
+        time.sleep(retry_sleep * attempt)
     try:
         return json.loads(body)
     except json.JSONDecodeError as e:
