@@ -449,8 +449,11 @@ def collect(
 
 
 def term_counts(rows: list[dict[str, Any]], group: Group) -> list[tuple[str, int]]:
+    """Count notices per group term. Filters superseded revisions here rather than trusting
+    callers to pass live rows: the headline counts each learned that separately (PRs #23, #25)
+    and this count was left behind both times."""
     counts: dict[str, int] = {}
-    for row in rows:
+    for row in live_only(rows):
         for term in row.get("matched_terms") or []:
             key = str(term)
             if key.casefold() in {t.casefold() for t in group.all_terms}:
@@ -833,6 +836,10 @@ def build_markdown(
         "",
         "## Term breakdown",
         "",
+        "Counts notices, like the headline figures above: a solicitation re-issued under a new ID",
+        "counts once, not once per record. Adding up the Matched column of the tables above will",
+        "read higher, because those tables also render the superseded revisions.",
+        "",
     ]
     if counts:
         parts.append("| Term | Notices |")
@@ -1050,6 +1057,9 @@ def build_html(
   {html_table(review, 'Nothing pending review.', show_days_left=True)}
 
   <h2>Term breakdown</h2>
+  <p class="meta">Counts notices, like the headline figures above: a solicitation re-issued under a
+  new ID counts once, not once per record. Adding up the Matched column of the tables above will
+  read higher, because those tables also render the superseded revisions.</p>
   <table class="counts"><thead><tr><th>Term</th><th>Notices</th></tr></thead>
   <tbody>{counts_html}</tbody></table>
 
