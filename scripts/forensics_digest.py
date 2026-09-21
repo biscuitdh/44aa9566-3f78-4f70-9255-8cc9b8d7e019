@@ -462,19 +462,33 @@ def term_counts(rows: list[dict[str, Any]], group: Group) -> list[tuple[str, int
 
 
 def archive_total(
-    path: Path, group: Group, office_index: dict[str, str] | None = None
-) -> int | None:
-    """All-time count of matching notices in the durable archive, if present."""
+    path: Path,
+    group: Group,
+    office_index: dict[str, str] | None = None,
+    revision_index: dict[str, dict[str, dict[str, Any]]] | None = None,
+) -> tuple[int, int] | None:
+    """All-time (notices, records) matching in the durable archive, if present.
+
+    Superseded revisions are dropped here rather than at the call site, the way term_counts()
+    does it: this is the fourth count to need that (PRs #23, #25, #28) and the archive is where
+    the residue is largest, because unlike the 15-day window it is never purged, so every
+    revision a solicitation has ever had accumulates in it. Builds its own revision index when
+    a caller supplies none, so the unfiltered record count is not reachable by accident.
+    """
     notices = archive_notices(path)
     if not notices:
         return None
     office_index = office_index or {}
-    return sum(
-        1
+    if revision_index is None:
+        revision_index = build_revision_index({"notices": notices}, path)
+    records = [
+        rec
         for rec in notices.values()
         if isinstance(rec, dict)
         and group.classify(with_inferred_organization(rec, office_index))
-    )
+    ]
+    live = [rec for rec in records if find_successor(rec, revision_index) is None]
+    return len(live), len(records)
 
 
 def upcoming(rows: list[dict[str, Any]], today: date, horizon_days: int) -> list[dict[str, Any]]:
@@ -610,9 +624,18 @@ def live_only(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
 
 
 def records_note(rows: list[dict[str, Any]], live: list[dict[str, Any]]) -> str:
-    if len(live) == len(rows):
+    return records_note_counts(len(rows), len(live))
+
+
+def records_note_counts(records: int, live: int) -> str:
+    """The records-vs-notices disclosure, from counts rather than row lists.
+
+    The archive total is a count all the way down (its rows are never rendered), so it needs
+    this wording without having the lists to hand.
+    """
+    if records == live:
         return ""
-    return f" ({len(rows)} records incl. {len(rows) - len(live)} superseded by an amendment)"
+    return f" ({records} records incl. {records - live} superseded by an amendment)"
 
 
 def activity_groups(
@@ -787,7 +810,10 @@ def build_markdown(
         f"**{len(live_review)}**{records_note(review, live_review)}",
     ]
     if meta.get("archive_total") is not None:
-        parts.append(f"- All-time in durable archive: **{meta['archive_total']}**")
+        parts.append(
+            f"- All-time in durable archive: **{meta['archive_total']}**"
+            f"{records_note_counts(meta.get('archive_records') or 0, meta['archive_total'])}"
+        )
     health = meta.get("search_health") or {}
     parts.append(f"- {health_headline(health)}")
     parts += health_block_md(health)
@@ -1214,9 +1240,13 @@ def main(argv: list[str] | None = None) -> int:
     )
     meta = resolve_window(history, report_date, int(history.get("retention_days") or 15))
     meta["horizon_days"] = args.horizon_days
-    meta["archive_total"] = (
-        None if args.no_archive else archive_total(args.archive, group, office_index)
+    archive_counts = (
+        None
+        if args.no_archive
+        else archive_total(args.archive, group, office_index, index)
     )
+    meta["archive_total"] = archive_counts[0] if archive_counts else None
+    meta["archive_records"] = archive_counts[1] if archive_counts else None
     meta["search_health"] = search_health(history, group, report_date)
 
     today = date.fromisoformat(report_date)
