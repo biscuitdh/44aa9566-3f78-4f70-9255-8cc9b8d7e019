@@ -140,6 +140,9 @@ class Hit:
     # Notice id of the first revision of this notice. SAM mints a new notice_id per revision and
     # only serves the latest, so this is the one field that identifies revisions of one another.
     parent_notice_id: str = ""
+    # Multi-word terms confirmed against the notice's full description at collection time.
+    # Later passes only have the title, so without this they would drop a real body match.
+    verified_terms: set[str] = field(default_factory=set)
 
     def public_url(self) -> str:
         if self.ui_link and self.ui_link not in ("null", "None"):
@@ -517,6 +520,45 @@ def _row_text_blob(row: dict[str, Any], title: str) -> str:
     return " ".join(parts)
 
 
+DEFAULT_OPP_DETAIL_URL = "https://sam.gov/api/prod/opps/v2/opportunities/"
+
+_DESCRIPTION_CACHE: dict[str, str] = {}
+
+
+def fetch_full_description(notice_id: str, *, timeout: float = 30.0) -> str:
+    """Fetch a notice's complete description body, since search results only carry a snippet.
+
+    SGS truncates `descriptions[].content` at roughly 250 characters. Any phrase that
+    appears past that point is invisible to the search response, so the phrase filter
+    below has to go back to the notice itself to tell a real hit from an OR-matched one.
+    Returns "" when the body cannot be retrieved; the caller treats that as no match.
+    """
+    nid = str(notice_id or "").strip()
+    if not nid:
+        return ""
+    if nid in _DESCRIPTION_CACHE:
+        return _DESCRIPTION_CACHE[nid]
+    text = ""
+    try:
+        data = http_get_json(
+            DEFAULT_OPP_DETAIL_URL + urllib.parse.quote(nid) + "?random=1",
+            timeout=timeout,
+            redact_api_key=False,
+            # This endpoint answers 406 to the plain application/json the search API accepts.
+            headers={
+                "Accept": "application/hal+json",
+                "User-Agent": "sam-daily-search/2.1",
+            },
+        )
+        parts = data.get("description") or []
+        if isinstance(parts, list):
+            text = " ".join(_strip_html(str((p or {}).get("body") or "")) for p in parts if isinstance(p, dict))
+    except Exception as e:  # a missing body must not abort the term
+        print(f"  ! description fetch failed for {nid}: {e}", flush=True)
+    _DESCRIPTION_CACHE[nid] = text
+    return text
+
+
 def term_matches_result(term: str, title: str, blob: str = "") -> bool:
     """
     Single-word: accept (SGS already filtered).
@@ -534,8 +576,27 @@ def term_matches_result(term: str, title: str, blob: str = "") -> bool:
     return phrase in hay
 
 
-def opportunity_from_frontend_row(row: dict[str, Any], term: str) -> Hit | None:
-    """Map SAM website SGS search result → Hit. None if multi-word phrase not present."""
+def phrase_confirmed(term: str, row: dict[str, Any], hit: "Hit") -> bool:
+    """Confirm a multi-word term really occurs in the notice, snippet or full body.
+
+    Only worth calling for rows already inside the posted-date window: the full-body
+    fetch is one extra request per candidate, and the window rules out almost all of
+    the tokens-ORed results SGS returns for a phrase.
+    """
+    if not is_multi_word_term(term):
+        return True
+    title = hit.title
+    if term_matches_result(term, title, _row_text_blob(row, title)):
+        return True
+    return term_matches_result(term, title, fetch_full_description(hit.notice_id))
+
+
+def opportunity_from_frontend_row(row: dict[str, Any], term: str, check_phrase: bool = True) -> Hit | None:
+    """Map SAM website SGS search result → Hit. None if multi-word phrase not present.
+
+    Pass check_phrase=False to defer that test until after the date filter, so the
+    full-body lookup it may need runs only for rows that could be kept.
+    """
     notice_id = str(row.get("_id") or row.get("parentNoticeId") or "").strip()
     type_obj = row.get("type") or {}
     type_s = ""
@@ -565,8 +626,7 @@ def opportunity_from_frontend_row(row: dict[str, Any], term: str) -> Hit | None:
     resp = row.get("responseDate") or row.get("responseDateActual") or ""
     active = "Yes" if row.get("isActive") else "No"
     title = str(row.get("title") or "").strip()
-    blob = _row_text_blob(row, title)
-    if not term_matches_result(term, title, blob):
+    if check_phrase and not term_matches_result(term, title, _row_text_blob(row, title)):
         return None
 
     return Hit(
@@ -681,12 +741,17 @@ def search_term_frontend(
         for row in rows:
             if not isinstance(row, dict):
                 continue
-            h = opportunity_from_frontend_row(row, term)
+            h = opportunity_from_frontend_row(row, term, check_phrase=False)
             if h is None:
-                continue  # multi-word phrase not in title/body
+                continue
             pd = _parse_iso_date(h.posted_date) or _parse_iso_date(row.get("publishDate"))
             if pd is not None and (pd < posted_from or pd > posted_to):
                 continue
+            # After the window, so the full-body lookup runs on a handful of rows a day.
+            if not phrase_confirmed(term, row, h):
+                continue
+            if is_multi_word_term(term):
+                h.verified_terms.add(term)
             hits.append(h)
             page_hits += 1
 
@@ -706,12 +771,19 @@ def merge_hits(all_hits: list[Hit]) -> list[Hit]:
         key = h.record_key()
         if key in by_id:
             by_id[key].matched_terms |= h.matched_terms
+            by_id[key].verified_terms |= h.verified_terms
         else:
             by_id[key] = h
-    # Drop multi-word false matches that only survived via OR-style SGS ranking
+    # Drop multi-word false matches that only survived via OR-style SGS ranking. The API
+    # source searches titles only, so the title test is the right one there; the frontend
+    # source has already checked the full body, and re-testing it here on the title alone
+    # would throw away every phrase that appears in the description but not the heading.
     cleaned: list[Hit] = []
     for h in by_id.values():
-        kept = {t for t in h.matched_terms if term_matches_result(t, h.title, h.title)}
+        kept = {
+            t for t in h.matched_terms
+            if t in h.verified_terms or term_matches_result(t, h.title, h.title)
+        }
         if not kept:
             continue
         h.matched_terms = kept
@@ -720,12 +792,18 @@ def merge_hits(all_hits: list[Hit]) -> list[Hit]:
 
 
 def filter_notice_row(row: dict[str, Any]) -> dict[str, Any] | None:
-    """Re-apply multi-word phrase rules to stored history rows (for report rebuilds)."""
+    """Re-apply multi-word phrase rules to stored history rows (for report rebuilds).
+
+    A stored row keeps no description, so a multi-word term cannot be re-tested here:
+    the only evidence available is the title, and a phrase that matched the body would
+    fail it every time. Those terms were already confirmed when the notice was collected,
+    so they are kept rather than silently dropped on every rebuild.
+    """
     title = str(row.get("title") or "")
     terms = row.get("matched_terms") or []
     if isinstance(terms, str):
         terms = [t.strip() for t in terms.split(";") if t.strip()]
-    kept = [t for t in terms if term_matches_result(str(t), title, title)]
+    kept = [t for t in terms if is_multi_word_term(str(t)) or term_matches_result(str(t), title, title)]
     if not kept:
         return None
     out = dict(row)
