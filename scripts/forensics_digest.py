@@ -525,6 +525,21 @@ def days_left_label(rec: dict[str, Any]) -> str:
     return "1 day" if n == 1 else f"{n} days"
 
 
+def awardee_label(rec: dict[str, Any]) -> str:
+    return str(rec.get("awardee") or "").strip()
+
+
+def has_awardee(rows: list[dict[str, Any]]) -> bool:
+    """Decide the awardee column from the rows rather than a caller flag.
+
+    An award notice never carries a response deadline, so its Deadline and Closes in
+    cells are always `—` and the one fact that matters — who won — is dropped. The
+    other optional columns are caller flags and each had to be threaded through every
+    call site; deriving this one here means a new table cannot forget it.
+    """
+    return any(awardee_label(r) for r in rows)
+
+
 def open_breakdown(rows: list[dict[str, Any]]) -> tuple[int, int, int]:
     """Split live rows into still-accepting-responses, past-deadline and undated.
 
@@ -579,6 +594,9 @@ def md_table(
         head.append("Closes in")
     if show_deadline_change:
         head.append("Deadline change")
+    show_awardee = has_awardee(rows)
+    if show_awardee:
+        head.append("Awarded to")
     head.append("Organization")
     lines = [
         "| " + " | ".join(head) + " |",
@@ -613,6 +631,8 @@ def md_table(
             cells.append(days_left_label(r))
         if show_deadline_change:
             cells.append(deadline_change(r))
+        if show_awardee:
+            cells.append(awardee_label(r).replace("|", "\\|") or "—")
         cells.append(org or "—")
         lines.append("| " + " | ".join(cells) + " |")
     return "\n".join(lines) + "\n"
@@ -702,7 +722,10 @@ def search_health(
 
     best = max(runs, key=lambda r: int(r.get("hit_count") or 0))
     watch_terms = {t.casefold() for t in group.all_terms}
-    term_count = int(best.get("term_count") or 0)
+    # The denominator is how many terms the day attempted at its fullest. Taking it from
+    # the highest-scoring run instead reports a stale term list whenever the search is
+    # re-run after the term list grows.
+    term_count = max(int(r.get("term_count") or 0) for r in runs)
     return {
         "known": True,
         "runs": len(runs),
@@ -890,6 +913,7 @@ def html_table(
 ) -> str:
     if not rows:
         return f"<p class='muted'><em>{html.escape(empty)}</em></p>"
+    show_awardee = has_awardee(rows)
     body = []
     for r in rows:
         url = notice_url(r)
@@ -918,6 +942,9 @@ def html_table(
         change_cell = ""
         if show_deadline_change:
             change_cell = f"<td>{html.escape(deadline_change(r))}</td>"
+        awardee_cell = ""
+        if show_awardee:
+            awardee_cell = f"<td>{html.escape(awardee_label(r))}</td>"
         if r.get("is_superseded"):
             cls = "is-superseded"
         elif r.get("is_new"):
@@ -931,7 +958,7 @@ def html_table(
         body.append(
             "<tr class='{cls}'>"
             "<td>{posted}</td><td>{badge}{link}</td><td>{matched}</td>"
-            "<td>{typ}</td><td>{deadline}</td>{first_seen}{days}{change}<td>{org}</td>"
+            "<td>{typ}</td><td>{deadline}</td>{first_seen}{days}{change}{awardee}<td>{org}</td>"
             "</tr>".format(
                 cls=cls,
                 posted=html.escape(str(r.get("posted_date") or "")),
@@ -943,16 +970,18 @@ def html_table(
                 first_seen=first_seen_cell,
                 days=days_cell,
                 change=change_cell,
+                awardee=awardee_cell,
                 org=html.escape(org_label(r)),
             )
         )
     first_seen_head = "<th>First seen</th>" if show_first_seen else ""
     days_head = "<th>Closes in</th>" if show_days_left else ""
     change_head = "<th>Deadline change</th>" if show_deadline_change else ""
+    awardee_head = "<th>Awarded to</th>" if show_awardee else ""
     return (
         "<table><thead><tr>"
         f"<th>Posted</th><th>Notice</th><th>Matched</th><th>Type</th><th>Deadline</th>"
-        f"{first_seen_head}{days_head}{change_head}<th>Organization</th>"
+        f"{first_seen_head}{days_head}{change_head}{awardee_head}<th>Organization</th>"
         "</tr></thead><tbody>" + "".join(body) + "</tbody></table>"
     )
 
