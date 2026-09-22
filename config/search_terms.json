@@ -18,6 +18,8 @@
     "Grayshift",
     "GrayKey",
     "Cellebrite",
+    "Amped Authenticate",
+    "Amped FIVE",
     "Digital forensics",
     "SOFWERX",
     "Digital Evidence Laboratory",
@@ -28,6 +30,7 @@
   ],
   "notes": [
     "Forensic and Forensics are both kept so title matching is more forgiving.",
+    "Amped Authenticate and Amped FIVE are vendor product names, not keywords: IRS-CI bought two Amped AUTHENTICATE licences on 2026-09-21 under the title 'Software Licensing and Training', and the notice body never uses the word forensic. Multi-word terms go through the phrase filter in term_matches_result, so they cannot admit the unrelated DARPA 'AMPED' programme.",
     "SAM Get Opportunities API matches the title parameter as a title filter, not full description text.",
     "Broad terms like Cyber and IRS will return many results; use --days and review carefully."
   ]

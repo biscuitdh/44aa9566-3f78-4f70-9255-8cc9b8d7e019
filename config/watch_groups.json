@@ -11,6 +11,8 @@
         "GrayKey",
         "Grayshift",
         "Cellebrite",
+        "Amped Authenticate",
+        "Amped FIVE",
         "Hexordia",
         "DVR Examiner",
         "Digital Evidence Laboratory"
@@ -32,6 +34,8 @@
         "mobile device extraction",
         "device extraction",
         "cellebrite",
+        "amped authenticate",
+        "amped five",
         "graykey",
         "grayshift",
         "magnet axiom",
@@ -51,6 +55,7 @@
     "strong_terms and title_keywords produce confirmed matches.",
     "weak_terms are short acronyms that SAM substring matching also hits inside unrelated titles (e.g. DC3 in a part number, MSAB inside a place name). A notice matched only by a weak term lands in the review section instead of the confirmed list.",
     "title_keywords are matched case-insensitively against the notice title, so a notice collected under a broad term like Cyber still shows up when its title mentions forensics.",
+    "A vendor whose name is a common word belongs here only as a multi-word phrase. 'Amped' alone collides with DARPA's AMPED programme and with words like revamped, but sam_search.term_matches_result requires the whole phrase in the title or description for any multi-word term, so 'Amped Authenticate' and 'Amped FIVE' are as precise as Cellebrite. They were added on 2026-09-22 after IRS Criminal Investigation bought two Amped AUTHENTICATE licences under the title 'Software Licensing and Training' with no forensics keyword anywhere in the notice.",
     "A weak_term must never also appear in title_keywords: classify() checks title_keywords before weak_terms, so the duplicate promotes the acronym straight to confirmed and cancels the review-only handling it was listed for. CELLEX, MEDEX, DOMEX and NMEC were in both until 2026-09-15, when NIH's 'Therakos Inc. - Cellex USA Kits' (photopheresis blood-therapy kits, not cell-phone exploitation) was confirmed as a new forensics buy on the strength of its title alone. Only distinctive vendor or product names belong here.",
     "watch_orgs are contracting offices that buy forensics tooling under titles carrying no forensics keyword (vendor names like Searchlight Cyber, Chainalysis, BitMindz). A notice from one of these offices with no keyword hit lands in the review section, never the confirmed list. Only add an office after checking its record in data/archive/notices-master.json: ICE IOSD Dallas qualified with 14 of 14 archived notices being investigative or forensics tooling.",
     "watch_orgs is matched against the notice organization, which SAM sometimes leaves empty. The digest fills a blank organization from the solicitation-number prefix when sibling records agree on one buyer, so an office still matches when the field is missing."
