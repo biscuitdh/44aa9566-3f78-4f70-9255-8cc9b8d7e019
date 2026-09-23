@@ -393,10 +393,13 @@ def collect(
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     """Split matching notices in the history window into confirmed and review rows.
 
-    `reported` maps notice_id -> date the notice was first announced in a digest. A notice
-    missing from it that was first seen before today is flagged `is_backlog`: the SAM
-    search picked it up after the previous digest ran, so no digest has ever announced it.
-    Pass None to disable that check and judge notices by first-seen date alone.
+    `reported` maps notice_id -> date the notice was first announced in a digest, and is
+    consulted in both directions. A notice missing from it that was first seen before today is
+    flagged `is_backlog`: the SAM search picked it up after the previous digest ran, so no digest
+    has ever announced it. A notice present in it under an earlier date but first seen today is
+    flagged `is_reannounced` and withheld from `is_new`: SAM dropped it and served it again, so
+    the date looks fresh even though a reader has already been told about it.
+    Pass None to disable both checks and judge notices by first-seen date alone.
     """
     index = index or {}
     office_index = office_index or {}
@@ -420,8 +423,15 @@ def collect(
         row = dict(rec)
         row["match_reasons"] = reasons
         first_seen = str(rec.get("first_seen_date") or "")
-        first_seen_today = first_seen == report_date
         nid = str(rec.get("notice_id") or "")
+        # first_seen_date is re-derived from whatever the search last collected, so a notice SAM
+        # stops serving and later serves again comes back looking brand new. The ledger is the
+        # record of what a reader has actually been told, so it overrules the date.
+        announced_on = str(reported.get(nid) or "") if ledger_enabled and nid else ""
+        reannounced = (
+            first_seen == report_date and bool(announced_on) and announced_on < report_date
+        )
+        first_seen_today = first_seen == report_date and not reannounced
         unreported = ledger_enabled and bool(nid) and nid not in reported and not first_seen_today
         # An amendment that landed after the previous digest still needs its predecessor found.
         predecessor = (
@@ -432,6 +442,8 @@ def collect(
         row["is_amended"] = (first_seen_today or unreported) and predecessor is not None
         row["is_new"] = first_seen_today and predecessor is None
         row["is_backlog"] = unreported and predecessor is None
+        row["is_reannounced"] = reannounced
+        row["first_announced"] = announced_on
         row["is_superseded"] = find_successor(rec, index) is not None
         due = deadline_date(rec)
         if due is not None and report_day is not None:
@@ -673,6 +685,26 @@ def review_activity(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
     return [r for r in rows if r.get("is_new") or r.get("is_backlog") or r.get("is_amended")]
 
 
+def reannounced_rows(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Rows whose first-seen date says "new today" but which an earlier digest already announced."""
+    return [r for r in rows if r.get("is_reannounced")]
+
+
+def reannounced_note(rows: list[dict[str, Any]]) -> str:
+    """Say why the new count is lower than the first-seen dates imply, so the gap is not silent."""
+    if not rows:
+        return ""
+    named = "; ".join(
+        f"{str(r.get('title') or '?')[:60]} (announced {r.get('first_announced') or '?'})"
+        for r in rows[:3]
+    )
+    more = f", +{len(rows) - 3} more" if len(rows) > 3 else ""
+    return (
+        f" — excludes {len(rows)} SAM re-served after the tracker dropped it, already announced: "
+        f"{named}{more}"
+    )
+
+
 def review_note(rows: list[dict[str, Any]]) -> str:
     """Disclose review-side activity that a confirmed-only count leaves out."""
     if not rows:
@@ -684,6 +716,20 @@ def review_note_html(rows: list[dict[str, Any]]) -> str:
     if not rows:
         return ""
     return f" <span class='muted'>+{len(rows)} in review</span>"
+
+
+def reannounced_note_html(rows: list[dict[str, Any]]) -> str:
+    if not rows:
+        return ""
+    titles = html.escape(
+        "; ".join(
+            f"{str(r.get('title') or '?')[:60]} (announced {r.get('first_announced') or '?'})"
+            for r in rows
+        )
+    )
+    return (
+        f" <span class='muted' title='{titles}'>({len(rows)} re-served, already announced)</span>"
+    )
 
 
 # sam_search.py records a failed term as "Frontend term='Forensic': Network error: ...".
@@ -813,6 +859,8 @@ def build_markdown(
     new_rows, backlog_rows, amended_rows = activity_groups(live)
     new_review, backlog_review, amended_review = activity_groups(live_review)
     changed_review = review_activity(live_review)
+    reannounced_live = reannounced_rows(live)
+    reannounced_review = reannounced_rows(live_review)
     still_open, already_closed, undated = open_breakdown(live)
     counts = term_counts(confirmed + review, group)
     superseded_note = records_note(confirmed, live)
@@ -824,7 +872,8 @@ def build_markdown(
         f"- Confirmed {group.label.lower()} notices in window: **{len(live)}**{superseded_note}",
         f"- Of those, still accepting responses: **{still_open}** "
         f"({already_closed} past deadline, {undated} with no deadline)",
-        f"- New solicitations (first seen {report_date}): **{len(new_rows)}**{review_note(new_review)}",
+        f"- New solicitations (first seen {report_date}): **{len(new_rows)}**"
+        f"{review_note(new_review)}{reannounced_note(reannounced_live + reannounced_review)}",
         f"- Not yet reported by any digest (arrived after the previous run): "
         f"**{len(backlog_rows)}**{review_note(backlog_review)}",
         f"- Amended/re-issued (same solicitation, new notice ID): "
@@ -1001,6 +1050,8 @@ def build_html(
     new_rows, backlog_rows, amended_rows = activity_groups(live)
     new_review, backlog_review, amended_review = activity_groups(live_review)
     changed_review = review_activity(live_review)
+    reannounced_live = reannounced_rows(live)
+    reannounced_review = reannounced_rows(live_review)
     still_open, _, _ = open_breakdown(live)
     counts = term_counts(confirmed + review, group)
     counts_html = "".join(
@@ -1070,7 +1121,7 @@ def build_html(
         → <code>{html.escape(str(meta.get('window_to') or ''))}</code>
       · Confirmed: <strong>{len(live)}</strong>
       · Still open: <strong>{still_open}</strong>
-      · New today: <strong>{len(new_rows)}</strong>{review_note_html(new_review)}
+      · New today: <strong>{len(new_rows)}</strong>{review_note_html(new_review)}{reannounced_note_html(reannounced_live + reannounced_review)}
       · Not previously reported: <strong>{len(backlog_rows)}</strong>{review_note_html(backlog_review)}
       · Amended: <strong>{len(amended_rows)}</strong>{review_note_html(amended_review)}
       · Needs review: <strong>{len(live_review)}</strong>{archive_line}
@@ -1141,6 +1192,7 @@ def stdout_summary(
     # than NEW/UNREPORTED/AMENDED, and the live successor carries whatever needs acting on.
     new_rows, backlog_rows, amended_rows = activity_groups(live)
     changed_review = review_activity(live_review)
+    reannounced = reannounced_rows(live) + reannounced_rows(live_review)
     still_open, _, _ = open_breakdown(live)
     lines = [
         f"{group.label} watch {report_date}: {len(live)} confirmed ({still_open} still open), "
@@ -1164,6 +1216,14 @@ def stdout_summary(
                 f"{'new' if r.get('is_new') else 'unreported' if r.get('is_backlog') else 'amended'}"
                 f" {str(r.get('title') or '')[:60]}"
                 for r in changed_review
+            )
+        )
+    if reannounced:
+        lines.append(
+            f"Re-served, not counted as new: {len(reannounced)} — "
+            + "; ".join(
+                f"{str(r.get('title') or '')[:60]} (announced {r.get('first_announced') or '?'})"
+                for r in reannounced
             )
         )
     if new_rows:
