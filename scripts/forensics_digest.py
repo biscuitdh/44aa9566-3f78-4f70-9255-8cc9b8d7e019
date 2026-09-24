@@ -552,6 +552,15 @@ def has_awardee(rows: list[dict[str, Any]]) -> bool:
     return any(awardee_label(r) for r in rows)
 
 
+def open_rows(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """The live rows whose response deadline has not passed."""
+    return [
+        r
+        for r in live_only(rows)
+        if isinstance(r.get("days_left"), int) and r["days_left"] >= 0
+    ]
+
+
 def open_breakdown(rows: list[dict[str, Any]]) -> tuple[int, int, int]:
     """Split live rows into still-accepting-responses, past-deadline and undated.
 
@@ -559,16 +568,47 @@ def open_breakdown(rows: list[dict[str, Any]]) -> tuple[int, int, int]:
     of the confirmed table is usually closed and the headline count on its own
     overstates how much is actually actionable.
     """
-    still_open = already_closed = undated = 0
-    for row in rows:
-        n = row.get("days_left")
-        if n is None:
-            undated += 1
-        elif n < 0:
-            already_closed += 1
+    live = live_only(rows)
+    still_open = len(open_rows(live))
+    undated = sum(1 for r in live if r.get("days_left") is None)
+    return still_open, len(live) - still_open - undated, undated
+
+
+# SAM notice types grouped by what a reader can do about them. A deadline says only that
+# responses are still being taken; it does not say what is being asked for, so a market
+# research RFI and a live solicitation look identical in the still-open count.
+BIDDABLE_TYPES = frozenset({"Solicitation", "Combined Synopsis/Solicitation"})
+DECIDED_TYPES = frozenset({"Award Notice", "Justification"})
+
+
+def stage_breakdown(rows: list[dict[str, Any]]) -> tuple[int, int, int]:
+    """Split live rows by procurement stage: open for bid, pre-award, already decided.
+
+    Filters internally so the counts are of notices, not records.
+    """
+    biddable = decided = pre_award = 0
+    for row in live_only(rows):
+        kind = str(row.get("type") or "").strip()
+        if kind in BIDDABLE_TYPES:
+            biddable += 1
+        elif kind in DECIDED_TYPES:
+            decided += 1
         else:
-            still_open += 1
-    return still_open, already_closed, undated
+            pre_award += 1
+    return biddable, pre_award, decided
+
+
+def open_stage_note(rows: list[dict[str, Any]]) -> str:
+    """Disclose how much of the still-open count is actually a solicitation to bid on."""
+    biddable, pre_award, decided = stage_breakdown(open_rows(rows))
+    if not (biddable or pre_award or decided):
+        return ""
+    parts = [f"**{biddable} open for bid**"]
+    if pre_award:
+        parts.append(f"{pre_award} pre-award (market research or intent)")
+    if decided:
+        parts.append(f"{decided} already decided")
+    return " — " + ", ".join(parts)
 
 
 def deadline_change(rec: dict[str, Any]) -> str:
@@ -716,6 +756,19 @@ def review_note_html(rows: list[dict[str, Any]]) -> str:
     if not rows:
         return ""
     return f" <span class='muted'>+{len(rows)} in review</span>"
+
+
+def open_stage_note_html(rows: list[dict[str, Any]]) -> str:
+    biddable, pre_award, decided = stage_breakdown(open_rows(rows))
+    if not (biddable or pre_award or decided):
+        return ""
+    trailing = []
+    if pre_award:
+        trailing.append(f"{pre_award} pre-award")
+    if decided:
+        trailing.append(f"{decided} decided")
+    suffix = f", {', '.join(trailing)}" if trailing else ""
+    return f" <span class='muted'>({biddable} open for bid{suffix})</span>"
 
 
 def reannounced_note_html(rows: list[dict[str, Any]]) -> str:
@@ -871,8 +924,9 @@ def build_markdown(
         f"({meta.get('window_days') or '?'} day(s) of history)",
         f"- Confirmed {group.label.lower()} notices in window: **{len(live)}**{superseded_note}",
         f"- Of those, still accepting responses: **{still_open}** "
-        f"({already_closed} past deadline, {undated} with no deadline)",
-        f"- New solicitations (first seen {report_date}): **{len(new_rows)}**"
+        f"({already_closed} past deadline, {undated} with no deadline)"
+        f"{open_stage_note(live)}",
+        f"- New notices (first seen {report_date}): **{len(new_rows)}**"
         f"{review_note(new_review)}{reannounced_note(reannounced_live + reannounced_review)}",
         f"- Not yet reported by any digest (arrived after the previous run): "
         f"**{len(backlog_rows)}**{review_note(backlog_review)}",
@@ -1120,7 +1174,7 @@ def build_html(
       · Window <code>{html.escape(str(meta.get('window_from') or ''))}</code>
         → <code>{html.escape(str(meta.get('window_to') or ''))}</code>
       · Confirmed: <strong>{len(live)}</strong>
-      · Still open: <strong>{still_open}</strong>
+      · Still open: <strong>{still_open}</strong>{open_stage_note_html(live)}
       · New today: <strong>{len(new_rows)}</strong>{review_note_html(new_review)}{reannounced_note_html(reannounced_live + reannounced_review)}
       · Not previously reported: <strong>{len(backlog_rows)}</strong>{review_note_html(backlog_review)}
       · Amended: <strong>{len(amended_rows)}</strong>{review_note_html(amended_review)}
@@ -1195,7 +1249,8 @@ def stdout_summary(
     reannounced = reannounced_rows(live) + reannounced_rows(live_review)
     still_open, _, _ = open_breakdown(live)
     lines = [
-        f"{group.label} watch {report_date}: {len(live)} confirmed ({still_open} still open), "
+        f"{group.label} watch {report_date}: {len(live)} confirmed "
+        f"({still_open} still open, {stage_breakdown(open_rows(live))[0]} open for bid), "
         f"{len(new_rows)} new, {len(backlog_rows)} not previously reported, "
         f"{len(amended_rows)} amended, {len(live_review)} to review, {len(due_soon)} due soon.",
     ]
