@@ -368,6 +368,87 @@ def find_successor(
     return best
 
 
+def followon_key(rec: dict[str, Any]) -> str:
+    """Key under which the same office's notices for the same requirement group together.
+
+    The revision index keys on the solicitation number, so it only ever sees a re-issue that
+    kept its number. A buy that advances a stage is frequently renumbered — SAM treats each
+    stage as its own solicitation — and the office plus the notice title is then the only thing
+    the two records still share.
+    """
+    org = " ".join(str(rec.get("organization") or "").split()).casefold()
+    title = re.sub(r"[^a-z0-9]+", "", str(rec.get("title") or "").casefold())
+    return f"{org}|{title}" if org and title else ""
+
+
+def build_followon_index(
+    history: dict[str, Any], archive_path: Path | None
+) -> dict[str, list[dict[str, Any]]]:
+    """Map follow-on key -> records, across history and the durable archive.
+
+    The archive is included for the same reason the revision index includes it: the earlier
+    stage of a buy routinely predates the 15-day history window, and that is precisely the case
+    where a reader has forgotten it and most needs the link drawn.
+    """
+    index: dict[str, list[dict[str, Any]]] = {}
+    sources: list[dict[str, Any]] = [history.get("notices") or {}]
+    if archive_path is not None and archive_path.is_file():
+        try:
+            data = json.loads(archive_path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            data = {}
+        if isinstance(data, dict) and isinstance(data.get("notices"), dict):
+            sources.append(data["notices"])
+
+    seen: set[tuple[str, str]] = set()
+    for src in sources:
+        for rec in src.values():
+            if not isinstance(rec, dict):
+                continue
+            key = followon_key(rec)
+            nid = str(rec.get("notice_id") or "")
+            if not key or not nid or (key, nid) in seen:
+                continue
+            seen.add((key, nid))
+            index.setdefault(key, []).append(rec)
+    return index
+
+
+def find_stage_predecessor(
+    rec: dict[str, Any], index: dict[str, list[dict[str, Any]]]
+) -> dict[str, Any] | None:
+    """The same office's latest earlier notice for this requirement at an earlier stage.
+
+    Three conditions, and all of them are needed to keep this off ordinary repeat buying:
+    a strictly earlier posting, a strictly earlier procurement stage, and a solicitation that
+    the revision index does not already treat as the same chain. Requiring the stage to move
+    forward is what separates a buy progressing from an office that simply posts the same title
+    repeatedly — measured over the 803-record archive it flags 4 groups out of 510, and rejects
+    both repeat shapes present there (three ICE Dallas award notices under one title, two DEA
+    "License renewal" special notices from different field divisions).
+    """
+    posted = str(rec.get("posted_date") or "")
+    stage = procurement_stage(rec)
+    chain = str(rec.get("parent_notice_id") or rec.get("notice_id") or "")
+    sol = solicitation_key(rec)
+    best: dict[str, Any] | None = None
+    for other in index.get(followon_key(rec)) or []:
+        if str(other.get("notice_id") or "") == str(rec.get("notice_id") or ""):
+            continue
+        other_posted = str(other.get("posted_date") or "")
+        if not other_posted or not posted or other_posted >= posted:
+            continue
+        if procurement_stage(other) >= stage:
+            continue
+        if sol and solicitation_key(other) == sol:
+            continue
+        if chain and str(other.get("parent_notice_id") or other.get("notice_id") or "") == chain:
+            continue
+        if best is None or other_posted > str(best.get("posted_date") or ""):
+            best = other
+    return best
+
+
 def row_rank(rec: dict[str, Any]) -> int:
     if rec.get("is_superseded"):
         return 4
@@ -390,6 +471,7 @@ def collect(
     index: dict[str, dict[str, dict[str, Any]]] | None = None,
     reported: dict[str, str] | None = None,
     office_index: dict[str, str] | None = None,
+    followon_index: dict[str, list[dict[str, Any]]] | None = None,
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     """Split matching notices in the history window into confirmed and review rows.
 
@@ -403,6 +485,7 @@ def collect(
     """
     index = index or {}
     office_index = office_index or {}
+    followon_index = followon_index or {}
     ledger_enabled = reported is not None
     reported = reported or {}
     try:
@@ -452,6 +535,21 @@ def collect(
             row["prev_deadline"] = predecessor.get("response_deadline") or ""
             row["prev_first_seen"] = predecessor.get("first_seen_date") or ""
             row["revision"] = count_predecessors(rec, index, first_seen or report_date) + 1
+        # An amendment is already reported as a continuation, so only look for a renumbered
+        # earlier stage when the revision chain found nothing.
+        earlier_stage = (
+            find_stage_predecessor(rec, followon_index) if predecessor is None else None
+        )
+        if earlier_stage is not None:
+            row["advances"] = {
+                "title": earlier_stage.get("title") or "",
+                "notice_id": earlier_stage.get("notice_id") or "",
+                "url": notice_url(earlier_stage),
+                "posted_date": earlier_stage.get("posted_date") or "",
+                "solicitation_number": earlier_stage.get("solicitation_number") or "",
+                "from_stage": STAGE_LABELS[procurement_stage(earlier_stage)],
+                "to_stage": STAGE_LABELS[procurement_stage(rec)],
+            }
         (confirmed if confidence == "confirmed" else review).append(row)
     confirmed.sort(key=sort_key, reverse=True)
     review.sort(key=sort_key, reverse=True)
@@ -579,6 +677,32 @@ def open_breakdown(rows: list[dict[str, Any]]) -> tuple[int, int, int]:
 # research RFI and a live solicitation look identical in the still-open count.
 BIDDABLE_TYPES = frozenset({"Solicitation", "Combined Synopsis/Solicitation"})
 DECIDED_TYPES = frozenset({"Award Notice", "Justification"})
+PRESOLICITATION_TYPES = frozenset({"Presolicitation"})
+
+# How far along the buy is. The ordering is what makes "this notice advances an earlier one"
+# decidable; the buckets are the same ones stage_breakdown reports, so the two cannot drift.
+STAGE_MARKET_RESEARCH = 0
+STAGE_PRESOLICITATION = 1
+STAGE_OPEN_FOR_BID = 2
+STAGE_DECIDED = 3
+STAGE_LABELS = {
+    STAGE_MARKET_RESEARCH: "market research",
+    STAGE_PRESOLICITATION: "presolicitation",
+    STAGE_OPEN_FOR_BID: "open for bid",
+    STAGE_DECIDED: "decided",
+}
+
+
+def procurement_stage(rec: dict[str, Any]) -> int:
+    """Where this notice sits in the buying cycle, as one of the STAGE_* ranks."""
+    kind = str(rec.get("type") or "").strip()
+    if kind in DECIDED_TYPES:
+        return STAGE_DECIDED
+    if kind in BIDDABLE_TYPES:
+        return STAGE_OPEN_FOR_BID
+    if kind in PRESOLICITATION_TYPES:
+        return STAGE_PRESOLICITATION
+    return STAGE_MARKET_RESEARCH
 
 
 def stage_breakdown(rows: list[dict[str, Any]]) -> tuple[int, int, int]:
@@ -588,10 +712,10 @@ def stage_breakdown(rows: list[dict[str, Any]]) -> tuple[int, int, int]:
     """
     biddable = decided = pre_award = 0
     for row in live_only(rows):
-        kind = str(row.get("type") or "").strip()
-        if kind in BIDDABLE_TYPES:
+        stage = procurement_stage(row)
+        if stage == STAGE_OPEN_FOR_BID:
             biddable += 1
-        elif kind in DECIDED_TYPES:
+        elif stage == STAGE_DECIDED:
             decided += 1
         else:
             pre_award += 1
@@ -636,6 +760,7 @@ def md_table(
     show_days_left: bool = False,
     show_deadline_change: bool = False,
     show_first_seen: bool = False,
+    show_stage_change: bool = False,
 ) -> str:
     if not rows:
         return "_None._\n"
@@ -646,6 +771,8 @@ def md_table(
         head.append("Closes in")
     if show_deadline_change:
         head.append("Deadline change")
+    if show_stage_change:
+        head += ["Stage change", "Advances"]
     show_awardee = has_awardee(rows)
     if show_awardee:
         head.append("Awarded to")
@@ -683,6 +810,16 @@ def md_table(
             cells.append(days_left_label(r))
         if show_deadline_change:
             cells.append(deadline_change(r))
+        if show_stage_change:
+            prev = r.get("advances") or {}
+            prev_title = str(prev.get("title") or "").replace("|", "\\|")
+            prev_url = str(prev.get("url") or "")
+            prev_link = f"[{prev_title}]({prev_url})" if prev_url and prev_title else prev_title
+            posted = str(prev.get("posted_date") or "")
+            sol = str(prev.get("solicitation_number") or "").replace("|", "\\|")
+            detail = ", ".join(x for x in (posted, sol) if x)
+            cells.append(stage_change_label(r))
+            cells.append(f"{prev_link} ({detail})" if detail else prev_link or "—")
         if show_awardee:
             cells.append(awardee_label(r).replace("|", "\\|") or "—")
         cells.append(org or "—")
@@ -742,6 +879,46 @@ def reannounced_note(rows: list[dict[str, Any]]) -> str:
     return (
         f" — excludes {len(rows)} SAM re-served after the tracker dropped it, already announced: "
         f"{named}{more}"
+    )
+
+
+def advanced_rows(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Rows that carry the same office's earlier notice for the same requirement."""
+    return [r for r in live_only(rows) if r.get("advances")]
+
+
+def stage_change_label(rec: dict[str, Any]) -> str:
+    prev = rec.get("advances") or {}
+    if not prev:
+        return "—"
+    return f"{prev.get('from_stage') or '?'} → {prev.get('to_stage') or '?'}"
+
+
+def advanced_note(rows: list[dict[str, Any]]) -> str:
+    """Say that part of the inventory is one buy counted at two stages, not two buys.
+
+    The count is deliberately left alone: the same office reposting a title is not always one
+    procurement, so the honest move is to name the link and let the reader judge it.
+    """
+    if not rows:
+        return ""
+    verb = "advances" if len(rows) == 1 else "advance"
+    return (
+        f" — includes {len(rows)} that {verb} an earlier notice from the same office "
+        "to a later stage, counted separately"
+    )
+
+
+def advanced_note_html(rows: list[dict[str, Any]]) -> str:
+    if not rows:
+        return ""
+    titles = html.escape(
+        "; ".join(
+            f"{str(r.get('title') or '?')[:60]} ({stage_change_label(r)})" for r in rows
+        )
+    )
+    return (
+        f" <span class='muted' title='{titles}'>({len(rows)} advancing an earlier stage)</span>"
     )
 
 
@@ -914,6 +1091,7 @@ def build_markdown(
     changed_review = review_activity(live_review)
     reannounced_live = reannounced_rows(live)
     reannounced_review = reannounced_rows(live_review)
+    advanced = advanced_rows(confirmed)
     still_open, already_closed, undated = open_breakdown(live)
     counts = term_counts(confirmed + review, group)
     superseded_note = records_note(confirmed, live)
@@ -922,7 +1100,8 @@ def build_markdown(
         "",
         f"- Window: `{meta.get('window_from') or '?'}` → `{meta.get('window_to') or '?'}` "
         f"({meta.get('window_days') or '?'} day(s) of history)",
-        f"- Confirmed {group.label.lower()} notices in window: **{len(live)}**{superseded_note}",
+        f"- Confirmed {group.label.lower()} notices in window: **{len(live)}**{superseded_note}"
+        f"{advanced_note(advanced)}",
         f"- Of those, still accepting responses: **{still_open}** "
         f"({already_closed} past deadline, {undated} with no deadline)"
         f"{open_stage_note(live)}",
@@ -962,6 +1141,16 @@ def build_markdown(
         "solicitations reappearing under a new ID rather than fresh opportunities.",
         "",
         md_table(amended_rows, show_deadline_change=True, show_first_seen=True),
+        "",
+        f"## Advanced to a later stage ({len(advanced)})",
+        "",
+        "SAM usually renumbers a buy when it moves from market research to a solicitation, so the",
+        "revision check above — which keys on the solicitation number — cannot see the two notices",
+        "as one procurement. These are the same office posting the same requirement further along.",
+        "They stay in the counts above as separate notices, because an office can also repeat a",
+        "title for genuinely separate buys; the earlier notice is named here so the reader can tell.",
+        "",
+        md_table(advanced, show_days_left=True, show_stage_change=True),
         "",
         f"## Response deadlines within {meta.get('horizon_days')} days ({len(due_soon)})",
         "",
@@ -1013,6 +1202,7 @@ def html_table(
     show_days_left: bool = False,
     show_deadline_change: bool = False,
     show_first_seen: bool = False,
+    show_stage_change: bool = False,
 ) -> str:
     if not rows:
         return f"<p class='muted'><em>{html.escape(empty)}</em></p>"
@@ -1045,6 +1235,28 @@ def html_table(
         change_cell = ""
         if show_deadline_change:
             change_cell = f"<td>{html.escape(deadline_change(r))}</td>"
+        stage_cell = ""
+        if show_stage_change:
+            prev = r.get("advances") or {}
+            prev_title = html.escape(str(prev.get("title") or ""))
+            prev_url = str(prev.get("url") or "")
+            prev_link = (
+                f'<a href="{html.escape(prev_url)}" target="_blank" rel="noopener">{prev_title}</a>'
+                if prev_url and prev_title
+                else prev_title
+            )
+            detail = ", ".join(
+                x
+                for x in (
+                    str(prev.get("posted_date") or ""),
+                    str(prev.get("solicitation_number") or ""),
+                )
+                if x
+            )
+            suffix = f" <span class='muted'>({html.escape(detail)})</span>" if detail else ""
+            stage_cell = (
+                f"<td>{html.escape(stage_change_label(r))}</td><td>{prev_link}{suffix}</td>"
+            )
         awardee_cell = ""
         if show_awardee:
             awardee_cell = f"<td>{html.escape(awardee_label(r))}</td>"
@@ -1061,7 +1273,8 @@ def html_table(
         body.append(
             "<tr class='{cls}'>"
             "<td>{posted}</td><td>{badge}{link}</td><td>{matched}</td>"
-            "<td>{typ}</td><td>{deadline}</td>{first_seen}{days}{change}{awardee}<td>{org}</td>"
+            "<td>{typ}</td><td>{deadline}</td>{first_seen}{days}{change}{stage}{awardee}"
+            "<td>{org}</td>"
             "</tr>".format(
                 cls=cls,
                 posted=html.escape(str(r.get("posted_date") or "")),
@@ -1073,6 +1286,7 @@ def html_table(
                 first_seen=first_seen_cell,
                 days=days_cell,
                 change=change_cell,
+                stage=stage_cell,
                 awardee=awardee_cell,
                 org=html.escape(org_label(r)),
             )
@@ -1080,11 +1294,13 @@ def html_table(
     first_seen_head = "<th>First seen</th>" if show_first_seen else ""
     days_head = "<th>Closes in</th>" if show_days_left else ""
     change_head = "<th>Deadline change</th>" if show_deadline_change else ""
+    stage_head = "<th>Stage change</th><th>Advances</th>" if show_stage_change else ""
     awardee_head = "<th>Awarded to</th>" if show_awardee else ""
     return (
         "<table><thead><tr>"
         f"<th>Posted</th><th>Notice</th><th>Matched</th><th>Type</th><th>Deadline</th>"
-        f"{first_seen_head}{days_head}{change_head}{awardee_head}<th>Organization</th>"
+        f"{first_seen_head}{days_head}{change_head}{stage_head}{awardee_head}"
+        "<th>Organization</th>"
         "</tr></thead><tbody>" + "".join(body) + "</tbody></table>"
     )
 
@@ -1106,6 +1322,7 @@ def build_html(
     changed_review = review_activity(live_review)
     reannounced_live = reannounced_rows(live)
     reannounced_review = reannounced_rows(live_review)
+    advanced = advanced_rows(confirmed)
     still_open, _, _ = open_breakdown(live)
     counts = term_counts(confirmed + review, group)
     counts_html = "".join(
@@ -1173,7 +1390,7 @@ def build_html(
       Report date: <strong>{html.escape(report_date)}</strong>
       · Window <code>{html.escape(str(meta.get('window_from') or ''))}</code>
         → <code>{html.escape(str(meta.get('window_to') or ''))}</code>
-      · Confirmed: <strong>{len(live)}</strong>
+      · Confirmed: <strong>{len(live)}</strong>{advanced_note_html(advanced)}
       · Still open: <strong>{still_open}</strong>{open_stage_note_html(live)}
       · New today: <strong>{len(new_rows)}</strong>{review_note_html(new_review)}{reannounced_note_html(reannounced_live + reannounced_review)}
       · Not previously reported: <strong>{len(backlog_rows)}</strong>{review_note_html(backlog_review)}
@@ -1201,6 +1418,14 @@ def build_html(
   <p class="meta">SAM.gov issues a fresh notice ID when a solicitation is amended, so these are
   already-tracked solicitations reappearing under a new ID rather than fresh opportunities.</p>
   {html_table(amended_rows, 'Nothing re-issued.', show_deadline_change=True, show_first_seen=True)}
+
+  <h2>Advanced to a later stage ({len(advanced)})</h2>
+  <p class="meta">SAM usually renumbers a buy when it moves from market research to a solicitation,
+  so the revision check above — which keys on the solicitation number — cannot see the two notices
+  as one procurement. These are the same office posting the same requirement further along. They
+  stay in the counts above as separate notices, because an office can also repeat a title for
+  genuinely separate buys; the earlier notice is named here so the reader can tell.</p>
+  {html_table(advanced, 'No buy advanced a stage in this window.', show_days_left=True, show_stage_change=True)}
 
   <h2>Response deadlines within {meta.get('horizon_days')} days ({len(due_soon)})</h2>
   {html_table(due_soon, 'Nothing due in that window.', show_days_left=True)}
@@ -1279,6 +1504,16 @@ def stdout_summary(
             + "; ".join(
                 f"{str(r.get('title') or '')[:60]} (announced {r.get('first_announced') or '?'})"
                 for r in reannounced
+            )
+        )
+    advanced = advanced_rows(confirmed)
+    if advanced:
+        lines.append(
+            f"Advances an earlier stage (counted separately): {len(advanced)} — "
+            + "; ".join(
+                f"{str(r.get('title') or '')[:60]} "
+                f"[{stage_change_label(r)}, was {(r.get('advances') or {}).get('solicitation_number') or '?'}]"
+                for r in advanced
             )
         )
     if new_rows:
@@ -1366,6 +1601,7 @@ def main(argv: list[str] | None = None) -> int:
     archive_path = None if args.no_archive else args.archive
     index = build_revision_index(history, archive_path)
     office_index = build_office_index(history, archive_path)
+    followon_index = build_followon_index(history, archive_path)
     if args.no_ledger:
         ledger: dict[str, str] = {}
         bootstrapped = seed_only = False
@@ -1381,6 +1617,7 @@ def main(argv: list[str] | None = None) -> int:
         index,
         None if args.no_ledger or seed_only else ledger,
         office_index,
+        followon_index,
     )
     meta = resolve_window(history, report_date, int(history.get("retention_days") or 15))
     meta["horizon_days"] = args.horizon_days
