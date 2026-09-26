@@ -75,6 +75,10 @@ DEFAULT_PAGE_SLEEP_FRONTEND = 8.0
 DEFAULT_JITTER = 1.0  # only used for --source api; frontend uses human_pause()
 DEFAULT_MAX_PAGES = 1
 DEFAULT_LIMIT = 25
+# Date-ordered terms need as many pages as the posted-date window holds, not a guess:
+# one page is a fixed 25 rows however many notices the window contains. This caps that
+# walk; the early exit below normally stops it after the first page or two.
+DEFAULT_WINDOW_PAGES = 12
 # Keep day buckets / notices / run log for this many calendar days (rolling).
 DEFAULT_HISTORY_RETENTION_DAYS = 15
 # Default posted-date look-back when searching (also fills a 15-day record window).
@@ -681,15 +685,29 @@ def search_term_frontend(
     max_pages: int,
     active_only: bool,
     human: bool = True,
+    window_pages: int = DEFAULT_WINDOW_PAGES,
+    truncated: list[str] | None = None,
 ) -> list[Hit]:
     """
     Same search backend the SAM.gov website UI uses (SGS).
     No public API key — not the Opportunities API quota.
     When human=True: variable pauses between pages (no fixed robot cadence).
+
+    The two sort orders below need opposite page budgets, so they get separate ones.
+    A multi-word term is relevance-ordered because SGS ORs its tokens, and pages 2+ are
+    tens of thousands of non-matches — `max_pages` (1 by default) is right for those. A
+    single-word term is ordered by `-modifiedDate`, so its page count is decided by how
+    much the posted-date window holds, and capping it at one page silently returns the 25
+    most recently touched notices as if they were all of them. Those walk to
+    `window_pages`, stopping as soon as a page ends before the window starts.
     """
     hits: list[Hit] = []
     page = 0
     total_pages: int | None = None
+    # Ordered by date, so pagination can tell when it has left the window.
+    date_ordered = not is_multi_word_term(term)
+    page_budget = max(1, window_pages) if date_ordered else max_pages
+    window_exhausted = False
 
     # Humans sometimes change page size slightly
     page_size = limit
@@ -697,7 +715,7 @@ def search_term_frontend(
         page_size = int(random.choice([20, 25, 25, 25, 50]))
         page_size = min(max(page_size, 1), 100)
 
-    while page < max_pages:
+    while page < page_budget:
         if human and page == 0:
             human_pause(kind="think", label=f"before search {term!r}")
         elif human and page > 0:
@@ -718,7 +736,7 @@ def search_term_frontend(
         # that really contain the phrase never reach the first page and the
         # phrase filter below then discards everything. Relevance order puts
         # them on top instead; out-of-window results are dropped by posted date.
-        if not is_multi_word_term(term):
+        if date_ordered:
             params.append(("sort", "-modifiedDate"))
         if active_only:
             params.append(("is_active", "true"))
@@ -758,9 +776,27 @@ def search_term_frontend(
         if human:
             human_pause(kind="read", hits_this=page_hits, label=f"reading {term!r} results")
 
+        if date_ordered and rows:
+            # A modification cannot predate publication, so on a `-modifiedDate` page a row
+            # modified before the window opened was also posted before it — as is every row
+            # after it. Nothing in the window is left to find.
+            oldest = _parse_iso_date(rows[-1].get("modifiedDate"))
+            window_exhausted = oldest is not None and oldest < posted_from
+
         page += 1
-        if page >= (total_pages or 1) or not rows:
+        if window_exhausted or page >= (total_pages or 1) or not rows:
             break
+
+    # Stopped on the page budget with window rows still unread: the caller is holding a
+    # partial result for this term and has no other way to know it.
+    if (
+        truncated is not None
+        and date_ordered
+        and not window_exhausted
+        and page >= page_budget
+        and page < (total_pages or 1)
+    ):
+        truncated.append(term)
 
     return hits
 
@@ -1172,6 +1208,7 @@ def merge_into_history(
             "hit_count": len(hits),
             "new_count": len(newly),
             "errors": meta.get("errors") or [],
+            "truncated_terms": meta.get("truncated_terms") or [],
             "term_sleep": meta.get("term_sleep"),
             "page_sleep": meta.get("page_sleep"),
         }
@@ -1497,6 +1534,16 @@ def write_html(path: Path, history: dict[str, Any], day_rows: list[dict[str, Any
         err_html = "<div class='errors'><strong>Term errors:</strong><ul>" + "".join(
             f"<li>{html.escape(e)}</li>" for e in errors
         ) + "</ul></div>"
+
+    partial = meta.get("truncated_terms") or []
+    if partial:
+        err_html += (
+            "<div class='errors'><strong>Partial terms:</strong> these returned more "
+            "notices inside the posted-date window than this run read, so their results "
+            "are incomplete: "
+            + html.escape(", ".join(str(t) for t in partial))
+            + ". Raise <code>--window-pages</code>.</div>"
+        )
 
     doc = f"""<!DOCTYPE html>
 <html lang="en">
@@ -1922,6 +1969,16 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--limit", type=int, default=DEFAULT_LIMIT)
     parser.add_argument("--max-pages", type=int, default=DEFAULT_MAX_PAGES)
     parser.add_argument(
+        "--window-pages",
+        type=int,
+        default=DEFAULT_WINDOW_PAGES,
+        help=(
+            "Page cap for date-ordered (single-word) terms, which need enough pages to "
+            "cover the posted-date window; pagination stops early once a page predates it. "
+            f"--max-pages still caps relevance-ordered phrase terms. Default: {DEFAULT_WINDOW_PAGES}"
+        ),
+    )
+    parser.add_argument(
         "--api-batch-size",
         type=int,
         default=DEFAULT_API_BATCH_SIZE,
@@ -2098,6 +2155,7 @@ def main(argv: list[str] | None = None) -> int:
 
     history = load_history(args.history)
     errors: list[str] = []
+    truncated_terms: list[str] = []
     merged: list[Hit] = []
     day_rows: list[dict[str, Any]] = []
 
@@ -2184,6 +2242,8 @@ def main(argv: list[str] | None = None) -> int:
                             max_pages=max(args.max_pages, 1),
                             active_only=active_only,
                             human=human,
+                            window_pages=max(args.window_pages, 1),
+                            truncated=truncated_terms,
                         )
                     else:
                         hits = search_term_api(
@@ -2276,6 +2336,12 @@ def main(argv: list[str] | None = None) -> int:
             print(flush=True)
         merged = merge_hits(all_hits)
         print(f"\nUnique notices this run: {len(merged)}", flush=True)
+        if truncated_terms:
+            print(
+                "Partial terms (window not fully read, raise --window-pages): "
+                + ", ".join(sorted(set(truncated_terms))),
+                flush=True,
+            )
 
         meta_partial = {
             "posted_from": posted_from.isoformat(),
@@ -2285,6 +2351,7 @@ def main(argv: list[str] | None = None) -> int:
             "api_mode": api_mode,
             "api_completed": api_completed if do_api else 0,
             "errors": errors,
+            "truncated_terms": sorted(set(truncated_terms)),
             "term_sleep": args.term_sleep,
             "page_sleep": args.page_sleep,
             "source": source,
@@ -2323,6 +2390,7 @@ def main(argv: list[str] | None = None) -> int:
         "posted_to": posted_to.isoformat(),
         "term_count": len(terms),
         "errors": errors,
+        "truncated_terms": sorted(set(truncated_terms)),
         "term_sleep": args.term_sleep,
         "page_sleep": args.page_sleep,
         "source": source,

@@ -975,6 +975,11 @@ def search_health(
     so a degraded day is indistinguishable from a quiet one in every count the digest
     prints. Terms the watch group matches on are reported separately: those are the ones
     whose failure can hide a notice from this digest specifically.
+
+    A term can also come back *partial* rather than failed — SAM paginates, so a term with
+    more notices in the posted-date window than the run read contributes some of its hits
+    and no error. That is invisible in a term-error count, which is why it is tracked
+    separately here rather than folded into the failed set.
     """
     runs = [
         r
@@ -996,6 +1001,13 @@ def search_health(
     # succeeded already filled it in.
     unresolved = set.intersection(*per_run_failed)
 
+    # Same "every run of the day" test as the failed set: a re-run that read the whole
+    # window for a term has already filled the gap in.
+    per_run_partial: list[set[str]] = [
+        {str(t) for t in (run.get("truncated_terms") or [])} for run in runs
+    ]
+    partial = set.intersection(*per_run_partial) if per_run_partial else set()
+
     best = max(runs, key=lambda r: int(r.get("hit_count") or 0))
     watch_terms = {t.casefold() for t in group.all_terms}
     # The denominator is how many terms the day attempted at its fullest. Taking it from
@@ -1010,7 +1022,9 @@ def search_health(
         "hit_count": int(best.get("hit_count") or 0),
         "blind_terms": sorted(t for t in unresolved if t.casefold() in watch_terms),
         "other_failed": sorted(t for t in unresolved if t.casefold() not in watch_terms),
-        "degraded": bool(unresolved),
+        "partial_terms": sorted(partial),
+        "partial_watch_terms": sorted(t for t in partial if t.casefold() in watch_terms),
+        "degraded": bool(unresolved or partial),
     }
 
 
@@ -1019,24 +1033,54 @@ def health_headline(health: dict[str, Any]) -> str:
     if not health.get("known"):
         return "SAM search coverage: no run recorded for this date"
     total, searched = health.get("term_count") or 0, health.get("searched") or 0
-    if not health.get("degraded"):
-        return f"SAM search coverage: **{searched}/{total}** terms queried without error"
+    partial = health.get("partial_terms") or []
     missed = total - searched
+    if not missed and not partial:
+        return f"SAM search coverage: **{searched}/{total}** terms queried without error"
+    reasons = []
+    if missed:
+        reasons.append(f"{missed} failed")
+    if partial:
+        reasons.append(
+            f"{len(partial)} read only part of the window ("
+            + ", ".join(f"`{t}`" for t in partial)
+            + ")"
+        )
     return (
-        f"SAM search coverage: **{searched}/{total}** terms — {missed} failed, "
-        f"so every count below is a floor"
+        f"SAM search coverage: **{searched}/{total}** terms — "
+        + "; ".join(reasons)
+        + ", so every count below is a floor"
     )
 
 
 def _health_sentences(health: dict[str, Any]) -> list[str]:
     blind = health.get("blind_terms") or []
     other = health.get("other_failed") or []
-    lines = [
-        "The SAM.gov query behind this report errored on "
-        f"{(health.get('term_count') or 0) - (health.get('searched') or 0)} of "
-        f"{health.get('term_count') or 0} search terms, so a notice that only those terms "
-        "would have matched is absent from the data — not absent from SAM.",
-    ]
+    partial = health.get("partial_terms") or []
+    partial_watch = health.get("partial_watch_terms") or []
+    failed_count = (health.get("term_count") or 0) - (health.get("searched") or 0)
+    lines = []
+    if failed_count:
+        lines.append(
+            "The SAM.gov query behind this report errored on "
+            f"{failed_count} of {health.get('term_count') or 0} search terms, so a notice "
+            "that only those terms would have matched is absent from the data — not absent "
+            "from SAM."
+        )
+    if partial:
+        lines.append(
+            "SAM paginates its results, and "
+            + ", ".join(f"`{t}`" for t in partial)
+            + " matched more notices inside the posted-date window than this run read. "
+            "Those terms returned a partial result and no error, so the term count above "
+            "cannot show it."
+        )
+        if partial_watch:
+            lines.append(
+                "That includes a term this watch matches on ("
+                + ", ".join(f"`{t}`" for t in partial_watch)
+                + "), so a forensics notice may be missing rather than absent from SAM."
+            )
     if blind:
         lines.append(
             "Terms this watch matches on that returned nothing: "
@@ -1047,10 +1091,12 @@ def _health_sentences(health: dict[str, Any]) -> list[str]:
         lines.append(
             "Other terms that failed: " + ", ".join(f"`{t}`" for t in other) + "."
         )
-    if not blind:
+    if not blind and not partial_watch:
         lines.append(
-            "No term this watch matches on was affected, so the forensics counts are "
-            "still a fair reading of what SAM returned."
+            "No term this watch matches on was affected, so the confirmed counts are still "
+            "a fair reading of what SAM returned. A watch-office notice carrying no "
+            "forensics keyword reaches this digest on whichever tracker term SAM matched, "
+            "so the needs-review section is the part still exposed."
         )
     return lines
 
@@ -1400,7 +1446,7 @@ def build_html(
     <p class="meta">
       Keyword-filtered view of the <a href="./">full daily tracker</a>.
       Matching terms: {html.escape(', '.join(group.all_terms))}.
-      · {html.escape(health_headline(meta.get('search_health') or {}).replace('**', ''))}
+      · {html.escape(health_headline(meta.get('search_health') or {}).replace('**', '').replace('`', ''))}
     </p>
   </div>
   {health_block_html(meta.get('search_health') or {})}
@@ -1482,12 +1528,20 @@ def stdout_summary(
     health = health or {}
     if health.get("degraded"):
         blind = health.get("blind_terms") or []
+        partial = health.get("partial_terms") or []
+        failed = (health.get("term_count") or 0) - (health.get("searched") or 0)
+        detail = []
+        if failed:
+            detail.append(
+                f"only {health.get('searched')}/{health.get('term_count')} terms queried "
+                "without error"
+                + (f"; no results for {', '.join(blind)}" if blind else "")
+            )
+        if partial:
+            detail.append(f"partial window read for {', '.join(partial)}")
         lines.insert(
             0,
-            f"DEGRADED SEARCH: only {health.get('searched')}/{health.get('term_count')} "
-            f"terms queried without error"
-            + (f"; no results for {', '.join(blind)}" if blind else "")
-            + " — the counts below are a floor.",
+            "DEGRADED SEARCH: " + "; ".join(detail) + " — the counts below are a floor.",
         )
     if changed_review:
         lines.append(
