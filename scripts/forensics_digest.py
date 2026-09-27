@@ -795,6 +795,11 @@ def md_table(
             flag = "**AMENDED** "
         else:
             flag = ""
+        # Additive, not part of the chain above: a renumbered later stage can also be new today,
+        # and it is a fact about the row, so every table that renders rows gets it rather than
+        # only the one section a caller flag was threaded to.
+        if r.get("advances"):
+            flag += "**LATER STAGE** "
         matched = "; ".join(str(x) for x in (r.get("match_reasons") or r.get("matched_terms") or [])).replace("|", "\\|")
         org = org_label(r).replace("|", "\\|")
         cells = [
@@ -859,7 +864,30 @@ def activity_groups(
 
 
 def review_activity(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    return [r for r in rows if r.get("is_new") or r.get("is_backlog") or r.get("is_amended")]
+    """Ambiguous rows that changed today, for the section the confirmed-only counts cannot reach.
+
+    Every confirmed-only disclosure needs a mirror here, `advances` included: a watch-office row
+    with no keyword is the case where a renumbered earlier stage is hardest to spot by eye.
+    Filters superseded revisions internally rather than trusting callers, like `advanced_rows`.
+    """
+    return [
+        r
+        for r in live_only(rows)
+        if r.get("is_new") or r.get("is_backlog") or r.get("is_amended") or r.get("advances")
+    ]
+
+
+def activity_label(rec: dict[str, Any]) -> str:
+    """Why a row is in the activity list, in the order the flags are reported above it."""
+    if rec.get("is_new"):
+        return "new"
+    if rec.get("is_backlog"):
+        return "unreported"
+    if rec.get("is_amended"):
+        return "amended"
+    if rec.get("advances"):
+        return "advances an earlier stage"
+    return "changed"
 
 
 def reannounced_rows(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
@@ -1134,7 +1162,7 @@ def build_markdown(
     # than NEW/UNREPORTED/AMENDED, and the live successor carries whatever needs acting on.
     new_rows, backlog_rows, amended_rows = activity_groups(live)
     new_review, backlog_review, amended_review = activity_groups(live_review)
-    changed_review = review_activity(live_review)
+    changed_review = review_activity(review)
     reannounced_live = reannounced_rows(live)
     reannounced_review = reannounced_rows(live_review)
     advanced = advanced_rows(confirmed)
@@ -1208,8 +1236,9 @@ def build_markdown(
         "",
         f"## Needs-review activity ({len(changed_review)})",
         "",
-        "The three counts above are confirmed-only, so an ambiguous row that arrived today, was",
-        "re-issued, or was never announced is otherwise visible only as a badge in the table below.",
+        "Every count and section above is confirmed-only, so an ambiguous row that arrived today,",
+        "was re-issued, was never announced, or advances an earlier stage is otherwise visible only",
+        "as a badge in the table below.",
         "",
         md_table(changed_review, show_days_left=True, show_deadline_change=True, show_first_seen=True),
         "",
@@ -1268,6 +1297,8 @@ def html_table(
             badge = '<span class="badge amended">AMENDED</span> '
         else:
             badge = ""
+        if r.get("advances"):
+            badge += '<span class="badge stage">LATER STAGE</span> '
         matched = html.escape("; ".join(str(x) for x in (r.get("match_reasons") or r.get("matched_terms") or [])))
         first_seen_cell = ""
         if show_first_seen:
@@ -1365,7 +1396,7 @@ def build_html(
     # than NEW/UNREPORTED/AMENDED, and the live successor carries whatever needs acting on.
     new_rows, backlog_rows, amended_rows = activity_groups(live)
     new_review, backlog_review, amended_review = activity_groups(live_review)
-    changed_review = review_activity(live_review)
+    changed_review = review_activity(review)
     reannounced_live = reannounced_rows(live)
     reannounced_review = reannounced_rows(live_review)
     advanced = advanced_rows(confirmed)
@@ -1422,6 +1453,7 @@ def build_html(
     .badge.new {{ background: #2e7d32; }}
     .badge.backlog {{ background: #1f4e79; }}
     .badge.amended {{ background: #a6600a; }}
+    .badge.stage {{ background: #5b3b8c; }}
     .badge.superseded {{ background: #8a94a0; }}
     table.counts {{ max-width: 320px; }}
     td.urgent {{ color: #b3261e; font-weight: 700; white-space: nowrap; }}
@@ -1480,8 +1512,9 @@ def build_html(
   {html_table(confirmed, 'No confirmed matches in the current window.', show_days_left=True)}
 
   <h2>Needs-review activity ({len(changed_review)})</h2>
-  <p class="meta">The three counts above are confirmed-only, so an ambiguous row that arrived today,
-  was re-issued, or was never announced is otherwise visible only as a badge in the table below.</p>
+  <p class="meta">Every count and section above is confirmed-only, so an ambiguous row that arrived
+  today, was re-issued, was never announced, or advances an earlier stage is otherwise visible only
+  as a badge in the table below.</p>
   {html_table(changed_review, 'No ambiguous rows changed today.', show_days_left=True, show_deadline_change=True, show_first_seen=True)}
 
   <h2>Needs review — ambiguous acronym, or a watch-office notice with no keyword ({len(live_review)})</h2>
@@ -1516,7 +1549,7 @@ def stdout_summary(
     # Superseded revisions are excluded: render_rows() already shows them as _superseded_ rather
     # than NEW/UNREPORTED/AMENDED, and the live successor carries whatever needs acting on.
     new_rows, backlog_rows, amended_rows = activity_groups(live)
-    changed_review = review_activity(live_review)
+    changed_review = review_activity(review)
     reannounced = reannounced_rows(live) + reannounced_rows(live_review)
     still_open, _, _ = open_breakdown(live)
     lines = [
@@ -1547,8 +1580,7 @@ def stdout_summary(
         lines.append(
             f"Needs-review activity (not in the counts above): {len(changed_review)} — "
             + "; ".join(
-                f"{'new' if r.get('is_new') else 'unreported' if r.get('is_backlog') else 'amended'}"
-                f" {str(r.get('title') or '')[:60]}"
+                f"{activity_label(r)} {str(r.get('title') or '')[:60]}"
                 for r in changed_review
             )
         )
