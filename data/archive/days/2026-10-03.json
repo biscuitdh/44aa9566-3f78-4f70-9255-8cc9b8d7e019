@@ -1,14 +1,17 @@
 {
-  "date": "2026-10-02",
+  "date": "2026-10-03",
   "saved_at": "2026-10-03T14:12:02.447458+00:00",
   "bucket": {
-    "date": "2026-10-02",
+    "date": "2026-10-03",
     "runs": [
-      "2026-10-02_153045"
+      "2026-10-03_141036"
     ],
     "notice_keys": [
+      "ea22432c52f8458b990566970bcfd3db",
+      "afbe1548895e4d15bfbc8232396ad714",
       "7c8c823940904c8c9af2c3507b58e6e8",
       "9f54786315fc4a1a9eee596afc3d5104",
+      "00ec26b6099e4bfb9309f56cd669ea13",
       "d6491df7d2f04213b1330e1e96e99cbc",
       "5fa8ceaca1db4f209c6b552b785d0120",
       "3d6be830a9e24318b970de06c1a049f3",
@@ -28,7 +31,6 @@
       "b7f6ecc37f1e46deaff4fd5980b02daa",
       "4f340c0946564c7f9f6b1363163aa25d",
       "824ee7281128468c80da8479109737c5",
-      "38d507aacb14426cab2bd44bb2350ec4",
       "956c60fd389c448596faf36383877ad1",
       "e78b6995de974d29ac05a5a29859afab",
       "a25a5705b92a4bcd9c7e688ac604039f",
@@ -37,7 +39,6 @@
       "7d434dab4914473ca2d4a3c93d45b665",
       "021438732495484684e7ca17e73bcb46",
       "17c65082c3264862a336e0239bd17f34",
-      "a5607e32b8fb483fb3f9018cdcb5d2dc",
       "9a36751a887c44cfa0f9b1f1e331c6fa",
       "e33228605b4843e5bde27b1d657766f9",
       "adf588be455d4ef88d4967cd912168a7",
@@ -66,21 +67,59 @@
       "7b57c68cd1c94196a4bc7d87b7824706",
       "2701c90fc3264c22ba8bb5feb389ddb7",
       "4396670b2f2b423485b6f4e09a6f3d3f",
-      "99c3844c8d2248a38bee40b24bded882",
-      "e817b643cc784f19929ea53259a1d68a"
+      "99c3844c8d2248a38bee40b24bded882"
     ],
     "new_notice_keys": [
-      "7c8c823940904c8c9af2c3507b58e6e8",
-      "9f54786315fc4a1a9eee596afc3d5104",
-      "d6491df7d2f04213b1330e1e96e99cbc",
-      "5fa8ceaca1db4f209c6b552b785d0120",
-      "3d6be830a9e24318b970de06c1a049f3",
-      "3cebbdb6b1c845a7a55e09b2ec194d22",
-      "cec87c871d5f4921a791ce40fd62fe72",
-      "698ad49241a446e88cbb571c3ecde25b"
+      "ea22432c52f8458b990566970bcfd3db",
+      "afbe1548895e4d15bfbc8232396ad714",
+      "00ec26b6099e4bfb9309f56cd669ea13"
     ]
   },
   "notices": {
+    "ea22432c52f8458b990566970bcfd3db": {
+      "notice_id": "ea22432c52f8458b990566970bcfd3db",
+      "title": "Program Officer - Personal Services Contractor",
+      "solicitation_number": "2099AB27R00001",
+      "posted_date": "2026-10-02",
+      "type": "Solicitation",
+      "response_deadline": "2027-04-01T03:59:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "",
+      "matched_terms": [
+        "IRS"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/ea22432c52f8458b990566970bcfd3db/view",
+      "first_seen_date": "2026-10-03",
+      "last_seen_date": "2026-10-03",
+      "seen_on_dates": [
+        "2026-10-03"
+      ]
+    },
+    "afbe1548895e4d15bfbc8232396ad714": {
+      "notice_id": "afbe1548895e4d15bfbc8232396ad714",
+      "title": "Notice of Intent to Sole Source: Operations, Maintenance, and Defense of Army Communications - Southwest Asia (OMDAC-SWA) (Est. $206M)",
+      "solicitation_number": "W91RUSOMDACSS20261002",
+      "posted_date": "2026-10-02",
+      "type": "Special Notice",
+      "response_deadline": "2026-10-17T23:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "DEPT OF DEFENSE.DEPT OF THE ARMY.AMC.ACC.ACC-CTRS.ACC-APG.W6QK ACC-APG CONT CT SW SECTOR",
+      "matched_terms": [
+        "Cyber"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/afbe1548895e4d15bfbc8232396ad714/view",
+      "first_seen_date": "2026-10-03",
+      "last_seen_date": "2026-10-03",
+      "seen_on_dates": [
+        "2026-10-03"
+      ]
+    },
     "7c8c823940904c8c9af2c3507b58e6e8": {
       "notice_id": "7c8c823940904c8c9af2c3507b58e6e8",
       "title": "NavGuide GPS Receivers",
@@ -124,6 +163,28 @@
       "last_seen_date": "2026-10-03",
       "seen_on_dates": [
         "2026-10-02",
+        "2026-10-03"
+      ]
+    },
+    "00ec26b6099e4bfb9309f56cd669ea13": {
+      "notice_id": "00ec26b6099e4bfb9309f56cd669ea13",
+      "title": "J041--Manhattan equipment preventative VA Commercial kitchen and  refrigeration maintenance services contract",
+      "solicitation_number": "36C24227Q0033",
+      "posted_date": "2026-10-02",
+      "type": "Sources Sought",
+      "response_deadline": "2026-10-07T19:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "VETERANS AFFAIRS, DEPARTMENT OF.VETERANS AFFAIRS, DEPARTMENT OF.242-NETWORK CONTRACT OFFICE 02 (36C242)",
+      "matched_terms": [
+        "Cyber"
+      ],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/00ec26b6099e4bfb9309f56cd669ea13/view",
+      "first_seen_date": "2026-10-03",
+      "last_seen_date": "2026-10-03",
+      "seen_on_dates": [
         "2026-10-03"
       ]
     },
@@ -581,31 +642,6 @@
         "2026-10-03"
       ]
     },
-    "38d507aacb14426cab2bd44bb2350ec4": {
-      "notice_id": "38d507aacb14426cab2bd44bb2350ec4",
-      "title": "VIT-13 Voltage and Current Sensor",
-      "solicitation_number": "N6660427Q0016",
-      "posted_date": "2026-09-29",
-      "type": "Combined Synopsis/Solicitation",
-      "response_deadline": "2026-10-06T18:00:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "DEPT OF DEFENSE.DEPT OF THE NAVY.NAVSEA.NAVSEA WARFARE CENTER.NUWC DIV NEWPORT",
-      "matched_terms": [
-        "Cyber"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/38d507aacb14426cab2bd44bb2350ec4/view",
-      "first_seen_date": "2026-09-29",
-      "last_seen_date": "2026-10-02",
-      "seen_on_dates": [
-        "2026-09-29",
-        "2026-09-30",
-        "2026-10-01",
-        "2026-10-02"
-      ]
-    },
     "956c60fd389c448596faf36383877ad1": {
       "notice_id": "956c60fd389c448596faf36383877ad1",
       "title": "Sea Range Safety Surveillance Services",
@@ -808,31 +844,6 @@
         "2026-10-01",
         "2026-10-02",
         "2026-10-03"
-      ]
-    },
-    "a5607e32b8fb483fb3f9018cdcb5d2dc": {
-      "notice_id": "a5607e32b8fb483fb3f9018cdcb5d2dc",
-      "title": "Cybersecurity Managment Support Services",
-      "solicitation_number": "693JJ126F00118N",
-      "posted_date": "2026-09-29",
-      "type": "Award Notice",
-      "response_deadline": "",
-      "naics": "",
-      "active": "Yes",
-      "organization": "TRANSPORTATION, DEPARTMENT OF.FEDERAL HIGHWAY ADMINISTRATION.693JJ3 ACQUISITION AND GRANTS MGT",
-      "matched_terms": [
-        "Cyber"
-      ],
-      "award_amount": "",
-      "awardee": "CRITERION SYSTEMS, L.L.C.",
-      "url": "https://sam.gov/opp/a5607e32b8fb483fb3f9018cdcb5d2dc/view",
-      "first_seen_date": "2026-09-29",
-      "last_seen_date": "2026-10-02",
-      "seen_on_dates": [
-        "2026-09-29",
-        "2026-09-30",
-        "2026-10-01",
-        "2026-10-02"
       ]
     },
     "9a36751a887c44cfa0f9b1f1e331c6fa": {
@@ -1705,41 +1716,6 @@
         "2026-10-01",
         "2026-10-02",
         "2026-10-03"
-      ]
-    },
-    "e817b643cc784f19929ea53259a1d68a": {
-      "notice_id": "e817b643cc784f19929ea53259a1d68a",
-      "title": "321 STS - DC2 COMM KLAS Equipment",
-      "solicitation_number": "FA558726Q0064",
-      "posted_date": "2026-09-18",
-      "type": "Solicitation",
-      "response_deadline": "2026-09-23T14:00:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "DEPT OF DEFENSE.DEPT OF THE AIR FORCE.U.S. AIR FORCES IN EUROPE.FA5587  48 CONS",
-      "matched_terms": [
-        "DC3"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/e817b643cc784f19929ea53259a1d68a/view",
-      "first_seen_date": "2026-09-18",
-      "last_seen_date": "2026-10-02",
-      "seen_on_dates": [
-        "2026-09-19",
-        "2026-09-20",
-        "2026-09-21",
-        "2026-09-22",
-        "2026-09-23",
-        "2026-09-24",
-        "2026-09-25",
-        "2026-09-26",
-        "2026-09-27",
-        "2026-09-28",
-        "2026-09-29",
-        "2026-09-30",
-        "2026-10-01",
-        "2026-10-02"
       ]
     }
   }
