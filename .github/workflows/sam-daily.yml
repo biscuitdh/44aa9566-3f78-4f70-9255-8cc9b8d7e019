@@ -50,7 +50,21 @@ jobs:
             --robot \
             --term-sleep 3 \
             --page-sleep 1 \
-            --jitter 1.5
+            --jitter 1.5 \
+            --watch-page forensics.html
+
+      - name: Build forensics digest
+        run: |
+          set -euo pipefail
+          python scripts/forensics_digest.py --group forensics | tee /tmp/forensics-summary.txt
+          {
+            echo "## Forensics watch"
+            echo ""
+            echo '```'
+            # Drop the leading "wrote this file" lines; keep the digest summary onwards.
+            sed -n '/watch [0-9][0-9-]*:/,$p' /tmp/forensics-summary.txt
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Stage public site
         run: |
@@ -84,7 +98,7 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -f data/api_term_rotation.json data/history.json data/archive docs/ || true
+          git add -f data/api_term_rotation.json data/history.json data/archive docs/ reports/forensics || true
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
@@ -113,6 +127,8 @@ jobs:
           path: |
             SAM-daily-latest.html
             SAM-daily-latest.xlsx
+            docs/v/forensics.html
+            reports/forensics/latest.md
             data/api_term_rotation.json
             data/history.json
           if-no-files-found: ignore
