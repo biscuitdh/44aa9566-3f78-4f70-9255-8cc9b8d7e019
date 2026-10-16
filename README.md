@@ -7,6 +7,7 @@ Automated SAM.gov opportunity keyword checks. Produces Excel + HTML reports.
 After GitHub Pages is enabled and a workflow has run:
 
 - HTML: https://biscuitdh.github.io/44aa9566-3f78-4f70-9255-8cc9b8d7e019/v/
+- Forensics watch: https://biscuitdh.github.io/44aa9566-3f78-4f70-9255-8cc9b8d7e019/v/forensics.html
 - Excel: https://biscuitdh.github.io/44aa9566-3f78-4f70-9255-8cc9b8d7e019/v/SAM-daily-latest.xlsx
 
 Low-profile path (`/v/`), `noindex`, robots disallow. Content is public SAM.gov notice metadata only.
@@ -50,6 +51,42 @@ Each scheduled search uses a **15-day posted-date window** (`--days 15`) so the 
 | Append audit log | `data/archive/notices-append.jsonl` | Append-only |
 
 The site stays lean; the repo keeps the long history under `data/archive/` (not deployed to Pages).
+
+## Forensics watch (daily keyword check)
+
+The full tracker also carries broad terms (`Cyber`, `IRS`, `EC2`), so every run builds a
+forensics-only cut of the same data:
+
+```bash
+python scripts/forensics_digest.py            # after a search, or any time
+```
+
+Outputs:
+
+| What | Where |
+|------|-------|
+| Public page | `docs/v/forensics.html` → `/v/forensics.html` (linked from the main report) |
+| Daily Markdown record | `reports/forensics/YYYY-MM-DD.md` + `reports/forensics/latest.md` |
+| CI job summary | one-line count of confirmed / new / due-soon hits |
+
+Sections: **new today**, **amended / re-issued today**, **deadlines within 30 days**,
+**all confirmed matches in the window**, **needs review**, and a per-term count.
+
+SAM.gov mints a fresh notice ID whenever a solicitation is amended, so the same solicitation
+reappears as a first-time record — often with a pushed-back deadline. The digest matches on
+solicitation number (across `data/history.json` and the durable archive) to keep those out of the
+new-today count, list them under **amended** with the old → new deadline, and drop the superseded
+copy from the deadline and confirmed counts so nothing is listed twice.
+
+Keywords live in `config/watch_groups.json`:
+
+- `strong_terms` / `title_keywords` → confirmed (e.g. `Forensic`, `GrayKey`, `Magnet Forensics`,
+  a title mentioning `digital evidence`)
+- `weak_terms` → review only. Short acronyms (`DC3`, `MSAB`, `XRY`, `Axiom`) also match inside
+  unrelated titles, so they are listed separately instead of polluting the confirmed list.
+
+The digest only re-cuts `data/history.json`; it never calls SAM.gov, so it is safe to re-run.
+Add a group to `config/watch_groups.json` and pass `--group <key>` for other watch lists.
 
 ## Copy for Trello
 
