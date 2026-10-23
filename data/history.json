@@ -1,19 +1,7 @@
 {
   "version": 2,
-  "updated_at": "2026-10-22T14:28:17.241489+00:00",
+  "updated_at": "2026-10-23T14:10:16.667778+00:00",
   "runs": [
-    {
-      "run_id": "2026-10-08_161131",
-      "run_date": "2026-10-08",
-      "posted_from": "2026-09-24",
-      "posted_to": "2026-10-08",
-      "term_count": 24,
-      "hit_count": 58,
-      "new_count": 10,
-      "errors": [],
-      "term_sleep": 3.0,
-      "page_sleep": 1.0
-    },
     {
       "run_id": "2026-10-09_155502",
       "run_date": "2026-10-09",
@@ -193,202 +181,21 @@
       "errors": [],
       "term_sleep": 3.0,
       "page_sleep": 1.0
+    },
+    {
+      "run_id": "2026-10-23_140659",
+      "run_date": "2026-10-23",
+      "posted_from": "2026-10-09",
+      "posted_to": "2026-10-23",
+      "term_count": 29,
+      "hit_count": 41,
+      "new_count": 7,
+      "errors": [],
+      "term_sleep": 3.0,
+      "page_sleep": 1.0
     }
   ],
   "notices": {
-    "11215d725f4846e296fcdede82e45696": {
-      "notice_id": "11215d725f4846e296fcdede82e45696",
-      "title": "PEO-M Unmanned Surface Vehicle (USV) Poseidon's Fury Assessment Event (AE)",
-      "solicitation_number": "PEO_M_USV_Poseidons_Fury_AE",
-      "posted_date": "2026-09-24",
-      "type": "Special Notice",
-      "response_deadline": "2026-10-08T03:59:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "DEPT OF DEFENSE",
-      "matched_terms": [
-        "SOFWERX"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/11215d725f4846e296fcdede82e45696/view",
-      "first_seen_date": "2026-09-24",
-      "last_seen_date": "2026-10-08",
-      "seen_on_dates": [
-        "2026-10-08"
-      ],
-      "brand_terms": [],
-      "brand_where": {},
-      "brand_scan": {
-        "version": 1,
-        "modified": "2026-09-24T12:48:25.381+00:00",
-        "attachments": true,
-        "skipped": [],
-        "errors": 0,
-        "at": "2026-10-20T16:26:39+00:00"
-      }
-    },
-    "c9377aa602064f969cdfa6be3963cde8": {
-      "notice_id": "c9377aa602064f969cdfa6be3963cde8",
-      "title": "US GOVERNMENT WANTS TO LEASE OFFICE SPACE IN SOUTHAVEN, MS",
-      "solicitation_number": "6MS0117",
-      "posted_date": "2026-09-24",
-      "type": "Presolicitation",
-      "response_deadline": "2026-10-23T10:00:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "GENERAL SERVICES ADMINISTRATION.PUBLIC BUILDINGS SERVICE.PBS R00 CENTER FOR BROKER SERVICES",
-      "matched_terms": [
-        "IRS"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/c9377aa602064f969cdfa6be3963cde8/view",
-      "first_seen_date": "2026-09-25",
-      "last_seen_date": "2026-10-08",
-      "seen_on_dates": [
-        "2026-10-08"
-      ],
-      "brand_terms": [],
-      "brand_where": {},
-      "brand_scan": {
-        "version": 1,
-        "modified": "2026-09-24T15:29:05.129+00:00",
-        "attachments": true,
-        "skipped": [],
-        "errors": 0,
-        "at": "2026-10-20T16:26:51+00:00"
-      }
-    },
-    "fe04b4bf94724141a33857461cdfe799": {
-      "notice_id": "fe04b4bf94724141a33857461cdfe799",
-      "title": "Seeking Competitive Lease Proposals \u2013 Administrative Office Space in in Philadelphia, PA - Request for Lease Proposals No. 26NAT02",
-      "solicitation_number": "RCC_002",
-      "posted_date": "2026-09-24",
-      "type": "Solicitation",
-      "response_deadline": "2026-10-08T00:00:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "GENERAL SERVICES ADMINISTRATION.PUBLIC BUILDINGS SERVICE.PBS R00 OFFICE OF LEASING",
-      "matched_terms": [
-        "IRS"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/fe04b4bf94724141a33857461cdfe799/view",
-      "first_seen_date": "2026-09-25",
-      "last_seen_date": "2026-10-08",
-      "seen_on_dates": [
-        "2026-10-08"
-      ],
-      "brand_terms": [],
-      "brand_where": {},
-      "brand_scan": {
-        "version": 1,
-        "modified": "2026-09-24T14:50:22.583+00:00",
-        "attachments": true,
-        "skipped": [],
-        "errors": 0,
-        "at": "2026-10-20T16:26:54+00:00"
-      }
-    },
-    "53d3fc22ebe34e04bf68d5eae26eb259": {
-      "notice_id": "53d3fc22ebe34e04bf68d5eae26eb259",
-      "title": "Notice of Intent to Sole Source -Bode Cellmark Forensics",
-      "solicitation_number": "PANDHA-26-P-0000046460",
-      "posted_date": "2026-09-24",
-      "type": "Presolicitation",
-      "response_deadline": "2026-10-08T14:00:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "DEPT OF DEFENSE.DEFENSE HEALTH AGENCY (DHA).ARMY MED RES ACQ ACTIVITY",
-      "matched_terms": [
-        "Forensic",
-        "Forensics"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/53d3fc22ebe34e04bf68d5eae26eb259/view",
-      "first_seen_date": "2026-09-25",
-      "last_seen_date": "2026-10-08",
-      "seen_on_dates": [
-        "2026-10-08"
-      ],
-      "brand_terms": [],
-      "brand_where": {},
-      "brand_scan": {
-        "version": 1,
-        "modified": "2026-09-24T15:29:13.732+00:00",
-        "attachments": true,
-        "skipped": [],
-        "errors": 0,
-        "at": "2026-10-20T16:26:57+00:00"
-      }
-    },
-    "e835ac7597804441bcba3c56ab8baeee": {
-      "notice_id": "e835ac7597804441bcba3c56ab8baeee",
-      "title": "Forensic Laptops",
-      "solicitation_number": "0020154457",
-      "posted_date": "2026-09-24",
-      "type": "Solicitation",
-      "response_deadline": "2026-09-25T21:00:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "HOMELAND SECURITY, DEPARTMENT OF.U.S. CUSTOMS AND BORDER PROTECTION.INFORMATION TECHNOLOGY CONTRACTING DIVISION",
-      "matched_terms": [
-        "Forensic"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/e835ac7597804441bcba3c56ab8baeee/view",
-      "first_seen_date": "2026-09-25",
-      "last_seen_date": "2026-10-08",
-      "seen_on_dates": [
-        "2026-10-08"
-      ],
-      "brand_terms": [],
-      "brand_where": {},
-      "brand_scan": {
-        "version": 1,
-        "modified": "2026-10-10T05:07:16.410+00:00",
-        "attachments": true,
-        "skipped": [],
-        "errors": 0,
-        "at": "2026-10-20T16:26:58+00:00"
-      }
-    },
-    "265c6bb6212643fd87e915bef3035c68": {
-      "notice_id": "265c6bb6212643fd87e915bef3035c68",
-      "title": "IRS Intrusion Detection System, C. Clifton Young Federal Building & US Courthouse",
-      "solicitation_number": "47PD5526Q0052",
-      "posted_date": "2026-09-25",
-      "type": "Combined Synopsis/Solicitation",
-      "response_deadline": "2026-10-14T23:00:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "",
-      "matched_terms": [
-        "IRS"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/265c6bb6212643fd87e915bef3035c68/view",
-      "first_seen_date": "2026-09-26",
-      "last_seen_date": "2026-10-08",
-      "seen_on_dates": [
-        "2026-10-08"
-      ],
-      "brand_terms": [],
-      "brand_where": {},
-      "brand_scan": {
-        "version": 1,
-        "modified": "2026-10-08T23:20:46.531+00:00",
-        "attachments": true,
-        "skipped": [],
-        "errors": 0,
-        "at": "2026-10-20T16:27:08+00:00"
-      }
-    },
     "2022149fc08a4dc9bbcce8577e2f3179": {
       "notice_id": "2022149fc08a4dc9bbcce8577e2f3179",
       "title": "Forensic Vehicles",
@@ -408,7 +215,6 @@
       "first_seen_date": "2026-09-26",
       "last_seen_date": "2026-10-09",
       "seen_on_dates": [
-        "2026-10-08",
         "2026-10-09"
       ],
       "brand_terms": [],
@@ -441,7 +247,6 @@
       "first_seen_date": "2026-09-26",
       "last_seen_date": "2026-10-09",
       "seen_on_dates": [
-        "2026-10-08",
         "2026-10-09"
       ],
       "brand_terms": [],
@@ -476,7 +281,6 @@
       "first_seen_date": "2026-09-26",
       "last_seen_date": "2026-10-09",
       "seen_on_dates": [
-        "2026-10-08",
         "2026-10-09"
       ],
       "brand_terms": [
@@ -519,7 +323,6 @@
       "first_seen_date": "2026-09-26",
       "last_seen_date": "2026-10-09",
       "seen_on_dates": [
-        "2026-10-08",
         "2026-10-09"
       ],
       "brand_terms": [],
@@ -553,7 +356,6 @@
       "first_seen_date": "2026-09-29",
       "last_seen_date": "2026-10-13",
       "seen_on_dates": [
-        "2026-10-08",
         "2026-10-09",
         "2026-10-10",
         "2026-10-11",
@@ -590,7 +392,6 @@
       "first_seen_date": "2026-09-29",
       "last_seen_date": "2026-10-09",
       "seen_on_dates": [
-        "2026-10-08",
         "2026-10-09"
       ],
       "brand_terms": [],
@@ -623,7 +424,6 @@
       "first_seen_date": "2026-09-29",
       "last_seen_date": "2026-10-09",
       "seen_on_dates": [
-        "2026-10-08",
         "2026-10-09"
       ],
       "brand_terms": [],
@@ -656,7 +456,6 @@
       "first_seen_date": "2026-09-29",
       "last_seen_date": "2026-10-12",
       "seen_on_dates": [
-        "2026-10-08",
         "2026-10-09",
         "2026-10-10",
         "2026-10-11",
@@ -692,7 +491,6 @@
       "first_seen_date": "2026-09-29",
       "last_seen_date": "2026-10-12",
       "seen_on_dates": [
-        "2026-10-08",
         "2026-10-09",
         "2026-10-10",
         "2026-10-11",
@@ -728,7 +526,6 @@
       "first_seen_date": "2026-09-29",
       "last_seen_date": "2026-10-12",
       "seen_on_dates": [
-        "2026-10-08",
         "2026-10-09",
         "2026-10-10",
         "2026-10-11",
@@ -767,7 +564,6 @@
       "first_seen_date": "2026-09-30",
       "last_seen_date": "2026-10-14",
       "seen_on_dates": [
-        "2026-10-08",
         "2026-10-09",
         "2026-10-10",
         "2026-10-11",
@@ -805,7 +601,6 @@
       "first_seen_date": "2026-09-30",
       "last_seen_date": "2026-10-13",
       "seen_on_dates": [
-        "2026-10-08",
         "2026-10-09",
         "2026-10-10",
         "2026-10-11",
@@ -846,7 +641,6 @@
       "first_seen_date": "2026-10-01",
       "last_seen_date": "2026-10-15",
       "seen_on_dates": [
-        "2026-10-08",
         "2026-10-09",
         "2026-10-10",
         "2026-10-11",
@@ -864,38 +658,6 @@
         "skipped": [],
         "errors": 0,
         "at": "2026-10-20T16:27:59+00:00"
-      }
-    },
-    "f0ca897574cf4553b58e37d3ccfc7ef2": {
-      "notice_id": "f0ca897574cf4553b58e37d3ccfc7ef2",
-      "title": "MAST BOLTS",
-      "solicitation_number": "N6660426Q0492",
-      "posted_date": "2026-10-01",
-      "type": "Combined Synopsis/Solicitation",
-      "response_deadline": "2026-10-16T15:00:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "DEPT OF DEFENSE.DEPT OF THE NAVY.NAVSEA.NAVSEA WARFARE CENTER.NUWC DIV NEWPORT",
-      "matched_terms": [
-        "Cyber"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/f0ca897574cf4553b58e37d3ccfc7ef2/view",
-      "first_seen_date": "2026-10-01",
-      "last_seen_date": "2026-10-08",
-      "seen_on_dates": [
-        "2026-10-08"
-      ],
-      "brand_terms": [],
-      "brand_where": {},
-      "brand_scan": {
-        "version": 1,
-        "modified": "2026-10-16T12:22:13.594+00:00",
-        "attachments": true,
-        "skipped": [],
-        "errors": 0,
-        "at": "2026-10-20T16:28:04+00:00"
       }
     },
     "7c8c823940904c8c9af2c3507b58e6e8": {
@@ -917,7 +679,6 @@
       "first_seen_date": "2026-10-02",
       "last_seen_date": "2026-10-09",
       "seen_on_dates": [
-        "2026-10-08",
         "2026-10-09"
       ],
       "brand_terms": [],
@@ -950,7 +711,6 @@
       "first_seen_date": "2026-10-02",
       "last_seen_date": "2026-10-16",
       "seen_on_dates": [
-        "2026-10-08",
         "2026-10-09",
         "2026-10-10",
         "2026-10-11",
@@ -969,38 +729,6 @@
         "skipped": [],
         "errors": 0,
         "at": "2026-10-20T16:28:18+00:00"
-      }
-    },
-    "d6491df7d2f04213b1330e1e96e99cbc": {
-      "notice_id": "d6491df7d2f04213b1330e1e96e99cbc",
-      "title": "Technical and Programmatic Support Services (TPSS) MATOC III",
-      "solicitation_number": "W912DY27RA014",
-      "posted_date": "2026-10-01",
-      "type": "Combined Synopsis/Solicitation",
-      "response_deadline": "2026-10-19T14:00:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "DEPT OF DEFENSE.DEPT OF THE ARMY.USACE.OTHER_DIVISION.W2V6 USA ENG SPT CTR HUNTSVIL",
-      "matched_terms": [
-        "Cyber"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/d6491df7d2f04213b1330e1e96e99cbc/view",
-      "first_seen_date": "2026-10-02",
-      "last_seen_date": "2026-10-08",
-      "seen_on_dates": [
-        "2026-10-08"
-      ],
-      "brand_terms": [],
-      "brand_where": {},
-      "brand_scan": {
-        "version": 1,
-        "modified": "2026-10-15T16:48:53.412+00:00",
-        "attachments": true,
-        "skipped": [],
-        "errors": 0,
-        "at": "2026-10-20T16:28:19+00:00"
       }
     },
     "5fa8ceaca1db4f209c6b552b785d0120": {
@@ -1022,7 +750,6 @@
       "first_seen_date": "2026-10-02",
       "last_seen_date": "2026-10-15",
       "seen_on_dates": [
-        "2026-10-08",
         "2026-10-09",
         "2026-10-10",
         "2026-10-11",
@@ -1040,70 +767,6 @@
         "skipped": [],
         "errors": 0,
         "at": "2026-10-20T16:28:21+00:00"
-      }
-    },
-    "3d6be830a9e24318b970de06c1a049f3": {
-      "notice_id": "3d6be830a9e24318b970de06c1a049f3",
-      "title": "SOLE SOURCE - ESD BENCH REPLACEMENT PARTS",
-      "solicitation_number": "N6660426Q0466",
-      "posted_date": "2026-10-01",
-      "type": "Special Notice",
-      "response_deadline": "2026-10-09T15:00:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "DEPT OF DEFENSE.DEPT OF THE NAVY.NAVSEA.NAVSEA WARFARE CENTER.NUWC DIV NEWPORT",
-      "matched_terms": [
-        "Cyber"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/3d6be830a9e24318b970de06c1a049f3/view",
-      "first_seen_date": "2026-10-02",
-      "last_seen_date": "2026-10-08",
-      "seen_on_dates": [
-        "2026-10-08"
-      ],
-      "brand_terms": [],
-      "brand_where": {},
-      "brand_scan": {
-        "version": 1,
-        "modified": "2026-10-01T17:04:08.006+00:00",
-        "attachments": true,
-        "skipped": [],
-        "errors": 0,
-        "at": "2026-10-20T16:28:24+00:00"
-      }
-    },
-    "cec87c871d5f4921a791ce40fd62fe72": {
-      "notice_id": "cec87c871d5f4921a791ce40fd62fe72",
-      "title": "Industry Day Notice _ CISA Strategic Cyber Tools Buying",
-      "solicitation_number": "",
-      "posted_date": "2026-10-01",
-      "type": "Special Notice",
-      "response_deadline": "2026-10-07T15:00:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "GENERAL SERVICES ADMINISTRATION.FEDERAL ACQUISITION SERVICE.GSA FAS AAS REGION 8",
-      "matched_terms": [
-        "Cyber"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/cec87c871d5f4921a791ce40fd62fe72/view",
-      "first_seen_date": "2026-10-02",
-      "last_seen_date": "2026-10-08",
-      "seen_on_dates": [
-        "2026-10-08"
-      ],
-      "brand_terms": [],
-      "brand_where": {},
-      "brand_scan": {
-        "version": 1,
-        "modified": "2026-10-01T19:36:39.989+00:00",
-        "attachments": true,
-        "skipped": [],
-        "errors": 0,
-        "at": "2026-10-20T16:28:27+00:00"
       }
     },
     "ea22432c52f8458b990566970bcfd3db": {
@@ -1125,7 +788,6 @@
       "first_seen_date": "2026-10-03",
       "last_seen_date": "2026-10-16",
       "seen_on_dates": [
-        "2026-10-08",
         "2026-10-09",
         "2026-10-10",
         "2026-10-11",
@@ -1165,7 +827,6 @@
       "first_seen_date": "2026-10-03",
       "last_seen_date": "2026-10-12",
       "seen_on_dates": [
-        "2026-10-08",
         "2026-10-09",
         "2026-10-10",
         "2026-10-11",
@@ -1201,7 +862,6 @@
       "first_seen_date": "2026-10-03",
       "last_seen_date": "2026-10-12",
       "seen_on_dates": [
-        "2026-10-08",
         "2026-10-09",
         "2026-10-10",
         "2026-10-11",
@@ -1237,7 +897,6 @@
       "first_seen_date": "2026-10-05",
       "last_seen_date": "2026-10-19",
       "seen_on_dates": [
-        "2026-10-08",
         "2026-10-09",
         "2026-10-10",
         "2026-10-11",
@@ -1280,7 +939,6 @@
       "first_seen_date": "2026-10-05",
       "last_seen_date": "2026-10-12",
       "seen_on_dates": [
-        "2026-10-08",
         "2026-10-09",
         "2026-10-10",
         "2026-10-11",
@@ -1318,7 +976,6 @@
       "first_seen_date": "2026-10-05",
       "last_seen_date": "2026-10-19",
       "seen_on_dates": [
-        "2026-10-08",
         "2026-10-09",
         "2026-10-10",
         "2026-10-11",
@@ -1385,7 +1042,6 @@
       "first_seen_date": "2026-10-05",
       "last_seen_date": "2026-10-19",
       "seen_on_dates": [
-        "2026-10-08",
         "2026-10-09",
         "2026-10-10",
         "2026-10-11",
@@ -1430,7 +1086,6 @@
       "first_seen_date": "2026-10-05",
       "last_seen_date": "2026-10-12",
       "seen_on_dates": [
-        "2026-10-08",
         "2026-10-09",
         "2026-10-10",
         "2026-10-11",
@@ -1466,7 +1121,6 @@
       "first_seen_date": "2026-10-06",
       "last_seen_date": "2026-10-20",
       "seen_on_dates": [
-        "2026-10-08",
         "2026-10-09",
         "2026-10-10",
         "2026-10-11",
@@ -1511,7 +1165,6 @@
       "first_seen_date": "2026-10-06",
       "last_seen_date": "2026-10-14",
       "seen_on_dates": [
-        "2026-10-08",
         "2026-10-09",
         "2026-10-10",
         "2026-10-11",
@@ -1551,7 +1204,6 @@
       "first_seen_date": "2026-10-06",
       "last_seen_date": "2026-10-14",
       "seen_on_dates": [
-        "2026-10-08",
         "2026-10-09",
         "2026-10-10",
         "2026-10-11",
@@ -1589,7 +1241,6 @@
       "first_seen_date": "2026-10-06",
       "last_seen_date": "2026-10-19",
       "seen_on_dates": [
-        "2026-10-08",
         "2026-10-09",
         "2026-10-10",
         "2026-10-11",
@@ -1632,7 +1283,6 @@
       "first_seen_date": "2026-10-06",
       "last_seen_date": "2026-10-14",
       "seen_on_dates": [
-        "2026-10-08",
         "2026-10-09",
         "2026-10-10",
         "2026-10-11",
@@ -1670,7 +1320,6 @@
       "first_seen_date": "2026-10-06",
       "last_seen_date": "2026-10-14",
       "seen_on_dates": [
-        "2026-10-08",
         "2026-10-09",
         "2026-10-10",
         "2026-10-11",
@@ -1708,7 +1357,6 @@
       "first_seen_date": "2026-10-06",
       "last_seen_date": "2026-10-14",
       "seen_on_dates": [
-        "2026-10-08",
         "2026-10-09",
         "2026-10-10",
         "2026-10-11",
@@ -1746,7 +1394,6 @@
       "first_seen_date": "2026-10-06",
       "last_seen_date": "2026-10-19",
       "seen_on_dates": [
-        "2026-10-08",
         "2026-10-09",
         "2026-10-10",
         "2026-10-11",
@@ -1789,7 +1436,6 @@
       "first_seen_date": "2026-10-06",
       "last_seen_date": "2026-10-13",
       "seen_on_dates": [
-        "2026-10-08",
         "2026-10-09",
         "2026-10-10",
         "2026-10-11",
@@ -1826,7 +1472,6 @@
       "first_seen_date": "2026-10-07",
       "last_seen_date": "2026-10-21",
       "seen_on_dates": [
-        "2026-10-08",
         "2026-10-09",
         "2026-10-10",
         "2026-10-11",
@@ -1872,7 +1517,6 @@
       "first_seen_date": "2026-10-07",
       "last_seen_date": "2026-10-15",
       "seen_on_dates": [
-        "2026-10-08",
         "2026-10-09",
         "2026-10-10",
         "2026-10-11",
@@ -1911,7 +1555,6 @@
       "first_seen_date": "2026-10-07",
       "last_seen_date": "2026-10-15",
       "seen_on_dates": [
-        "2026-10-08",
         "2026-10-09",
         "2026-10-10",
         "2026-10-11",
@@ -1950,7 +1593,6 @@
       "first_seen_date": "2026-10-07",
       "last_seen_date": "2026-10-21",
       "seen_on_dates": [
-        "2026-10-08",
         "2026-10-09",
         "2026-10-10",
         "2026-10-11",
@@ -1996,7 +1638,6 @@
       "first_seen_date": "2026-10-07",
       "last_seen_date": "2026-10-15",
       "seen_on_dates": [
-        "2026-10-08",
         "2026-10-09",
         "2026-10-10",
         "2026-10-11",
@@ -2035,7 +1676,6 @@
       "first_seen_date": "2026-10-08",
       "last_seen_date": "2026-10-13",
       "seen_on_dates": [
-        "2026-10-08",
         "2026-10-09",
         "2026-10-10",
         "2026-10-11",
@@ -2072,7 +1712,6 @@
       "first_seen_date": "2026-10-08",
       "last_seen_date": "2026-10-15",
       "seen_on_dates": [
-        "2026-10-08",
         "2026-10-09",
         "2026-10-10",
         "2026-10-11",
@@ -2113,7 +1752,6 @@
       "first_seen_date": "2026-10-08",
       "last_seen_date": "2026-10-22",
       "seen_on_dates": [
-        "2026-10-08",
         "2026-10-09",
         "2026-10-10",
         "2026-10-11",
@@ -2160,7 +1798,6 @@
       "first_seen_date": "2026-10-08",
       "last_seen_date": "2026-10-15",
       "seen_on_dates": [
-        "2026-10-08",
         "2026-10-09",
         "2026-10-10",
         "2026-10-11",
@@ -2199,7 +1836,6 @@
       "first_seen_date": "2026-10-08",
       "last_seen_date": "2026-10-21",
       "seen_on_dates": [
-        "2026-10-08",
         "2026-10-09",
         "2026-10-10",
         "2026-10-11",
@@ -2245,7 +1881,6 @@
       "first_seen_date": "2026-10-08",
       "last_seen_date": "2026-10-21",
       "seen_on_dates": [
-        "2026-10-08",
         "2026-10-09",
         "2026-10-10",
         "2026-10-11",
@@ -2291,7 +1926,6 @@
       "first_seen_date": "2026-10-08",
       "last_seen_date": "2026-10-15",
       "seen_on_dates": [
-        "2026-10-08",
         "2026-10-09",
         "2026-10-10",
         "2026-10-11",
@@ -2330,7 +1964,6 @@
       "first_seen_date": "2026-10-08",
       "last_seen_date": "2026-10-09",
       "seen_on_dates": [
-        "2026-10-08",
         "2026-10-09"
       ],
       "brand_terms": [],
@@ -2344,49 +1977,6 @@
         ],
         "errors": 0,
         "at": "2026-10-20T16:30:22+00:00"
-      }
-    },
-    "5aba6767d15c4876b5bf0b419866d003": {
-      "notice_id": "5aba6767d15c4876b5bf0b419866d003",
-      "title": "Combined Synopsis/Solicitation for Commercial Items Agile Professional Services (\"APS\u201d) Department of the Army",
-      "solicitation_number": "W900KK-26-R-A023",
-      "posted_date": "2026-10-07",
-      "type": "Combined Synopsis/Solicitation",
-      "response_deadline": "2026-10-23T03:59:00+00:00",
-      "naics": "",
-      "active": "Yes",
-      "organization": "DEPT OF DEFENSE.DEPT OF THE ARMY.AMC.ACC.ACC-CTRS.ACC-ORL.W6QK ACC-ORLANDO",
-      "matched_terms": [
-        "Cyber"
-      ],
-      "award_amount": "",
-      "awardee": "",
-      "url": "https://sam.gov/opp/5aba6767d15c4876b5bf0b419866d003/view",
-      "first_seen_date": "2026-10-08",
-      "last_seen_date": "2026-10-08",
-      "seen_on_dates": [
-        "2026-10-08"
-      ],
-      "brand_terms": [],
-      "brand_where": {},
-      "brand_scan": {
-        "version": 1,
-        "modified": "2026-10-08T23:00:12.412+00:00",
-        "attachments": true,
-        "skipped": [
-          "APS _ Combined Synopsis Solicitation _ 9.21.2026.docx",
-          "Attachment 1 _ SOO_Agile_Professional_Services_20260908.docx",
-          "Attachment 2 _ 52.212-1 Instructions to Offerors\u2014Commercial Products and Commercial Services_9.18.2026.docx",
-          "Attachment 3 _ 52.212-2 Evaluation\u2014Commercial Products and Commercial Services_9.18.2026.docx",
-          "Attachment 4.c _ WD 2015-4603 REV 34 20260820 AL_9.18.2026.pdf",
-          "Attachment 4.d _ WD 2015-4631 REV 34 20260812 AL_9.18.2026.pdf",
-          "Attachment 4.e _ WD 2015-4719 REV 34 20260812 KY_9.18.2026.pdf",
-          "Attachment 4.f _ WD 2015-5197 REV 33 20260812 LA_9.18.2026.pdf",
-          "Attachment 4.g _ WD 2015-5237 REV 32 20260812 TX_9.18.2026.pdf",
-          "Attachment 4.h _ WD 2015-5629 REV 29 20260513 CA_9.18.2026.pdf"
-        ],
-        "errors": 4,
-        "at": "2026-10-22T14:27:32+00:00"
       }
     },
     "a5bf11133d5b49048d5beb1a65af4578": {
@@ -2408,7 +1998,6 @@
       "first_seen_date": "2026-10-08",
       "last_seen_date": "2026-10-15",
       "seen_on_dates": [
-        "2026-10-08",
         "2026-10-09",
         "2026-10-10",
         "2026-10-11",
@@ -2482,7 +2071,7 @@
       "awardee": "",
       "url": "https://sam.gov/opp/58927173fe23490d9801121d0e823a83/view",
       "first_seen_date": "2026-10-09",
-      "last_seen_date": "2026-10-22",
+      "last_seen_date": "2026-10-23",
       "seen_on_dates": [
         "2026-10-09",
         "2026-10-10",
@@ -2497,7 +2086,8 @@
         "2026-10-19",
         "2026-10-20",
         "2026-10-21",
-        "2026-10-22"
+        "2026-10-22",
+        "2026-10-23"
       ],
       "body_terms": [],
       "brand_terms": [],
@@ -2674,7 +2264,7 @@
           "Attachment 4 - Schedule.xlsx"
         ],
         "errors": 3,
-        "at": "2026-10-22T14:27:46+00:00"
+        "at": "2026-10-23T14:09:51+00:00"
       }
     },
     "5133420c280d4aa38f501a39557534ae": {
@@ -2724,7 +2314,7 @@
           "Attachment 5 _ PWS Template Agile professional Services 20261001.docx"
         ],
         "errors": 1,
-        "at": "2026-10-22T14:27:59+00:00"
+        "at": "2026-10-23T14:10:01+00:00"
       }
     },
     "882fbe86b0e246fbad8e6a423343df9f": {
@@ -2830,7 +2420,7 @@
       "awardee": "",
       "url": "https://sam.gov/opp/3156da80a77f4ca5875402d5e0a34b9d/view",
       "first_seen_date": "2026-10-10",
-      "last_seen_date": "2026-10-22",
+      "last_seen_date": "2026-10-23",
       "seen_on_dates": [
         "2026-10-10",
         "2026-10-11",
@@ -2844,7 +2434,8 @@
         "2026-10-19",
         "2026-10-20",
         "2026-10-21",
-        "2026-10-22"
+        "2026-10-22",
+        "2026-10-23"
       ],
       "body_terms": [],
       "brand_terms": [],
@@ -3381,7 +2972,7 @@
       "awardee": "",
       "url": "https://sam.gov/opp/4ff926a4ccdb444c972541d0c9ef3a7b/view",
       "first_seen_date": "2026-10-15",
-      "last_seen_date": "2026-10-22",
+      "last_seen_date": "2026-10-23",
       "seen_on_dates": [
         "2026-10-15",
         "2026-10-16",
@@ -3390,7 +2981,8 @@
         "2026-10-19",
         "2026-10-20",
         "2026-10-21",
-        "2026-10-22"
+        "2026-10-22",
+        "2026-10-23"
       ],
       "body_terms": [],
       "brand_terms": [],
@@ -3421,7 +3013,7 @@
       "awardee": "",
       "url": "https://sam.gov/opp/5bd0039af6cd48e48e494d2cf50ba5f0/view",
       "first_seen_date": "2026-10-15",
-      "last_seen_date": "2026-10-22",
+      "last_seen_date": "2026-10-23",
       "seen_on_dates": [
         "2026-10-15",
         "2026-10-16",
@@ -3430,7 +3022,8 @@
         "2026-10-19",
         "2026-10-20",
         "2026-10-21",
-        "2026-10-22"
+        "2026-10-22",
+        "2026-10-23"
       ],
       "body_terms": [],
       "brand_terms": [],
@@ -3831,7 +3424,7 @@
       "awardee": "Charter Communications Operating, LLC d/b/a Charter Media / Spectrum Business",
       "url": "https://sam.gov/opp/6fdec03a95f94f8a9e0d3816a40a8574/view",
       "first_seen_date": "2026-10-16",
-      "last_seen_date": "2026-10-22",
+      "last_seen_date": "2026-10-23",
       "seen_on_dates": [
         "2026-10-16",
         "2026-10-17",
@@ -3839,7 +3432,8 @@
         "2026-10-19",
         "2026-10-20",
         "2026-10-21",
-        "2026-10-22"
+        "2026-10-22",
+        "2026-10-23"
       ],
       "body_terms": [],
       "brand_terms": [],
@@ -3886,7 +3480,7 @@
           "Solicitation - W91CRB26BA006 10.15.26.pdf"
         ],
         "errors": 1,
-        "at": "2026-10-22T14:28:05+00:00"
+        "at": "2026-10-23T14:10:06+00:00"
       }
     },
     "04b6eadd3e50467d84da64459c17830e": {
@@ -3943,14 +3537,15 @@
       "awardee": "",
       "url": "https://sam.gov/opp/f4603f6aa068400cbde74db91b6e43bf/view",
       "first_seen_date": "2026-10-17",
-      "last_seen_date": "2026-10-22",
+      "last_seen_date": "2026-10-23",
       "seen_on_dates": [
         "2026-10-17",
         "2026-10-18",
         "2026-10-19",
         "2026-10-20",
         "2026-10-21",
-        "2026-10-22"
+        "2026-10-22",
+        "2026-10-23"
       ],
       "body_terms": [],
       "brand_terms": [],
@@ -3981,14 +3576,15 @@
       "awardee": "",
       "url": "https://sam.gov/opp/3250f44577624e03bb2dc6324e60bfd6/view",
       "first_seen_date": "2026-10-17",
-      "last_seen_date": "2026-10-22",
+      "last_seen_date": "2026-10-23",
       "seen_on_dates": [
         "2026-10-17",
         "2026-10-18",
         "2026-10-19",
         "2026-10-20",
         "2026-10-21",
-        "2026-10-22"
+        "2026-10-22",
+        "2026-10-23"
       ],
       "body_terms": [],
       "brand_terms": [],
@@ -4094,14 +3690,15 @@
       "awardee": "",
       "url": "https://sam.gov/opp/721c4aaa8ee34a9ba5f7a0ace045ce8c/view",
       "first_seen_date": "2026-10-17",
-      "last_seen_date": "2026-10-22",
+      "last_seen_date": "2026-10-23",
       "seen_on_dates": [
         "2026-10-17",
         "2026-10-18",
         "2026-10-19",
         "2026-10-20",
         "2026-10-21",
-        "2026-10-22"
+        "2026-10-22",
+        "2026-10-23"
       ],
       "body_terms": [],
       "brand_terms": [],
@@ -4170,12 +3767,13 @@
       "awardee": "BELL BOEING JOINT PROJECT OFFICE",
       "url": "https://sam.gov/opp/0be8714c04f542e2a400be46c2155c30/view",
       "first_seen_date": "2026-10-19",
-      "last_seen_date": "2026-10-22",
+      "last_seen_date": "2026-10-23",
       "seen_on_dates": [
         "2026-10-19",
         "2026-10-20",
         "2026-10-21",
-        "2026-10-22"
+        "2026-10-22",
+        "2026-10-23"
       ],
       "body_terms": [],
       "brand_terms": [],
@@ -4206,12 +3804,13 @@
       "awardee": "",
       "url": "https://sam.gov/opp/32a1f6bfd2464052953637645bfb8da8/view",
       "first_seen_date": "2026-10-19",
-      "last_seen_date": "2026-10-22",
+      "last_seen_date": "2026-10-23",
       "seen_on_dates": [
         "2026-10-19",
         "2026-10-20",
         "2026-10-21",
-        "2026-10-22"
+        "2026-10-22",
+        "2026-10-23"
       ],
       "body_terms": [],
       "brand_terms": [],
@@ -4292,7 +3891,7 @@
           "Solicitation - W91CRB26BA006 10.15.26.pdf"
         ],
         "errors": 1,
-        "at": "2026-10-22T14:28:16+00:00"
+        "at": "2026-10-23T14:10:15+00:00"
       }
     },
     "d2d7eae711a14923a0329665c110d326": {
@@ -4312,12 +3911,13 @@
       "awardee": "",
       "url": "https://sam.gov/opp/d2d7eae711a14923a0329665c110d326/view",
       "first_seen_date": "2026-10-19",
-      "last_seen_date": "2026-10-22",
+      "last_seen_date": "2026-10-23",
       "seen_on_dates": [
         "2026-10-19",
         "2026-10-20",
         "2026-10-21",
-        "2026-10-22"
+        "2026-10-22",
+        "2026-10-23"
       ],
       "body_terms": [],
       "brand_terms": [],
@@ -4350,11 +3950,12 @@
       "awardee": "",
       "url": "https://sam.gov/opp/ec4f8de843434b68a7f7713668dfa319/view",
       "first_seen_date": "2026-10-20",
-      "last_seen_date": "2026-10-22",
+      "last_seen_date": "2026-10-23",
       "seen_on_dates": [
         "2026-10-20",
         "2026-10-21",
-        "2026-10-22"
+        "2026-10-22",
+        "2026-10-23"
       ],
       "body_terms": [],
       "brand_terms": [],
@@ -4420,11 +4021,12 @@
       "awardee": "",
       "url": "https://sam.gov/opp/60c3f2ff8776454ebfd2be964ff59b68/view",
       "first_seen_date": "2026-10-20",
-      "last_seen_date": "2026-10-22",
+      "last_seen_date": "2026-10-23",
       "seen_on_dates": [
         "2026-10-20",
         "2026-10-21",
-        "2026-10-22"
+        "2026-10-22",
+        "2026-10-23"
       ],
       "body_terms": [],
       "brand_terms": [],
@@ -4455,11 +4057,12 @@
       "awardee": "",
       "url": "https://sam.gov/opp/23f8f23f5e6d4744b376584aac3743c7/view",
       "first_seen_date": "2026-10-20",
-      "last_seen_date": "2026-10-22",
+      "last_seen_date": "2026-10-23",
       "seen_on_dates": [
         "2026-10-20",
         "2026-10-21",
-        "2026-10-22"
+        "2026-10-22",
+        "2026-10-23"
       ],
       "body_terms": [],
       "brand_terms": [],
@@ -4490,11 +4093,12 @@
       "awardee": "",
       "url": "https://sam.gov/opp/a53d09065af541afaa71eeef6b5a0c5e/view",
       "first_seen_date": "2026-10-20",
-      "last_seen_date": "2026-10-22",
+      "last_seen_date": "2026-10-23",
       "seen_on_dates": [
         "2026-10-20",
         "2026-10-21",
-        "2026-10-22"
+        "2026-10-22",
+        "2026-10-23"
       ],
       "body_terms": [],
       "brand_terms": [],
@@ -4526,11 +4130,12 @@
       "awardee": "",
       "url": "https://sam.gov/opp/aa24db01da394428a78cf36bfa231546/view",
       "first_seen_date": "2026-10-20",
-      "last_seen_date": "2026-10-22",
+      "last_seen_date": "2026-10-23",
       "seen_on_dates": [
         "2026-10-20",
         "2026-10-21",
-        "2026-10-22"
+        "2026-10-22",
+        "2026-10-23"
       ],
       "body_terms": [],
       "brand_terms": [],
@@ -4561,11 +4166,12 @@
       "awardee": "",
       "url": "https://sam.gov/opp/1fab08878d644d1eb5596741cef26a99/view",
       "first_seen_date": "2026-10-20",
-      "last_seen_date": "2026-10-22",
+      "last_seen_date": "2026-10-23",
       "seen_on_dates": [
         "2026-10-20",
         "2026-10-21",
-        "2026-10-22"
+        "2026-10-22",
+        "2026-10-23"
       ],
       "body_terms": [],
       "brand_terms": [],
@@ -4596,11 +4202,12 @@
       "awardee": "",
       "url": "https://sam.gov/opp/d473fbfd56ee421f808711b5544958fc/view",
       "first_seen_date": "2026-10-20",
-      "last_seen_date": "2026-10-22",
+      "last_seen_date": "2026-10-23",
       "seen_on_dates": [
         "2026-10-20",
         "2026-10-21",
-        "2026-10-22"
+        "2026-10-22",
+        "2026-10-23"
       ],
       "body_terms": [],
       "brand_terms": [],
@@ -4632,11 +4239,12 @@
       "awardee": "",
       "url": "https://sam.gov/opp/584909c9678e4a41acb18094aea7d6a4/view",
       "first_seen_date": "2026-10-20",
-      "last_seen_date": "2026-10-22",
+      "last_seen_date": "2026-10-23",
       "seen_on_dates": [
         "2026-10-20",
         "2026-10-21",
-        "2026-10-22"
+        "2026-10-22",
+        "2026-10-23"
       ],
       "brand_terms": [],
       "brand_where": {},
@@ -4701,11 +4309,12 @@
       "awardee": "",
       "url": "https://sam.gov/opp/0dfda835b6a74e5e8e17d89762305c4a/view",
       "first_seen_date": "2026-10-20",
-      "last_seen_date": "2026-10-22",
+      "last_seen_date": "2026-10-23",
       "seen_on_dates": [
         "2026-10-20",
         "2026-10-21",
-        "2026-10-22"
+        "2026-10-22",
+        "2026-10-23"
       ],
       "brand_terms": [],
       "brand_where": {},
@@ -4747,10 +4356,11 @@
       "awardee": "",
       "url": "https://sam.gov/opp/7d7e4acc3c02480a90824b35e6f83374/view",
       "first_seen_date": "2026-10-21",
-      "last_seen_date": "2026-10-22",
+      "last_seen_date": "2026-10-23",
       "seen_on_dates": [
         "2026-10-21",
-        "2026-10-22"
+        "2026-10-22",
+        "2026-10-23"
       ],
       "brand_terms": [],
       "brand_where": {},
@@ -4781,10 +4391,11 @@
       "awardee": "",
       "url": "https://sam.gov/opp/884b596dbe304c58881b899aa16635cf/view",
       "first_seen_date": "2026-10-21",
-      "last_seen_date": "2026-10-22",
+      "last_seen_date": "2026-10-23",
       "seen_on_dates": [
         "2026-10-21",
-        "2026-10-22"
+        "2026-10-22",
+        "2026-10-23"
       ],
       "brand_terms": [],
       "brand_where": {},
@@ -4888,10 +4499,11 @@
       "awardee": "",
       "url": "https://sam.gov/opp/66f61ddb3bc341169d353d436113fc7c/view",
       "first_seen_date": "2026-10-21",
-      "last_seen_date": "2026-10-22",
+      "last_seen_date": "2026-10-23",
       "seen_on_dates": [
         "2026-10-21",
-        "2026-10-22"
+        "2026-10-22",
+        "2026-10-23"
       ],
       "brand_terms": [],
       "brand_where": {},
@@ -4922,10 +4534,11 @@
       "awardee": "",
       "url": "https://sam.gov/opp/789396299eca46bc99c6645e02176042/view",
       "first_seen_date": "2026-10-21",
-      "last_seen_date": "2026-10-22",
+      "last_seen_date": "2026-10-23",
       "seen_on_dates": [
         "2026-10-21",
-        "2026-10-22"
+        "2026-10-22",
+        "2026-10-23"
       ],
       "brand_terms": [],
       "brand_where": {},
@@ -4956,10 +4569,11 @@
       "awardee": "",
       "url": "https://sam.gov/opp/b09fcaf87352478d9589b7524222422e/view",
       "first_seen_date": "2026-10-21",
-      "last_seen_date": "2026-10-22",
+      "last_seen_date": "2026-10-23",
       "seen_on_dates": [
         "2026-10-21",
-        "2026-10-22"
+        "2026-10-22",
+        "2026-10-23"
       ],
       "brand_terms": [],
       "brand_where": {},
@@ -4990,9 +4604,10 @@
       "awardee": "",
       "url": "https://sam.gov/opp/0bb26627c9a84c6285ce3c7b13951062/view",
       "first_seen_date": "2026-10-22",
-      "last_seen_date": "2026-10-22",
+      "last_seen_date": "2026-10-23",
       "seen_on_dates": [
-        "2026-10-22"
+        "2026-10-22",
+        "2026-10-23"
       ],
       "brand_terms": [],
       "brand_where": {},
@@ -5023,9 +4638,10 @@
       "awardee": "",
       "url": "https://sam.gov/opp/d50e277d154a4853b961ae786b8e72f5/view",
       "first_seen_date": "2026-10-22",
-      "last_seen_date": "2026-10-22",
+      "last_seen_date": "2026-10-23",
       "seen_on_dates": [
-        "2026-10-22"
+        "2026-10-22",
+        "2026-10-23"
       ],
       "brand_terms": [],
       "brand_where": {},
@@ -5056,9 +4672,10 @@
       "awardee": "",
       "url": "https://sam.gov/opp/0135e5a1ce604d9ab772c81cdb0a047c/view",
       "first_seen_date": "2026-10-22",
-      "last_seen_date": "2026-10-22",
+      "last_seen_date": "2026-10-23",
       "seen_on_dates": [
-        "2026-10-22"
+        "2026-10-22",
+        "2026-10-23"
       ],
       "brand_terms": [],
       "brand_where": {},
@@ -5125,9 +4742,10 @@
       "awardee": "",
       "url": "https://sam.gov/opp/54ae69db3d8d4caba380947fd9a6baf1/view",
       "first_seen_date": "2026-10-22",
-      "last_seen_date": "2026-10-22",
+      "last_seen_date": "2026-10-23",
       "seen_on_dates": [
-        "2026-10-22"
+        "2026-10-22",
+        "2026-10-23"
       ],
       "brand_terms": [],
       "brand_where": {},
@@ -5158,9 +4776,10 @@
       "awardee": "",
       "url": "https://sam.gov/opp/722a8c3e614140ae8d72c81e129fff55/view",
       "first_seen_date": "2026-10-22",
-      "last_seen_date": "2026-10-22",
+      "last_seen_date": "2026-10-23",
       "seen_on_dates": [
-        "2026-10-22"
+        "2026-10-22",
+        "2026-10-23"
       ],
       "brand_terms": [],
       "brand_where": {},
@@ -5191,9 +4810,10 @@
       "awardee": "",
       "url": "https://sam.gov/opp/21563fb12dfc4c50ad1717f72248ae95/view",
       "first_seen_date": "2026-10-22",
-      "last_seen_date": "2026-10-22",
+      "last_seen_date": "2026-10-23",
       "seen_on_dates": [
-        "2026-10-22"
+        "2026-10-22",
+        "2026-10-23"
       ],
       "brand_terms": [],
       "brand_where": {},
@@ -5229,9 +4849,10 @@
       "awardee": "",
       "url": "https://sam.gov/opp/ff79d476d2fd444eb03b688d3438e1aa/view",
       "first_seen_date": "2026-10-22",
-      "last_seen_date": "2026-10-22",
+      "last_seen_date": "2026-10-23",
       "seen_on_dates": [
-        "2026-10-22"
+        "2026-10-22",
+        "2026-10-23"
       ],
       "brand_terms": [],
       "brand_where": {},
@@ -5262,9 +4883,10 @@
       "awardee": "",
       "url": "https://sam.gov/opp/75a2104b84b64dfa9001dc1b27a8dce0/view",
       "first_seen_date": "2026-10-22",
-      "last_seen_date": "2026-10-22",
+      "last_seen_date": "2026-10-23",
       "seen_on_dates": [
-        "2026-10-22"
+        "2026-10-22",
+        "2026-10-23"
       ],
       "brand_terms": [],
       "brand_where": {},
@@ -5295,9 +4917,10 @@
       "awardee": "",
       "url": "https://sam.gov/opp/3e376cb60f1d49aca53654a4e7a3d51b/view",
       "first_seen_date": "2026-10-22",
-      "last_seen_date": "2026-10-22",
+      "last_seen_date": "2026-10-23",
       "seen_on_dates": [
-        "2026-10-22"
+        "2026-10-22",
+        "2026-10-23"
       ],
       "brand_terms": [],
       "brand_where": {},
@@ -5309,87 +4932,250 @@
         "errors": 0,
         "at": "2026-10-22T14:27:10+00:00"
       }
+    },
+    "64041f05b7494c18902d47dd94a45b8c": {
+      "notice_id": "64041f05b7494c18902d47dd94a45b8c",
+      "title": "Laboratory Support Services",
+      "solicitation_number": "HQ0034-26-SS-1019SAM",
+      "posted_date": "2026-10-23",
+      "type": "Sources Sought",
+      "response_deadline": "2026-11-09T15:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "DEPT OF DEFENSE.WASHINGTON HEADQUARTERS SERVICES (WHS).WASHINGTON HEADQUARTERS SERVICES",
+      "matched_terms": [
+        "Forensic"
+      ],
+      "body_terms": [],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/64041f05b7494c18902d47dd94a45b8c/view",
+      "first_seen_date": "2026-10-23",
+      "last_seen_date": "2026-10-23",
+      "seen_on_dates": [
+        "2026-10-23"
+      ],
+      "brand_terms": [],
+      "brand_where": {},
+      "brand_scan": {
+        "version": 1,
+        "modified": "2026-10-23T11:18:04.658+00:00",
+        "attachments": true,
+        "skipped": [],
+        "errors": 0,
+        "at": "2026-10-23T14:08:48+00:00"
+      }
+    },
+    "3ce868bf85634c91bbf7e0a9eaf71823": {
+      "notice_id": "3ce868bf85634c91bbf7e0a9eaf71823",
+      "title": "DLA Disposition Services - Qatar Excess Property Management Service",
+      "solicitation_number": "SP4510-26-Q-1027",
+      "posted_date": "2026-10-23",
+      "type": "Combined Synopsis/Solicitation",
+      "response_deadline": "2026-07-21T17:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "DEPT OF DEFENSE.DEFENSE LOGISTICS AGENCY.DLA DISPOSITION SERVICES.DLA DISPOSITION SERVICES -  EBS",
+      "matched_terms": [
+        "Cyber"
+      ],
+      "body_terms": [],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/3ce868bf85634c91bbf7e0a9eaf71823/view",
+      "first_seen_date": "2026-10-23",
+      "last_seen_date": "2026-10-23",
+      "seen_on_dates": [
+        "2026-10-23"
+      ],
+      "brand_terms": [],
+      "brand_where": {},
+      "brand_scan": {
+        "version": 1,
+        "modified": "2026-10-23T12:01:32.197+00:00",
+        "attachments": true,
+        "skipped": [
+          "Attachment 5 - Contractor Instructions.pdf",
+          "Attachment 6 - Past Performance Questionairre.doc"
+        ],
+        "errors": 0,
+        "at": "2026-10-23T14:08:57+00:00"
+      }
+    },
+    "54c6f126880e4566bda283def437d2d0": {
+      "notice_id": "54c6f126880e4566bda283def437d2d0",
+      "title": "Senior Advisor - Personal Services Contractor",
+      "solicitation_number": "2099AB27R00004",
+      "posted_date": "2026-10-22",
+      "type": "Solicitation",
+      "response_deadline": "2026-11-07T04:59:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "",
+      "matched_terms": [
+        "IRS"
+      ],
+      "body_terms": [],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/54c6f126880e4566bda283def437d2d0/view",
+      "first_seen_date": "2026-10-23",
+      "last_seen_date": "2026-10-23",
+      "seen_on_dates": [
+        "2026-10-23"
+      ],
+      "brand_terms": [],
+      "brand_where": {},
+      "brand_scan": {
+        "version": 1,
+        "modified": "2026-10-22T20:21:54.335+00:00",
+        "attachments": true,
+        "skipped": [],
+        "errors": 0,
+        "at": "2026-10-23T14:08:58+00:00"
+      }
+    },
+    "4b95b0da715b4a958f295cae7e54f6df": {
+      "notice_id": "4b95b0da715b4a958f295cae7e54f6df",
+      "title": "STAR-FISH CALL 017 - Secure By Design",
+      "solicitation_number": "FA945326XA001",
+      "posted_date": "2026-10-22",
+      "type": "Solicitation",
+      "response_deadline": "2026-11-13T23:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "DEPT OF DEFENSE.DEPT OF THE AIR FORCE.AIR FORCE MATERIEL COMMAND.AIR FORCE RESEARCH LABORATORY.FA9453  AFRL RVK",
+      "matched_terms": [
+        "Cyber"
+      ],
+      "body_terms": [],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/4b95b0da715b4a958f295cae7e54f6df/view",
+      "first_seen_date": "2026-10-23",
+      "last_seen_date": "2026-10-23",
+      "seen_on_dates": [
+        "2026-10-23"
+      ],
+      "brand_terms": [],
+      "brand_where": {},
+      "brand_scan": {
+        "version": 1,
+        "modified": "2026-10-22T16:23:10.498+00:00",
+        "attachments": true,
+        "skipped": [
+          "DRAFT dd0254.pdf",
+          "Att 3 - SDSV_Statement of Objectives - SOO.pdf"
+        ],
+        "errors": 0,
+        "at": "2026-10-23T14:09:08+00:00"
+      }
+    },
+    "51cb6f4b750343b1ab399fcdf5e10d3f": {
+      "notice_id": "51cb6f4b750343b1ab399fcdf5e10d3f",
+      "title": "Robline Ocean STS",
+      "solicitation_number": "N6660427Q0041",
+      "posted_date": "2026-10-22",
+      "type": "Combined Synopsis/Solicitation",
+      "response_deadline": "2026-10-28T16:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "DEPT OF DEFENSE.DEPT OF THE NAVY.NAVSEA.NAVSEA WARFARE CENTER.NUWC DIV NEWPORT",
+      "matched_terms": [
+        "Cyber"
+      ],
+      "body_terms": [],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/51cb6f4b750343b1ab399fcdf5e10d3f/view",
+      "first_seen_date": "2026-10-23",
+      "last_seen_date": "2026-10-23",
+      "seen_on_dates": [
+        "2026-10-23"
+      ],
+      "brand_terms": [],
+      "brand_where": {},
+      "brand_scan": {
+        "version": 1,
+        "modified": "2026-10-22T18:36:39.041+00:00",
+        "attachments": true,
+        "skipped": [],
+        "errors": 0,
+        "at": "2026-10-23T14:09:09+00:00"
+      }
+    },
+    "af6acf1754364db29b2c39f30b00cdd0": {
+      "notice_id": "af6acf1754364db29b2c39f30b00cdd0",
+      "title": "IRS Intrusion Detection System, C. Clifton Young Federal Building & US Courthouse",
+      "solicitation_number": "47PD5526Q0052",
+      "posted_date": "2026-10-22",
+      "type": "Combined Synopsis/Solicitation",
+      "response_deadline": "2026-11-03T00:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "",
+      "matched_terms": [
+        "IRS"
+      ],
+      "body_terms": [],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/af6acf1754364db29b2c39f30b00cdd0/view",
+      "first_seen_date": "2026-10-23",
+      "last_seen_date": "2026-10-23",
+      "seen_on_dates": [
+        "2026-10-23"
+      ],
+      "brand_terms": [],
+      "brand_where": {},
+      "brand_scan": {
+        "version": 1,
+        "modified": "2026-10-22T16:29:23.557+00:00",
+        "attachments": true,
+        "skipped": [
+          "D_WD NV20260093_2026 07 30.pdf",
+          "Pre-Bid RFIs 47PD5526Q0052_2026 10 21.pdf"
+        ],
+        "errors": 0,
+        "at": "2026-10-23T14:09:20+00:00"
+      }
+    },
+    "07186dc5b3294d839bc2468dad747cf9": {
+      "notice_id": "07186dc5b3294d839bc2468dad747cf9",
+      "title": "Digital Forensics Equipment",
+      "solicitation_number": "19AQMM26N0006",
+      "posted_date": "2026-10-22",
+      "type": "Sources Sought",
+      "response_deadline": "2026-11-13T21:00:00+00:00",
+      "naics": "",
+      "active": "Yes",
+      "organization": "STATE, DEPARTMENT OF.STATE, DEPARTMENT OF.ACQUISITIONS - AQM MOMENTUM",
+      "matched_terms": [
+        "Digital forensics",
+        "Forensics"
+      ],
+      "body_terms": [],
+      "award_amount": "",
+      "awardee": "",
+      "url": "https://sam.gov/opp/07186dc5b3294d839bc2468dad747cf9/view",
+      "first_seen_date": "2026-10-23",
+      "last_seen_date": "2026-10-23",
+      "seen_on_dates": [
+        "2026-10-23"
+      ],
+      "brand_terms": [],
+      "brand_where": {},
+      "brand_scan": {
+        "version": 1,
+        "modified": "2026-10-22T22:16:22.322+00:00",
+        "attachments": true,
+        "skipped": [],
+        "errors": 0,
+        "at": "2026-10-23T14:09:22+00:00"
+      }
     }
   },
   "days": {
-    "2026-10-08": {
-      "date": "2026-10-08",
-      "runs": [
-        "2026-10-08_161131"
-      ],
-      "notice_keys": [
-        "52e4772fedb341d8b962c33c1d811c35",
-        "314c7583bc5f4901af3ec467066e32ee",
-        "1bde592dd03d4be397446ceacbcf3365",
-        "2aab3639718945f5b40d87c0d4cf3c75",
-        "cb98a30737b04cf5ba47f1d69d39b847",
-        "4b319841863e4b42b1ad088a8875027b",
-        "8a90b6c48ffd4db5a80ba08b5bf6727c",
-        "bc0c51df19d94fe384bba148a9028ed4",
-        "4b5573eb2d204a3da30274361360b0ea",
-        "e3849a58e9d04497bbb92c3c41f1283f",
-        "116741b5cb5a42b992e366c00c37ba94",
-        "5aba6767d15c4876b5bf0b419866d003",
-        "3f351a2742454c4089313dacd2c321ad",
-        "a5bf11133d5b49048d5beb1a65af4578",
-        "5b149157dd5f45e18abcc5eeff7638e5",
-        "1cd3e5f7b2cb44c6a5bbbc973d41e9f5",
-        "fbb2436ff3644fe18c369b9ad258ceab",
-        "b1cd8f04ac3c421186613835b95cff03",
-        "a2ef542655a54731a6e47d6aad6ff0bd",
-        "0beda0aeb1034819ba5bceb6fe64ed72",
-        "b0553e980db04597a43daa6e4c8c620a",
-        "f7d684954d7147f0a993161e6f58d9d1",
-        "f47278c8e75c47d9a1d1206f909285ac",
-        "f237f39b066940f28d8b352144ecd48a",
-        "6667ae0b37b74fac95c3bda30f60d8c6",
-        "6bcce9d3cbb540b882624677d1dd39a2",
-        "ee6190e2c1b44a29997a1286254d8dab",
-        "10ada1d6620948d597565475533d66a1",
-        "ebe49f9c23b64c339a77483a3912be87",
-        "ea22432c52f8458b990566970bcfd3db",
-        "afbe1548895e4d15bfbc8232396ad714",
-        "7c8c823940904c8c9af2c3507b58e6e8",
-        "9f54786315fc4a1a9eee596afc3d5104",
-        "00ec26b6099e4bfb9309f56cd669ea13",
-        "d6491df7d2f04213b1330e1e96e99cbc",
-        "5fa8ceaca1db4f209c6b552b785d0120",
-        "3d6be830a9e24318b970de06c1a049f3",
-        "d4946c8cf99c41d78a2e56c7679b2cc5",
-        "f0ca897574cf4553b58e37d3ccfc7ef2",
-        "cec87c871d5f4921a791ce40fd62fe72",
-        "61ff4db1f8d544cd9843908ac3295af1",
-        "e70989c31eb3487bb1eeb1883cfdfbcd",
-        "7d434dab4914473ca2d4a3c93d45b665",
-        "021438732495484684e7ca17e73bcb46",
-        "adf588be455d4ef88d4967cd912168a7",
-        "7f142162092a47f5a0e50a1894d217bf",
-        "d84377315e604d14891c874513171a04",
-        "c6f114f657324ed2bf8920c7abc3223d",
-        "265c6bb6212643fd87e915bef3035c68",
-        "2022149fc08a4dc9bbcce8577e2f3179",
-        "c859ad891bb14c22b3acdb1316f2b75f",
-        "5924adbef41a4c5394f3f2a21dfaf190",
-        "42722e1c74504974b7002f9ee978c995",
-        "c9377aa602064f969cdfa6be3963cde8",
-        "fe04b4bf94724141a33857461cdfe799",
-        "11215d725f4846e296fcdede82e45696",
-        "53d3fc22ebe34e04bf68d5eae26eb259",
-        "e835ac7597804441bcba3c56ab8baeee"
-      ],
-      "new_notice_keys": [
-        "52e4772fedb341d8b962c33c1d811c35",
-        "314c7583bc5f4901af3ec467066e32ee",
-        "1bde592dd03d4be397446ceacbcf3365",
-        "cb98a30737b04cf5ba47f1d69d39b847",
-        "8a90b6c48ffd4db5a80ba08b5bf6727c",
-        "4b5573eb2d204a3da30274361360b0ea",
-        "e3849a58e9d04497bbb92c3c41f1283f",
-        "116741b5cb5a42b992e366c00c37ba94",
-        "5aba6767d15c4876b5bf0b419866d003",
-        "a5bf11133d5b49048d5beb1a65af4578"
-      ]
-    },
     "2026-10-09": {
       "date": "2026-10-09",
       "runs": [
@@ -6257,8 +6043,66 @@
         "75a2104b84b64dfa9001dc1b27a8dce0",
         "3e376cb60f1d49aca53654a4e7a3d51b"
       ]
+    },
+    "2026-10-23": {
+      "date": "2026-10-23",
+      "runs": [
+        "2026-10-23_140659"
+      ],
+      "notice_keys": [
+        "64041f05b7494c18902d47dd94a45b8c",
+        "3ce868bf85634c91bbf7e0a9eaf71823",
+        "0bb26627c9a84c6285ce3c7b13951062",
+        "54c6f126880e4566bda283def437d2d0",
+        "4b95b0da715b4a958f295cae7e54f6df",
+        "51cb6f4b750343b1ab399fcdf5e10d3f",
+        "af6acf1754364db29b2c39f30b00cdd0",
+        "07186dc5b3294d839bc2468dad747cf9",
+        "d50e277d154a4853b961ae786b8e72f5",
+        "0135e5a1ce604d9ab772c81cdb0a047c",
+        "7d7e4acc3c02480a90824b35e6f83374",
+        "884b596dbe304c58881b899aa16635cf",
+        "54ae69db3d8d4caba380947fd9a6baf1",
+        "722a8c3e614140ae8d72c81e129fff55",
+        "21563fb12dfc4c50ad1717f72248ae95",
+        "ff79d476d2fd444eb03b688d3438e1aa",
+        "75a2104b84b64dfa9001dc1b27a8dce0",
+        "3e376cb60f1d49aca53654a4e7a3d51b",
+        "66f61ddb3bc341169d353d436113fc7c",
+        "789396299eca46bc99c6645e02176042",
+        "584909c9678e4a41acb18094aea7d6a4",
+        "ec4f8de843434b68a7f7713668dfa319",
+        "0dfda835b6a74e5e8e17d89762305c4a",
+        "60c3f2ff8776454ebfd2be964ff59b68",
+        "b09fcaf87352478d9589b7524222422e",
+        "0be8714c04f542e2a400be46c2155c30",
+        "23f8f23f5e6d4744b376584aac3743c7",
+        "a53d09065af541afaa71eeef6b5a0c5e",
+        "aa24db01da394428a78cf36bfa231546",
+        "32a1f6bfd2464052953637645bfb8da8",
+        "1fab08878d644d1eb5596741cef26a99",
+        "d473fbfd56ee421f808711b5544958fc",
+        "d2d7eae711a14923a0329665c110d326",
+        "f4603f6aa068400cbde74db91b6e43bf",
+        "3250f44577624e03bb2dc6324e60bfd6",
+        "721c4aaa8ee34a9ba5f7a0ace045ce8c",
+        "6fdec03a95f94f8a9e0d3816a40a8574",
+        "4ff926a4ccdb444c972541d0c9ef3a7b",
+        "5bd0039af6cd48e48e494d2cf50ba5f0",
+        "58927173fe23490d9801121d0e823a83",
+        "3156da80a77f4ca5875402d5e0a34b9d"
+      ],
+      "new_notice_keys": [
+        "64041f05b7494c18902d47dd94a45b8c",
+        "3ce868bf85634c91bbf7e0a9eaf71823",
+        "54c6f126880e4566bda283def437d2d0",
+        "4b95b0da715b4a958f295cae7e54f6df",
+        "51cb6f4b750343b1ab399fcdf5e10d3f",
+        "af6acf1754364db29b2c39f30b00cdd0",
+        "07186dc5b3294d839bc2468dad747cf9"
+      ]
     }
   },
   "retention_days": 15,
-  "retention_cutoff": "2026-10-08"
+  "retention_cutoff": "2026-10-09"
 }
