@@ -1,6 +1,6 @@
 {
   "date": "2026-10-16",
-  "saved_at": "2026-10-23T14:10:16.629417+00:00",
+  "saved_at": "2026-10-24T13:13:30.097546+00:00",
   "bucket": {
     "date": "2026-10-16",
     "runs": [
@@ -383,7 +383,7 @@
       "awardee": "Charter Communications Operating, LLC d/b/a Charter Media / Spectrum Business",
       "url": "https://sam.gov/opp/6fdec03a95f94f8a9e0d3816a40a8574/view",
       "first_seen_date": "2026-10-16",
-      "last_seen_date": "2026-10-23",
+      "last_seen_date": "2026-10-24",
       "seen_on_dates": [
         "2026-10-16",
         "2026-10-17",
@@ -392,7 +392,8 @@
         "2026-10-20",
         "2026-10-21",
         "2026-10-22",
-        "2026-10-23"
+        "2026-10-23",
+        "2026-10-24"
       ],
       "body_terms": [],
       "brand_terms": [],
@@ -513,7 +514,7 @@
           "Solicitation - W91CRB26BA006 10.15.26.pdf"
         ],
         "errors": 1,
-        "at": "2026-10-23T14:10:06+00:00"
+        "at": "2026-10-24T13:13:19+00:00"
       }
     },
     "04b6eadd3e50467d84da64459c17830e": {
@@ -643,7 +644,7 @@
       "awardee": "",
       "url": "https://sam.gov/opp/4ff926a4ccdb444c972541d0c9ef3a7b/view",
       "first_seen_date": "2026-10-15",
-      "last_seen_date": "2026-10-23",
+      "last_seen_date": "2026-10-24",
       "seen_on_dates": [
         "2026-10-15",
         "2026-10-16",
@@ -653,7 +654,8 @@
         "2026-10-20",
         "2026-10-21",
         "2026-10-22",
-        "2026-10-23"
+        "2026-10-23",
+        "2026-10-24"
       ],
       "body_terms": [],
       "brand_terms": [],
@@ -684,7 +686,7 @@
       "awardee": "",
       "url": "https://sam.gov/opp/5bd0039af6cd48e48e494d2cf50ba5f0/view",
       "first_seen_date": "2026-10-15",
-      "last_seen_date": "2026-10-23",
+      "last_seen_date": "2026-10-24",
       "seen_on_dates": [
         "2026-10-15",
         "2026-10-16",
@@ -694,7 +696,8 @@
         "2026-10-20",
         "2026-10-21",
         "2026-10-22",
-        "2026-10-23"
+        "2026-10-23",
+        "2026-10-24"
       ],
       "body_terms": [],
       "brand_terms": [],
@@ -984,7 +987,6 @@
       "first_seen_date": "2026-10-09",
       "last_seen_date": "2026-10-23",
       "seen_on_dates": [
-        "2026-10-09",
         "2026-10-10",
         "2026-10-11",
         "2026-10-12",
@@ -1031,7 +1033,6 @@
       "first_seen_date": "2026-10-09",
       "last_seen_date": "2026-10-16",
       "seen_on_dates": [
-        "2026-10-09",
         "2026-10-10",
         "2026-10-11",
         "2026-10-12",
@@ -1198,7 +1199,6 @@
       "first_seen_date": "2026-10-09",
       "last_seen_date": "2026-10-22",
       "seen_on_dates": [
-        "2026-10-09",
         "2026-10-10",
         "2026-10-11",
         "2026-10-12",
@@ -1244,7 +1244,6 @@
       "first_seen_date": "2026-10-09",
       "last_seen_date": "2026-10-16",
       "seen_on_dates": [
-        "2026-10-09",
         "2026-10-10",
         "2026-10-11",
         "2026-10-12",
@@ -1265,7 +1264,7 @@
           "Attachment 4 - Schedule.xlsx"
         ],
         "errors": 3,
-        "at": "2026-10-23T14:09:51+00:00"
+        "at": "2026-10-24T13:12:59+00:00"
       }
     },
     "5133420c280d4aa38f501a39557534ae": {
@@ -1287,7 +1286,6 @@
       "first_seen_date": "2026-10-09",
       "last_seen_date": "2026-10-16",
       "seen_on_dates": [
-        "2026-10-09",
         "2026-10-10",
         "2026-10-11",
         "2026-10-12",
@@ -1304,18 +1302,18 @@
         "attachments": true,
         "skipped": [
           "APS _ Combined Synopsis Solicitation _ 20261008.docx",
+          "Attachment 2 _ 52.212-1 Instructions to Offerors\u2014Commercial Products and Commercial Services_20261008.docx",
+          "Attachment 3 _ 52.212-2 Evaluation\u2014Commercial Products and Commercial Services_20261008.docx",
           "Attachment 4.b _ WD 2015-4553 REV 31 20260730 FL_9.18.2026.pdf",
           "Attachment 4.c _ WD 2015-4603 REV 34 20260820 AL_9.18.2026.pdf",
           "Attachment 4.d _ WD 2015-4631 REV 34 20260812 AL_9.18.2026.pdf",
           "Attachment 4.e - WD 2015-4675 REV 30 20260822 KY.pdf",
           "Attachment 4.f _ WD 2015-5197 REV 33 20260812 LA_9.18.2026.pdf",
           "Attachment 4.g _ WD 2015-5237 REV 32 20260812 TX_9.18.2026.pdf",
-          "Attachment 4.h _ WD 2015-5629 REV 29 20260513 CA_9.18.2026.pdf",
-          "Attachment 4.i _ WD 2015-5775 REV 32 20260812 NY_9.18.2026.pdf",
-          "Attachment 5 _ PWS Template Agile professional Services 20261001.docx"
+          "Attachment 4.h _ WD 2015-5629 REV 29 20260513 CA_9.18.2026.pdf"
         ],
-        "errors": 1,
-        "at": "2026-10-23T14:10:01+00:00"
+        "errors": 3,
+        "at": "2026-10-24T13:13:14+00:00"
       }
     },
     "1bde592dd03d4be397446ceacbcf3365": {
@@ -1337,7 +1335,6 @@
       "first_seen_date": "2026-10-08",
       "last_seen_date": "2026-10-22",
       "seen_on_dates": [
-        "2026-10-09",
         "2026-10-10",
         "2026-10-11",
         "2026-10-12",
@@ -1383,7 +1380,6 @@
       "first_seen_date": "2026-10-09",
       "last_seen_date": "2026-10-22",
       "seen_on_dates": [
-        "2026-10-09",
         "2026-10-10",
         "2026-10-11",
         "2026-10-12",
@@ -1429,7 +1425,6 @@
       "first_seen_date": "2026-10-07",
       "last_seen_date": "2026-10-21",
       "seen_on_dates": [
-        "2026-10-09",
         "2026-10-10",
         "2026-10-11",
         "2026-10-12",
@@ -1474,7 +1469,6 @@
       "first_seen_date": "2026-10-08",
       "last_seen_date": "2026-10-21",
       "seen_on_dates": [
-        "2026-10-09",
         "2026-10-10",
         "2026-10-11",
         "2026-10-12",
@@ -1519,7 +1513,6 @@
       "first_seen_date": "2026-10-08",
       "last_seen_date": "2026-10-21",
       "seen_on_dates": [
-        "2026-10-09",
         "2026-10-10",
         "2026-10-11",
         "2026-10-12",
@@ -1564,7 +1557,6 @@
       "first_seen_date": "2026-10-07",
       "last_seen_date": "2026-10-21",
       "seen_on_dates": [
-        "2026-10-09",
         "2026-10-10",
         "2026-10-11",
         "2026-10-12",
@@ -1609,7 +1601,6 @@
       "first_seen_date": "2026-10-06",
       "last_seen_date": "2026-10-20",
       "seen_on_dates": [
-        "2026-10-09",
         "2026-10-10",
         "2026-10-11",
         "2026-10-12",
@@ -1653,7 +1644,6 @@
       "first_seen_date": "2026-10-05",
       "last_seen_date": "2026-10-19",
       "seen_on_dates": [
-        "2026-10-09",
         "2026-10-10",
         "2026-10-11",
         "2026-10-12",
@@ -1695,7 +1685,6 @@
       "first_seen_date": "2026-10-06",
       "last_seen_date": "2026-10-19",
       "seen_on_dates": [
-        "2026-10-09",
         "2026-10-10",
         "2026-10-11",
         "2026-10-12",
@@ -1739,7 +1728,6 @@
       "first_seen_date": "2026-10-05",
       "last_seen_date": "2026-10-19",
       "seen_on_dates": [
-        "2026-10-09",
         "2026-10-10",
         "2026-10-11",
         "2026-10-12",
@@ -1805,7 +1793,6 @@
       "first_seen_date": "2026-10-05",
       "last_seen_date": "2026-10-19",
       "seen_on_dates": [
-        "2026-10-09",
         "2026-10-10",
         "2026-10-11",
         "2026-10-12",
@@ -1849,7 +1836,6 @@
       "first_seen_date": "2026-10-06",
       "last_seen_date": "2026-10-19",
       "seen_on_dates": [
-        "2026-10-09",
         "2026-10-10",
         "2026-10-11",
         "2026-10-12",
@@ -1891,7 +1877,6 @@
       "first_seen_date": "2026-10-03",
       "last_seen_date": "2026-10-16",
       "seen_on_dates": [
-        "2026-10-09",
         "2026-10-10",
         "2026-10-11",
         "2026-10-12",
@@ -1930,7 +1915,6 @@
       "first_seen_date": "2026-10-02",
       "last_seen_date": "2026-10-16",
       "seen_on_dates": [
-        "2026-10-09",
         "2026-10-10",
         "2026-10-11",
         "2026-10-12",
